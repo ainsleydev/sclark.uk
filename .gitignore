@@ -48,9 +48,6 @@ Thumbs.db
 .env.local
 /.env
 
-# Blobs
-.vercel
-
 # Coverage
 coverage.out
 ./coverage.out
