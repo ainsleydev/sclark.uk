@@ -18,6 +18,7 @@ lint:
 
 format:
 	go fmt ./...
+	templ fmt
 .PHONY: format
 
 excluded := grep -v /gen/ | grep -v /mocks/ | github.com/ainsleyclark/sclark.uk

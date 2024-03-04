@@ -1,5 +1,9 @@
 package views
 
-templ hello(name string) {
-    <div>Hey {name}</div>
+import "github.com/ainsleydev/sclark.uk/views/layouts"
+
+templ Hello(name string) {
+   	@layouts.Base() {
+ 		<div class="">Hey {name}</div>
+   	}
 }
