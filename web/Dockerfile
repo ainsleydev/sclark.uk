@@ -1,17 +1,12 @@
-# Use an official Golang runtime as a parent image
-FROM golang:1.22-alpine
-
-# Set the working directory inside the container
+# Build stage
+FROM golang:1.22-alpine AS build
 WORKDIR /app
-
-# Copy the local package files to the container's workspace
 COPY . .
+RUN go mod download
+RUN go build -o main .
 
-# Build the Go application
-RUN go build -o app
-
-# Expose the port on which the application will run
-EXPOSE 3000
-
-# Define the command to run the executable
-CMD ["./app"]
+# Run stage
+FROM alpine:latest
+WORKDIR /app
+COPY --from=build /app/main .
+CMD ["/app/main"]
