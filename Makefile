@@ -31,6 +31,12 @@ provision:
 
 .PHONY: provision
 
+docker-build-web:
+	docker build ./web -t ainsley.dev/web --progress plain --no-cache
+
+docker-run-web:
+	docker run -it --init --env-file .env -p 3000:3000 --rm -ti ainsley.dev/web
+
 deploy:
 	echo 'TODO';
 .PHONY: deploy

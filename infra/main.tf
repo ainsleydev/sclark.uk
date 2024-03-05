@@ -66,7 +66,6 @@ resource "digitalocean_app" "s-clark-web" {
 			instance_count     = 1
 			http_port          = 3000
 
-
 			env {
 				key   = "Test"
 				value = "Test"
