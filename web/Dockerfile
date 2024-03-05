@@ -4,10 +4,11 @@ RUN apk add git
 WORKDIR /app
 COPY . ./
 RUN go mod tidy
+RUN go generate ./...
 RUN go build -o main .
 
 # Run stage
 FROM alpine:latest AS runtime
 COPY --from=build /app/main .
 EXPOSE 3000
-CMD ["/main"]
+ENTRYPOINT ["/main"]
