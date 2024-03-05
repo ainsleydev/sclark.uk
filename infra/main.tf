@@ -4,8 +4,15 @@ terraform {
 			source  = "digitalocean/digitalocean"
 			version = "~> 2.0"
 		}
+# https://registry.terraform.io/providers/BetterStackHQ/better-uptime/latest/docs
 	}
 }
+
+
+#variable "go_path" {
+#	type = string
+#	value = "web"
+#}
 
 locals {
 	env_vars = { for tuple in regexall("(.*?)=(.*)", file("${path.module}/../.env")) : tuple[0] => tuple[1] }
@@ -42,16 +49,19 @@ resource "digitalocean_cdn" "s-clark-cdn" {
 	origin = digitalocean_spaces_bucket.s-clark-store.bucket_domain_name
 }
 
-resource "digitalocean_app" "go_app" {
+output "spaces_cdn" {
+	value = digitalocean_cdn.s-clark-cdn
+}
+
+resource "digitalocean_app" "s-clark-web" {
 	spec {
-		name   = "go-api-app"
+		name   = "s-clark-web"
 		region = "lon"
 
 		service {
-			name             = "my-go-api"
+			name             = "go"
 			dockerfile_path = "web/Dockerfile"
-			source_dir = "backend"
-			environment_slug = "go"
+			source_dir = "web"
 			instance_size_slug = "basic-xxs"
 			instance_count = 1
 			http_port = 3000
@@ -86,6 +96,7 @@ resource "digitalocean_app" "go_app" {
 }
 
 
-output "spaces_cdn" {
-	value = digitalocean_cdn.s-clark-cdn
+
+output "app_logs" {
+	value = digitalocean_app.s-clark-web.
 }
