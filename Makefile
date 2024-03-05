@@ -9,7 +9,7 @@ setup:
 	go generate ./...
 
 run:
-	air -c ./.air.toml & \
+	air -c ./web/.air.toml & \
 	npx browser-sync start \
 		--files 'public/**/*.html, public/**/*.css' \
 		--port 3001 \

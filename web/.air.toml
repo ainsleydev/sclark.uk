@@ -4,7 +4,7 @@ tmp_dir = "tmp"
 
 [build]
   args_bin = []
-  bin = "/usr/sbin/lsof -i:3000 && kill -9 $(/usr/sbin/lsof -t -i:3000); ./tmp/main"
+  bin = "./tmp/main"
   cmd = "go build -o ./tmp/main ."
   delay = 0
   exclude_dir = ["assets", "tmp", "vendor", "testdata", "node_modules"]
