@@ -27,6 +27,10 @@ kill:
 	fi
 .PHONY: kill
 
+provision:
+
+.PHONY: provision
+
 deploy:
 	echo 'TODO';
 .PHONY: deploy
