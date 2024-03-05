@@ -15,5 +15,6 @@ func main() {
 	e.GET("/", func(c echo.Context) error {
 		return component.Render(c.Request().Context(), c.Response().Writer)
 	})
-	e.Logger.Fatal(e.Start(":1323"))
+
+	e.Logger.Fatal(e.Start(":3000"))
 }

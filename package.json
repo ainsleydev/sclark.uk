@@ -1,0 +1,22 @@
+{
+  "name": "sclark",
+  "version": "1.0.0",
+  "description": "Codebase for SClark.uk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ainsleydev/sclark.uk.git"
+  },
+  "author": "ainsley.dev LTD",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/ainsleydev/sclark.uk/issues"
+  },
+  "homepage": "https://github.com/ainsleydev/sclark.uk#readme",
+  "devDependencies": {
+    "browser-sync": "^3.0.2"
+  }
+}

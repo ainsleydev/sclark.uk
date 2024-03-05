@@ -1,12 +1,29 @@
-setup: # Setup dependencies
+setup:
 	npm install
 	husky install
-	npm i -g vercel
-	npm -g install svgo
-	brew install ffmpeg
 	go mod tidy
-	go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
+	go install github.com/a-h/templ/cmd/templ@latest
+	go install github.com/cosmtrek/air@latest
 	go generate ./...
+
+run:
+	air -c ./.air.toml & \
+	npx browser-sync start \
+		--files 'public/**/*.html, public/**/*.css' \
+		--port 3001 \
+		--proxy 'localhost:3000' \
+		--middleware 'function(req, res, next) { \
+			res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); \
+			return next(); \
+		}'
+.PHONY: run
+
+kill:
+	@PIDS=$$(lsof -t -i:3000); \
+	if [ -n "$$PIDS" ]; then \
+		kill -9 $$PIDS; \
+	fi
+.PHONY: kill
 
 deploy:
 	echo 'TODO';
@@ -24,7 +41,7 @@ format:
 excluded := grep -v /gen/ | grep -v /mocks/ | github.com/ainsleyclark/sclark.uk
 
 test:
-	cd ./api/_pkg && go test ./... -race $$(go list ./... | $(excluded)) -coverprofile=../../coverage.out -covermode=atomic && cd ../../
+	go test ./... -race $$(go list ./... | $(excluded)) -coverprofile=../../coverage.out -covermode=atomic
 .PHONY: test
 
 mock:

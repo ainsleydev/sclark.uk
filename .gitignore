@@ -54,3 +54,6 @@ coverage.out
 
 # Generated files by Templ
 *_templ.go
+
+# Other
+tmp
