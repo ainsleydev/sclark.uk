@@ -1,5 +1,6 @@
 # Build stage
 FROM golang:1.22-alpine AS build
+RUN apk add git
 WORKDIR /app
 COPY . ./
 RUN go mod tidy
