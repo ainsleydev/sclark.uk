@@ -52,6 +52,18 @@ Thumbs.db
 coverage.out
 ./coverage.out
 
+# Platform
+*.tfvars
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
 # Generated files by Templ
 *_templ.go
 
