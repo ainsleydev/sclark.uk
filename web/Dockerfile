@@ -1,8 +1,10 @@
 # Build stage
 FROM golang:1.22-alpine AS build
 WORKDIR /app
-COPY . .
+COPY go.mod ./
+COPY go.sum ./
 RUN go mod download
+COPY . ./
 RUN go build -o main .
 
 # Run stage

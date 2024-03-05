@@ -42,7 +42,6 @@ lint:
 format:
 	go fmt ./...
 	templ fmt
-	terraform fmt -recursive
 .PHONY: format
 
 excluded := grep -v /gen/ | grep -v /mocks/ | github.com/ainsleyclark/sclark.uk
