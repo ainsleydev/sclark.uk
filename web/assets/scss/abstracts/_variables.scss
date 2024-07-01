@@ -1,0 +1,101 @@
+// -----------------------------------------------------------------------------
+// _variables.scss
+// This file contains all variables for use with scss files.
+// -----------------------------------------------------------------------------
+
+// Columns
+$grid-columns: 12;
+$gap-width: 15px;
+
+// Breakpoints
+$grid-breakpoint-mob: 568;
+$grid-breakpoint-tab: 768;
+$grid-breakpoint-desk: 1024;
+$grid-breakpoint-desk-large: 1408;
+$grid-breakpoint-hd: 1600;
+
+// Text
+// ==========================================================================
+
+$text-fluid-start-size: 400px;
+$text-fluid-end-size: 1600px;
+$text-paragraph-size: 1.1rem;
+$text-lead-size: 1.2rem;
+$text-lead-large-size: 1.4rem;
+$text-lead-line-height: 1.8;
+$text-letter-spacing: -1px;
+
+:root {
+	// Grid
+	// ==========================================================================
+
+	--grid-columns: #{$grid-columns};
+	--grid-gap-width: #{$gap-width};
+	--grid-container-width: 1600px;
+	--grid-container-padding: 7vw;
+
+	--grid-breakpoint-mob: 568;
+	--grid-breakpoint-tab: 768;
+	--grid-breakpoint-desk: 1024;
+	--grid-breakpoint-desk-large: 1408;
+	--grid-breakpoint-hd: 1600;
+
+	// Colour
+	// ==========================================================================
+
+	--colour-background: #fff;
+	--colour-foreground: #0a0a0a;
+	--colour-copy: #0a0a0a;
+	--colour-primary: #ff5043;
+	--colour-secondary: #70cbce;
+
+	// Fonts
+	// ==========================================================================
+
+	--font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+	// Spacing
+	// ==========================================================================
+
+	--spacing-default: 1.8rem;
+	--spacing-tiny: 0.6rem;
+	--spacing-small: 1rem;
+	--spacing-large: 3rem;
+
+	// Styling
+	// ==========================================================================
+
+	--alpha-standard: 0.15;
+	--alpha-light: 0.1;
+
+	--group-margin: 1.8rem;
+}
+
+// Properties
+// ==========================================================================
+
+$grid-properties: (
+	'': 0,
+	'-mob': $grid-breakpoint-mob,
+	'-tab': $grid-breakpoint-tab,
+	'-desk': $grid-breakpoint-desk,
+	'-desk-large': $grid-breakpoint-desk-large,
+	'-hd': $grid-breakpoint-hd,
+);
+
+$palette: (
+	primary: var(--colour-primary),
+	secondary: var(--colour-secondary),
+);
+
+$color-attr: (
+	c: 'color',
+	bg: 'background-color',
+);
+
+$display-properties: (none, inline, inline-block, block, flex, inline-flex);
+
+$spacing-properties: (
+	0: 0,
+);

@@ -1,0 +1,38 @@
+package partials
+
+import (
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+)
+
+func getNavItems(ctx context.Context) payload.NavigationItems {
+	nav, ok := ctx.Value(payload.GlobalsContextKey("navigation")).(*payload.Navigation)
+	if !ok {
+		return nil
+	}
+	return nav.Header
+}
+
+templ Header() {
+	<header class="header">
+		<!-- Logo -->
+		<a href="/" class="header-logo">
+			<picture>
+				<source srcset="/assets/images/logo-avif.avif" type="image/avif" />
+				<source srcset="/assets/images/logo-webp.webp" type="image/webp" />
+				<img src="/assets/images/logo.png" alt="Trireme Trading Logo" />
+			</picture>
+		</a>
+		<!-- Navigation -->
+		<nav class="nav">
+			<ul>
+				for _, item := range getNavItems(ctx) {
+					<li>
+						<a href={ templ.URL(item.URL) }>
+							{ item.Title }
+						</a>
+					</li>
+				}
+			</ul>
+		</nav>
+	</header>
+}

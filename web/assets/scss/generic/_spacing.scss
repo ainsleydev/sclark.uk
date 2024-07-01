@@ -1,0 +1,32 @@
+// -----------------------------------------------------------------------------
+// _spacing.scss
+// Adds margin & padding modifiers to each media query & breakpoint.
+// -----------------------------------------------------------------------------
+
+@each $modifier, $breakpoint in $grid-properties {
+	@each $prop, $abbrev in (margin: m, padding: p) {
+		@include create-mediaquery($breakpoint) {
+			@each $size, $length in $spacing-properties {
+				.#{$abbrev}#{$modifier}-#{$size} {
+					#{$prop}: $length !important;
+				}
+				.#{$abbrev}t#{$modifier}-#{$size},
+				.#{$abbrev}y#{$modifier}-#{$size} {
+					#{$prop}-top: $length !important;
+				}
+				.#{$abbrev}r#{$modifier}-#{$size},
+				.#{$abbrev}x#{$modifier}-#{$size} {
+					#{$prop}-right: $length !important;
+				}
+				.#{$abbrev}b#{$modifier}-#{$size},
+				.#{$abbrev}y#{$modifier}-#{$size} {
+					#{$prop}-bottom: $length !important;
+				}
+				.#{$abbrev}l#{$modifier}-#{$size},
+				.#{$abbrev}x#{$modifier}-#{$size} {
+					#{$prop}-left: $length !important;
+				}
+			}
+		}
+	}
+}

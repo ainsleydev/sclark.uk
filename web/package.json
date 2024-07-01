@@ -1,0 +1,31 @@
+{
+	"name": "web",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "pnpm run run & node esbuild.mjs --watch",
+		"watch": "node esbuild.mjs --watch",
+		"run": "TEMPL_EXPERIMENT=rawgo wgo -file .templ templ generate :: wgo run main.go",
+		"build": "node esbuild.mjs",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"kill": "lsof -t -i tcp:3000 | xargs kill",
+		"generate:templ": "TEMPL_EXPERIMENT=rawgo go generate ./...",
+		"generate:types": "go-jsonschema -p types --struct-name-from-title ../cms/src/types/payload.json > ./types/cms.go"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/browser-sync": "^2.29.0",
+		"browser-sync": "^3.0.2",
+		"esbuild": "^0.21.3",
+		"esbuild-sass-plugin": "^3.2.0",
+		"fs-extra": "^11.2.0",
+		"payload": "^2.18.3",
+		"sharp": "^0.33.4"
+	},
+	"dependencies": {
+		"normalize.css": "^8.0.1"
+	}
+}

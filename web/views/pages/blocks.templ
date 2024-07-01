@@ -1,0 +1,73 @@
+package pages
+
+import (
+	"fmt"
+
+	"github.com/ainsleydev/webkit/pkg/webkit"
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+
+	"github.com/ainsleydev/sclark.uk/views/blocks"
+	"github.com/ainsleydev/sclark.uk/views/layouts"
+	"github.com/ainsleydev/sclark.uk/types"
+)
+
+type blockHandler struct {
+	decodeTo interface{}
+	handler  func(any) templ.Component
+}
+
+var blockHandlers = map[string]blockHandler{
+	"services-block": {
+		decodeTo: &types.BlockServices{},
+		handler: func(props any) templ.Component {
+			return blocks.ServicesBlock(*props.(*types.BlockServices))
+		},
+	},
+	"partners-block": {
+		decodeTo: &types.BlockPartners{},
+		handler: func(props any) templ.Component {
+			return blocks.PartnersBlock(*props.(*types.BlockPartners))
+		},
+	},
+}
+
+func RenderBlockPage(c *webkit.Context, page types.Pages) error {
+	var bl []Block
+
+	for _, b := range page.Layout {
+		bh, exists := blockHandlers[b.BlockType]
+		if !exists {
+			return fmt.Errorf("unknown block type: %s", b.BlockType)
+		}
+		if err := b.Decode(bh.decodeTo); err != nil {
+			return err
+		}
+		bl = append(bl, Block{
+			Component: bh.handler(bh.decodeTo),
+			Block:     b,
+		})
+	}
+
+	return c.Render(Blocks(page, bl))
+}
+
+
+type Block struct {
+	Component templ.Component
+	payload.Block
+}
+
+templ Blocks(page types.Pages, components []Block) {
+	@layouts.Base() {
+		<div class="blocks">
+			for _, block := range components {
+				<div class="blocks-item"
+					id={ fmt.Sprintf("block-%v", block.ID) }
+					data-block={ block.BlockType }
+				>
+					@block.Component
+				</div>
+			}
+		</div>
+	}
+}

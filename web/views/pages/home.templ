@@ -1,0 +1,15 @@
+package pages
+
+import (
+	"github.com/ainsleydev/sclark.uk/views/components"
+	"github.com/ainsleydev/sclark.uk/views/layouts"
+)
+
+templ Home() {
+	@layouts.Base() {
+		<h1>Home page</h1>
+		@components.Button(components.ButtonProps{
+			Text: "Hello There",
+		})
+	}
+}

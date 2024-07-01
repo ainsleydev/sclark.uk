@@ -1,0 +1,15 @@
+// -----------------------------------------------------------------------------
+// _colours.scss
+// Add colours via colour variables, darken & lighten.
+// -----------------------------------------------------------------------------
+
+// Helper Classes
+// =========================================================================
+
+@each $color-name, $hex in $palette {
+	@each $attr-name, $attr in $color-attr {
+		.#{$attr-name}-#{'' + $color-name} {
+			#{$attr}: $hex !important;
+		}
+	}
+}

@@ -1,15 +1,24 @@
-# Build stage
-FROM golang:1.22-alpine AS build
-RUN apk add git
-WORKDIR /app
-COPY . ./
-RUN go install github.com/a-h/templ/cmd/templ@latest
-RUN go generate ./...
-RUN go mod tidy
-RUN go build -o entrypoint .
+FROM golang:1.22-alpine3.19 AS builder
 
-# Run stage
+WORKDIR /app
+
+COPY go.* .
+COPY package*.json .
+
+RUN go mod download
+RUN npm install
+
+COPY . .
+
+RUN CGO_ENABLED=0 GOOS=linux go build -o app .
+RUN npm run build
+
 FROM alpine:latest AS runtime
-COPY --from=build /app/entrypoint .
+
+WORKDIR /root/
+
+COPY --from=builder /app/app .
+
 EXPOSE 3000
-ENTRYPOINT ["/entrypoint"]
+
+CMD ["./app"]

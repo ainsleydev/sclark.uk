@@ -1,0 +1,17 @@
+package pages
+
+import (
+	"github.com/ainsleydev/sclark.uk/views/layouts"
+)
+
+type MaintenanceProps struct {
+	Title string
+	Content string
+}
+
+templ Maintenance(props MaintenanceProps) {
+	@layouts.Base() {
+		<h1>{ props.Title }</h1>
+		<p>{ props.Content }</p>
+	}
+}

@@ -1,0 +1,49 @@
+/**
+ * app.scss
+ * Imports all files from abstracts, base, components, layout, pages & vendor.
+ *
+ * @author Ainsley Clark
+ * @author URL:   https://ainsley.dev
+ * @author Email: hello@ainsley.dev
+ */
+
+$views-path: '../../views';
+
+/*  ====================
+    Abstracts
+    ==================== */
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
+
+/* ====================
+    Vendor
+    ==================== */
+@import 'normalize.css/normalize.css';
+
+/* ====================
+    Base
+    ==================== */
+@import 'base/global';
+@import 'base/fonts';
+@import 'base/reset';
+
+/* ====================
+    Generic
+    ==================== */
+@import 'generic/typography';
+@import 'generic/colours';
+@import 'generic/spacing';
+
+/* ====================
+    Grid
+    ==================== */
+@import 'grid/flex';
+@import 'grid/order';
+@import 'grid/display';
+
+/* ====================
+    Partials
+    ==================== */
+@import url('#{$views-path}/partials/header');
+@import url('#{$views-path}/partials/footer');

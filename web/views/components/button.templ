@@ -1,0 +1,21 @@
+package components
+
+type ButtonProps struct {
+	Text string
+	Href string
+	Label string
+}
+
+templ Button(props ButtonProps) {
+	<div class="btn-wrapper">
+		if props.Href != "" {
+			<a class="btn" href={ templ.URL(props.Href) }  aria-label={ props.Href }>
+				{ props.Text }
+			</a>
+		} else {
+			<button class="btn" aria-label={ props.Href }>
+				{ props.Text }
+			</button>
+		}
+	</div>
+}

@@ -1,20 +1,75 @@
 package main
 
 import (
-	"github.com/labstack/echo/v4"
+	"log/slog"
+	"os"
+	"time"
 
-	"github.com/ainsleydev/sclark.uk/views"
+	"github.com/ainsleydev/sclark.uk/handlers"
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+	"github.com/ainsleydev/webkit/pkg/cache"
+	"github.com/ainsleydev/webkit/pkg/env"
+	"github.com/ainsleydev/webkit/pkg/log"
+	"github.com/ainsleydev/webkit/pkg/middleware"
+	"github.com/ainsleydev/webkit/pkg/webkit"
 )
 
 //go:generate templ generate
 
+type Env struct {
+	AppEnv        string `env:"APP_ENV" envDefault:"development"`
+	AppPort       string `env:"APP_PORT"`
+	AppURL        string `env:"APP_URL"`
+	PayloadURL    string `env:"PAYLOAD_URL"`
+	PayloadAPIKey string `env:"PAYLOAD_API_KEY"`
+}
+
 func main() {
-	component := views.Hello("Stephanie")
+	kit := webkit.New()
 
-	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return component.Render(c.Request().Context(), c.Response().Writer)
-	})
+	log.Bootstrap("Trireme Trading")
 
-	e.Logger.Fatal(e.Start(":3000"))
+	config := &Env{}
+	err := env.ParseConfig(config)
+	if err != nil {
+		slog.Error("Failed to parse config: %v", err)
+		os.Exit(1)
+	}
+
+	cacheDriver := cache.NewInMemory(1 * time.Hour)
+
+	kit.Plug(middleware.Recover)
+	kit.Plug(middleware.RequestID)
+	kit.Plug(middleware.TrailingSlashRedirect)
+	kit.Plug(middleware.NonWWWRedirect)
+	kit.Plug(middleware.Gzip)
+	kit.Plug(middleware.Logger)
+
+	p, err := payload.New(
+		payload.WithBaseURL(config.PayloadURL),
+		payload.WithAPIKey(config.PayloadAPIKey),
+		payload.WithCache(cacheDriver),
+		payload.WithWebkit(kit),
+		payload.WithMaintenanceHandler(handlers.MaintenanceHandler()),
+		payload.WithNavigation(),
+		payload.WithGlobalMiddleware[payload.Navigation]("navigation"),
+	)
+	if err != nil {
+		slog.Error("Failed to create payload client: %v", err)
+		os.Exit(1)
+	}
+
+	kit.Plug(middleware.CORS)
+	kit.Plug(middleware.URL)
+	kit.Plug(middleware.Minify)
+
+	kit.Get("/ping/", webkit.PingHandler)
+	kit.Get("/", handlers.HomeHandler(p.Client))
+	kit.NotFound(handlers.PagesHandler(p.Client))
+	kit.Static("/assets/", "./dist")
+	kit.ErrorHandler = handlers.ErrorHandler()
+
+	if err = kit.Start(":" + config.AppPort); err != nil {
+		slog.Error("Failed to start server: %v", err)
+	}
 }
