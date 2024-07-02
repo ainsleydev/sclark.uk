@@ -773,6 +773,10 @@ export interface Settings {
   address?: Address;
   social?: Social;
   maintenance?: Maintenance;
+  footer?: {
+    title?: string | null;
+    content?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }

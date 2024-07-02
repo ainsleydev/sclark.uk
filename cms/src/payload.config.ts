@@ -8,11 +8,12 @@ import sharp from 'sharp'
 
 import type {Config} from 'payload';
 import {Users} from './collections/Users'
+import {Footer} from './globals/Settings'
 import {Media} from '@ainsleydev/payload-helper/src/collections/Media'
-import {Redirects} from '@ainsleydev/payload-helper/src/collections/Redirects';
-import {Settings} from '@ainsleydev/payload-helper/src/globals/Settings';
-import {Navigation} from '@ainsleydev/payload-helper/src/globals/Navigation';
-import env from '@ainsleydev/payload-helper/src/util/env';
+import {Redirects} from '@ainsleydev/payload-helper/src/collections/Redirects'
+import {Settings} from '@ainsleydev/payload-helper/src/globals/Settings'
+import {Navigation} from '@ainsleydev/payload-helper/src/globals/Navigation'
+import env from '@ainsleydev/payload-helper/src/util/env'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -27,7 +28,9 @@ export default buildConfig({
 		Redirects(),
 	],
 	globals: [
-		Settings(),
+		Settings([
+			Footer,
+		]),
 		Navigation({
 			includeFooter: false,
 			header: {
