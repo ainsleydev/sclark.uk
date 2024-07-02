@@ -37,7 +37,7 @@ export default buildConfig({
 		Reviews,
 		Portfolio,
 		PortfolioCategories,
-		Media(path.resolve(dirname, 'media')),
+		Media(path.resolve('../../'+dirname, 'media')),
 		Users,
 		Redirects(),
 	],

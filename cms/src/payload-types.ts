@@ -1002,7 +1002,6 @@ export interface Settings {
     title?: string | null;
     content?: string | null;
   };
-  meta?: Meta;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1251,26 +1250,6 @@ export interface Maintenance {
   enabled?: boolean | null;
   title?: string | null;
   content?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Meta".
- */
-export interface Meta {
-  title?: string | null;
-  description?: string | null;
-  image?: number | Media | null;
-  private?: boolean | null;
-  canonicalURL?: string | null;
-  structuredData?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

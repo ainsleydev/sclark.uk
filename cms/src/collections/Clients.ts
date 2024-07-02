@@ -30,9 +30,11 @@ export const Clients: CollectionConfig = {
 			type: 'text',
 			required: true,
 			validate: validateURL,
-			description: {
-				name: 'The website of the client or company.',
-			},
+			admin: {
+				description: {
+					name: 'The website of the client or company.',
+				},
+			}
 		},
 		{
 			name: 'logo',
