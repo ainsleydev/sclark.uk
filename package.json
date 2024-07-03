@@ -36,7 +36,8 @@
 		"fix": "turbo lint && prettier --write .",
 		"types": "pnpm --filter cms run generate:types && pnpm --filter web run generate:types",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prepare": "husky"
 	},
 	"packageManager": "pnpm@9.1.4",
 	"lint-staged": {
@@ -48,6 +49,8 @@
 	"devDependencies": {
 		"@ainsleydev/eslint-config": "^0.0.1",
 		"globals": "^15.3.0",
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.7",
 		"prettier": "^3.3.2",
 		"turbo": "^2.0.6"
 	}
