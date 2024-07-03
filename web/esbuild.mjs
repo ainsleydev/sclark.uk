@@ -14,6 +14,7 @@ import browsersync from 'browser-sync';
 import {sassPlugin} from 'esbuild-sass-plugin';
 import copyAndConvertImages from "./bin/images.mjs";
 
+// eslint-disable-next-line
 const isProd = !process.argv.includes("--watch");
 
 /**

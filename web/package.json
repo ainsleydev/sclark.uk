@@ -8,6 +8,7 @@
 		"watch": "node esbuild.mjs --watch",
 		"run": "TEMPL_EXPERIMENT=rawgo wgo -file .templ templ generate :: wgo run main.go",
 		"build": "node esbuild.mjs",
+		"lint": "eslint . --fix",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"kill": "lsof -t -i tcp:3000 | xargs kill",
 		"generate:templ": "TEMPL_EXPERIMENT=rawgo go generate ./...",
@@ -17,13 +18,17 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
+		"@eslint/js": "^9.6.0",
 		"@types/browser-sync": "^2.29.0",
 		"browser-sync": "^3.0.2",
 		"esbuild": "^0.21.3",
 		"esbuild-sass-plugin": "^3.2.0",
+		"eslint": "9.x",
 		"fs-extra": "^11.2.0",
+		"globals": "^15.3.0",
 		"payload": "^2.18.3",
-		"sharp": "^0.33.4"
+		"sharp": "^0.33.4",
+		"typescript-eslint": "^7.15.0"
 	},
 	"dependencies": {
 		"normalize.css": "^8.0.1"

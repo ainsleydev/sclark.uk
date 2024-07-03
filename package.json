@@ -46,6 +46,8 @@
 		"*.{js,ts}": "eslint --fix"
 	},
 	"devDependencies": {
+		"@ainsleydev/eslint-config": "^0.0.1",
+		"globals": "^15.3.0",
 		"turbo": "^2.0.6"
 	}
 }
