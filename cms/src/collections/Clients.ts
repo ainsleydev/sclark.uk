@@ -1,5 +1,5 @@
-import type {CollectionConfig, UploadField} from 'payload'
-import {validateURL} from '@ainsleydev/payload-helper/src/util/validation';
+import type { CollectionConfig, UploadField } from 'payload';
+import { validateURL } from '@ainsleydev/payload-helper/src/util/validation';
 
 export const Clients: CollectionConfig = {
 	slug: 'clients',
@@ -9,10 +9,7 @@ export const Clients: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'name',
-		defaultColumns: [
-			'name',
-			'url',
-		],
+		defaultColumns: ['name', 'url'],
 	},
 	fields: [
 		{
@@ -22,7 +19,7 @@ export const Clients: CollectionConfig = {
 			required: true,
 			admin: {
 				description: 'The name of the client or company.',
-			}
+			},
 		},
 		{
 			name: 'url',
@@ -47,8 +44,9 @@ export const Clients: CollectionConfig = {
 				},
 			},
 			admin: {
-				description: 'Attach a logo of the client or company, this should be black in SVG format.',
+				description:
+					'Attach a logo of the client or company, this should be black in SVG format.',
 			},
 		} as UploadField,
 	],
-}
+};

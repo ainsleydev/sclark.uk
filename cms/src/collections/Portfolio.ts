@@ -1,5 +1,5 @@
-import type {CollectionConfig} from 'payload'
-import {validateURL} from '@ainsleydev/payload-helper/src/util/validation';
+import type { CollectionConfig } from 'payload';
+import { validateURL } from '@ainsleydev/payload-helper/src/util/validation';
 
 export const Portfolio: CollectionConfig = {
 	slug: 'portfolio',
@@ -9,12 +9,7 @@ export const Portfolio: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'title',
-		defaultColumns: [
-			'title',
-			'company',
-			'category',
-			'date',
-		],
+		defaultColumns: ['title', 'company', 'category', 'date'],
 	},
 	fields: [
 		{
@@ -24,7 +19,7 @@ export const Portfolio: CollectionConfig = {
 			required: true,
 			admin: {
 				description: 'The title of this project or blog post.',
-			}
+			},
 		},
 		{
 			type: 'row',
@@ -38,7 +33,7 @@ export const Portfolio: CollectionConfig = {
 					admin: {
 						width: '50%',
 						description: 'The URL of this project or blog post.',
-					}
+					},
 				},
 				{
 					name: 'date',
@@ -47,10 +42,10 @@ export const Portfolio: CollectionConfig = {
 					required: true,
 					admin: {
 						width: '50%',
-						description: 'The date this project or blog post was published on.'
-					}
+						description: 'The date this project or blog post was published on.',
+					},
 				},
-			]
+			],
 		},
 		{
 			type: 'row',
@@ -63,8 +58,9 @@ export const Portfolio: CollectionConfig = {
 					required: true,
 					admin: {
 						width: '50%',
-						description: 'Attach a company to the portfolio item, that the project was completed for.'
-					}
+						description:
+							'Attach a company to the portfolio item, that the project was completed for.',
+					},
 				},
 				{
 					name: 'category',
@@ -75,10 +71,10 @@ export const Portfolio: CollectionConfig = {
 					admin: {
 						width: '50%',
 						allowCreate: true,
-						description: 'Select a category for this portfolio item.'
-					}
+						description: 'Select a category for this portfolio item.',
+					},
 				},
-			]
+			],
 		},
 		{
 			name: 'image',
@@ -88,7 +84,7 @@ export const Portfolio: CollectionConfig = {
 			required: true,
 			admin: {
 				description: 'Attach a main image for the portfolio item.',
-			}
-		}
+			},
+		},
 	],
-}
+};

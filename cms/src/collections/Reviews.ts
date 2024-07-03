@@ -1,4 +1,4 @@
-import type {CollectionConfig} from 'payload'
+import type { CollectionConfig } from 'payload';
 
 export const Reviews: CollectionConfig = {
 	slug: 'reviews',
@@ -8,11 +8,7 @@ export const Reviews: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'author.firstName',
-		defaultColumns: [
-			'title',
-			'author.firstName',
-			'author.lastName',
-		],
+		defaultColumns: ['title', 'author.firstName', 'author.lastName'],
 	},
 	fields: [
 		{
@@ -22,7 +18,7 @@ export const Reviews: CollectionConfig = {
 			required: true,
 			admin: {
 				description: 'The content of the review or testimonial.',
-			}
+			},
 		},
 		{
 			name: 'author',
@@ -43,7 +39,7 @@ export const Reviews: CollectionConfig = {
 							admin: {
 								width: '50%',
 								description: 'The first name of the author.',
-							}
+							},
 						},
 						{
 							name: 'lastName',
@@ -53,9 +49,8 @@ export const Reviews: CollectionConfig = {
 							admin: {
 								width: '50%',
 								description: 'The last name of the author.',
-							}
+							},
 						},
-
 					],
 				},
 				{
@@ -64,10 +59,11 @@ export const Reviews: CollectionConfig = {
 					type: 'text',
 					required: true,
 					admin: {
-						description: 'Give a brief description of the author, such as their role or position.'
-					}
+						description:
+							'Give a brief description of the author, such as their role or position.',
+					},
 				},
 			],
 		},
 	],
-}
+};

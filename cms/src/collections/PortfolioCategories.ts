@@ -1,4 +1,4 @@
-import type {CollectionConfig} from 'payload'
+import type { CollectionConfig } from 'payload';
 
 export const PortfolioCategories: CollectionConfig = {
 	slug: 'portfolio-categories',
@@ -8,9 +8,7 @@ export const PortfolioCategories: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'title',
-		defaultColumns: [
-			'title',
-		],
+		defaultColumns: ['title'],
 	},
 	fields: [
 		{
@@ -21,8 +19,8 @@ export const PortfolioCategories: CollectionConfig = {
 			admin: {
 				description:
 					'Add a title for the category, this can be a single word or a short phrase such as Tech or Education. ' +
-					'Used to associate portfolio items with this category.'
-			}
+					'Used to associate portfolio items with this category.',
+			},
 		},
 	],
-}
+};

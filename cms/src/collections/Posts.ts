@@ -1,5 +1,5 @@
-import type {CollectionConfig, PayloadHandler} from 'payload'
-import {findBySlug} from '@ainsleydev/payload-helper/src/endpoints/slug'
+import type { CollectionConfig, PayloadHandler } from 'payload';
+import { findBySlug } from '@ainsleydev/payload-helper/src/endpoints/slug';
 
 export const Posts: CollectionConfig = {
 	slug: 'posts',
@@ -14,16 +14,14 @@ export const Posts: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'title',
-		defaultColumns: [
-			'title',
-		],
+		defaultColumns: ['title'],
 	},
 	endpoints: [
 		{
 			path: '/posts/slug/:slug',
 			method: 'get',
 			handler: findBySlug('posts') as PayloadHandler,
-		}
+		},
 	],
 	fields: [
 		{
@@ -46,7 +44,7 @@ export const Posts: CollectionConfig = {
 						{
 							name: 'content',
 							label: 'Content',
-							type: 'richText'
+							type: 'richText',
 						},
 						{
 							name: 'thumbnail',
@@ -54,9 +52,9 @@ export const Posts: CollectionConfig = {
 							type: 'upload',
 							relationTo: 'media',
 						},
-					]
-				}
-			]
+					],
+				},
+			],
 		},
 		{
 			name: 'publishedAt',
@@ -69,11 +67,11 @@ export const Posts: CollectionConfig = {
 			},
 			hooks: {
 				beforeChange: [
-					({siblingData, value}) => {
+					({ siblingData, value }) => {
 						if (siblingData._status === 'published' && !value) {
-							return new Date()
+							return new Date();
 						}
-						return value
+						return value;
 					},
 				],
 			},
@@ -86,12 +84,12 @@ export const Posts: CollectionConfig = {
 			admin: {
 				position: 'sidebar',
 			},
-			filterOptions: ({id}) => {
+			filterOptions: ({ id }) => {
 				return {
 					id: {
 						not_in: [id],
 					},
-				}
+				};
 			},
 		},
 		{
@@ -113,4 +111,4 @@ export const Posts: CollectionConfig = {
 			],
 		},
 	],
-}
+};

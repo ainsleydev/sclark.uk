@@ -1,4 +1,4 @@
-import type {Tab} from 'payload';
+import type { Tab } from 'payload';
 
 export const Footer: Tab = {
 	label: 'Footer',
@@ -17,8 +17,8 @@ export const Footer: Tab = {
 					name: 'content',
 					type: 'textarea',
 					label: 'Footer Content',
-				}
-			]
-		}
-	]
+				},
+			],
+		},
+	],
 };

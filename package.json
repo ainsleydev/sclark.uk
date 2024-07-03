@@ -33,7 +33,7 @@
 		"dev:cms": "turbo dev --filter=cms",
 		"dev:web": "turbo dev --filter=web",
 		"lint": "turbo lint",
-		"fix": "eslint . --fix && prettier --write .",
+		"fix": "turbo lint && prettier --write .",
 		"types": "pnpm --filter cms run generate:types && pnpm --filter web run generate:types",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -48,6 +48,7 @@
 	"devDependencies": {
 		"@ainsleydev/eslint-config": "^0.0.1",
 		"globals": "^15.3.0",
+		"prettier": "^3.3.2",
 		"turbo": "^2.0.6"
 	}
 }
