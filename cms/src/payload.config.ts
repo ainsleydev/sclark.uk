@@ -1,7 +1,7 @@
 import { postgresAdapter } from '@payloadcms/db-postgres';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import path from 'path';
-import { buildConfig } from 'payload';
+import { buildConfig, Tab } from 'payload';
 import { fileURLToPath } from 'url';
 import sharp from 'sharp';
 import type { Config, Field } from 'payload';
@@ -39,7 +39,7 @@ export default buildConfig({
 		Reviews,
 		Portfolio,
 		PortfolioCategories,
-		Media(path.resolve('../../' + dirname, 'media')),
+		Media(lexicalEditor),
 		Users,
 		Redirects(),
 	],
