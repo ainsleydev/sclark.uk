@@ -20,6 +20,7 @@ export type NavigationHeaderLinks =
 
 export interface Config {
   collections: {
+    posts: Post;
     clients: Client;
     reviews: Review;
     portfolio: Portfolio;
@@ -43,15 +44,40 @@ export interface Config {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "clients".
+ * via the `definition` "posts".
  */
-export interface Client {
+export interface Post {
   id: number;
-  name: string;
-  url: string;
-  logo: number | Media;
+  title: string;
+  excerpt?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  thumbnail?: number | Media | null;
+  meta?: Meta;
+  publishedAt?: string | null;
+  relatedPosts?: (number | Post)[] | null;
+  tags?:
+    | {
+        tag?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -176,6 +202,38 @@ export interface Media {
       filename?: string | null;
     };
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Meta".
+ */
+export interface Meta {
+  title?: string | null;
+  description?: string | null;
+  image?: number | Media | null;
+  private?: boolean | null;
+  canonicalURL?: string | null;
+  structuredData?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "clients".
+ */
+export interface Client {
+  id: number;
+  name: string;
+  url: string;
+  logo: number | Media;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1002,6 +1060,7 @@ export interface Settings {
     title?: string | null;
     content?: string | null;
   };
+  meta?: Meta;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

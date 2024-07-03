@@ -1,4 +1,4 @@
-import type {CollectionConfig} from 'payload'
+import type {CollectionConfig, UploadField} from 'payload'
 import {validateURL} from '@ainsleydev/payload-helper/src/util/validation';
 
 export const Clients: CollectionConfig = {
@@ -34,7 +34,7 @@ export const Clients: CollectionConfig = {
 				description: {
 					name: 'The website of the client or company.',
 				},
-			}
+			},
 		},
 		{
 			name: 'logo',
@@ -49,6 +49,6 @@ export const Clients: CollectionConfig = {
 			admin: {
 				description: 'Attach a logo of the client or company, this should be black in SVG format.',
 			},
-		},
+		} as UploadField,
 	],
 }

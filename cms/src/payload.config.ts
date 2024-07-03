@@ -4,12 +4,13 @@ import path from 'path'
 import {buildConfig} from 'payload'
 import {fileURLToPath} from 'url'
 import sharp from 'sharp'
-import type {Config} from 'payload';
+import type {Config, Field} from 'payload';
 
 import {Clients} from './collections/Clients'
 import {Reviews} from './collections/Reviews';
 import {Portfolio} from './collections/Portfolio';
 import {PortfolioCategories} from './collections/PortfolioCategories'
+import {Posts} from './collections/Posts';
 import {Users} from './collections/Users'
 import {Footer} from './globals/Settings'
 
@@ -33,6 +34,7 @@ export default buildConfig({
 		user: Users.slug,
 	},
 	collections: [
+		Posts,
 		Clients,
 		Reviews,
 		Portfolio,
@@ -50,7 +52,11 @@ export default buildConfig({
 			},
 		}),
 	],
-	editor: lexicalEditor(),
+	editor: lexicalEditor({
+		admin: {
+			hideGutter: false,
+		},
+	}),
 	secret: env('PAYLOAD_SECRET', ''),
 	typescript: {
 		outputFile: path.resolve(dirname, 'payload-types.ts'),
@@ -65,13 +71,13 @@ export default buildConfig({
 	sharp,
 	plugins: [
 		seoPlugin({
-			// collections: [
-			// 	'pages',
-			// ],
-			// globals: [
-			// 	'settings'
-			// ],
-			fields: SEOFields,
+			collections: [
+				'posts',
+			],
+			globals: [
+				'settings'
+			],
+			fields: SEOFields as Field[],
 			interfaceName: 'Meta',
 			tabbedUI: true,
 			uploadsCollection: 'media',
