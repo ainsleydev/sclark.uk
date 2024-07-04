@@ -30,10 +30,10 @@ pre-commit:
             tags: backend style
             files: git ls-files -m
             run: go vet
-prepare-commit-msg:
-    commands:
-        commitzen:
-            interactive: true
-            run: pnpm run commit
-            env:
-                LEFTHOOK: 0
+#prepare-commit-msg:
+#    commands:
+#        commitzen:
+#            interactive: true
+#            run: pnpm run commit
+#            env:
+#                LEFTHOOK: 0

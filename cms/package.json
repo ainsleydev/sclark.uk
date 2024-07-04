@@ -9,9 +9,11 @@
 		"dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
 		"devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
 		"generate:types": "payload generate:types",
-		"lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
 		"payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-		"start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+		"start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+		"check": "pnpm run format && pnpm run lint",
+		"format": "biome format --write .",
+		"lint": "biome lint --write ."
 	},
 	"dependencies": {
 		"@ainsleydev/payload-helper": "link:/Users/Ainsley/Desktop/ainsley.dev/WebKit/web-kit/packages/payload-helper",
@@ -34,12 +36,11 @@
 		"sharp": "0.32.6"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "1.8.3",
 		"@types/node": "^20.14.9",
 		"@types/react": "npm:types-react@19.0.0-beta.2",
 		"@types/react-dom": "npm:types-react-dom@19.0.0-beta.2",
 		"dotenv": "^16.4.5",
-		"eslint": "^8.57.0",
-		"eslint-config-next": "15.0.0-rc.0",
 		"typescript": "5.5.2"
 	},
 	"engines": {
