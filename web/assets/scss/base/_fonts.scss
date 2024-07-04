@@ -20,7 +20,7 @@ $fontPath: '/assets/fonts/';
 	src:
 		url('#{$fontPath}VremenaGroteskBold.woff2') format('woff2'),
 		url('#{$fontPath}VremenaGroteskBold.woff') format('woff');
-	font-weight: bold;
+	font-weight: 600;
 	font-style: normal;
 	font-display: swap;
 }

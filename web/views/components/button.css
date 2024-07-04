@@ -1,0 +1,53 @@
+.btn {
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	background-color: white;
+	padding: 14px 26px;
+	cursor: pointer;
+	outline: none;
+	background: red;
+	font-size: 1rem;
+	font-weight: bold;
+	height: auto;
+	user-select: none;
+	line-height: 1;
+	color: #fff;
+
+	@keyframes spinner {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	&.btn-loading {
+		pointer-events: none;
+
+		&::after {
+			content: '';
+			width: 18px;
+			height: 18px;
+			border: 2px solid rgba(0, 0, 0, 50%);
+			border-right-color: transparent !important;
+			border-radius: 50%;
+			display: inline-block;
+			animation-duration: 0.75s;
+			animation-iteration-count: infinite;
+			animation-name: spinner;
+			animation-timing-function: linear;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -9px;
+			margin-top: -9px;
+		}
+
+		&:hover {
+			box-shadow: none;
+		}
+	}
+}

@@ -102,7 +102,6 @@ const options = {
 			await new Promise((resolve) => setTimeout(resolve, 3000)); // Debounce
 			try {
 				await esbuildContext.rebuild();
-				console.log(file);
 				bs.reload(); // Reload after successful build
 			} catch (err) {
 				console.error('Build failed:', err);

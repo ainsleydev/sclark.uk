@@ -253,6 +253,41 @@
 	}
 }
 
+// Create Column Classes
+// ==========================================================================
+
+/// @author Ainsley Clark
+/// @param {String} $modifier - Class
+/// @param {Number} $grid-cols - Amount of columns
+/// @param {Number} $breakpoint - Media breakpoint
+@mixin create-col-classes($modifier, $grid-cols, $breakpoint) {
+	@include create-mediaquery($breakpoint) {
+		// Columns
+		.col#{$modifier}-auto {
+			flex: 0 0 auto;
+			width: auto;
+			max-width: 100%;
+		}
+
+		@for $i from 1 through $grid-columns {
+			.col#{$modifier}-#{$i} {
+				width: calc(100 / ($grid-columns / $i)) * 1%;
+			}
+		}
+
+		// Offsets
+		.offset#{$modifier}-0 {
+			margin-left: 0;
+		}
+
+		@for $i from 1 through $grid-columns {
+			.offset#{$modifier}-#{$i} {
+				margin-left: calc(100 / ($grid-columns / $i)) * 1%;
+			}
+		}
+	}
+}
+
 // Ellipsis
 // ==========================================================================
 

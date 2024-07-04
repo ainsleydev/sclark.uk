@@ -7,9 +7,37 @@ import (
 
 templ Home() {
 	@layouts.Base() {
-		<h1>Home page Test</h1>
-		@components.Button(components.ButtonProps{
-			Text: "Hello There",
-		})
+		<!-- =====================
+			Hero
+			===================== -->
+		<section>
+		 	<div class="container">
+				<div class="row">
+					<div class="col-12 col-desk-6">
+						<!-- Title -->
+						<h1>Can't find the <br class="d-none d-desk-inline" />right words?</h1>
+						<!-- Lead -->
+						<p class="lead">
+							Combining a love for the English language and written word, S Clark provides two distinct
+							professional services – one-to-one English language teaching for non-native speakers and
+							content writing and editing for businesses
+						</p>
+						<!-- Buttons -->
+						<div class="button-container">
+							@components.Button(components.ButtonProps{
+								Text: "English Lessons",
+								Href: "#english-lessons",
+							})
+							@components.Button(components.ButtonProps{
+								Text: "#content-writing",
+							})
+						</div>
+					</div>
+				</div>
+		 	</div>
+		</section>
+		<!-- =====================
+			About
+			===================== -->
 	}
 }
