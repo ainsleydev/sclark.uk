@@ -2,24 +2,22 @@ package layouts
 
 import (
 	"github.com/ainsleydev/sclark.uk/views/partials"
-
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 )
 
 templ Base() {
-    <!DOCTYPE html>
-    <html lang="en-GB" class="no-js">
-    	<head>
+	<!DOCTYPE html>
+	<html lang="en-GB" class="no-js">
+		<head>
 			@payload.Head(ctx)
-    		<!-- Favicon -->
-
-    		<!-- Scripts -->
-    		<script src="/assets/js/app.js" defer></script>
-    		<!-- Styles -->
-    		<link rel="stylesheet" href="/assets/css/app.css" />
-    	</head>
-    	<body>
-    		<!-- Header -->
+			<!-- Favicon -->
+			<!-- Scripts -->
+			<script src="/assets/js/app.js" defer></script>
+			<!-- Styles -->
+			<link rel="stylesheet" href="/assets/css/app.css"/>
+		</head>
+		<body>
+			<!-- Header -->
 			@partials.Header()
 			<!-- Content -->
 			<div class="wrapper" style="padding-top: 100px;">
@@ -29,6 +27,6 @@ templ Base() {
 			@partials.Footer()
 			<!-- Google Transition Fix -->
 			<script> </script>
-    	</body>
-    </html>
+		</body>
+	</html>
 }

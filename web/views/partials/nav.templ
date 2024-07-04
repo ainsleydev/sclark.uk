@@ -2,9 +2,8 @@ package partials
 
 import (
 	"context"
-
-	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 	"github.com/ainsleydev/sclark.uk/views/components"
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 )
 
 func getNavItems(ctx context.Context) payload.NavigationItems {
@@ -23,11 +22,11 @@ func getNavItems(ctx context.Context) payload.NavigationItems {
 		},
 		{
 			Title: "Portfolio",
-			URL: "#portfolio",
+			URL:   "#portfolio",
 		},
 		{
 			Title: "Testimonals",
-			URL: "#testimonals",
+			URL:   "#testimonals",
 		},
 		{
 			Title: "Contact",
@@ -53,8 +52,8 @@ templ Nav() {
 						</a>
 					} else {
 						@components.Button(components.ButtonProps{
-							Text: item.Title,
-							Href: item.URL,
+							Text:   item.Title,
+							Href:   item.URL,
 							Filled: true,
 						})
 					}
