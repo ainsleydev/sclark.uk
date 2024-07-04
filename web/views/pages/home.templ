@@ -3,7 +3,17 @@ package pages
 import (
 	"github.com/ainsleydev/sclark.uk/views/components"
 	"github.com/ainsleydev/sclark.uk/views/layouts"
+	"github.com/ainsleydev/sclark.uk/views/svgs"
 )
+
+css Scrabble() {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+}
 
 templ Home() {
 	@layouts.Base() {
@@ -12,10 +22,13 @@ templ Home() {
 			===================== -->
 		<section>
 		 	<div class="container">
+		 		<figure class={ "scrabble", Scrabble() }>
+		 			@svgs.Scrabble()
+		 		</figure>
 				<div class="row">
 					<div class="col-12 col-desk-6">
 						<!-- Title -->
-						<h1>Can't find the <br class="d-none d-desk-inline" />right words?</h1>
+						<h1>Can't find the <br class="d-none d-desk-inline" /> right words?</h1>
 						<!-- Lead -->
 						<p class="lead">
 							Combining a love for the English language and written word, S Clark provides two distinct
@@ -23,14 +36,25 @@ templ Home() {
 							content writing and editing for businesses
 						</p>
 						<!-- Buttons -->
-						<div class="button-container">
+						<div class="btn-container">
 							@components.Button(components.ButtonProps{
 								Text: "English Lessons",
 								Href: "#english-lessons",
+								Filled: true,
 							})
 							@components.Button(components.ButtonProps{
-								Text: "#content-writing",
+								Text: "Content Writing",
+								Href: "#content-writing",
 							})
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<h6>Trusted by Leading Professionals</h6>
+						<!-- Logos -->
+						<div class="logos">
+
 						</div>
 					</div>
 				</div>

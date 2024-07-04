@@ -37,7 +37,7 @@ h6,
 p {
 	position: relative;
 	margin: 0;
-	color: colour('foreground');
+	color: var(--colour-foreground);
 }
 
 // Headings
@@ -53,15 +53,15 @@ h4,
 .heading-4,
 h5 {
 	display: block;
-	color: colour('foreground');
+	color: var(--colour-foreground);
 	font-weight: bold;
 }
 
 @mixin h1 {
-	@include fluid-type($text-fluid-start-size, $text-fluid-end-size, 36px, 68px);
+	@include fluid-type($text-fluid-start-size, $text-fluid-end-size, 36px, 88px);
 	margin-bottom: 1.8rem;
 	line-height: 1;
-	letter-spacing: $text-letter-spacing;
+	letter-spacing: var(--type-letter-spacing);
 }
 
 h1,
@@ -73,7 +73,7 @@ h1,
 	@include fluid-type($text-fluid-start-size, $text-fluid-end-size, 34px, 50px);
 	margin-bottom: 1.3rem;
 	line-height: 1.2;
-	letter-spacing: $text-letter-spacing;
+	letter-spacing: var(--type-letter-spacing);
 }
 
 h2,
@@ -85,7 +85,7 @@ h2,
 	@include fluid-type($text-fluid-start-size, $text-fluid-end-size, 23px, 37px);
 	margin-bottom: 1rem;
 	line-height: 1.3;
-	letter-spacing: $text-letter-spacing;
+	letter-spacing: var(--type-letter-spacing);
 }
 
 h3,
@@ -97,7 +97,7 @@ h3,
 	@include fluid-type($text-fluid-start-size, $text-fluid-end-size, 21px, 29px);
 	margin-bottom: 1rem;
 	line-height: 1.5;
-	letter-spacing: $text-letter-spacing;
+	letter-spacing: var(--type-letter-spacing);
 }
 
 h4,
@@ -109,7 +109,7 @@ h4,
 	@include fluid-type($text-fluid-start-size, $text-fluid-end-size, 19px, 21.5px);
 	margin-bottom: 0.9rem;
 	line-height: 1.3;
-	letter-spacing: $text-letter-spacing;
+	letter-spacing: var(--type-letter-spacing);
 }
 
 h5,
@@ -119,7 +119,7 @@ h5,
 
 @mixin h6 {
 	display: block;
-	color: colour('paragraph');
+	color: var(--colour-copy);
 	font-size: 0.84rem;
 	text-transform: uppercase;
 	letter-spacing: 2px;
@@ -137,22 +137,17 @@ h6,
 // =========================================================================
 
 p {
-	color: colour('paragraph');
-	font-size: $text-paragraph-size;
+	color: var(--colour-copy);
+	font-size: var(--type-paragraph-size);
 	margin-bottom: 1rem;
-	line-height: $text-lead-line-height;
+	line-height: var(--type-paragraph-line-height);
 
 	&.lead {
-		font-size: $text-lead-size;
-		line-height: $text-lead-line-height;
+		font-size: var(--type-lead-size);
+		line-height: var(--type-lead-line-height);
 
 		&-max-width {
 			max-width: 580px;
-		}
-
-		&-large {
-			font-size: $text-lead-large-size;
-			line-height: 1.7;
 		}
 	}
 }
@@ -161,7 +156,7 @@ p {
 // =========================================================================
 
 a {
-	font-size: $text-paragraph-size;
+	font-size: var(--type-paragraph-size);
 	color: colour('foreground');
 	font-weight: bold;
 	text-decoration: underline;

@@ -1,18 +1,23 @@
 .btn {
 	position: relative;
-	display: inline-flex;
-	justify-content: center;
 	background-color: white;
-	padding: 14px 26px;
+	color: var(--colour-foreground);
+	padding: 17px 26px 15px 26px;
 	cursor: pointer;
 	outline: none;
-	background: red;
 	font-size: 1rem;
 	font-weight: bold;
 	height: auto;
 	user-select: none;
 	line-height: 1;
-	color: #fff;
+	border: 2px solid var(--colour-foreground);
+	border-radius: 6px;
+	text-decoration: none;
+
+	&.btn-filled {
+		background-color: var(--colour-foreground);
+		color: white;
+	}
 
 	@keyframes spinner {
 		0% {
@@ -50,4 +55,10 @@
 			box-shadow: none;
 		}
 	}
+}
+
+.btn-container {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
 }

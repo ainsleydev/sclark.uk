@@ -4,11 +4,21 @@
 	.nav-list {
 		display: flex;
 		align-items: center;
-		gap: 1.6rem;
+		gap: 2rem;
 		list-style: none;
+	}
+
+	.nav-item {
+		&:hover {
+			.nav-link {
+				color: red;
+			}
+		}
 	}
 
 	.nav-link {
 		text-decoration: none;
+		color: var(--colour-copy);
+		font-weight: normal;
 	}
 }

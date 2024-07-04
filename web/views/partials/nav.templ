@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+	"github.com/ainsleydev/sclark.uk/views/components"
 )
 
 func getNavItems(ctx context.Context) payload.NavigationItems {
@@ -44,11 +45,19 @@ func getNavItems(ctx context.Context) payload.NavigationItems {
 templ Nav() {
 	<nav class="nav">
 		<ul class="nav-list">
-			for _, item := range getNavItems(ctx) {
+			for index, item := range getNavItems(ctx) {
 				<li class="nav-item">
-					<a class="nav-link" href={ templ.URL(item.URL) }>
-						{ item.Title }
-					</a>
+					if len(getNavItems(ctx)) != index+1 {
+						<a class="nav-link" href={ templ.URL(item.URL) }>
+							{ item.Title }
+						</a>
+					} else {
+						@components.Button(components.ButtonProps{
+							Text: item.Title,
+							Href: item.URL,
+							Filled: true,
+						})
+					}
 				</li>
 			}
 		</ul>
