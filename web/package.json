@@ -10,6 +10,7 @@
 		"build": "pnpm run build:go && pnpm run build:assets",
 		"build:go": "go build main.go",
 		"build:assets": "node esbuild.mjs",
+		"format:assets": "biome format --write .",
 		"lint": "eslint . --fix",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"kill": "lsof -t -i tcp:3000 | xargs kill",

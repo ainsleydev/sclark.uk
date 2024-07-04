@@ -41,10 +41,9 @@
 	},
 	"packageManager": "pnpm@9.1.4",
 	"lint-staged": {
-		"*.{js,jsx,mjs,ts,tsx,css,scss,json,yaml,yml}": [
-			"prettier --write ."
-		],
-		"*.{js,ts}": "eslint --fix"
+		"**/*.{ts,tsx,md}": [
+			"prettier --write"
+		]
 	},
 	"devDependencies": {
 		"@ainsleydev/eslint-config": "^0.0.1",
