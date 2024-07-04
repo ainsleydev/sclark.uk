@@ -1,7 +1,11 @@
 package partials
 
 import (
+	"context"
+
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+
+	"github.com/ainsleydev/sclark.uk/views/svgs"
 )
 
 func getNavItems(ctx context.Context) payload.NavigationItems {
@@ -16,11 +20,9 @@ templ Header() {
 	<header class="header">
 		<!-- Logo -->
 		<a href="/" class="header-logo">
-			<picture>
-				<source srcset="/assets/images/logo-avif.avif" type="image/avif" />
-				<source srcset="/assets/images/logo-webp.webp" type="image/webp" />
-				<img src="/assets/images/logo.png" alt="Trireme Trading Logo" />
-			</picture>
+			<figure>
+				@svgs.Logo()
+			</figure>
 		</a>
 		<!-- Navigation -->
 		<nav class="nav">

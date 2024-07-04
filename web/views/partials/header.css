@@ -1,9 +1,12 @@
 .header {
 	position: fixed;
+	display: flex;
+	align-items: center;
 	top: 0;
 	left: 0;
 	height: 60px;
-	background-color: red;
+	padding: 0 10px;
+	background-color: transparent;
 	width: 100vw;
 
 	@media (min-width: 768px) {

@@ -2,6 +2,8 @@ package handlers
 
 import (
 	"github.com/ainsleyclark/go-payloadcms"
+
+	"github.com/ainsleydev/sclark.uk/views/pages"
 	"github.com/ainsleydev/webkit/pkg/webkit"
 )
 
@@ -50,5 +52,11 @@ func HomeHandler(p *payloadcms.Client) webkit.Handler {
 		//
 		//return pages.RenderBlockPage(c, page)
 		return nil
+	}
+}
+
+func TempHandler() webkit.Handler {
+	return func(c *webkit.Context) error {
+		return c.Render(pages.Home())
 	}
 }

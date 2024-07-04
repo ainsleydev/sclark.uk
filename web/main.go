@@ -3,11 +3,8 @@ package main
 import (
 	"log/slog"
 	"os"
-	"time"
 
 	"github.com/ainsleydev/sclark.uk/handlers"
-	"github.com/ainsleydev/webkit/pkg/adapters/payload"
-	"github.com/ainsleydev/webkit/pkg/cache"
 	"github.com/ainsleydev/webkit/pkg/env"
 	"github.com/ainsleydev/webkit/pkg/log"
 	"github.com/ainsleydev/webkit/pkg/middleware"
@@ -36,7 +33,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	cacheDriver := cache.NewInMemory(1 * time.Hour)
+	//cacheDriver := cache.NewInMemory(1 * time.Hour)
 
 	kit.Plug(middleware.Recover)
 	kit.Plug(middleware.RequestID)
@@ -45,27 +42,28 @@ func main() {
 	kit.Plug(middleware.Gzip)
 	kit.Plug(middleware.Logger)
 
-	p, err := payload.New(
-		payload.WithBaseURL(config.PayloadURL),
-		payload.WithAPIKey(config.PayloadAPIKey),
-		payload.WithCache(cacheDriver),
-		payload.WithWebkit(kit),
-		payload.WithMaintenanceHandler(handlers.MaintenanceHandler()),
-		payload.WithNavigation(),
-		payload.WithGlobalMiddleware[payload.Navigation]("navigation"),
-	)
-	if err != nil {
-		slog.Error("Failed to create payload client: %v", err)
-		os.Exit(1)
-	}
+	//p, err := payload.New(
+	//	payload.WithBaseURL(config.PayloadURL),
+	//	payload.WithAPIKey(config.PayloadAPIKey),
+	//	payload.WithCache(cacheDriver),
+	//	payload.WithWebkit(kit),
+	//	payload.WithMaintenanceHandler(handlers.MaintenanceHandler()),
+	//	payload.WithNavigation(),
+	//	payload.WithGlobalMiddleware[payload.Navigation]("navigation"),
+	//)
+	//if err != nil {
+	//	slog.Error("Failed to create payload client: %v", err)
+	//	os.Exit(1)
+	//}
 
 	kit.Plug(middleware.CORS)
 	kit.Plug(middleware.URL)
 	kit.Plug(middleware.Minify)
 
 	kit.Get("/ping/", webkit.PingHandler)
-	kit.Get("/", handlers.HomeHandler(p.Client))
-	kit.NotFound(handlers.PagesHandler(p.Client))
+	//kit.Get("/", handlers.HomeHandler(p.Client))
+	kit.Get("/", handlers.TempHandler())
+	//kit.NotFound(handlers.PagesHandler(p.Client))
 	kit.Static("/assets/", "./dist")
 	kit.ErrorHandler = handlers.ErrorHandler()
 

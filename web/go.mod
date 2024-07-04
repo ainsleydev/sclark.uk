@@ -2,9 +2,8 @@ module github.com/ainsleydev/sclark.uk
 
 go 1.22.4
 
-
 require (
-	github.com/a-h/templ v0.2.707
+	github.com/a-h/templ v0.2.731
 	github.com/ainsleyclark/go-payloadcms v0.0.1
 	github.com/ainsleydev/webkit v0.0.0-20240426162800-707188c7c310
 )

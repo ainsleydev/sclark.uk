@@ -50,14 +50,11 @@ const options = {
 		const bs = browsersync.create();
 		bs.init({
 			open: false,
-			port: 3002,
+			port: 3001,
 			logLevel: 'info',
 			logPrefix: 'ainsley.dev',
 			proxy: {
 				target: 'localhost:3000',
-			},
-			ui: {
-				port: 3003,
 			},
 		});
 
