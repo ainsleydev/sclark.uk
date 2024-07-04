@@ -1,60 +1,16 @@
 package partials
 
 import (
-	"context"
-
-	"github.com/ainsleydev/webkit/pkg/adapters/payload"
-
 	"github.com/ainsleydev/sclark.uk/views/svgs"
 )
-
-func getNavItems(ctx context.Context) payload.NavigationItems {
-
-	return payload.NavigationItems{
-		{
-			Title: "Home",
-			URL:   "/",
-		},
-		{
-			Title: "About",
-			URL:   "/about",
-		},
-		{
-			Title: "Contact",
-			URL:   "/contact",
-		},
-	}
-
-	nav, ok := ctx.Value(payload.GlobalsContextKey("navigation")).(*payload.Navigation)
-	if !ok {
-		return nil
-	}
-	return nav.Header
-}
-
-css nav() {
-
-}
 
 templ Header() {
 	<header class="header">
 		<!-- Logo -->
 		<a href="/" class="header-logo">
-			<figure>
-				@svgs.Logo()
-			</figure>
+			@svgs.Logo()
 		</a>
 		<!-- Navigation -->
-		<nav class={ "nav", nav() }>
-			<ul>
-				for _, item := range getNavItems(ctx) {
-					<li>
-						<a href={ templ.URL(item.URL) }>
-							{ item.Title }
-						</a>
-					</li>
-				}
-			</ul>
-		</nav>
+		@Nav()
 	</header>
 }

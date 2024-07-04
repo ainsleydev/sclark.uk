@@ -24,7 +24,7 @@ type Env struct {
 func main() {
 	kit := webkit.New()
 
-	log.Bootstrap("Trireme Trading")
+	log.Bootstrap("Templ")
 
 	config := &Env{}
 	err := env.ParseConfig(config)

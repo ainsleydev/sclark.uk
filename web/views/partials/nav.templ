@@ -1,0 +1,52 @@
+package partials
+
+import (
+	"context"
+
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+)
+
+func getNavItems(ctx context.Context) payload.NavigationItems {
+	return payload.NavigationItems{
+		{
+			Title: "Home",
+			URL:   "/",
+		},
+		{
+			Title: "English Lessons",
+			URL:   "#content",
+		},
+		{
+			Title: "Content Writing",
+			URL:   "#content",
+		},
+		{
+			Title: "Portfolio",
+			URL: "#portfolio",
+		},
+		{
+			Title: "Contact",
+			URL:   "#contact",
+		},
+	}
+
+	nav, ok := ctx.Value(payload.GlobalsContextKey("navigation")).(*payload.Navigation)
+	if !ok {
+		return nil
+	}
+	return nav.Header
+}
+
+templ Nav() {
+	<nav class="nav">
+		<ul class="nav-list">
+			for _, item := range getNavItems(ctx) {
+				<li class="nav-item">
+					<a class="nav-link" href={ templ.URL(item.URL) }>
+						{ item.Title }
+					</a>
+				</li>
+			}
+		</ul>
+	</nav>
+}

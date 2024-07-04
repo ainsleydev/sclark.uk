@@ -2,12 +2,17 @@
 	position: fixed;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	top: 0;
 	left: 0;
-	height: 60px;
-	padding: 0 10px;
+	height: 80px;
+	width: 100%;
+	padding: 0 7vw;
 	background-color: transparent;
-	width: 100vw;
+
+	.header-logo svg {
+		width: 80px;
+	}
 
 	@media (min-width: 768px) {
 		opacity: 1;

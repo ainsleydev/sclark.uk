@@ -12,6 +12,7 @@
 import * as esbuild from 'esbuild';
 import browsersync from 'browser-sync';
 import { sassPlugin } from 'esbuild-sass-plugin';
+import { copy } from 'esbuild-plugin-copy';
 import copyAndConvertImages from './bin/images.mjs';
 
 // eslint-disable-next-line
@@ -30,7 +31,22 @@ const options = {
 	bundle: true,
 	outdir: 'dist',
 	logLevel: 'info',
-	plugins: [sassPlugin()],
+	loader: {
+		'.woff': 'file',
+		'.woff2': 'file',
+	},
+	external: ['*.woff', '*.woff2'],
+	plugins: [
+		sassPlugin(),
+		copy({
+			assets: [
+				{
+					from: ['./assets/fonts/**/*'],
+					to: ['./fonts'],
+				},
+			],
+		}),
+	],
 	minify: isProd,
 	allowOverwrite: true,
 };

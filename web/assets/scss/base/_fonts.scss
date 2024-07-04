@@ -3,7 +3,24 @@
 // This file contains all @font-face declarations, if any.
 // -----------------------------------------------------------------------------
 
+$fontPath: '/assets/fonts/';
+
 @font-face {
+	font-family: 'Vremena Grotesk';
+	src:
+		url('#{$fontPath}VremenaGroteskBook.woff2') format('woff2'),
+		url('#{$fontPath}VremenaGroteskBook.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Vremena Grotesk';
+	src:
+		url('#{$fontPath}VremenaGroteskBold.woff2') format('woff2'),
+		url('#{$fontPath}VremenaGroteskBold.woff') format('woff');
+	font-weight: bold;
 	font-style: normal;
 	font-display: swap;
 }

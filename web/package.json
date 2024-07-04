@@ -4,8 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "pnpm run kill && pnpm run watch:go & pnpm run watch:assets",
-		"watch:go": "TEMPL_EXPERIMENT=rawgo air -c .air.toml",
+		"dev": "pnpm run watch:go & pnpm run watch:assets",
+		"watch:go": "pnpm run kill && TEMPL_EXPERIMENT=rawgo air -c .air.toml",
 		"watch:assets": "node esbuild.mjs --watch",
 		"build": "pnpm run build:go && pnpm run build:assets",
 		"build:go": "go build main.go",
@@ -24,6 +24,7 @@
 		"@types/browser-sync": "^2.29.0",
 		"browser-sync": "^3.0.2",
 		"esbuild": "^0.21.3",
+		"esbuild-plugin-copy": "^2.1.1",
 		"esbuild-sass-plugin": "^3.2.0",
 		"eslint": "9.x",
 		"fs-extra": "^11.2.0",
