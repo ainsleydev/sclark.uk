@@ -34,13 +34,20 @@
 		"build:web": "turbo build --filter=web",
 		"lint": "turbo lint",
 		"fix": "turbo lint && prettier --write .",
+		"commit": "cz",
 		"types": "pnpm --filter cms run generate:types && pnpm --filter web run generate:types",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"packageManager": "pnpm@9.1.4",
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",
+		"cz-conventional-changelog": "^3.3.0",
 		"lefthook": "^1.6.18",
 		"turbo": "^2.0.6"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
 	}
 }
