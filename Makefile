@@ -1,12 +1,12 @@
 setup:
 	npm install
-	husky install
 	go mod tidy
 	brew tap hashicorp/tap
 	brew install hashicorp/tap/terraform
 	go install github.com/a-h/templ/cmd/templ@latest
 	go install github.com/cosmtrek/air@latest
 	go generate ./...
+	go install github.com/evilmartians/lefthook@latest
 
 run:
 	$(MAKE) kill

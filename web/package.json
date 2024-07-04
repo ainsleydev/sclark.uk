@@ -1,8 +1,7 @@
 {
 	"name": "web",
 	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
+	"license": "BSD-3-Clause",
 	"scripts": {
 		"dev": "pnpm run watch:go & pnpm run watch:assets",
 		"watch:go": "pnpm run kill && TEMPL_EXPERIMENT=rawgo air -c .air.toml",
@@ -10,6 +9,7 @@
 		"build": "pnpm run build:go && pnpm run build:assets",
 		"build:go": "go build main.go",
 		"build:assets": "node esbuild.mjs",
+		"check": "pnpm run format && pnpm run lint && pnpm run test",
 		"format": "pnpm run format:go && pnpm run format:assets",
 		"format:assets": "biome format --write .",
 		"format:go": "go fmt ./... && templ fmt .",
@@ -24,9 +24,6 @@
 		"cover": "go tool cover -html=coverage.out",
 		"kill": "lsof -t -i tcp:3000 | xargs kill"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",
 		"@eslint/js": "^9.6.0",
@@ -35,12 +32,8 @@
 		"esbuild": "^0.21.3",
 		"esbuild-plugin-copy": "^2.1.1",
 		"esbuild-sass-plugin": "^3.2.0",
-		"eslint": "9.x",
 		"fs-extra": "^11.2.0",
-		"globals": "^15.3.0",
-		"payload": "^2.18.3",
-		"sharp": "^0.33.4",
-		"typescript-eslint": "^7.15.0"
+		"sharp": "^0.33.4"
 	},
 	"dependencies": {
 		"normalize.css": "^8.0.1"
