@@ -54,7 +54,7 @@ format:
 excluded := grep -v /gen/ | grep -v /mocks/ | github.com/ainsleyclark/sclark.uk
 
 test:
-	go test ./... -race $$(go list ./... | $(excluded)) -coverprofile=../../coverage.out -covermode=atomic
+	go test ./... -race $(go list ./... | /temp/ | /mocks/) -coverprofile=../../coverage.out -covermode=atomic
 .PHONY: test
 
 mock:

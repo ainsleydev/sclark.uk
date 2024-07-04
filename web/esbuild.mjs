@@ -15,7 +15,6 @@ import { sassPlugin } from 'esbuild-sass-plugin'
 import { copy } from 'esbuild-plugin-copy'
 import copyAndConvertImages from './bin/images.mjs'
 
-// eslint-disable-next-line
 const isProd = !process.argv.includes('--watch')
 
 /**
@@ -50,7 +49,6 @@ const options = {
 	minify: isProd,
 	allowOverwrite: true,
 }
-
 ;(async () => {
 	// Check for watch flag in arguments
 	if (isProd) {

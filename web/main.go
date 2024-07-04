@@ -29,11 +29,11 @@ func main() {
 	config := &Env{}
 	err := env.ParseConfig(config)
 	if err != nil {
-		slog.Error("Failed to parse config: %v", err)
+		slog.Error("Failed to parse config: " + err.Error())
 		os.Exit(1)
 	}
 
-	//cacheDriver := cache.NewInMemory(1 * time.Hour)
+	// cacheDriver := cache.NewInMemory(1 * time.Hour)
 
 	kit.Plug(middleware.Recover)
 	kit.Plug(middleware.RequestID)
@@ -61,9 +61,9 @@ func main() {
 	kit.Plug(middleware.Minify)
 
 	kit.Get("/ping/", webkit.PingHandler)
-	//kit.Get("/", handlers.HomeHandler(p.Client))
+	// kit.Get("/", handlers.HomeHandler(p.Client))
 	kit.Get("/", handlers.TempHandler())
-	//kit.NotFound(handlers.PagesHandler(p.Client))
+	// kit.NotFound(handlers.PagesHandler(p.Client))
 	kit.Static("/assets/", "./dist")
 	kit.ErrorHandler = handlers.ErrorHandler()
 
