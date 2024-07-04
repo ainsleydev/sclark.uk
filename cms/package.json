@@ -12,8 +12,8 @@
 		"payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
 		"start": "cross-env NODE_OPTIONS=--no-deprecation next start",
 		"check": "pnpm run format && pnpm run lint",
-		"format": "biome format --write .",
-		"lint": "biome lint --write ."
+		"format": "biome format --write ./src",
+		"lint": "biome lint --write --unsafe ./src"
 	},
 	"dependencies": {
 		"@ainsleydev/payload-helper": "link:/Users/Ainsley/Desktop/ainsley.dev/WebKit/web-kit/packages/payload-helper",

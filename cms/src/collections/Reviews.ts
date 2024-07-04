@@ -1,66 +1,66 @@
-import type { CollectionConfig } from 'payload';
+import type { CollectionConfig } from "payload";
 
 export const Reviews: CollectionConfig = {
-	slug: 'reviews',
+	slug: "reviews",
 	labels: {
-		singular: 'Testimonial',
-		plural: 'Testimonials',
+		singular: "Testimonial",
+		plural: "Testimonials",
 	},
 	admin: {
-		useAsTitle: 'author.firstName',
-		defaultColumns: ['title', 'author.firstName', 'author.lastName'],
+		useAsTitle: "author.firstName",
+		defaultColumns: ["title", "author.firstName", "author.lastName"],
 	},
 	fields: [
 		{
-			name: 'content',
-			label: 'Content',
-			type: 'textarea',
+			name: "content",
+			label: "Content",
+			type: "textarea",
 			required: true,
 			admin: {
-				description: 'The content of the review or testimonial.',
+				description: "The content of the review or testimonial.",
 			},
 		},
 		{
-			name: 'author',
-			type: 'group',
+			name: "author",
+			type: "group",
 			required: true,
 			admin: {
 				hideGutter: true,
 			},
 			fields: [
 				{
-					type: 'row',
+					type: "row",
 					fields: [
 						{
-							name: 'firstName',
-							label: 'First Name',
-							type: 'text',
+							name: "firstName",
+							label: "First Name",
+							type: "text",
 							required: true,
 							admin: {
-								width: '50%',
-								description: 'The first name of the author.',
+								width: "50%",
+								description: "The first name of the author.",
 							},
 						},
 						{
-							name: 'lastName',
-							label: 'Last Name',
-							type: 'text',
+							name: "lastName",
+							label: "Last Name",
+							type: "text",
 							required: true,
 							admin: {
-								width: '50%',
-								description: 'The last name of the author.',
+								width: "50%",
+								description: "The last name of the author.",
 							},
 						},
 					],
 				},
 				{
-					name: 'description',
-					label: 'Description',
-					type: 'text',
+					name: "description",
+					label: "Description",
+					type: "text",
 					required: true,
 					admin: {
 						description:
-							'Give a brief description of the author, such as their role or position.',
+							"Give a brief description of the author, such as their role or position.",
 					},
 				},
 			],

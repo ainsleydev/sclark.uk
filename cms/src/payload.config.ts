@@ -1,30 +1,30 @@
-import { postgresAdapter } from '@payloadcms/db-postgres';
-import { lexicalEditor } from '@payloadcms/richtext-lexical';
-import path from 'path';
-import { buildConfig, Tab } from 'payload';
-import { fileURLToPath } from 'url';
-import sharp from 'sharp';
-import type { Config, Field } from 'payload';
+import { postgresAdapter } from "@payloadcms/db-postgres";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import path from "node:path";
+import { buildConfig, Tab } from "payload";
+import { fileURLToPath } from "node:url";
+import sharp from "sharp";
+import type { Config, Field } from "payload";
 
-import { Clients } from './collections/Clients';
-import { Reviews } from './collections/Reviews';
-import { Portfolio } from './collections/Portfolio';
-import { PortfolioCategories } from './collections/PortfolioCategories';
-import { Posts } from './collections/Posts';
-import { Users } from './collections/Users';
-import { Footer } from './globals/Settings';
+import { Clients } from "./collections/Clients";
+import { Reviews } from "./collections/Reviews";
+import { Portfolio } from "./collections/Portfolio";
+import { PortfolioCategories } from "./collections/PortfolioCategories";
+import { Posts } from "./collections/Posts";
+import { Users } from "./collections/Users";
+import { Footer } from "./globals/Settings";
 
-import { Media } from '@ainsleydev/payload-helper/src/collections/Media';
-import { Redirects } from '@ainsleydev/payload-helper/src/collections/Redirects';
-import { Settings } from '@ainsleydev/payload-helper/src/globals/Settings';
-import { Navigation } from '@ainsleydev/payload-helper/src/globals/Navigation';
-import { SEOFields } from '@ainsleydev/payload-helper/src/common/SEO';
-import env from '@ainsleydev/payload-helper/src/util/env';
+import { Media } from "@ainsleydev/payload-helper/src/collections/Media";
+import { Redirects } from "@ainsleydev/payload-helper/src/collections/Redirects";
+import { Settings } from "@ainsleydev/payload-helper/src/globals/Settings";
+import { Navigation } from "@ainsleydev/payload-helper/src/globals/Navigation";
+import { SEOFields } from "@ainsleydev/payload-helper/src/common/SEO";
+import env from "@ainsleydev/payload-helper/src/util/env";
 
-import { seoPlugin } from '@payloadcms/plugin-seo';
-import { formBuilderPlugin } from '@payloadcms/plugin-form-builder';
-import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage';
-import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';
+import { seoPlugin } from "@payloadcms/plugin-seo";
+import { formBuilderPlugin } from "@payloadcms/plugin-form-builder";
+import { cloudStoragePlugin } from "@payloadcms/plugin-cloud-storage";
+import { s3Adapter } from "@payloadcms/plugin-cloud-storage/s3";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -57,28 +57,29 @@ export default buildConfig({
 			hideGutter: false,
 		},
 	}),
-	secret: env('PAYLOAD_SECRET', ''),
+	secret: env("PAYLOAD_SECRET", ""),
 	typescript: {
-		outputFile: path.resolve(dirname, 'payload-types.ts'),
+		outputFile: path.resolve(dirname, "payload-types.ts"),
 	},
 	db: postgresAdapter({
 		pool: {
-			connectionString: env('DATABASE_URI', 'default')
+			connectionString: env("DATABASE_URI", "default")
 				.toString()
-				.replace('sslmode=require', 'sslmode=no-verify'),
+				.replace("sslmode=require", "sslmode=no-verify"),
 		},
 	}),
 	sharp,
 	plugins: [
 		seoPlugin({
-			collections: ['posts'],
-			globals: ['settings'],
+			collections: ["posts"],
+			globals: ["settings"],
 			fields: SEOFields as Field[],
-			interfaceName: 'Meta',
+			interfaceName: "Meta",
 			tabbedUI: true,
-			uploadsCollection: 'media',
+			uploadsCollection: "media",
 			// @ts-ignore
-			generateTitle: ({ doc, locale }) => `Website.com — ${doc?.title?.value ?? ''}`,
+			generateTitle: ({ doc, locale }) =>
+				`Website.com — ${doc?.title?.value ?? ""}`,
 			// @ts-ignore
 			generateDescription: ({ doc }) => doc?.excerpt?.value,
 		}),
@@ -86,18 +87,18 @@ export default buildConfig({
 			formOverrides: {
 				fields: ({ defaultFields }) => {
 					const filteredFields = defaultFields.filter(
-						(field) => field['name'] !== 'confirmationMessage',
+						(field) => field.name !== "confirmationMessage",
 					);
 					return [
 						...filteredFields,
 						{
-							name: 'confirmationMessage',
-							type: 'textarea',
+							name: "confirmationMessage",
+							type: "textarea",
 						},
 					];
 				},
 				admin: {
-					group: 'Forms',
+					group: "Forms",
 				},
 			},
 			formSubmissionOverrides: {
@@ -105,7 +106,7 @@ export default buildConfig({
 					return [...defaultFields];
 				},
 				admin: {
-					group: 'Forms',
+					group: "Forms",
 				},
 			},
 			fields: {
@@ -126,14 +127,14 @@ export default buildConfig({
 			collections: {
 				media: {
 					adapter: s3Adapter({
-						bucket: env('DO_SPACES_BUCKET'),
-						acl: 'public-read',
+						bucket: env("DO_SPACES_BUCKET"),
+						acl: "public-read",
 						config: {
-							region: 'ams3',
-							endpoint: 'https://ams3.digitaloceanspaces.com',
+							region: "ams3",
+							endpoint: "https://ams3.digitaloceanspaces.com",
 							credentials: {
-								accessKeyId: env('DO_SPACES_ACCESS_KEY'),
-								secretAccessKey: env('DO_SPACES_SECRET_KEY'),
+								accessKeyId: env("DO_SPACES_ACCESS_KEY"),
+								secretAccessKey: env("DO_SPACES_SECRET_KEY"),
 							},
 						},
 					}),
