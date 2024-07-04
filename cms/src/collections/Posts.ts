@@ -1,5 +1,5 @@
-import type { CollectionConfig, PayloadHandler } from "payload";
 import { findBySlug } from "@ainsleydev/payload-helper/src/endpoints/slug";
+import type { CollectionConfig, PayloadHandler } from "payload";
 
 export const Posts: CollectionConfig = {
 	slug: "posts",

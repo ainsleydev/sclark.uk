@@ -1,5 +1,5 @@
-import type { CollectionConfig } from "payload";
 import { validateURL } from "@ainsleydev/payload-helper/src/util/validation";
+import type { CollectionConfig } from "payload";
 
 export const Portfolio: CollectionConfig = {
 	slug: "portfolio",

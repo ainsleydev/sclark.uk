@@ -1,30 +1,30 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
-import path from "node:path";
-import { buildConfig, Tab } from "payload";
-import { fileURLToPath } from "node:url";
-import sharp from "sharp";
+import { Tab, buildConfig } from "payload";
 import type { Config, Field } from "payload";
+import sharp from "sharp";
 
 import { Clients } from "./collections/Clients";
-import { Reviews } from "./collections/Reviews";
 import { Portfolio } from "./collections/Portfolio";
 import { PortfolioCategories } from "./collections/PortfolioCategories";
 import { Posts } from "./collections/Posts";
+import { Reviews } from "./collections/Reviews";
 import { Users } from "./collections/Users";
 import { Footer } from "./globals/Settings";
 
 import { Media } from "@ainsleydev/payload-helper/src/collections/Media";
 import { Redirects } from "@ainsleydev/payload-helper/src/collections/Redirects";
-import { Settings } from "@ainsleydev/payload-helper/src/globals/Settings";
-import { Navigation } from "@ainsleydev/payload-helper/src/globals/Navigation";
 import { SEOFields } from "@ainsleydev/payload-helper/src/common/SEO";
+import { Navigation } from "@ainsleydev/payload-helper/src/globals/Navigation";
+import { Settings } from "@ainsleydev/payload-helper/src/globals/Settings";
 import env from "@ainsleydev/payload-helper/src/util/env";
 
-import { seoPlugin } from "@payloadcms/plugin-seo";
-import { formBuilderPlugin } from "@payloadcms/plugin-form-builder";
 import { cloudStoragePlugin } from "@payloadcms/plugin-cloud-storage";
 import { s3Adapter } from "@payloadcms/plugin-cloud-storage/s3";
+import { formBuilderPlugin } from "@payloadcms/plugin-form-builder";
+import { seoPlugin } from "@payloadcms/plugin-seo";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);

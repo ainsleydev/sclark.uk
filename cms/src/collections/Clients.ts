@@ -1,5 +1,5 @@
-import type { CollectionConfig, UploadField } from "payload";
 import { validateURL } from "@ainsleydev/payload-helper/src/util/validation";
+import type { CollectionConfig, UploadField } from "payload";
 
 export const Clients: CollectionConfig = {
 	slug: "clients",
