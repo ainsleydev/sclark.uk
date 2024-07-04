@@ -27,7 +27,7 @@
 	},
 	"scripts": {
 		"setup": "cd cms && go install github.com/a-h/templ/cmd/templ@latest && go install github.com/cosmtrek/air@latest && go generate ./... && go install github.com/evilmartians/lefthook@latest",
-		"dev": "turbo dev",
+		"dev": "turbo run dev",
 		"dev:cms": "turbo dev --filter=cms",
 		"dev:web": "turbo dev --filter=web",
 		"build": "turbo build",

@@ -43,9 +43,17 @@ $views-path: '../../views';
 @import 'grid/display';
 
 /* ====================
+    Layout
+    ==================== */
+@import 'layout/section';
+
+/* ====================
     Partials
     ==================== */
 @import url('#{$views-path}/partials/header');
 @import url('#{$views-path}/partials/footer');
 @import url('#{$views-path}/partials/nav');
+@import url('#{$views-path}/blocks/hero');
 @import url('#{$views-path}/components/button');
+@import url('#{$views-path}/components/collapse');
+@import url('#{$views-path}/components/list');

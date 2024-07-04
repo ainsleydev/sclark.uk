@@ -1,0 +1,24 @@
+package components
+
+type ListProps struct {
+	Items []string
+	Ordered bool
+}
+
+templ List(props ListProps) {
+	if len(props.Items) > 0 {
+		if !props.Ordered {
+			<ul class="list">
+				for _, item := range props.Items {
+					<li>{ item } </li>
+				}
+			</ul>
+		} else {
+			<ol class="list">
+				for _, item := range props.Items {
+					<li>{ item } </li>
+				}
+			</ol>
+		}
+	}
+}

@@ -17,6 +17,10 @@
 	&.btn-filled {
 		background-color: var(--colour-foreground);
 		color: white;
+
+		&:hover {
+			background-color: var(--colour-background);
+		}
 	}
 
 	@keyframes spinner {

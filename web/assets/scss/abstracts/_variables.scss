@@ -15,8 +15,6 @@ $grid-breakpoint-desk-large: 1408;
 $grid-breakpoint-hd: 1600;
 
 // Text
-// ==========================================================================
-
 $text-fluid-start-size: 400px;
 $text-fluid-end-size: 1600px;
 
@@ -39,7 +37,7 @@ $text-fluid-end-size: 1600px;
 	// ==========================================================================
 
 	--colour-background: #fff;
-	--colour-foreground: #0a0a0a;
+	--colour-foreground: #151515;
 	--colour-copy: #636363;
 	--colour-primary: #ff5043;
 	--colour-secondary: #70cbce;
@@ -53,9 +51,9 @@ $text-fluid-end-size: 1600px;
 	// Type
 	// ==========================================================================
 
-	--type-letter-spacing: -1px;
+	--type-letter-spacing: -2px;
 	--type-paragraph-size: 1.1rem;
-	--type-paragraph-line-height: 1.5;
+	--type-paragraph-line-height: 1.7;
 	--type-lead-size: 1.2rem;
 	--type-lead-line-height: 1.8;
 
@@ -72,6 +70,7 @@ $text-fluid-end-size: 1600px;
 
 	--alpha-standard: 0.15;
 	--alpha-light: 0.1;
+
 
 	--group-margin: 1.8rem;
 }

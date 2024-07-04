@@ -152,12 +152,25 @@ p {
 	}
 }
 
+// Lists
+// =========================================================================
+
+ul,
+ol {
+
+	li {
+		color: var(--colour-copy);
+		font-size: var(--type-paragraph-size);
+		margin-bottom: 10px;
+	}
+}
+
 // Links
 // =========================================================================
 
 a {
 	font-size: var(--type-paragraph-size);
-	color: colour('foreground');
+	color: var(--colour-foreground);
 	font-weight: bold;
 	text-decoration: underline;
 
@@ -180,6 +193,13 @@ small {
 
 strong {
 	font-weight: bold;
+}
+
+// Util
+// =========================================================================
+
+.text-centre {
+	text-align: center;
 }
 
 // Selection Color

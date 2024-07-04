@@ -1,20 +1,35 @@
 package partials
 
 import (
-//	"fmt"
-
-// "github.com/ainsleydev/webkit/pkg/adapters/payload"
+	"strconv"
+	"time"
 )
 
-//     {{ settings := payload.MustGetSettings(ctx) }}
+func currentYear() string {
+	return strconv.Itoa(time.Now().Year())
+}
+
 templ Footer() {
 	<footer class="footer">
-		<h1>Test</h1>
-		<div class="footer-content">
-			<p>Footer Content hhhhh</p>
-			//if settings.Social != nil {
-			//   { fmt.Sprintf("here,es: %#v", settings.Social) }
-			//}
-		</div>
+		<div class="container">
+			<!-- Main -->
+			<div class="row">
+				<div class="col-12 col-desk-4">
+					<div class="footer-main">
+						<h4>Can't find the right words?</h4>
+						<p>Combining a love for the English language and written word something else and something else.</p>
+					</div>
+				</div><!-- /Col -->
+			</div><!-- /Row -->
+			<!-- Sub -->
+			<div class="row">
+				<div class="col-12">
+					<div class="footer-sub">
+						<p>© { currentYear() } S.Clark.UK All rights reserved</p>
+						<p>Website by <a href="https://ainsley.dev">ainsley.dev</a></p>
+					</div>
+				</div><!-- /Col -->
+			</div><!-- /Row -->
+		</div><!-- /Container -->
 	</footer>
 }
