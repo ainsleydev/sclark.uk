@@ -9,11 +9,31 @@ import (
 )
 
 func getNavItems(ctx context.Context) payload.NavigationItems {
+
+	return payload.NavigationItems{
+		{
+			Title: "Home",
+			URL:   "/",
+		},
+		{
+			Title: "About",
+			URL:   "/about",
+		},
+		{
+			Title: "Contact",
+			URL:   "/contact",
+		},
+	}
+
 	nav, ok := ctx.Value(payload.GlobalsContextKey("navigation")).(*payload.Navigation)
 	if !ok {
 		return nil
 	}
 	return nav.Header
+}
+
+css nav() {
+
 }
 
 templ Header() {
@@ -25,7 +45,7 @@ templ Header() {
 			</figure>
 		</a>
 		<!-- Navigation -->
-		<nav class="nav">
+		<nav class={ "nav", nav() }>
 			<ul>
 				for _, item := range getNavItems(ctx) {
 					<li>
