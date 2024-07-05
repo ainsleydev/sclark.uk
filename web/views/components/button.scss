@@ -1,10 +1,14 @@
+// -----------------------------------------------------------------------------
+// button.scss
+// -----------------------------------------------------------------------------
+
 .btn {
 	position: relative;
 	display: inline-flex;
 	align-items: center;
 	background-color: var(--colour-background);
 	color: var(--colour-foreground);
-	padding: 17px 26px 15px 26px;
+	padding: 16px 26px;
 	cursor: pointer;
 	outline: none;
 	font-size: 1rem;
@@ -35,7 +39,7 @@
 		}
 	}
 
-	&.btn-loading {
+	&-loading {
 		pointer-events: none;
 
 		&::after {

@@ -2,21 +2,25 @@ package partials
 
 import "github.com/ainsleydev/sclark.uk/views/svgs"
 
+
 templ Header() {
 	<header class="header">
-		<!-- Logo -->
-		<a href="/" class="header-logo">
-			@svgs.Logo()
-		</a>
-		<!-- Hamburger -->
-		<input class="hamburger-checkbox" type="checkbox" id="hamburger-check" />
-		<label class="hamburger hamburger--collapse" for="hamburger-check"
-			aria-label="Menu" aria-controls="navigation">
-          	<span class="hamburger-box">
-            	<span class="hamburger-inner"></span>
-          	</span>
-        </label>
-		<!-- Navigation -->
-		@Nav()
+		<div class="container">
+			<div class="row">
+				<div class="header-container col-12">
+					<!-- Logo -->
+					<a href="/" class="header-logo">
+						@svgs.Logo()
+					</a>
+					<!-- Hamburger -->
+					<input class="hamburger-btn" type="checkbox" id="hamburger-check" />
+					<label class="hamburger" for="hamburger-check" aria-label="Menu" aria-controls="navigation">
+						<span class="hamburger-inner"></span>
+					</label>
+					<!-- Navigation -->
+					@Nav()
+				</div><!-- /Col -->
+			</div><!-- /Row -->
+		</div><!-- /Container -->
 	</header>
 }

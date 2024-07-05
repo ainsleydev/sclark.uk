@@ -1,6 +1,6 @@
-import path from 'path'
-import fs from 'fs-extra'
-import sharp from 'sharp'
+import path from "node:path";
+import fs from "fs-extra";
+import sharp from "sharp";
 
 /**
  * Image sizes and format options for resizing and converting images.
@@ -10,22 +10,22 @@ import sharp from 'sharp'
 export const imageSizes = [
 	// Original Size (for WebP & Avif)
 	{
-		name: 'webp',
+		name: "webp",
 		width: undefined,
 		height: undefined,
 		formatOptions: {
-			format: 'webp',
+			format: "webp",
 			options: {
 				quality: 80,
 			},
 		},
 	},
 	{
-		name: 'avif',
+		name: "avif",
 		width: undefined,
 		height: undefined,
 		formatOptions: {
-			format: 'avif',
+			format: "avif",
 			options: {
 				quality: 80,
 			},
@@ -33,30 +33,30 @@ export const imageSizes = [
 	},
 	// Thumbnail Sizes
 	{
-		name: 'thumbnail',
+		name: "thumbnail",
 		width: 400,
 		height: 300,
-		position: 'centre',
+		position: "centre",
 	},
 	{
-		name: 'thumbnail_webp',
+		name: "thumbnail_webp",
 		width: 400,
 		height: 300,
-		position: 'centre',
+		position: "centre",
 		formatOptions: {
-			format: 'webp',
+			format: "webp",
 			options: {
 				quality: 80,
 			},
 		},
 	},
 	{
-		name: 'thumbnail_avif',
+		name: "thumbnail_avif",
 		width: 400,
 		height: 300,
-		position: 'centre',
+		position: "centre",
 		formatOptions: {
-			format: 'avif',
+			format: "avif",
 			options: {
 				quality: 80,
 			},
@@ -64,27 +64,27 @@ export const imageSizes = [
 	},
 	// Mobile Sizes
 	{
-		name: 'mobile',
+		name: "mobile",
 		width: 768,
 		height: undefined,
 	},
 	{
-		name: 'mobile_webp',
+		name: "mobile_webp",
 		width: 768,
 		height: undefined,
 		formatOptions: {
-			format: 'webp',
+			format: "webp",
 			options: {
 				quality: 80,
 			},
 		},
 	},
 	{
-		name: 'mobile_avif',
+		name: "mobile_avif",
 		width: 768,
 		height: undefined,
 		formatOptions: {
-			format: 'avif',
+			format: "avif",
 			options: {
 				quality: 80,
 			},
@@ -92,33 +92,33 @@ export const imageSizes = [
 	},
 	// Tablet Sizes
 	{
-		name: 'tablet',
+		name: "tablet",
 		width: 1024,
 		height: undefined,
 	},
 	{
-		name: 'tablet_webp',
+		name: "tablet_webp",
 		width: 1024,
 		height: undefined,
 		formatOptions: {
-			format: 'webp',
+			format: "webp",
 			options: {
 				quality: 80,
 			},
 		},
 	},
 	{
-		name: 'tablet_avif',
+		name: "tablet_avif",
 		width: 1024,
 		height: undefined,
 		formatOptions: {
-			format: 'avif',
+			format: "avif",
 			options: {
 				quality: 80,
 			},
 		},
 	},
-]
+];
 
 /**
  * Generates a filename for an image based on the original filename, size name, and format options.
@@ -129,10 +129,10 @@ export const imageSizes = [
  * @returns {string} - The generated filename.
  */
 function generateFileName(filePath, sizeName, formatOptions) {
-	const originalName = path.parse(path.basename(filePath)).name
-	const formattedSizeName = sizeName.replaceAll('_', '-')
-	const formatExtension = formatOptions ? `.${formatOptions.format}` : '.jpg'
-	return `${originalName}-${formattedSizeName}${formatExtension}`
+	const originalName = path.parse(path.basename(filePath)).name;
+	const formattedSizeName = sizeName.replaceAll("_", "-");
+	const formatExtension = formatOptions ? `.${formatOptions.format}` : ".jpg";
+	return `${originalName}-${formattedSizeName}${formatExtension}`;
 }
 
 /**
@@ -144,22 +144,22 @@ function generateFileName(filePath, sizeName, formatOptions) {
  * @returns {Promise<void>} - A promise that resolves when the image processing is complete.
  */
 async function processImage(filePath, destDir, size) {
-	const { name, width, height, formatOptions } = size
+	const { name, width, height, formatOptions } = size;
 
 	// Create a sharp instance for the image file
-	let image = sharp(filePath)
+	let image = sharp(filePath);
 
 	// Resize the image if width or height is specified
-	image = image.resize(width, height)
+	image = image.resize(width, height);
 
 	// Convert to specified format if formatOptions are provided
 	if (formatOptions) {
-		const { format, options } = formatOptions
-		image = image.toFormat(format, options)
+		const { format, options } = formatOptions;
+		image = image.toFormat(format, options);
 	}
 
 	// Save the processed image to destination directory
-	await image.toFile(path.join(destDir, generateFileName(filePath, name, formatOptions)))
+	await image.toFile(path.join(destDir, generateFileName(filePath, name, formatOptions)));
 }
 
 /**
@@ -172,28 +172,30 @@ async function processImage(filePath, destDir, size) {
  */
 async function copyAndConvertImages(srcDir, destDir) {
 	try {
-		const files = await fs.readdir(srcDir)
+		const files = await fs.readdir(srcDir);
 
-		await fs.ensureDir(destDir)
+		await fs.ensureDir(destDir);
 
 		for (const file of files) {
-			const filePath = path.join(srcDir, file)
-			const destPathOriginal = path.join(destDir, file)
+			const filePath = path.join(srcDir, file);
+			const destPathOriginal = path.join(destDir, file);
 
-			const fileStat = await fs.stat(filePath)
+			const fileStat = await fs.stat(filePath);
 			if (fileStat.isFile()) {
 				// Copy the original file
-				await fs.copy(filePath, destPathOriginal)
+				await fs.copy(filePath, destPathOriginal);
+
+				console.log(fileStat);
 
 				// Process each size configuration
 				for (const size of imageSizes) {
-					await processImage(filePath, destDir, size)
+					await processImage(filePath, destDir, size);
 				}
 			}
 		}
 	} catch (error) {
-		console.error('Error copying and converting images:', error)
+		console.error("Error copying and converting images:", error);
 	}
 }
 
-export default copyAndConvertImages
+export default copyAndConvertImages;

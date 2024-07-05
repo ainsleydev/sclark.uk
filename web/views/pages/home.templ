@@ -20,21 +20,23 @@ templ Home() {
 		<!-- =====================
 			Hero
 			===================== -->
-		<section>
+		<section class="hero">
 			<div class="container">
 				<figure class={ "scrabble", Scrabble() }>
 					@svgs.Scrabble()
 				</figure>
 				<div class="row">
 					<div class="col-12 col-desk-6">
-						<!-- Title -->
-						<h1>Can't find the <br class="d-none d-desk-inline"/> right words?</h1>
-						<!-- Lead -->
-						<p class="lead">
-							Combining a love for the English language and written word, S Clark provides two distinct
-							professional services – one-to-one English language teaching for non-native speakers and
-							content writing and editing for businesses
-						</p>
+						@components.Group() {
+							<!-- Title -->
+							<h1>Can't find the <br />right words?</h1>
+							<!-- Lead -->
+							<p class="lead lead-max-width">
+								Combining a love for the English language and written word, S Clark provides two distinct
+								professional services – one-to-one English language teaching for non-native speakers and
+								content writing and editing for businesses
+							</p>
+						}
 						<!-- Buttons -->
 						<div class="btn-container">
 							@components.Button(components.ButtonProps{
@@ -61,7 +63,7 @@ templ Home() {
 		<!-- =====================
 			English Lessons
 			===================== -->
-		<section class="section section-padding">
+		<section class="section section-padding d-none">
 			<div class="container">
 				<!-- Intro -->
 		 		<div class="row justify-content-center">

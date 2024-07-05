@@ -12,8 +12,8 @@
 	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
-	max-width: var(--grid-container-width);
 	padding: 0 var(--grid-container-padding);
+	max-width: var(--grid-container-width);
 
 	@media (min-width: var(--grid-container-width) + 100) {
 		padding: 0;

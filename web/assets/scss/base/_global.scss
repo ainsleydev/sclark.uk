@@ -4,8 +4,10 @@
 // -----------------------------------------------------------------------------
 
 html {
-	scroll-behavior: initial;
 	box-sizing: border-box;
+	scroll-padding-top: var(--header-height);
+	overscroll-behavior: none;
+	scroll-behavior: smooth;
 }
 
 * {
@@ -22,15 +24,22 @@ body {
 	font-size: 1rem;
 	line-height: 1.6;
 	font-kerning: normal;
-	scroll-padding-top: var(--header-height);
-	overscroll-behavior: none;
-	scroll-behavior: smooth;
 	-webkit-font-smoothing: antialiased;
-	-webkit-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: transparent
 }
 
 body {
 	background-color: var(--colour-background);
+	height: 100%;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	// Temp
+	overflow: hidden;
+	width: 100%;
 }
 
 *,

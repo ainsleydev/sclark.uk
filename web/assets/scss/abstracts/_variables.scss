@@ -27,11 +27,11 @@ $text-fluid-end-size: 1600px;
 	--grid-container-width: 1600px;
 	--grid-container-padding: 7vw;
 
-	--grid-breakpoint-mob: 568;
-	--grid-breakpoint-tab: 768;
-	--grid-breakpoint-desk: 1024;
-	--grid-breakpoint-desk-large: 1408;
-	--grid-breakpoint-hd: 1600;
+	--grid-breakpoint-mob: 568px;
+	--grid-breakpoint-tab: 768px;
+	--grid-breakpoint-desk: 1024px;
+	--grid-breakpoint-desk-large: 1408px;
+	--grid-breakpoint-hd: 1600px;
 
 	// Colour
 	// ==========================================================================
@@ -51,7 +51,7 @@ $text-fluid-end-size: 1600px;
 	// Type
 	// ==========================================================================
 
-	--type-letter-spacing: -2px;
+	--type-letter-spacing: -4%;
 	--type-paragraph-size: 1.1rem;
 	--type-paragraph-line-height: 1.7;
 	--type-lead-size: 1.2rem;
@@ -74,12 +74,13 @@ $text-fluid-end-size: 1600px;
 	// Group
 	// ==========================================================================
 
-	--group-margin: 1.8rem;
+	--group-margin: 2.2rem;
 
 	// Header
 	// ==========================================================================
 
-	--header-height: 80px;
+	--header-height: 72px;
+	--header-z-index: 99999;
 }
 
 // Properties

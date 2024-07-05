@@ -1,0 +1,114 @@
+// -----------------------------------------------------------------------------
+// nav.scss
+// -----------------------------------------------------------------------------
+
+.nav {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	@include full-height;
+	overflow-y: scroll;
+	overflow-x: clip;
+	background-color: var(--colour-background);
+	z-index: calc(var(--header-z-index) + 10);
+
+	// List
+	// =========================================================================
+
+	&-list {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		padding-left: var(--grid-container-padding);
+	}
+
+	// Links
+	// =========================================================================
+
+	&-btn,
+	&-link {
+		font-size: 1.8rem;
+		text-decoration: none;
+		font-weight: normal;
+		color: var(--colour-copy);
+	}
+
+	// Gradient
+	// =========================================================================
+
+	&-gradient {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		img {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			transform: scale(2);
+			opacity: 0.5;
+		}
+	}
+
+	// Mobile
+	// =========================================================================
+
+	@include media-desk-down {
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 700ms, visibility 700ms step-end;
+
+		&-btn {
+			padding: 0;
+			border: 0;
+			height: auto;
+			border-radius: unset;
+			background-color: transparent;
+		}
+	}
+
+	// Desktop
+	// =========================================================================
+
+	@include media-desk {
+		position: relative;
+		width: auto;
+		background-color: transparent;
+
+		&-list {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 2rem;
+			list-style: none;
+		}
+
+		&-link,
+		&-btn {
+			font-size: 1rem;
+		}
+
+		&-link {
+			text-decoration: none;
+			color: var(--colour-copy);
+			font-weight: normal;
+		}
+
+		&-btn {
+			height: 48px;
+			color: var(--colour-foreground);
+			font-weight: bold;
+		}
+
+		&-gradient {
+			display: none;
+		}
+	}
+}

@@ -43,6 +43,11 @@ func getNavItems(ctx context.Context) payload.NavigationItems {
 
 templ Nav() {
 	<nav class="nav">
+		<!-- Gradient -->
+		<figure class="nav-gradient">
+			<img src="/assets/images/gradient-1.svg" alt="Coloured Gradient" />
+		</figure>
+		<!-- List -->
 		<ul class="nav-list">
 			for index, item := range getNavItems(ctx) {
 				<li class="nav-item">

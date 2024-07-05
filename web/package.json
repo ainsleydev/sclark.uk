@@ -20,6 +20,7 @@
 		"docker:run": "docker run -it --init --env-file .env -p 3000:3000 --rm -ti ainsley.dev/web",
 		"generate:templ": "TEMPL_EXPERIMENT=rawgo go generate ./...",
 		"generate:types": "go-jsonschema -p types --struct-name-from-title ../cms/src/types/payload.json > ./types/cms.go",
+		"generate:modernizr": "modernizr --config modernizr.json --dest ./assets/js/modernizr.js",
 		"test": "go test ./... -race $$(go list ./... | temp) -coverprofile=../../coverage.out -covermode=atomic",
 		"cover": "go tool cover -html=coverage.out",
 		"kill": "lsof -t -i tcp:3000 | xargs kill"
@@ -33,7 +34,8 @@
 		"esbuild-plugin-copy": "^2.1.1",
 		"esbuild-sass-plugin": "^3.2.0",
 		"fs-extra": "^11.2.0",
-		"sharp": "^0.33.4"
+		"sharp": "^0.33.4",
+		"svgo": "^3.3.2"
 	},
 	"dependencies": {
 		"normalize.css": "^8.0.1"

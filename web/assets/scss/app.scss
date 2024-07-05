@@ -7,8 +7,6 @@
  * @author Email: hello@ainsley.dev
  */
 
-$views-path: '../../views';
-
 /*  ====================
     Abstracts
     ==================== */
@@ -50,10 +48,11 @@ $views-path: '../../views';
 /* ====================
     Partials
     ==================== */
-@import url('#{$views-path}/partials/header');
-@import url('#{$views-path}/partials/footer');
-@import url('#{$views-path}/partials/nav');
-@import url('#{$views-path}/blocks/hero');
-@import url('#{$views-path}/components/button');
-@import url('#{$views-path}/components/collapse');
-@import url('#{$views-path}/components/list');
+@import '../../views/blocks/hero';
+@import '../../views/components/button';
+@import '../../views/components/collapse';
+@import '../../views/components/group';
+@import '../../views/components/list';
+@import '../../views/partials/header';
+@import '../../views/partials/footer';
+@import '../../views/partials/nav';

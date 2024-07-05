@@ -1,3 +1,4 @@
+import browsersync from "browser-sync";
 /**
  * This script sets up a development environment using esbuild and BrowserSync.
  * It supports two modes:
@@ -9,13 +10,13 @@
  * - Build Mode: `node esbuild.js`
  * - Watch Mode: `node esbuild.js --watch`
  */
-import * as esbuild from 'esbuild'
-import browsersync from 'browser-sync'
-import { sassPlugin } from 'esbuild-sass-plugin'
-import { copy } from 'esbuild-plugin-copy'
-import copyAndConvertImages from './bin/images.mjs'
+import * as esbuild from "esbuild";
+import { copy } from "esbuild-plugin-copy";
+import { sassPlugin } from "esbuild-sass-plugin";
+import copyAndConvertImages from "./bin/images.mjs";
+import { svgoPlugin } from "./bin/svgo.mjs";
 
-const isProd = !process.argv.includes('--watch')
+const isProd = !process.argv.includes("--watch");
 
 /**
  * ESBuild options for building the project.
@@ -24,91 +25,98 @@ const isProd = !process.argv.includes('--watch')
  */
 const options = {
 	entryPoints: [
-		{ in: 'assets/js/app.js', out: 'js/app' },
-		{ in: 'assets/scss/app.scss', out: 'css/app' },
+		{ in: "assets/js/app.js", out: "js/app" },
+		{ in: "assets/scss/app.scss", out: "css/app" },
 	],
 	bundle: true,
-	outdir: 'dist',
-	logLevel: 'info',
+	outdir: "dist",
+	logLevel: "info",
 	loader: {
-		'.woff': 'file',
-		'.woff2': 'file',
+		".woff": "file",
+		".woff2": "file",
 	},
-	external: ['*.woff', '*.woff2'],
+	external: ["*.woff", "*.woff2"],
 	plugins: [
 		sassPlugin(),
 		copy({
 			assets: [
 				{
-					from: ['./assets/fonts/**/*'],
-					to: ['./fonts'],
+					from: ["./assets/fonts/**/*"],
+					to: ["./fonts"],
+				},
+				{
+					from: ["./assets/images/**/*.svg"],
+					to: ["./images"],
 				},
 			],
 		}),
+		svgoPlugin(),
 	],
 	minify: isProd,
 	allowOverwrite: true,
-}
-;(async () => {
+};
+
+(async () => {
 	// Check for watch flag in arguments
 	if (isProd) {
-		await copyAndConvertImages('assets/images', 'dist/images')
-		await esbuild.build(options)
+		await copyAndConvertImages("assets/images", "dist/images");
+		await esbuild.build(options);
 	} else {
 		// Create esbuild context
-		const esbuildContext = await esbuild.context(options)
+		const esbuildContext = await esbuild.context(options);
 
 		/**
 		 * @type {import('browser-sync').BrowserSyncInstance}
 		 */
-		const bs = browsersync.create()
+		const bs = browsersync.create();
 		bs.init({
 			open: false,
 			port: 3001,
-			logLevel: 'info',
-			logPrefix: 'ainsley.dev',
+			logLevel: "info",
+			logPrefix: "ainsley.dev",
 			proxy: {
-				target: 'localhost:3000',
+				target: "localhost:3000",
 			},
-		})
+		});
 
 		const rebuild = (file) => {
-			console.log('✨ Build complete: ' + file)
-			bs.reload() // Reload after successful build
-		}
+			console.log(`✨ Build complete: ${file}`);
+			bs.reload(); // Reload after successful build
+		};
 
 		const watchAsset = async (event, file) => {
 			try {
-				await esbuildContext.rebuild()
-				rebuild(file)
+				await esbuildContext.rebuild();
+				rebuild(file);
 			} catch (err) {
-				console.error('Build failed:', err)
+				console.error("Build failed:", err);
 			}
-		}
+		};
 
 		const watchImages = async (event, file) => {
-			if (event === 'add' || event === 'change') {
-				await copyAndConvertImages('assets/images', 'dist/images')
-				rebuild(file)
+			if (event === "add" || event === "change") {
+				await copyAndConvertImages("assets/images", "dist/images");
+				rebuild(file);
 			}
-		}
+		};
 
 		const watchGo = async (event, file) => {
-			if (event !== 'change') {
-				return
+			if (event !== "change") {
+				return;
 			}
-			await new Promise((resolve) => setTimeout(resolve, 3000)) // Debounce
+			await new Promise((resolve) => setTimeout(resolve, 3000)); // Debounce
 			try {
-				await esbuildContext.rebuild()
-				bs.reload() // Reload after successful build
+				await esbuildContext.rebuild();
+				bs.reload(); // Reload after successful build
 			} catch (err) {
-				console.error('Build failed:', err)
+				console.error("Build failed:", err);
 			}
-		}
+		};
 
-		bs.watch('{views,assets}/**/*.js', watchAsset)
-		bs.watch('{views,assets}/**/*.{scss,css,js}', watchAsset)
-		bs.watch('assets/images/**/*.{png,jpg,jpeg,gif}', watchImages)
-		bs.watch('./**/*.go', watchGo)
+		bs.watch("{views,assets}/**/*.js", watchAsset);
+		bs.watch("{views,assets}/**/*.{scss,css,js}", watchAsset);
+		bs.watch("assets/images/**/*.{png,jpg,jpeg,gif}", watchImages);
+		bs.watch("assets/images/**/*.{svg}", rebuild);
+		bs.watch("./**/*.go", watchGo);
 	}
-})()
+})();

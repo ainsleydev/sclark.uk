@@ -1,0 +1,23 @@
+<svg width="618" height="1202" viewBox="0 0 618 1202" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.3" filter="url(#filter0_f_251_34)">
+<path d="M433.527 748.144C410.786 607.065 323.547 523.342 238.675 561.144C153.803 598.946 103.436 743.958 126.177 885.037C148.919 1026.12 236.157 1109.84 321.029 1072.04C405.902 1034.23 456.269 889.223 433.527 748.144Z" fill="url(#paint0_linear_251_34)" style=""/>
+<path d="M167.409 399.163C167.409 553.34 241.259 678.325 332.358 678.325C423.456 678.325 497.306 553.34 497.306 399.163C497.306 244.985 423.456 120 332.358 120C241.259 120 167.409 244.985 167.409 399.163Z" fill="url(#paint1_linear_251_34)" style=""/>
+</g>
+<defs>
+<filter id="filter0_f_251_34" x="0.716492" y="0" width="616.59" height="1201.11" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="60" result="effect1_foregroundBlur_251_34"/>
+</filter>
+<linearGradient id="paint0_linear_251_34" x1="245.034" y1="576.721" x2="178.643" y2="1058.44" gradientUnits="userSpaceOnUse">
+<stop stop-color="#001AFF" style="stop-color:#001AFF;stop-color:color(display-p3 0.0000 0.1000 1.0000);stop-opacity:1;"/>
+<stop offset="1" stop-color="#6EE5C2" style="stop-color:#6EE5C2;stop-color:color(display-p3 0.4314 0.8980 0.7608);stop-opacity:1;"/>
+<stop offset="1" stop-color="#6EE5C2" style="stop-color:#6EE5C2;stop-color:color(display-p3 0.4314 0.8980 0.7608);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="paint1_linear_251_34" x1="302.87" y1="157.871" x2="466.311" y2="544.056" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFC83A" style="stop-color:#FFC83A;stop-color:color(display-p3 1.0000 0.7842 0.2292);stop-opacity:1;"/>
+<stop offset="0.504191" stop-color="#FF008A" style="stop-color:#FF008A;stop-color:color(display-p3 1.0000 0.0000 0.5412);stop-opacity:1;"/>
+	<stop offset="1" stop-color="#6100FF" style="stop-color:#6100FF;stop-color:color(display-p3 0.3804 0.0000 1.0000);stop-opacity:1;"/>
+</linearGradient>
+</defs>
+</svg>
