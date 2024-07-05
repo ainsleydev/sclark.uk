@@ -3,63 +3,15 @@ package pages
 import (
 	"github.com/ainsleydev/sclark.uk/views/components"
 	"github.com/ainsleydev/sclark.uk/views/layouts"
-	"github.com/ainsleydev/sclark.uk/views/svgs"
+	"github.com/ainsleydev/sclark.uk/views/blocks"
 )
-
-css Scrabble() {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 100%;
-	max-width: 400px;
-	margin: 0 auto;
-}
 
 templ Home() {
 	@layouts.Base() {
 		<!-- =====================
 			Hero
 			===================== -->
-		<section class="hero">
-			<div class="container">
-				<figure class={ "scrabble", Scrabble() }>
-					@svgs.Scrabble()
-				</figure>
-				<div class="row">
-					<div class="col-12 col-desk-6">
-						@components.Group() {
-							<!-- Title -->
-							<h1>Can't find the <br />right words?</h1>
-							<!-- Lead -->
-							<p class="lead lead-max-width">
-								Combining a love for the English language and written word, S Clark provides two distinct
-								professional services – one-to-one English language teaching for non-native speakers and
-								content writing and editing for businesses
-							</p>
-						}
-						<!-- Buttons -->
-						<div class="btn-container">
-							@components.Button(components.ButtonProps{
-								Text:   "English Lessons",
-								Href:   "#english-lessons",
-								Filled: true,
-							})
-							@components.Button(components.ButtonProps{
-								Text: "Content Writing",
-								Href: "#content-writing",
-							})
-						</div>
-					</div><!-- /Col -->
-				</div><!-- /Row -->
-				<div class="row">
-					<div class="col-12">
-						<h6>Trusted by Leading Professionals</h6>
-						<!-- Logos -->
-						<div class="logos"></div>
-					</div><!-- /Col -->
-				</div><!-- /Row -->
-			</div><!-- /Container -->
-		</section>
+		@blocks.Hero()
 		<!-- =====================
 			English Lessons
 			===================== -->

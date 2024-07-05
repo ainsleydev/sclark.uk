@@ -1,0 +1,21 @@
+package blocks
+
+type LogosItem struct {
+	Image string
+	URL string
+}
+
+templ Logos(logos []string) {
+	if len(logos) > 0 {
+		<figure class="logos">
+			<figcaption class="logos-title">
+				<h6>Trusted by Leading Professionals</h6>
+			</figcaption>
+			for _, img := range logos {
+				<figure class="logos-item">
+					<img src={ img } alt="" />
+				</figure>
+			}
+		</figure>
+	}
+}

@@ -1,0 +1,59 @@
+package blocks
+
+import (
+	"github.com/ainsleydev/sclark.uk/views/components"
+	"github.com/ainsleydev/sclark.uk/views/svgs"
+)
+
+type HeroProps struct {
+	Title string
+	Lead string
+}
+
+templ Hero() {
+	<section class="hero">
+		<figure class="hero-scrabble">
+			@svgs.Scrabble()
+		</figure>
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-desk-6">
+					@components.Group() {
+						<!-- Title -->
+						<h1>Can't find the <br />right words?</h1>
+						<!-- Lead -->
+						<p class="lead lead-max-width">
+							Combining a love for the English language and written word, S Clark provides two distinct
+							professional services – one-to-one English language teaching for non-native speakers and
+							content writing and editing for businesses
+						</p>
+					}
+					<!-- Buttons -->
+					<div class="btn-container">
+						@components.Button(components.ButtonProps{
+							Text:   "English Lessons",
+							Href:   "#english-lessons",
+							Filled: true,
+						})
+						@components.Button(components.ButtonProps{
+							Text: "Content Writing",
+							Href: "#content-writing",
+						})
+					</div>
+				</div><!-- /Col -->
+			</div><!-- /Row -->
+			<div class="hero-logos row">
+				<div class="col-12">
+					<!-- Logos -->
+					@Logos([]string{
+						"/assets/images/logos/ice.svg",
+						"/assets/images/logos/ainsley-dev.svg",
+						"/assets/images/logos/decs-pets.svg",
+						"/assets/images/logos/jennifer-cooper.svg",
+						"/assets/images/logos/bailogik.svg",
+					})
+				</div><!-- /Col -->
+			</div><!-- /Row -->
+		</div><!-- /Container -->
+	</section>
+}

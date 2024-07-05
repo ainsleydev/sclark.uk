@@ -3,6 +3,28 @@
 // -----------------------------------------------------------------------------
 
 .hero {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding-top: var(--header-height);
+	@include full-height;
+	max-height: 1200px;
+
+	// Scrabble
+	// =========================================================================
+
+	&-scrabble {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		width: auto;
+		height: auto;
+		transform: translateY(-50%);
+		background-color: var(--colour-background);
+	}
 
 
+	&-logos {
+		margin-top: 200px;
+	}
 }
