@@ -5,7 +5,9 @@
 			"cache": true
 		},
 		"start": {},
-		"lint": {},
+		"lint": {
+			"cache": false
+		},
 		"dev": {
 			"cache": false,
 			"persistent": false

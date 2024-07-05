@@ -5,12 +5,13 @@ type ButtonProps struct {
 	Href   string
 	Label  string
 	Filled bool
+	Classes []string
 }
 
 templ Button(props ButtonProps) {
 	if props.Href != "" {
 		<a
-			class={ "btn", templ.KV("btn-filled", props.Filled) }
+			class={ "btn", props.Classes, templ.KV("btn-filled", props.Filled) }
 			href={ templ.URL(props.Href) }
 			aria-label={ props.Text }
 		>
@@ -18,7 +19,7 @@ templ Button(props ButtonProps) {
 		</a>
 	} else {
 		<button
-			class={ "btn", templ.KV("btn-filled", props.Filled) }
+			class={ "btn", props.Classes, templ.KV("btn-filled", props.Filled) }
 			aria-label={ props.Text }
 		>
 			{ props.Text }

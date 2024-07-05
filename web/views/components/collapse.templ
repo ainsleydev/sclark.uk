@@ -1,8 +1,12 @@
 package components
 
 import (
-	"github.com/ainsleydev/sclark.uk/views/svgs"
 )
+
+type CollapseProps struct {
+	Items []CollapseItem
+	IsFAQs bool
+}
 
 type CollapseItem struct {
 	Title string
@@ -11,24 +15,37 @@ type CollapseItem struct {
 
 // Maybe web component?
 
-templ Collapse(items []CollapseItem) {
-	if len(items) > 0 {
-		<details class="collapse">
-			for _, item := range items {
-				<!-- Header -->
-				<summary class="collapse-summary">
-					<h5 class="collapse-title">
-						{ item.Title }
-					</h5>
-					<span class="collapse-icon">
-						@svgs.Arrow()
-					</span>
-				</summary>
-				<!-- Content -->
-				<div class="collapse-item-content">
-					@templ.Raw(item.Content)
-				</div>
+templ Collapse(props CollapseProps) {
+	if len(props.Items) > 0 {
+		<div class="collapse">
+			for _, item := range props.Items {
+				<details class="collapse-item" open>
+					<!-- Title -->
+					<summary class="collapse-header cursor-element"
+						if props.IsFAQs {
+							itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
+						}
+					>
+						if item.Title != "" {
+							<h5 if props.IsFAQs { itemprop="name" }>
+								{ item.Title }
+							</h5>
+						}
+					</summary><!-- /Title -->
+					<!-- Content -->
+					<div class="collapse-content"
+						if props.IsFAQs {
+							itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"
+						}
+					>
+						if item.Content != "" {
+							<div if props.IsFAQs { itemprop="text" }>
+								@templ.Raw(item.Content)
+							</div>
+						}
+					</div><!-- /Content -->
+				</details>
 			}
-		</details>
+		</div>
 	}
 }

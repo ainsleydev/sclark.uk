@@ -1,6 +1,49 @@
 .collapse {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
+	.collapse-item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		cursor: pointer;
+		position: relative;
+		border-bottom: 1px solid green;
+		outline: none;
+
+		::marker {
+			content: '';
+			display: none;
+		}
+
+		&::after {
+			content: '';
+		}
+	}
+
+	.collapse-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.2rem 0;
+		user-select: none;
+		outline: none;
+
+		* {
+			margin-bottom: 0;
+		}
+	}
 
 	.collapse-icon svg {
 		width: 10px;
+	}
+
+	.collapse-content {
+		display: block;
+		max-height: 0;
+		transition: 0.5s !important;
+		will-change: max-height;
+		overflow: hidden;
 	}
 }

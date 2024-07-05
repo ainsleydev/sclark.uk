@@ -103,8 +103,18 @@ templ Home() {
 						}
 						@components.Group() {
 							<h3>FAQs</h3>
-							@components.Collapse([]components.CollapseItem{
-								{Title: "Hey", Content: "Content"},
+							@components.Collapse(components.CollapseProps{
+								IsFAQs: true,
+								Items: []components.CollapseItem{
+									{
+										Title: "How long is each lesson?",
+										Content: "Content",
+									},
+									{
+										Title: "How regularly should I have lessons?",
+										Content: "Content",
+									},
+								},
 							})
 						}
 		 			</div>

@@ -1,6 +1,8 @@
 .btn {
 	position: relative;
-	background-color: white;
+	display: inline-flex;
+	align-items: center;
+	background-color: var(--colour-background);
 	color: var(--colour-foreground);
 	padding: 17px 26px 15px 26px;
 	cursor: pointer;

@@ -9,6 +9,8 @@
 	}
 
 	.nav-item {
+		margin-bottom: 0;
+
 		&:hover {
 			.nav-link {
 				color: red;
@@ -20,5 +22,11 @@
 		text-decoration: none;
 		color: var(--colour-copy);
 		font-weight: normal;
+	}
+
+	.nav-btn {
+		height: 45px;
+		padding-top: 0;
+		padding-bottom: 0;
 	}
 }
