@@ -17,7 +17,7 @@ templ Hero() {
 		</figure>
 		<div class="container">
 			<div class="row">
-				<div class="col-12 col-desk-6">
+				<div class="col-12 col-desk-8 col-desk-large-6">
 					@components.Group() {
 						<!-- Title -->
 						<h1>Can't find the <br />right words?</h1>
@@ -45,12 +45,15 @@ templ Hero() {
 			<div class="hero-logos row">
 				<div class="col-12">
 					<!-- Logos -->
-					@Logos([]string{
-						"/assets/images/logos/ice.svg",
-						"/assets/images/logos/ainsley-dev.svg",
-						"/assets/images/logos/decs-pets.svg",
-						"/assets/images/logos/jennifer-cooper.svg",
-						"/assets/images/logos/bailogik.svg",
+					@Logos(LogosProps{
+						Title: "Trusted by Leading Professionals",
+						Items: []LogosItem{
+							{Title: "ICE", Src: "/assets/images/logos/ice.svg"},
+							{Title: "ainsley.dev", Src: "/assets/images/logos/ainsley-dev.svg", URL: "https://ainsley.dev"},
+							{Title: "Dec's Pets", Src: "/assets/images/logos/decs-pets.svg", URL: "https://ainsley.dev"},
+							{Title: "Dec's Pets", Src: "/assets/images/logos/schools-and-agents.svg", URL: "https://ainsley.dev"},
+							{Title: "Dec's Pets", Src: "/assets/images/logos/jennifer-cooper.svg", URL: "https://ainsley.dev"},
+						},
 					})
 				</div><!-- /Col -->
 			</div><!-- /Row -->

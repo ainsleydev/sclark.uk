@@ -6,7 +6,7 @@
  * @author Email: hello@ainsley.dev
  */
 
-require("./modernizr");
+// require("./modernizr");
 import { Collapse } from "../../views/components/collapse";
 
 console.clear();

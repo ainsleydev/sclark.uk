@@ -1,20 +1,34 @@
 package blocks
 
+type LogosProps struct {
+	Title string
+	Items []LogosItem
+}
+
 type LogosItem struct {
-	Image string
+	Title string
+	Src string
 	URL string
 }
 
-templ Logos(logos []string) {
-	if len(logos) > 0 {
+templ Logos(props LogosProps) {
+	if len(props.Items) > 0 {
 		<figure class="logos">
-			<figcaption class="logos-title">
-				<h6>Trusted by Leading Professionals</h6>
-			</figcaption>
-			for _, img := range logos {
-				<figure class="logos-item">
-					<img src={ img } alt="" />
-				</figure>
+			if props.Title != "" {
+				<figcaption class="logos-title">
+					<h6>{ props.Title }</h6>
+				</figcaption>
+			}
+			for _, img := range props.Items {
+				if img.URL != "" {
+					<a href={ templ.SafeURL(img.URL) } class="logos-item logos-link" target="_blank">
+						<img src={ img.Src } alt={ img.Title } />
+					</a>
+				} else {
+					<figure class="logos-item">
+						<img src={ img.Src } alt={ img.Title } />
+					</figure>
+				}
 			}
 		</figure>
 	}

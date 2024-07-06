@@ -3,31 +3,74 @@
 // -----------------------------------------------------------------------------
 
 .logos {
+	$self: &;
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
-	gap: 1.2rem;
+	gap: 1.6rem;
 
-	&-item {
-		width: auto;
-		display: inline-grid;
-		align-items: center;
-		justify-content: flex-start;
-		max-height: 50px;
-	}
+	// Title
+	// =========================================================================
 
 	&-title {
-		margin-bottom: var(--group-margin);
 		flex-basis: 100%;
+		margin-bottom: 0.4rem;
 	}
+
+	// Item
+	// =========================================================================
+
+	&-item {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		width: auto;
+		height: 46px;
+		max-width: 160px;
+		margin-right: 2rem;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	// Image
+	// =========================================================================
 
 	img {
 		display: block;
-		max-width: 260px;
+		max-width: 100%;
+		height: 100%;
+		object-fit: contain;
 	}
 
-	//img {
-	//	height: 60px;
-	//	max-width: 120px;
-	//}
+	// Link
+	// =========================================================================
+
+	&-link {
+
+		img {
+			transition: transform 120ms cubic-bezier(.5,-800,.5,800);
+		}
+
+		&:hover img {
+			opacity: 0.1;
+			transform: scale(1.01);
+		}
+	}
+
+	// Mobile
+	// =========================================================================
+
+	@include media-tab-down {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		grid-row-gap: 1rem;
+
+		&-title {
+			grid-column: 1 / -1;
+			margin-bottom: 1rem;
+		}
+	}
 }

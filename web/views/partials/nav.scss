@@ -3,6 +3,7 @@
 // -----------------------------------------------------------------------------
 
 .nav {
+	$self: &;
 	position: fixed;
 	display: flex;
 	flex-direction: column;
@@ -38,6 +39,14 @@
 		color: var(--colour-copy);
 	}
 
+	// Active
+	// =========================================================================
+
+	&-active {
+		font-weight: bold;
+		color: var(--colour-foreground);
+	}
+
 	// Gradient
 	// =========================================================================
 
@@ -71,6 +80,10 @@
 			height: auto;
 			border-radius: unset;
 			background-color: transparent;
+
+			&:hover {
+				box-shadow: none !important;
+			}
 		}
 	}
 
@@ -82,6 +95,7 @@
 		width: auto;
 		height: auto;
 		background-color: transparent;
+		overflow: visible; // Hover for button
 
 		&-list {
 			display: flex;
@@ -89,6 +103,19 @@
 			align-items: center;
 			gap: 2rem;
 			list-style: none;
+		}
+
+		&-item {
+			margin-bottom: 0;
+		}
+
+		&-link {
+			transition: all 200ms ease;
+
+			&:hover {
+				font-weight: bold;
+				color: var(--colour-foreground);
+			}
 		}
 
 		&-link,
