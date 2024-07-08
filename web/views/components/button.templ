@@ -15,14 +15,14 @@ templ Button(props ButtonProps) {
 			href={ templ.URL(props.Href) }
 			aria-label={ props.Text }
 		>
-			{ props.Text }
+			@templ.Raw(props.Text)
 		</a>
 	} else {
 		<button
 			class={ "btn", props.Classes, templ.KV("btn-filled", props.Filled) }
 			aria-label={ props.Text }
 		>
-			{ props.Text }
+			@templ.Raw(props.Text)
 		</button>
 	}
 }

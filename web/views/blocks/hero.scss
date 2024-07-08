@@ -6,27 +6,75 @@
 	position: relative;
 	display: flex;
 	align-items: center;
-	padding-top: var(--header-height);
-	@include full-height;
-	max-height: 1200px;
+	margin-top: var(--header-height);
+	padding-bottom: var(--section-margin);
+
+	// Row
+	// =========================================================================
+
+	&-row {
+		position: relative;
+		z-index: 99;
+	}
+
+	// Wrapper
+	// =========================================================================
+
+	&-wrapper {
+		display: flex;
+		height: calc(100vh - var(--header-height));
+		justify-content: space-around;
+		max-height: 900px;
+		flex-direction: column;
+	}
 
 	// Scrabble
 	// =========================================================================
 
 	&-scrabble {
-		position: absolute;
-		top: 50%;
-		right: 0;
-		width: auto;
-		height: auto;
-		transform: translateY(-50%);
+		position: relative;
+		width: 120%;
 		background-color: var(--colour-background);
+
+		svg {
+			width: 100%;
+			height: 100%;
+		}
 	}
 
-	// Logos
+	// Small Phones
 	// =========================================================================
 
-	&-logos {
-		margin-top: 200px;
+	@media (width <= 400px) {
+
+		&-btns span {
+			display: none;
+		}
+	}
+
+	// Desktop
+	// =========================================================================
+
+	@include media-desk {
+		@include full-height;
+
+		&-logos {
+			margin-top: 200px;
+		}
+
+		&-wrapper {
+			display: block;
+			height: auto;
+			max-height: none;
+		}
+
+		&-scrabble {
+			position: absolute;
+			top: 50%;
+			width: 60%;
+			right: 0;
+			height: auto;
+			transform: translateY(-50%);
+		}
 	}
 }

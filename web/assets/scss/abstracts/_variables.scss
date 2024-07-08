@@ -15,7 +15,7 @@ $grid-breakpoint-desk-large: 1408;
 $grid-breakpoint-hd: 1600;
 
 // Text
-$text-fluid-start-size: 400px;
+$text-fluid-start-size: 320px;
 $text-fluid-end-size: 1600px;
 
 :root {
@@ -41,6 +41,7 @@ $text-fluid-end-size: 1600px;
 	--colour-copy: #636363;
 	--colour-primary: #ff5043;
 	--colour-secondary: #70cbce;
+	--colour-light-grey: #eeeeee;
 
 	// Fonts
 	// ==========================================================================
@@ -60,21 +61,21 @@ $text-fluid-end-size: 1600px;
 	// Spacing
 	// ==========================================================================
 
-	--spacing-default: 1.8rem;
+	--spacing-default: 2.2rem;
 	--spacing-tiny: 0.6rem;
 	--spacing-small: 1rem;
 	--spacing-large: 3rem;
+
+	// Section
+	// ==========================================================================
+
+	--section-margin: clamp(60px, 20vw, 180px);
 
 	// Styling
 	// ==========================================================================
 
 	--alpha-standard: 0.15;
 	--alpha-light: 0.1;
-
-	// Group
-	// ==========================================================================
-
-	--group-margin: 2.2rem;
 
 	// Header
 	// ==========================================================================

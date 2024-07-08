@@ -26,6 +26,7 @@
 		flex-direction: column;
 		gap: 2rem;
 		padding-left: var(--grid-container-padding);
+		list-style: none;
 	}
 
 	// Links
@@ -37,6 +38,7 @@
 		text-decoration: none;
 		font-weight: normal;
 		color: var(--colour-copy);
+		user-select: none;
 	}
 
 	// Active
@@ -101,8 +103,8 @@
 			display: flex;
 			flex-direction: row;
 			align-items: center;
-			gap: 2rem;
-			list-style: none;
+			gap: 1.2rem;
+			padding: 0;
 		}
 
 		&-item {
@@ -111,9 +113,12 @@
 
 		&-link {
 			transition: all 200ms ease;
+			border-radius: 6px;
+			padding: 4px 10px;
+			will-change: background-color, color;
 
 			&:hover {
-				font-weight: bold;
+				background-color: var(--colour-light-grey);
 				color: var(--colour-foreground);
 			}
 		}

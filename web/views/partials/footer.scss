@@ -1,9 +1,9 @@
 .footer {
 	background-color: var(--colour-foreground);
 	padding: 100px 0;
-	margin-top: 20px;
+	//margin-top: 20px;
 
-	.footer-sub {
+	&-sub {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;

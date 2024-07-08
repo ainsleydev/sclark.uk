@@ -12,36 +12,42 @@ type HeroProps struct {
 
 templ Hero() {
 	<section class="hero">
-		<figure class="hero-scrabble">
-			@svgs.Scrabble()
-		</figure>
 		<div class="container">
-			<div class="row">
-				<div class="col-12 col-desk-8 col-desk-large-6">
-					@components.Group() {
-						<!-- Title -->
-						<h1>Can't find the <br />right words?</h1>
-						<!-- Lead -->
-						<p class="lead lead-max-width">
-							Combining a love for the English language and written word, S Clark provides two distinct
-							professional services – one-to-one English language teaching for non-native speakers and
-							content writing and editing for businesses
-						</p>
-					}
-					<!-- Buttons -->
-					<div class="btn-container">
-						@components.Button(components.ButtonProps{
-							Text:   "English Lessons",
-							Href:   "#english-lessons",
-							Filled: true,
-						})
-						@components.Button(components.ButtonProps{
-							Text: "Content Writing",
-							Href: "#content-writing",
-						})
-					</div>
-				</div><!-- /Col -->
-			</div><!-- /Row -->
+			<!-- Wrapper -->
+			<div class="hero-wrapper">
+				<!-- Content -->
+				<div class="row hero-row">
+					<div class="col-12 col-desk-8 col-desk-large-6">
+						@components.Group() {
+							<!-- Title -->
+							<h1>Can't find the <br />right words?</h1>
+							<!-- Lead -->
+							<p class="lead lead-max-width">
+								Combining a love for the English language and written word, S Clark provides two distinct
+								professional services – one-to-one English language teaching for non-native speakers and
+								content writing and editing for businesses
+							</p>
+						}
+						<!-- Buttons -->
+						<div class="btn-container hero-btns">
+							@components.Button(components.ButtonProps{
+								Text:   "<span>English</span>&nbsp;Lessons",
+								Href:   "#english-lessons",
+								Filled: true,
+							})
+							@components.Button(components.ButtonProps{
+								Text: "Content&nbsp;<span>Writing</span>",
+								Href: "#content-writing",
+							})
+						</div>
+					</div><!-- /Col -->
+				</div><!-- /Row -->
+				<!-- Scrabble -->
+				<figure class="hero-scrabble">
+					@svgs.Scrabble()
+				</figure>
+			</div><!-- /Wrapper -->
+			<!-- Logos -->
 			<div class="hero-logos row">
 				<div class="col-12">
 					<!-- Logos -->
