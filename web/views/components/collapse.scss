@@ -1,15 +1,22 @@
+// -----------------------------------------------------------------------------
+// collapse.scss
+// -----------------------------------------------------------------------------
+
 .collapse {
+	$self: &;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 
-	.collapse-item {
+	// Item
+	// =========================================================================
+
+	&-item {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		cursor: pointer;
 		position: relative;
-		border-bottom: 1px solid green;
 		outline: none;
 
 		::marker {
@@ -17,12 +24,26 @@
 			display: none;
 		}
 
+		&-active {
+
+			#{$self}-arrow {
+				transform: rotate(180deg);
+			}
+		}
+
 		&::after {
 			content: '';
+			display: block;
+			background: var(--colour-gradient-multi);
+			height: 1px;
+			width: 100%;
 		}
 	}
 
-	.collapse-header {
+	// Header
+	// =========================================================================
+
+	&-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -33,17 +54,61 @@
 		* {
 			margin-bottom: 0;
 		}
+
+		&:hover #{$self}-title {
+			color:rgba(0,0,0,0);
+		}
 	}
 
-	.collapse-icon svg {
-		width: 10px;
+	// Animation
+	// =========================================================================
+
+	@keyframes rainbow {
+		0% {
+			background-position:left
+		}
+		50% {
+			background-position:right
+		}
+		100% {
+			background-position:left
+		}
 	}
 
-	.collapse-content {
+	// Title
+	// =========================================================================
+
+	&-title {
+		background: var(--colour-gradient-multi);
+		background-size: 200% 200%;
+		background-clip: text;
+		transition: color 200ms ease-in-out;
+		will-change: color;
+		// See: https://codepen.io/bsander/pen/pPpbNm
+		animation: rainbow 2.4s ease-in-out infinite;
+	}
+
+	// Icon
+	// =========================================================================
+
+	&-arrow {
+		display: inline-block;
+		width: 0.9rem;
+		transition: transform 200ms ease;
+	}
+
+	// Content
+	// =========================================================================
+
+	&-content {
 		display: block;
 		max-height: 0;
 		transition: 0.5s !important;
 		will-change: max-height;
 		overflow: hidden;
+
+		&-inner {
+			padding-bottom: 1.2rem;
+		}
 	}
 }

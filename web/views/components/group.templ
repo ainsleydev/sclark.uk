@@ -1,7 +1,7 @@
 package components
 
-templ Group() {
-	<div class="group">
+templ Group(classes ...string) {
+	<div class={ "group", classes }>
 		{ children... }
 	</div>
 }

@@ -118,7 +118,7 @@
 			will-change: background-color, color;
 
 			&:hover {
-				background-color: var(--colour-light-grey);
+				background-color: var(--colour-grey-light);
 				color: var(--colour-foreground);
 			}
 		}
@@ -135,7 +135,7 @@
 		}
 
 		&-btn {
-			height: 48px;
+			height: 44px;
 			color: var(--colour-foreground);
 			font-weight: bold;
 		}

@@ -1,46 +1,56 @@
 package components
 
-import (
-)
+import ()
 
 type CollapseProps struct {
-	Items []CollapseItem
+	Items  []CollapseItem
 	IsFAQs bool
 }
 
 type CollapseItem struct {
-	Title string
+	Title   string
 	Content string
 }
 
 // Maybe web component?
-
 templ Collapse(props CollapseProps) {
 	if len(props.Items) > 0 {
 		<div class="collapse">
 			for _, item := range props.Items {
 				<details class="collapse-item" open>
 					<!-- Title -->
-					<summary class="collapse-header cursor-element"
+					<summary
+						class="collapse-header cursor-element"
 						if props.IsFAQs {
-							itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
+							itemscope
+							itemprop="mainEntity"
+							itemtype="https://schema.org/Question"
 						}
 					>
 						if item.Title != "" {
-							<h5 if props.IsFAQs { itemprop="name" }>
+							<h5 class="collapse-title" if props.IsFAQs {
+	itemprop="name"
+}>
 								{ item.Title }
 							</h5>
 						}
+						<img loading="lazy" class="collapse-arrow" src="/assets/images/arrow.svg" alt="Chevron Down"/>
 					</summary><!-- /Title -->
 					<!-- Content -->
-					<div class="collapse-content"
+					<div
+						class="collapse-content"
 						if props.IsFAQs {
-							itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"
+							itemscope
+							itemprop="acceptedAnswer"
+							itemtype="https://schema.org/Answer"
 						}
 					>
 						if item.Content != "" {
-							<div if props.IsFAQs { itemprop="text" }>
-								@templ.Raw(item.Content)
+							<div class="collapse-content-inner" if props.IsFAQs {
+	itemprop="text"
+}>
+								<p>@templ.Raw(item.Content)
+</p>
 							</div>
 						}
 					</div><!-- /Content -->

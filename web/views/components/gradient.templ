@@ -1,0 +1,24 @@
+package components
+
+type GradientColour int
+
+const (
+	GradientColourBlue GradientColour = iota
+	GradientColourPink
+)
+
+templ Gradient(colour GradientColour) {
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<figure class="gradient">
+					if colour == GradientColourBlue {
+						<img loading="lazy" src="/assets/images/gradient-line-blue.svg" alt="Gradient Blue"/>
+					} else {
+						<img loading="lazy" src="/assets/images/gradient-line-pink.svg" alt="Gradient Pink"/>
+					}
+				</figure>
+			</div><!-- /Col -->
+		</div><!-- /Row -->
+	</div>
+}

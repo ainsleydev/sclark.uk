@@ -57,6 +57,7 @@
 
 	@include media-desk {
 		@include full-height;
+		max-height: 1200px;
 
 		&-logos {
 			margin-top: 200px;

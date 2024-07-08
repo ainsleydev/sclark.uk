@@ -1,14 +1,22 @@
 package blocks
 
 type LogosProps struct {
-	Title string
-	Items []LogosItem
+	Title  string
+	IsHero bool
+	Items  []LogosItem
 }
 
 type LogosItem struct {
 	Title string
-	Src string
-	URL string
+	Src   string
+	URL   string
+}
+
+func logosLoadingAttr(isHero bool) string {
+	if isHero {
+		return "eager"
+	}
+	return "lazy"
 }
 
 templ Logos(props LogosProps) {
@@ -22,11 +30,11 @@ templ Logos(props LogosProps) {
 			for _, img := range props.Items {
 				if img.URL != "" {
 					<a href={ templ.SafeURL(img.URL) } class="logos-item logos-link" target="_blank">
-						<img src={ img.Src } alt={ img.Title } />
+						<img loading={ logosLoadingAttr(props.IsHero) } src={ img.Src } alt={ img.Title }/>
 					</a>
 				} else {
 					<figure class="logos-item">
-						<img src={ img.Src } alt={ img.Title } />
+						<img loading={ logosLoadingAttr(props.IsHero) } src={ img.Src } alt={ img.Title }/>
 					</figure>
 				}
 			}
