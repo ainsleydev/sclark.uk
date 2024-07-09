@@ -36,7 +36,7 @@
 		"lint": "turbo lint",
 		"fix": "turbo lint && prettier --write .",
 		"commit": "cz",
-		"types": "pnpm --filter cms run generate:types && pnpm --filter web run generate:types",
+		"types": "turbo run generate:schema --filter=cms && turbo run generate:types --filter=web",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"packageManager": "pnpm@9.1.4",

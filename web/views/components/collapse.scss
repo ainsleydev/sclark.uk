@@ -24,13 +24,6 @@
 			display: none;
 		}
 
-		&-active {
-
-			#{$self}-arrow {
-				transform: rotate(180deg);
-			}
-		}
-
 		&::after {
 			content: '';
 			display: block;
@@ -109,6 +102,21 @@
 
 		&-inner {
 			padding-bottom: 1.2rem;
+		}
+	}
+
+	// Active
+	// =========================================================================
+
+	&-item-active {
+
+		#{$self}-title {
+			color:rgba(0,0,0,0);
+			animation-play-state: paused;
+		}
+
+		#{$self}-arrow {
+			transform: rotate(180deg);
 		}
 	}
 }

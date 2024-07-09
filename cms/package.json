@@ -9,6 +9,7 @@
 		"dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
 		"devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
 		"generate:types": "payload generate:types",
+		"generate:schema": "npx tsx src/generate-schema.ts",
 		"payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
 		"start": "cross-env NODE_OPTIONS=--no-deprecation next start",
 		"check": "pnpm run format && pnpm run lint",
@@ -37,10 +38,11 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",
-		"@types/node": "^20.14.9",
+		"@types/node": "^20.14.10",
 		"@types/react": "npm:types-react@19.0.0-beta.2",
 		"@types/react-dom": "npm:types-react-dom@19.0.0-beta.2",
 		"dotenv": "^16.4.5",
+		"tsx": "^4.16.2",
 		"typescript": "5.5.2"
 	},
 	"engines": {

@@ -59,7 +59,14 @@ export default buildConfig({
 	}),
 	secret: env("PAYLOAD_SECRET", ""),
 	typescript: {
-		outputFile: path.resolve(dirname, "payload-types.ts"),
+		outputFile: path.resolve(dirname, "./types/payload.ts"),
+		schema: [
+			({ jsonSchema }) => {
+				// biome-ignore lint/performance/noDelete: <explanation>
+				delete jsonSchema.properties.auth;
+				return jsonSchema
+			},
+		]
 	},
 	db: postgresAdapter({
 		pool: {

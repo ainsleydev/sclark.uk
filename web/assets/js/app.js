@@ -46,7 +46,7 @@ headerScroll();
  * Initialise any collapsible elements
  */
 new Collapse({
-	collapse: true,
+	accordion: true,
 	container: ".collapse",
 	item: ".collapse-item",
 	inner: ".collapse-content",
