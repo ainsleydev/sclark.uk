@@ -8,6 +8,7 @@
 		"build": "cross-env NODE_OPTIONS=--no-deprecation next build",
 		"dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
 		"devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+		"gen": "pnpm run generate:schema && pnpm run generate:types",
 		"generate:types": "payload generate:types",
 		"generate:schema": "npx tsx src/generate-schema.ts",
 		"payload": "cross-env NODE_OPTIONS=--no-deprecation payload",

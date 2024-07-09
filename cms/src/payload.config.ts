@@ -7,6 +7,7 @@ import type { Config, Field } from "payload";
 import sharp from "sharp";
 
 import { Clients } from "./collections/Clients";
+import {Pages} from "./collections/Pages";
 import { Portfolio } from "./collections/Portfolio";
 import { PortfolioCategories } from "./collections/PortfolioCategories";
 import { Posts } from "./collections/Posts";
@@ -26,6 +27,7 @@ import { s3Adapter } from "@payloadcms/plugin-cloud-storage/s3";
 import { formBuilderPlugin } from "@payloadcms/plugin-form-builder";
 import { seoPlugin } from "@payloadcms/plugin-seo";
 
+
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
@@ -35,6 +37,7 @@ export default buildConfig({
 	},
 	collections: [
 		Posts,
+		Pages,
 		Clients,
 		Reviews,
 		Portfolio,

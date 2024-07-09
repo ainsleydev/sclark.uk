@@ -21,6 +21,7 @@ export type NavigationHeaderLinks =
 export interface Config {
   collections: {
     posts: Post;
+    pages: Page;
     clients: Client;
     reviews: Review;
     portfolio: Portfolio;
@@ -225,15 +226,27 @@ export interface Meta {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "clients".
+ * via the `definition` "pages".
  */
-export interface Client {
+export interface Page {
   id: number;
-  name: string;
-  url: string;
-  logo: number | Media;
+  layout: BlockReviews[];
+  isHome?: boolean | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockReviews".
+ */
+export interface BlockReviews {
+  title?: string | null;
+  content?: string | null;
+  items?: (number | Review)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'reviews-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -247,6 +260,18 @@ export interface Review {
     lastName: string;
     description: string;
   };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "clients".
+ */
+export interface Client {
+  id: number;
+  name: string;
+  url: string;
+  logo: number | Media;
   updatedAt: string;
   createdAt: string;
 }

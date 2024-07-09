@@ -1,8 +1,10 @@
 import * as fs from "node:fs";
 import path from "node:path";
-import { configToJSONSchema, getPayload } from "payload";
+// import { configToJSONSchema, getPayload } from "payload";
+import { getPayload} from "payload";
 import { importConfig } from "payload/node";
-import {fileURLToPath} from "node:url";
+import { fileURLToPath } from "node:url";
+import { configToJSONSchema} from "@ainsleydev/payload-helper/src/gen/schema";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -27,7 +29,7 @@ export async function generateTypes(): Promise<void> {
 
 	const jsonSchema = configToJSONSchema(payload.config, payload.db.defaultIDType);
 	const prettyJSON = JSON.stringify(jsonSchema, null, 4);
-	const outFile = path.resolve(dirname, 'types/payload.json');
+	const outFile = path.resolve(dirname, "types/payload.json");
 
 	fs.writeFileSync(outFile, prettyJSON);
 

@@ -34,10 +34,10 @@
 		"build:cms": "turbo build --filter=cms",
 		"build:web": "turbo build --filter=web",
 		"lint": "turbo lint",
-		"fix": "turbo lint && prettier --write .",
+		"fix": "turbo lint",
 		"commit": "cz",
-		"types": "turbo run generate:schema --filter=cms && turbo run generate:types --filter=web",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"gen": "turbo run gen --filter=cms && turbo run gen --filter=web",
+		"test": "turbo run test --filter=web"
 	},
 	"packageManager": "pnpm@9.1.4",
 	"devDependencies": {
