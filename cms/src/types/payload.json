@@ -562,10 +562,16 @@
                     ]
                 },
                 "logo": {
-                    "$ref": "#/definitions/media",
-                    "type": [
-                        "object",
-                        "null"
+                    "oneOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "$ref": "#/definitions/media"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 },
                 "robots": {
@@ -609,15 +615,7 @@
                     "required": []
                 },
                 "meta": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "goJSONSchema": {
-                        "imports": [
-                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
-                        ],
-                        "nillable": false,
-                        "type": "payload.SettingsMeta"
-                    }
+                    "$ref": "#/definitions/Meta"
                 },
                 "updatedAt": {
                     "type": [
@@ -760,22 +758,20 @@
                     ]
                 },
                 "thumbnail": {
-                    "$ref": "#/definitions/media",
-                    "type": [
-                        "object",
-                        "null"
+                    "oneOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "$ref": "#/definitions/media"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 },
                 "meta": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "goJSONSchema": {
-                        "imports": [
-                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
-                        ],
-                        "nillable": false,
-                        "type": "payload.SettingsMeta"
-                    }
+                    "$ref": "#/definitions/Meta"
                 },
                 "publishedAt": {
                     "type": [
@@ -789,7 +785,14 @@
                         "null"
                     ],
                     "items": {
-                        "$ref": "#/definitions/posts"
+                        "oneOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "$ref": "#/definitions/posts"
+                            }
+                        ]
                     }
                 },
                 "tags": {
@@ -851,13 +854,6 @@
                 },
                 "layout": {
                     "type": "array",
-                    "goJSONSchema": {
-                        "imports": [
-                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
-                        ],
-                        "nillable": false,
-                        "type": "payload.Blocks"
-                    },
                     "items": {
                         "oneOf": [
                             {
@@ -911,8 +907,14 @@
                     "type": "string"
                 },
                 "logo": {
-                    "$ref": "#/definitions/media",
-                    "type": "object"
+                    "oneOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "$ref": "#/definitions/media"
+                        }
+                    ]
                 },
                 "updatedAt": {
                     "type": "string"
@@ -994,14 +996,37 @@
                     "type": "string"
                 },
                 "company": {
-                    "$ref": "#/definitions/clients"
+                    "oneOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "$ref": "#/definitions/clients"
+                        }
+                    ]
                 },
                 "category": {
-                    "$ref": "#/definitions/portfolio-categories"
+                    "oneOf": [
+                        {
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        },
+                        {
+                            "$ref": "#/definitions/portfolio-categories"
+                        }
+                    ]
                 },
                 "image": {
-                    "$ref": "#/definitions/media",
-                    "type": "object"
+                    "oneOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "$ref": "#/definitions/media"
+                        }
+                    ]
                 },
                 "updatedAt": {
                     "type": "string"
@@ -1807,13 +1832,6 @@
                         "array",
                         "null"
                     ],
-                    "goJSONSchema": {
-                        "imports": [
-                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
-                        ],
-                        "nillable": false,
-                        "type": "payload.Blocks"
-                    },
                     "items": {
                         "oneOf": [
                             {
@@ -1860,7 +1878,7 @@
                                         ]
                                     },
                                     "blockType": {
-                                        "type": "string"
+                                        "const": "checkbox"
                                     }
                                 },
                                 "required": [
@@ -1906,7 +1924,7 @@
                                         ]
                                     },
                                     "blockType": {
-                                        "type": "string"
+                                        "const": "country"
                                     }
                                 },
                                 "required": [
@@ -1952,7 +1970,7 @@
                                         ]
                                     },
                                     "blockType": {
-                                        "type": "string"
+                                        "const": "email"
                                     }
                                 },
                                 "required": [
@@ -2055,7 +2073,7 @@
                                         ]
                                     },
                                     "blockType": {
-                                        "type": "string"
+                                        "const": "message"
                                     }
                                 },
                                 "required": [
@@ -2106,7 +2124,7 @@
                                         ]
                                     },
                                     "blockType": {
-                                        "type": "string"
+                                        "const": "number"
                                     }
                                 },
                                 "required": [
@@ -2186,7 +2204,7 @@
                                         ]
                                     },
                                     "blockType": {
-                                        "type": "string"
+                                        "const": "select"
                                     }
                                 },
                                 "required": [
@@ -2232,59 +2250,7 @@
                                         ]
                                     },
                                     "blockType": {
-                                        "type": "string"
-                                    }
-                                },
-                                "required": [
-                                    "blockType",
-                                    "name"
-                                ]
-                            },
-                            {
-                                "type": "object",
-                                "additionalProperties": false,
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "label": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "width": {
-                                        "type": [
-                                            "number",
-                                            "null"
-                                        ]
-                                    },
-                                    "defaultValue": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "required": {
-                                        "type": [
-                                            "boolean",
-                                            "null"
-                                        ]
-                                    },
-                                    "id": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockName": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockType": {
-                                        "type": "string"
+                                        "const": "state"
                                     }
                                 },
                                 "required": [
@@ -2336,7 +2302,59 @@
                                         ]
                                     },
                                     "blockType": {
+                                        "const": "text"
+                                    }
+                                },
+                                "required": [
+                                    "blockType",
+                                    "name"
+                                ]
+                            },
+                            {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "name": {
                                         "type": "string"
+                                    },
+                                    "label": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "width": {
+                                        "type": [
+                                            "number",
+                                            "null"
+                                        ]
+                                    },
+                                    "defaultValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "required": {
+                                        "type": [
+                                            "boolean",
+                                            "null"
+                                        ]
+                                    },
+                                    "id": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "blockName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "blockType": {
+                                        "const": "textarea"
                                     }
                                 },
                                 "required": [
@@ -2536,7 +2554,14 @@
                     "type": "number"
                 },
                 "form": {
-                    "$ref": "#/definitions/forms"
+                    "oneOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "$ref": "#/definitions/forms"
+                        }
+                    ]
                 },
                 "submissionData": {
                     "type": [
@@ -2598,7 +2623,14 @@
                                     "const": "users"
                                 },
                                 "value": {
-                                    "$ref": "#/definitions/users"
+                                    "oneOf": [
+                                        {
+                                            "type": "number"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/users"
+                                        }
+                                    ]
                                 }
                             },
                             "required": [
@@ -3016,6 +3048,60 @@
             },
             "required": []
         },
+        "Meta": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "image": {
+                    "oneOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "$ref": "#/definitions/media"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "private": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "canonicalURL": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "structuredData": {
+                    "type": [
+                        "object",
+                        "array",
+                        "string",
+                        "number",
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "required": []
+        },
         "NavigationHeaderLinks": {
             "type": [
                 "array",
@@ -3066,7 +3152,14 @@
                         "null"
                     ],
                     "items": {
-                        "$ref": "#/definitions/reviews"
+                        "oneOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "$ref": "#/definitions/reviews"
+                            }
+                        ]
                     }
                 },
                 "id": {
@@ -3082,12 +3175,67 @@
                     ]
                 },
                 "blockType": {
-                    "type": "string"
+                    "const": "reviews-block"
                 }
             },
             "required": [
                 "blockType"
             ]
+        },
+        "auth": {
+            "users": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "forgotPassword": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "email": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "email"
+                        ]
+                    },
+                    "login": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "password": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "password",
+                            "email"
+                        ]
+                    },
+                    "registerFirstUser": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "email": {
+                                "type": "string"
+                            },
+                            "password": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "email",
+                            "password"
+                        ]
+                    }
+                },
+                "required": [
+                    "forgotPassword",
+                    "login",
+                    "registerFirstUser"
+                ],
+                "title": "UserAuthOperations"
+            }
         }
     },
     "type": "object",
@@ -3167,11 +3315,43 @@
                 "settings",
                 "navigation"
             ]
+        },
+        "locale": {
+            "type": "null"
+        },
+        "user": {
+            "oneOf": [
+                {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/users"
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "collection": {
+                                    "type": "string",
+                                    "enum": [
+                                        "users"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "collection"
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     },
     "required": [
+        "user",
+        "locale",
         "collections",
-        "globals"
+        "globals",
+        "auth"
     ],
     "title": "Config"
 }
