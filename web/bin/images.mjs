@@ -134,16 +134,13 @@ function generateFileName(filePath, sizeName, formatOptions) {
 	const formattedSizeName = sizeName.replaceAll("_", "-");
 	const formatExtension = formatOptions ? `.${formatOptions.format}` : originalExtension;
 
-	if (formattedSizeName === 'webp' || formattedSizeName === 'avif') {
+	if (formattedSizeName === "webp" || formattedSizeName === "avif") {
 		return `${originalName}${formatExtension}`;
 	}
 
-	if (formattedSizeName.includes('avif') || (formattedSizeName.includes('webp'))) {
-		const size = formattedSizeName
-			.replace('avif', '')
-			.replace('webp', '')
-			.replaceAll('-', '')
-		return `${originalName}-${size}${formatExtension}`
+	if (formattedSizeName.includes("avif") || formattedSizeName.includes("webp")) {
+		const size = formattedSizeName.replace("avif", "").replace("webp", "").replaceAll("-", "");
+		return `${originalName}-${size}${formatExtension}`;
 	}
 
 	return `${originalName}-${formattedSizeName}${formatExtension}`;
@@ -194,26 +191,24 @@ async function copyAndConvertImages(srcDir, destDir) {
 			const filePath = path.join(srcDir, file);
 			const destPathOriginal = path.join(destDir, file);
 
-			if (path.extname(file).toLowerCase() === '.svg') {
+			if (path.extname(file).toLowerCase() === ".svg") {
 				continue;
 			}
 
 			if (fs.exists(destPathOriginal)) {
-				continue
+				continue;
 			}
 
 			const fileStat = await fs.stat(filePath);
 			if (fileStat.isDirectory()) {
 				await copyAndConvertImages(filePath, destPathOriginal);
 			} else if (fileStat.isFile()) {
-
 				// Copy the original file
 				try {
 					await fs.copy(filePath, destPathOriginal);
-				} catch(err) {
+				} catch (err) {
 					console.log("hey", filePath, destPathOriginal, err);
 				}
-
 
 				// Process each size configuration
 				for (const size of imageSizes) {

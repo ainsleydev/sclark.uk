@@ -1,11 +1,11 @@
 package components
 
 import (
+	"log/slog"
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
-	"path"
-	"log/slog"
 )
 
 // removeFileExtension removes the file extension from a given filename.
@@ -25,7 +25,7 @@ var (
 
 // getImages returns a list of image files associated with the original file in the same directory.
 func getImages(original string) []string {
- 	pwd, err := os.Getwd()
+	pwd, err := os.Getwd()
 	if err != nil {
 		slog.Error("Error getting current working directory: " + err.Error())
 		return nil
@@ -44,9 +44,9 @@ func getImages(original string) []string {
 		for _, ext := range extensions {
 			var imagePath string
 			if size == "" {
-				imagePath = filepath.Join(baseName+ext)
+				imagePath = filepath.Join(baseName + ext)
 			} else {
-				imagePath = filepath.Join(baseName+"-"+size+ext)
+				imagePath = filepath.Join(baseName + "-" + size + ext)
 			}
 
 			// Check if the image file exists
@@ -60,12 +60,9 @@ func getImages(original string) []string {
 }
 
 templ Picture(path string) {
-
 	<picture>
-		<img src={ path } alt="">
+		<img src={ path } alt=""/>
 		//for _, path := range getImages(path) {
-
 		//}
 	</picture>
-
 }

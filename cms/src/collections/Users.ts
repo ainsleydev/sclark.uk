@@ -5,9 +5,28 @@ export const Users: CollectionConfig = {
 	admin: {
 		useAsTitle: "email",
 	},
-	auth: true,
+	auth: {
+		maxLoginAttempts: 5,
+		lockTime: 600 * 1000,
+		useAPIKey: true,
+	},
 	fields: [
-		// Email added by default
-		// Add more fields as needed
+		{
+			name: 'name',
+			type: 'text',
+			required: true,
+			validate: (value: string) => {
+				if (!value) {
+					return 'Name is required';
+				}
+
+				const names = value.split(' ');
+				if (names.length !== 2) {
+					return 'Name must include both first and last name';
+				}
+
+				return true;
+			},
+		},
 	],
 };

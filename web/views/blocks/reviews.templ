@@ -1,7 +1,6 @@
 package blocks
 
 import (
- 	"fmt"
 	"github.com/ainsleydev/sclark.uk/types"
 	"github.com/ainsleydev/sclark.uk/views/components"
 )
@@ -9,23 +8,22 @@ import (
 templ Reviews(props types.BlockReviews) {
 	<section class="section reviews">
 		<div class="container">
-    		<div class="row">
-    			<div class="col-12">
-    				<!-- Title -->
-    				if props.Title != nil {
-    					<h2>{ *props.Title } </h2>
-    				}
-    				<!-- Content -->
-    				if props.Content != nil {
-    					<p>{ *props.Content }</p>
-    				}
-    				<!-- Reviews -->
-    				for _, review := range props.Items {
+			<div class="row">
+				<div class="col-12">
+					<!-- Title -->
+					if props.Title != nil {
+						<h2>{ *props.Title } </h2>
+					}
+					<!-- Content -->
+					if props.Content != nil {
+						<p>{ *props.Content }</p>
+					}
+					<!-- Reviews -->
+					for _, review := range props.Items {
 						@components.Review(review)
-    				}
-    			</div><!-- /Col -->
-    		</div><!-- /Row -->
-    	</div><!-- /Container -->
+					}
+				</div><!-- /Col -->
+			</div><!-- /Row -->
+		</div><!-- /Container -->
 	</section>
-
 }

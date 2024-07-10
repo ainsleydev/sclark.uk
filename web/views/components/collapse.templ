@@ -28,9 +28,12 @@ templ Collapse(props CollapseProps) {
 						}
 					>
 						if item.Title != "" {
-							<h5 class="collapse-title" if props.IsFAQs {
-	itemprop="name"
-}>
+							<h5
+								class="collapse-title"
+								if props.IsFAQs {
+									itemprop="name"
+								}
+							>
 								{ item.Title }
 							</h5>
 						}
@@ -46,11 +49,15 @@ templ Collapse(props CollapseProps) {
 						}
 					>
 						if item.Content != "" {
-							<div class="collapse-content-inner" if props.IsFAQs {
-	itemprop="text"
-}>
-								<p>@templ.Raw(item.Content)
-</p>
+							<div
+								class="collapse-content-inner"
+								if props.IsFAQs {
+									itemprop="text"
+								}
+							>
+								<p>
+									@templ.Raw(item.Content)
+								</p>
 							</div>
 						}
 					</div><!-- /Content -->

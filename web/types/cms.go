@@ -225,7 +225,6 @@ const AddressCountryZimbabwe AddressCountry = "Zimbabwe"
 
 type Auth interface{}
 
-
 type BlockReviews struct {
 	// BlockName corresponds to the JSON schema field "blockName".
 	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`

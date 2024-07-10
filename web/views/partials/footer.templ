@@ -1,23 +1,58 @@
 package partials
 
 import (
+
 	"strconv"
 	"time"
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+	"github.com/ainsleydev/sclark.uk/views/components"
+	"context"
 )
 
-func currentYear() string {
-	return strconv.Itoa(time.Now().Year())
+type footerContent struct {
+	Title string
+	Content string
+}
+
+func getFooterContent(ctx context.Context) footerContent {
+	settings := payload.MustGetSettings(ctx)
+	if settings.Extra == nil {
+		return footerContent{}
+	}
+
+	extra := settings.Extra
+	if extra["footer"] == nil {
+		return footerContent{}
+	}
+	footer := extra["footer"].(map[string]any)
+
+	content := footerContent{}
+	if footer["title"] != nil {
+		content.Title = footer["title"].(string)
+	}
+
+	if footer["content"] != nil {
+		content.Content = footer["content"].(string)
+	}
+
+	return content
 }
 
 templ Footer() {
+	{{ content := getFooterContent(ctx) }}
 	<footer class="footer">
 		<div class="container">
 			<!-- Main -->
 			<div class="row">
 				<div class="col-12 col-desk-4">
 					<div class="footer-main">
-						<h4>Can't find the right words?</h4>
-						<p>Combining a love for the English language and written word something else and something else.</p>
+				      	if content.Title != "" {
+							<h4>{ content.Title }</h4>
+						}
+						if content.Content != "" {
+							<p>{ content.Content }</p>
+						}
+						@components.Social(components.SocialProps{})
 					</div>
 				</div><!-- /Col -->
 			</div><!-- /Row -->
@@ -25,7 +60,7 @@ templ Footer() {
 			<div class="row">
 				<div class="col-12">
 					<div class="footer-sub">
-						<p>© { currentYear() } S.Clark.UK All rights reserved</p>
+						<p>© { strconv.Itoa(time.Now().Year()) } S.Clark.UK All rights reserved</p>
 						<p>Website by <a href="https://ainsley.dev">ainsley.dev</a></p>
 					</div>
 				</div><!-- /Col -->

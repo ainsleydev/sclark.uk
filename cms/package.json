@@ -6,8 +6,8 @@
 	"type": "module",
 	"scripts": {
 		"build": "cross-env NODE_OPTIONS=--no-deprecation next build",
-		"dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-		"devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+		"dev": "cross-env NODE_OPTIONS=--no-deprecation next dev -p 4000",
+		"devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev -p 4000",
 		"gen": "pnpm run generate:schema && pnpm run generate:types",
 		"generate:types": "payload generate:types",
 		"generate:schema": "npx tsx src/generate-schema.ts",

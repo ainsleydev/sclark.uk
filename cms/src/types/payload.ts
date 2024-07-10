@@ -306,8 +306,12 @@ export interface PortfolioCategory {
  */
 export interface User {
   id: number;
+  name: string;
   updatedAt: string;
   createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
   email: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;
