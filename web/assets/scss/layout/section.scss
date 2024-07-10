@@ -4,6 +4,21 @@
 
 .section {
 	position: relative;
-	/*padding-top: var(--section-margin);*/
 	padding-bottom: var(--section-margin);
+
+	// Colour
+	// ==========================================================================
+
+	&-dark {
+		background-color: var(--colour-foreground);
+
+		* {
+			color: var(--colour-background);
+		}
+
+		h6,
+		p {
+			color: var(--colour-copy-dark);
+		}
+	}
 }

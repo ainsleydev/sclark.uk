@@ -6,7 +6,6 @@ import (
 )
 
 type SocialProps struct {
-
 }
 
 type socialLink struct {
@@ -17,7 +16,7 @@ type socialLink struct {
 
 func getSocialLinks(ctx context.Context) []socialLink {
 	settings := payload.MustGetSettings(ctx)
-	if settings.Social == nil {
+	if settings == nil || settings.Social == nil {
 		return nil
 	}
 	return []socialLink{
@@ -36,7 +35,7 @@ templ Social(props SocialProps) {
 				<a class="social-link" href={ templ.SafeURL(*link.URL) } target="_blank">
 					<!-- TODO - Use picture component, max size is thumbnail -->
 					<picture class="social-picture">
-						<img src={ link.Icon } alt={ link.Name + " Icon" } />
+						<img src={ link.Icon } alt={ link.Name + " Icon" }/>
 					</picture>
 				</a>
 			}

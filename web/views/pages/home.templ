@@ -4,9 +4,11 @@ import (
 	"github.com/ainsleydev/sclark.uk/views/blocks"
 	"github.com/ainsleydev/sclark.uk/views/components"
 	"github.com/ainsleydev/sclark.uk/views/layouts"
+	"github.com/ainsleydev/webkit/pkg/markup"
 )
 
 templ Home() {
+	@markup.Picture(ctx, markup.Static("/assets/images/arrow.svg"))
 	@layouts.Base() {
 		<!-- =====================
 			Hero
