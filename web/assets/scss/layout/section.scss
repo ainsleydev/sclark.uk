@@ -6,6 +6,13 @@
 	position: relative;
 	padding-bottom: var(--section-margin);
 
+	// Mods
+	// ==========================================================================
+
+	&-padding-top {
+		padding-top: var(--section-margin);
+	}
+
 	// Colour
 	// ==========================================================================
 
@@ -21,4 +28,12 @@
 			color: var(--colour-copy-dark);
 		}
 	}
+
+	// Fades
+	// ==========================================================================
+
+	&-fade-pink {
+		background: linear-gradient(to bottom, #FFE5F2 0%, #FEF3F1 57%, var(--colour-background) 100%);
+	}
 }
+

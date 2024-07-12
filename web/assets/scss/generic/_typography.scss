@@ -152,6 +152,11 @@ p {
 			max-width: 620px;
 		}
 	}
+
+	&.small {
+		font-size: 1rem;
+		line-height: 1.6;
+	}
 }
 
 // Lists
@@ -186,8 +191,9 @@ a {
 
 small {
 	display: inline-block;
-	font-size: 0.85rem;
+	font-size: 0.9rem;
 	line-height: 1.6;
+	color: var(--colour-copy);
 }
 
 // Properties

@@ -6,24 +6,32 @@ import (
 )
 
 templ Reviews(props types.BlockReviews) {
-	<section class="section reviews">
+	<section class="section section-fade-pink section-padding-top reviews">
 		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<!-- Title -->
-					if props.Title != nil {
-						<h2>{ *props.Title } </h2>
-					}
-					<!-- Content -->
-					if props.Content != nil {
-						<p>{ *props.Content }</p>
-					}
-					<!-- Reviews -->
-					for _, review := range props.Items {
-						@components.Review(review)
+			<!-- Intro -->
+			<div class="row justify-content-center">
+				<div class="col-12 col-tab-10 col-desk-7 col-desk-large-6">
+					@components.Group("group-centre", "group-large") {
+						<!-- Title -->
+						if props.Title != nil {
+							<h2>{ *props.Title } </h2>
+						}
+						<!-- Content -->
+						if props.Content != nil {
+							<p>{ *props.Content }</p>
+						}
 					}
 				</div><!-- /Col -->
+			</div><!-- /Row -->
+			<!-- Reviews -->
+			<div class="row justify-content-center">
+				for _, review := range props.Items {
+					<div class="col-12 col-tab-10 col-desk-4 review-col">
+						@components.Review(review)
+					</div><!-- /Col -->
+				}
 			</div><!-- /Row -->
 		</div><!-- /Container -->
 	</section>
 }
+

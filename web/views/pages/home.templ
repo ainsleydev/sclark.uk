@@ -1,6 +1,7 @@
 package pages
 
 import (
+	"github.com/ainsleydev/sclark.uk/content"
 	"github.com/ainsleydev/sclark.uk/views/blocks"
 	"github.com/ainsleydev/sclark.uk/views/components"
 	"github.com/ainsleydev/sclark.uk/views/layouts"
@@ -150,6 +151,10 @@ templ Home() {
 				</div><!-- /Row -->
 			</div><!-- /Container -->
 		</section>
+		<!-- =====================
+			Reviews
+			===================== -->
+		@blocks.Reviews(content.Reviews)
 		<!-- =====================
 			Contact
 			===================== -->

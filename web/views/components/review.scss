@@ -3,10 +3,52 @@
 // -----------------------------------------------------------------------------
 
 .review {
+	$self: &;
 	position: relative;
-	padding: 20px;
+	padding: 1.8rem;
+	border: 1px solid var(--colour-border);
+	background-color: var(--colour-background);
+	border-radius: 6px;
+	box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.08);
+	margin-bottom: var(--spacing-default);
+
+	// Mods
+	// ==========================================================================
+
+	&-col:last-child #{$self} {
+		margin-bottom: 0;
+	}
+
+	// Content
+	// ==========================================================================
 
 	&-content {
+		display: block;
+		color: var(--colour-copy);
+		margin-bottom: var(--spacing-default);
+	}
+
+	// Author
+	// ==========================================================================
+
+	&-author {
+
+		&-name {
+			color: var(--colour-foreground);
+			font-weight: bold;
+			margin-bottom: -2px;
+			line-height: 1;
+		}
+	}
+
+	// Desktop
+	// ==========================================================================
+
+	@include media-desk {
+
+		&-content {
+			@include ellipsis(4);
+		}
 
 	}
 }
