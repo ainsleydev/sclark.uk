@@ -6,8 +6,12 @@ import (
 )
 
 templ Reviews(props types.BlockReviews) {
-	<section class="section section-fade-pink section-padding-top reviews">
-		<div class="container">
+	<section class="section section-fade-pink reviews">
+		<!-- Teacher Scrabble -->
+		<figure class="reviews-scrabble">
+			<img loading="lazy" src="/assets/images/illustrations/teacher-scrabble.svg" alt="Scrabble spelling Teacher">
+		</figure>
+		<div class="reviews-content container">
 			<!-- Intro -->
 			<div class="row justify-content-center">
 				<div class="col-12 col-tab-10 col-desk-7 col-desk-large-6">
@@ -26,12 +30,16 @@ templ Reviews(props types.BlockReviews) {
 			<!-- Reviews -->
 			<div class="row justify-content-center">
 				for _, review := range props.Items {
-					<div class="col-12 col-tab-10 col-desk-4 review-col">
+					<div class="col-12 col-tab-10 col-desk-4 reviews-col">
 						@components.Review(review)
 					</div><!-- /Col -->
 				}
 			</div><!-- /Row -->
 		</div><!-- /Container -->
+		<!-- Thumbs Up -->
+		<figure class="reviews-thumbs-up">
+			<img loading="lazy" src="/assets/images/illustrations/thumbs-up.svg" alt="Thumbs Up Emoji">
+		</figure>
 	</section>
 }
 

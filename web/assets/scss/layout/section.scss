@@ -32,8 +32,18 @@
 	// Fades
 	// ==========================================================================
 
-	&-fade-pink {
-		background: linear-gradient(to bottom, #FFE5F2 0%, #FEF3F1 57%, var(--colour-background) 100%);
+	&-fade {
+		padding-top: var(--section-margin);
+
+		&-pink {
+			padding-top: var(--section-margin);
+			background: linear-gradient(to bottom, #FFE5F2 0%, #FEF3F1 57%, var(--colour-background) 100%);
+		}
+
+		&-blue {
+			padding-top: var(--section-margin);
+			background: linear-gradient(to bottom, #F2F8FF 0%, #F8FCFF 55%, var(--colour-background) 100%);
+		}
 	}
 }
 

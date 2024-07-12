@@ -3,21 +3,12 @@
 // -----------------------------------------------------------------------------
 
 .review {
-	$self: &;
 	position: relative;
 	padding: 1.8rem;
 	border: 1px solid var(--colour-border);
 	background-color: var(--colour-background);
 	border-radius: 6px;
 	box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.08);
-	margin-bottom: var(--spacing-default);
-
-	// Mods
-	// ==========================================================================
-
-	&-col:last-child #{$self} {
-		margin-bottom: 0;
-	}
 
 	// Content
 	// ==========================================================================
