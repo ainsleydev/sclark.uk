@@ -14,7 +14,7 @@ templ Reviews(props types.BlockReviews) {
 		<div class="reviews-content container">
 			<!-- Intro -->
 			<div class="row justify-content-center">
-				<div class="col-12 col-tab-10 col-desk-7 col-desk-large-6">
+				<div class="col-12 col-tab-10 col-desk-6 col-desk-large-5">
 					@components.Group("group-centre", "group-large") {
 						<!-- Title -->
 						if props.Title != "" {
@@ -28,7 +28,7 @@ templ Reviews(props types.BlockReviews) {
 				</div><!-- /Col -->
 			</div><!-- /Row -->
 			<!-- Reviews -->
-			<div class="row justify-content-center">
+			<div class="row justify-content-center justify-content-desk-end">
 				for _, review := range props.Items {
 					<div class="col-12 col-tab-10 col-desk-4 reviews-col">
 						@components.Review(review)

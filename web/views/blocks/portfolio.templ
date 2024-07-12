@@ -10,7 +10,7 @@ templ Portfolio(props types.BlockPortfolio) {
 		<div class="container">
 			<!-- Intro -->
 			<div class="row justify-content-tab-center justify-content-desk-start">
-				<div class="col-12 col-tab-10 col-desk-6">
+				<div class="col-12 col-tab-10 col-desk-6 col-desk-large-5">
 					@components.Group("group-large") {
 						<!-- Title -->
 						if props.Title != "" {
@@ -24,7 +24,7 @@ templ Portfolio(props types.BlockPortfolio) {
 				</div><!-- /Col -->
 			</div><!-- /Row -->
 			<!-- Items -->
-			<div class="row justify-content-center">
+			<div class="row justify-content-center justify-content-desk-end">
 				for _, item := range props.Items {
 					<div class="col-12 col-tab-10 col-desk-6 portfolio-col">
 						@components.PortfolioItem(item)

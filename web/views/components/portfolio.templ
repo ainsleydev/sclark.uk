@@ -5,5 +5,16 @@ import "github.com/ainsleydev/sclark.uk/types"
 templ PortfolioItem(props types.Portfolio) {
 	<div class="portfolio">
 
+		<!-- Title -->
+		<h5 class="portfolio-title">
+			{ props.Title }
+		</h5>
+
+
+		if props.Image.Url != nil {
+			<img class="portfolio-image" loading="lazy" src={ *props.Image.Url } alt={ props.Image.Alt } >
+		}
+
+
 	</div>
 }

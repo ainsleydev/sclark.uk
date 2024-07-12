@@ -11,20 +11,19 @@ var Portfolio = types.BlockPortfolio{
 	Items: []types.Portfolio{
 		{
 			Title:    "All You Need to Know About Getting a Pet Tortoise",
-			Category: nil,
+			Date:     "13/10/2022",
+			Url:      "https://decspets.ie/insights/all-you-need-to-know-about-getting-a-pet-tortoise/",
+			Category: &types.PortfolioCategories{Title: "E-Commerce"},
 			Company: types.Clients{
-				Logo:      types.Media{},
-				Name:      "",
-				UpdatedAt: "",
-				Url:       "",
+				Name: "Dec's Pets",
+				Url:  "https://decspets.ie",
+				Logo: types.Media{
+					Url: ptr.StringPtr("https://decspets.ie/wp-content/uploads/2021/03/Decs-Pets-Logo-1.png"),
+				},
 			},
-			CreatedAt: "",
-			Date:      "",
-			Id:        0,
-			Image:     types.Media{},
-
-			UpdatedAt: "",
-			Url:       "",
+			Image: types.Media{
+				Url: ptr.StringPtr("https://cdn-cgpdj.nitrocdn.com/osReepnOIsLpTltbafzloukxpexawMzs/assets/images/optimized/rev-f49c1a0/decspets.ie/wp-content/uploads/2022/09/melissa-keizer-X-0FisCRIaA-unsplash-scaled.jpg"),
+			},
 		},
 	},
 }
