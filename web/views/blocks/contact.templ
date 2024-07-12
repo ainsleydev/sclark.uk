@@ -12,7 +12,7 @@ templ Contact() {
 			<div class="row justify-content-tab-center justify-content-desk-between">
 				<!-- Content -->
 				<div class="col-12 col-tab-10 col-desk-5">
-					@components.Group() {
+					@components.Group("group-large") {
 						<h2>Contact now</h2>
 						<p>Don’t just take my word for it – here’s what some of my clients have to say. Don’t just take my word for it – here’s what some of my clients have to say. Don’t just take my word for it – here’s what some of my clients have to say.</p>
 					}
@@ -51,6 +51,8 @@ templ Contact() {
 				<!-- Form -->
 				<div class="col-12 col-tab-10 col-desk-5">
 					<form class="form">
+						<h4>Get in touch</h4>
+						<p>Fill out the quick form below and we will get back in touch.</p>
 						<div class="form-group">
 							<label class="form-label" for="form-name">Name</label>
 							<input class="form-input" type="text" id="form-name" autocomplete="given-name" />

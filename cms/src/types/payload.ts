@@ -230,7 +230,7 @@ export interface Meta {
  */
 export interface Page {
   id: number;
-  layout: BlockReviews[];
+  layout: (BlockReviews | BlockPortfolio)[];
   isHome?: boolean | null;
   updatedAt: string;
   createdAt: string;
@@ -241,7 +241,7 @@ export interface Page {
  * via the `definition` "BlockReviews".
  */
 export interface BlockReviews {
-  title?: string | null;
+  title: string;
   content?: string | null;
   items?: (number | Review)[] | null;
   id?: string | null;
@@ -265,15 +265,15 @@ export interface Review {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "clients".
+ * via the `definition` "BlockPortfolio".
  */
-export interface Client {
-  id: number;
-  name: string;
-  url: string;
-  logo: number | Media;
-  updatedAt: string;
-  createdAt: string;
+export interface BlockPortfolio {
+  title: string;
+  content?: string | null;
+  items?: (number | Portfolio)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'portfolio-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -287,6 +287,18 @@ export interface Portfolio {
   company: number | Client;
   category?: (number | null) | PortfolioCategory;
   image: number | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "clients".
+ */
+export interface Client {
+  id: number;
+  name: string;
+  url: string;
+  logo: number | Media;
   updatedAt: string;
   createdAt: string;
 }

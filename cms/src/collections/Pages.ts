@@ -3,6 +3,7 @@ import type {CollectionConfig} from 'payload';
 import {SlugField} from '@nouance/payload-better-fields-plugin';
 // import {findBySlug} from 'adev-payload/src/endpoints/slug';
 import {Reviews} from "@/blocks/Reviews";
+import {Portfolio} from "@/blocks/Portfolio";
 
 export const Pages: CollectionConfig = {
 	slug: 'pages',
@@ -72,6 +73,7 @@ export const Pages: CollectionConfig = {
 							required: true,
 							blocks: [
 								Reviews,
+								Portfolio,
 							]
 						},
 					],

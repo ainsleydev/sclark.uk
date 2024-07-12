@@ -6,7 +6,7 @@ import (
 )
 
 var Reviews = types.BlockReviews{
-	Title:   ptr.StringPtr("Testimonials"),
+	Title:   "Testimonials",
 	Content: ptr.StringPtr("Don’t just take my word for it – here’s what some of my clients have to say.Don’t just take my word for it – here’s what some of my clients have to say. Don’t just take my word for it – here’s what some of my clients have to say."),
 	Items: []types.Reviews{
 		{

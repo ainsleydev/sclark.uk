@@ -1,11 +1,11 @@
 import type { Block } from "payload";
 
-export const Reviews: Block = {
-	slug: "reviews-block",
-	interfaceName: "BlockReviews",
+export const Portfolio: Block = {
+	slug: "portfolio-block",
+	interfaceName: "BlockPortfolio",
 	labels: {
-		singular: "Testimonial",
-		plural: "Testimonials",
+		singular: "Portfolio Item",
+		plural: "Portfolio",
 	},
 	fields: [
 		{
@@ -14,7 +14,7 @@ export const Reviews: Block = {
 			label: "Title",
 			required: true,
 			admin: {
-				description: "Add a title for the testimonial block.",
+				description: "Add a title for the portfolio block.",
 			},
 		},
 		{
@@ -22,14 +22,14 @@ export const Reviews: Block = {
 			type: "textarea",
 			label: "Content",
 			admin: {
-				description: "Add a content for the testimonial block.",
+				description: "Add a content for the portfolio block.",
 			},
 		},
 		{
 			type: "relationship",
 			name: "items",
-			label: "Reviews",
-			relationTo: "reviews",
+			label: "Portfolio",
+			relationTo: "portfolio",
 			hasMany: true,
 			admin: {
 				isSortable: true,

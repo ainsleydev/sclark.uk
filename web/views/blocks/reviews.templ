@@ -17,8 +17,8 @@ templ Reviews(props types.BlockReviews) {
 				<div class="col-12 col-tab-10 col-desk-7 col-desk-large-6">
 					@components.Group("group-centre", "group-large") {
 						<!-- Title -->
-						if props.Title != nil {
-							<h2>{ *props.Title } </h2>
+						if props.Title != "" {
+							<h2>{ props.Title } </h2>
 						}
 						<!-- Content -->
 						if props.Content != nil {

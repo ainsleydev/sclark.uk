@@ -3,6 +3,12 @@
 // -----------------------------------------------------------------------------
 
 .form {
+	position: relative;
+	margin: 0 auto;
+	background-color: var(--colour-background);
+	border: 1px solid var(--colour-border);
+	border-radius: 6px;
+	padding: 2rem;
 
 	// Group
 	// =========================================================================

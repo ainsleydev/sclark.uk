@@ -1,17 +1,36 @@
 package blocks
 
-templ Portfolio() {
+import (
+	"github.com/ainsleydev/sclark.uk/types"
+	"github.com/ainsleydev/sclark.uk/views/components"
+)
+
+templ Portfolio(props types.BlockPortfolio) {
 	<section class="section">
 		<div class="container">
 			<!-- Intro -->
-			<div class="row justify-content-center">
+			<div class="row justify-content-tab-center justify-content-desk-start">
 				<div class="col-12 col-tab-10 col-desk-6">
-					<h2></h2>
-					<p></p>
+					@components.Group("group-large") {
+						<!-- Title -->
+						if props.Title != "" {
+							<h2>{ props.Title } </h2>
+						}
+						<!-- Content -->
+						if props.Content != nil {
+							<p>{ *props.Content }</p>
+						}
+					}
 				</div><!-- /Col -->
 			</div><!-- /Row -->
 			<!-- Items -->
-			<div class="row"></div>
+			<div class="row justify-content-center">
+				for _, item := range props.Items {
+					<div class="col-12 col-tab-10 col-desk-6 portfolio-col">
+						@components.PortfolioItem(item)
+					</div><!-- /Col -->
+				}
+			</div>
 		</div><!-- /Container -->
 	</section>
 }
