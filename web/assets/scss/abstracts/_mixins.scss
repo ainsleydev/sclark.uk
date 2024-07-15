@@ -72,7 +72,7 @@
 
 // Only
 @mixin media-mob-only {
-	@media (min-width: $grid-breakpoint-mob * 1px) and (max-width: $grid-breakpoint-mob * 1px -1px) {
+	@media (min-width: $grid-breakpoint-mob * 1px) and (max-width: $grid-breakpoint-tab * 1px - 1px) {
 		@content;
 	}
 }

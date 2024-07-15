@@ -1,15 +1,13 @@
 /**
- * site.ts
+ * app.js
  *
  * @author Ainsley Clark
  * @author URL:   https://ainsley.dev
  * @author Email: hello@ainsley.dev
  */
 
-// require("./modernizr");
+require("./modernizr");
 import { Collapse } from "../../views/components/collapse";
-
-console.clear();
 
 const html = document.querySelector("html");
 const header = document.querySelector(".header");

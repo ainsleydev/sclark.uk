@@ -1,0 +1,64 @@
+// -----------------------------------------------------------------------------
+// portfolio.scss
+// -----------------------------------------------------------------------------
+
+.portfolio {
+
+	// Column
+	// ==========================================================================
+
+	&-col {
+		position: relative;
+		margin-bottom: calc(var(--grid-gap-width) * 2);
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	// Mobile Only
+	// ==========================================================================
+
+	@include media-mob-only {
+
+		&-col {
+
+			&:nth-child(even) {
+				padding-left: calc(var(--grid-gap-width) / 2);
+			}
+
+			&:nth-child(odd) {
+				padding-right: calc(var(--grid-gap-width) / 2);
+			}
+		}
+	}
+
+
+	// Mobile Up
+	// ==========================================================================
+
+	@include media-mob {
+
+		&-col {
+
+			&:nth-last-child(2) {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	// Desktop
+	// ==========================================================================
+
+	@include media-desk {
+
+		&-col {
+
+			&:last-child,
+			&:nth-last-child(2) {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+

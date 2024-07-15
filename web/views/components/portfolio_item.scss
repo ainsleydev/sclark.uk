@@ -7,7 +7,6 @@
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	margin-bottom: 1.6rem;
 	border: 1px solid var(--colour-border);
 	background-color: var(--colour-background);
 	border-radius: 6px;
@@ -58,14 +57,14 @@
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
-		margin-bottom: 1rem;
+		margin-bottom: 0.8rem;
 	}
 
 	// Title
 	// ==========================================================================
 
 	&-title {
-		margin-bottom: 1.4rem;
+		@include ellipsis(3);
 	}
 
 	// Logo
@@ -73,7 +72,6 @@
 
 	&-logo {
 		width: 120px;
-
 
 		img,
 		source {
@@ -86,7 +84,7 @@
 	// Hover
 	// ==========================================================================
 
-	//@include no-touch {
+	@include media-desk {
 
 		&:hover {
 			box-shadow: var(--shadow-expanded);
@@ -99,17 +97,17 @@
 				}
 			}
 		}
-	//}
+	}
 
 	// Desktop
 	// ==========================================================================
 
 	@include media-desk {
 		flex-direction: row;
-		height: clamp(220px, 14vh, 240px);
+		height: clamp(220px, 14vh, 250px);
 
 		&-content {
-			padding: 2rem;
+			padding: 1.8rem;
 		}
 
 		&-title {

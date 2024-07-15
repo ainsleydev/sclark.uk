@@ -6,7 +6,7 @@ import (
 )
 
 templ Portfolio(props types.BlockPortfolio) {
-	<section class="section">
+	<section class="section portfolio">
 		<div class="container">
 			<!-- Intro -->
 			<div class="row justify-content-tab-center justify-content-desk-start">
@@ -26,7 +26,7 @@ templ Portfolio(props types.BlockPortfolio) {
 			<!-- Items -->
 			<div class="row justify-content-tab-center justify-content-desk-start">
 				for _, item := range props.Items {
-					<div class="col-12 col-tab-5 col-desk-6 portfolio-col">
+					<div class="col-12 col-mob-6 col-tab-5 col-desk-6 portfolio-col">
 						@components.PortfolioItem(item)
 					</div><!-- /Col -->
 				}
