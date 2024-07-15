@@ -13,16 +13,96 @@ var Portfolio = types.BlockPortfolio{
 			Title:    "All You Need to Know About Getting a Pet Tortoise",
 			Date:     "13/10/2022",
 			Url:      "https://decspets.ie/insights/all-you-need-to-know-about-getting-a-pet-tortoise/",
-			Category: &types.PortfolioCategories{Title: "E-Commerce"},
+			Category: types.PortfolioCategories{Title: "E-Commerce"},
 			Company: types.Clients{
 				Name: "Dec's Pets",
 				Url:  "https://decspets.ie",
 				Logo: types.Media{
-					Url: ptr.StringPtr("https://decspets.ie/wp-content/uploads/2021/03/Decs-Pets-Logo-1.png"),
+					Url: ptr.StringPtr("/assets/exports/logos/coloured/decs-pets.svg"),
 				},
 			},
 			Image: types.Media{
-				Url: ptr.StringPtr("https://cdn-cgpdj.nitrocdn.com/osReepnOIsLpTltbafzloukxpexawMzs/assets/images/optimized/rev-f49c1a0/decspets.ie/wp-content/uploads/2022/09/melissa-keizer-X-0FisCRIaA-unsplash-scaled.jpg"),
+				Url: ptr.StringPtr("/assets/exports/portfolio/pet-tortoise.jpg"),
+			},
+		},
+		{
+			Title:    "Marketing Monday: 3 Email Marketing Best Practices for Education Providers",
+			Date:     "08/10/2022",
+			Url:      "https://decspets.ie/insights/all-you-need-to-know-about-getting-a-pet-tortoise/",
+			Category: types.PortfolioCategories{Title: "International Education"},
+			Company: types.Clients{
+				Name: "Schools and Agents",
+				Url:  "https://schoolsandagents.com/",
+				Logo: types.Media{
+					Url: ptr.StringPtr("/assets/exports/logos/coloured/schools-and-agents.svg"),
+				},
+			},
+			Image: types.Media{
+				Url: ptr.StringPtr("/assets/exports/portfolio/email-marketing.jpg"),
+			},
+		},
+		{
+			Title:    "Prebuilt Themes vs. Custom Websites: Which Is Right for You?",
+			Date:     "06/06/2023",
+			Url:      "https://ainsley.dev/insights/prebuilt-vs-custom/",
+			Category: types.PortfolioCategories{Title: "Technology"},
+			Company: types.Clients{
+				Name: "ainsley.dev",
+				Url:  "https://ainsley.dev",
+				Logo: types.Media{
+					Url: ptr.StringPtr("/assets/exports/logos/coloured/ainsley-dev.svg"),
+				},
+			},
+			Image: types.Media{
+				Url: ptr.StringPtr("/assets/exports/portfolio/prebuilt-themes.jpg"),
+			},
+		},
+		{
+			Title:    "5 Ways to Get Your Social Media Promotion Strategy Right",
+			Date:     "04/03/2023",
+			Url:      "https://www.bailogik.com/l/5-ways-to-get-your-social-media-promotion-strategy-right/",
+			Category: types.PortfolioCategories{Title: "Digital Marketing"},
+			Company: types.Clients{
+				Name: "Bailogik",
+				Url:  "https://www.bailogik.com/",
+				Logo: types.Media{
+					Url: ptr.StringPtr("/assets/exports/logos/coloured/bailogik.svg"),
+				},
+			},
+			Image: types.Media{
+				Url: ptr.StringPtr("/assets/exports/portfolio/social-media-strategy.jpg"),
+			},
+		},
+		{
+			Title:    "3 Great Tips for Online Learning: Corona Survival Guide",
+			Date:     "01/08/2023",
+			Url:      "https://britcent.uk/en/landing/blog/contents/study-tips/41.do",
+			Category: types.PortfolioCategories{Title: "Language Learning"},
+			Company: types.Clients{
+				Name: "Britcent",
+				Url:  "https://britcent.uk/",
+				Logo: types.Media{
+					Url: ptr.StringPtr("/assets/exports/logos/coloured/britcent.svg"),
+				},
+			},
+			Image: types.Media{
+				Url: ptr.StringPtr("/assets/exports/portfolio/corona-survival-guide.jpg"),
+			},
+		},
+		{
+			Title:    "How to enhance your website navigation menu for SEO and usability",
+			Date:     "01/10/2023",
+			Url:      "https://ainsley.dev/insights/enhance-website-navigation-menus-for-seo/",
+			Category: types.PortfolioCategories{Title: "Technology"},
+			Company: types.Clients{
+				Name: "ainsley.dev",
+				Url:  "https://ainsley.dev",
+				Logo: types.Media{
+					Url: ptr.StringPtr("/assets/exports/logos/coloured/ainsley-dev.svg"),
+				},
+			},
+			Image: types.Media{
+				Url: ptr.StringPtr("/assets/exports/portfolio/enhance-nav-menus.jpg"),
 			},
 		},
 	},

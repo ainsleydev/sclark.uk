@@ -285,7 +285,7 @@ export interface Portfolio {
   url: string;
   date: string;
   company: number | Client;
-  category?: (number | null) | PortfolioCategory;
+  category: number | PortfolioCategory;
   image: number | Media;
   updatedAt: string;
   createdAt: string;

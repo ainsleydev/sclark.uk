@@ -48,6 +48,10 @@ const options = {
 					from: ["./assets/images/**/*.svg"],
 					to: ["./images"],
 				},
+				{
+					from: ["./assets/exports/**/*"],
+					to: ["./exports"],
+				},
 			],
 		}),
 		svgoPlugin(),

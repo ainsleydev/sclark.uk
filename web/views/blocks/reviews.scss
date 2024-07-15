@@ -78,6 +78,10 @@
 
 	@include media-desk {
 
+		&-col {
+			margin-bottom: 0;
+		}
+
 		&-scrabble {
 			width: auto;
 			transform: translateY(-20%);

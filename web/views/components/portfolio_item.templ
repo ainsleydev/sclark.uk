@@ -1,0 +1,42 @@
+package components
+
+import "github.com/ainsleydev/sclark.uk/types"
+
+templ PortfolioItem(props types.Portfolio) {
+	<a href={ templ.SafeURL(props.Url) } class="portfolio-item" target="_blank">
+		<!-- Image -->
+		if props.Image.Url != nil {
+			<picture class="portfolio-item-image">
+				<img loading="lazy" src={ *props.Image.Url } alt={ props.Image.Alt } >
+			</picture>
+		}
+		<!-- Content -->
+		<div class="portfolio-item-content">
+			<div>
+				<!-- Category & Date -->
+				<div class="portfolio-item-meta">
+					if props.Category.Title != "" {
+						<small>
+							{ props.Category.Title }
+						</small>
+					}
+					if props.Date != "" {
+						<small>
+							{ props.Date }
+						</small>
+					}
+				</div>
+				<!-- Title -->
+				<h5 class="portfolio-item-title">
+					{ props.Title }
+				</h5>
+			</div>
+			<!-- Logo -->
+			if props.Company.Logo.Url != nil {
+				<picture class="portfolio-item-logo">
+					<img loading="lazy" src={ *props.Company.Logo.Url } alt={ props.Company.Logo.Alt } >
+				</picture>
+			}
+		</div>
+	</a>
+}

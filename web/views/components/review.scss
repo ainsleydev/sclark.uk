@@ -8,7 +8,8 @@
 	border: 1px solid var(--colour-border);
 	background-color: var(--colour-background);
 	border-radius: 6px;
-	box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.08);
+	box-shadow: var(--shadow-expanded);
+	height: 100%;
 
 	// Content
 	// ==========================================================================
@@ -40,6 +41,5 @@
 		&-content {
 			@include ellipsis(4);
 		}
-
 	}
 }

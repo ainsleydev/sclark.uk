@@ -68,6 +68,7 @@ export const Portfolio: CollectionConfig = {
 					type: "relationship",
 					relationTo: "portfolio-categories",
 					hasMany: false,
+					required: true,
 					admin: {
 						width: "50%",
 						allowCreate: true,

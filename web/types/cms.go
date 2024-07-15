@@ -942,7 +942,7 @@ type PayloadPreferences struct {
 
 type Portfolio struct {
 	// Category corresponds to the JSON schema field "category".
-	Category *PortfolioCategories `json:"category,omitempty" yaml:"category,omitempty" mapstructure:"category,omitempty"`
+	Category PortfolioCategories `json:"category" yaml:"category" mapstructure:"category"`
 
 	// Company corresponds to the JSON schema field "company".
 	Company Clients `json:"company" yaml:"company" mapstructure:"company"`
@@ -2986,6 +2986,9 @@ func (j *Portfolio) UnmarshalJSON(b []byte) error {
 	var raw map[string]interface{}
 	if err := json.Unmarshal(b, &raw); err != nil {
 		return err
+	}
+	if v, ok := raw["category"]; !ok || v == nil {
+		return fmt.Errorf("field category in Portfolio: required")
 	}
 	if v, ok := raw["company"]; !ok || v == nil {
 		return fmt.Errorf("field company in Portfolio: required")

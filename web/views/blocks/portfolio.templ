@@ -24,9 +24,9 @@ templ Portfolio(props types.BlockPortfolio) {
 				</div><!-- /Col -->
 			</div><!-- /Row -->
 			<!-- Items -->
-			<div class="row justify-content-center justify-content-desk-end">
+			<div class="row justify-content-tab-center justify-content-desk-start">
 				for _, item := range props.Items {
-					<div class="col-12 col-tab-10 col-desk-6 portfolio-col">
+					<div class="col-12 col-tab-5 col-desk-6 portfolio-col">
 						@components.PortfolioItem(item)
 					</div><!-- /Col -->
 				}
