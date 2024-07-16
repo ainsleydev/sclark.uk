@@ -5,6 +5,7 @@ import (
 	"github.com/ainsleydev/sclark.uk/types"
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 	"github.com/ainsleydev/sclark.uk/views/components"
+	"github.com/ainsleydev/webkit/pkg/util/ptr"
 )
 
 func decodeRichText(block payload.Block) string {
@@ -29,29 +30,35 @@ func decodeFAQs(block payload.Block) types.BlockFAQs {
 templ ContentWithImage(props types.BlockContentWithImage) {
 	<section class="section content-with-image">
 		<div class="container">
-			<div class="row justify-content-center">
+			<div class="row justify-content-center justify-content-desk-between">
 				<!-- Image -->
 				<div class={ "col-12 col-tab-10 col-desk-6",
-					templ.KV("order-desk-last", props.ImagePosition == "left") }>
+					templ.KV("order-desk-last", props.ImagePosition == "right") }>
 					if props.Image.Url != nil {
-						<picture>
+						<picture class={ "content-image",
+						templ.KV("content-image-sticky", ptr.Bool(props.Sticky)) }>
 							<img loading="lazy" src={ *props.Image.Url } alt={ props.Image.Alt } >
 						</picture>
 					}
 				</div><!-- /Col -->
 				<!-- Content -->
 				<div class="col-12 col-tab-10 col-desk-5">
-					for _, block := range props.TextLayout {
-						@components.Group() {
-							switch block.BlockType {
-								case "content-block":
-									<div class="richtext">
-										@templ.Raw(decodeRichText(block))
-									</div>
-								case "faqs":
-									@components.Collapse(FAQsToCollapse(decodeFAQs(block)))
-								default:
-									{ block.BlockType }
+					if len(props.TextLayout) > 0 {
+						for index, block := range props.TextLayout {
+							{{ margin := "" }}
+							if index == len(props.TextLayout) - 1 {
+								{{ margin = "mb-0" }}
+							}
+							@components.Group(margin) {
+								switch block.BlockType {
+									case "content-block":
+										<div class="richtext">
+											@templ.Raw(decodeRichText(block))
+										</div>
+									case "faqs":
+										<h3>FAQS</h3>
+										@components.Collapse(FAQsToCollapse(decodeFAQs(block)))
+								}
 							}
 						}
 					}

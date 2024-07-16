@@ -8,6 +8,7 @@
 	align-items: center;
 	margin-top: var(--header-height);
 	padding-bottom: var(--section-margin);
+	overflow-x: clip; // Temp
 
 	// Row
 	// =========================================================================

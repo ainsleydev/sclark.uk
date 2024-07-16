@@ -17,6 +17,8 @@ var EnglishLessons = types.BlockContentWithImage{
 	Image: types.Media{
 		Url: ptr.StringPtr("/assets/images/mockups/laptop.png"),
 	},
+	Sticky:        ptr.BoolPtr(true),
+	ImagePosition: types.BlockContentWithImageImagePositionLeft,
 	TextLayout: payload.Blocks{
 		{
 			BlockType: "content-block",

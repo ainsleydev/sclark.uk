@@ -6,6 +6,7 @@
 	$self: &;
 	display: flex;
 	align-items: center;
+	overflow-x: clip; // Temp
 
 	// Link
 	// =========================================================================

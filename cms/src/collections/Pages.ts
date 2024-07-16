@@ -5,6 +5,8 @@ import { SlugField } from "@nouance/payload-better-fields-plugin";
 import { Reviews } from "@/blocks/Reviews";
 import { Portfolio } from "@/blocks/Portfolio";
 import { ContentWithImage } from "@/blocks/ContentWithImage";
+import {Logos} from "@/blocks/Logos";
+import {Content} from "@/blocks/Content";
 
 export const Pages: CollectionConfig = {
 	slug: "pages",
@@ -72,7 +74,7 @@ export const Pages: CollectionConfig = {
 							name: "layout",
 							type: "blocks",
 							required: true,
-							blocks: [ContentWithImage, Reviews, Portfolio],
+							blocks: [Content, ContentWithImage, Logos, Reviews, Portfolio],
 						},
 					],
 				},

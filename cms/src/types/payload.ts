@@ -230,7 +230,7 @@ export interface Meta {
  */
 export interface Page {
   id: number;
-  layout: (BlockContentWithImage | BlockReviews | BlockPortfolio)[];
+  layout: (BlockContentWithImage | BlockContentWithImage | BlockLogs | BlockReviews | BlockPortfolio)[];
   isHome?: boolean | null;
   updatedAt: string;
   createdAt: string;
@@ -289,6 +289,23 @@ export interface BlockFAQs {
   id?: string | null;
   blockName?: string | null;
   blockType: 'faqs-block';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockLogs".
+ */
+export interface BlockLogs {
+  title: string;
+  greyscale?: boolean | null;
+  logos?:
+    | {
+        logo: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'logos-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
