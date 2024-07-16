@@ -224,6 +224,119 @@ const AddressCountryYemen AddressCountry = "Yemen"
 const AddressCountryZambia AddressCountry = "Zambia"
 const AddressCountryZimbabwe AddressCountry = "Zimbabwe"
 
+type BlockContent struct {
+	// BlockName corresponds to the JSON schema field "blockName".
+	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
+
+	// BlockType corresponds to the JSON schema field "blockType".
+	BlockType string `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
+
+	// Content corresponds to the JSON schema field "content".
+	Content BlockContentContent `json:"content" yaml:"content" mapstructure:"content"`
+
+	// ContentHtml corresponds to the JSON schema field "contentHtml".
+	ContentHtml *string `json:"contentHtml,omitempty" yaml:"contentHtml,omitempty" mapstructure:"contentHtml,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+}
+
+type BlockContentContent struct {
+	// Root corresponds to the JSON schema field "root".
+	Root BlockContentContentRoot `json:"root" yaml:"root" mapstructure:"root"`
+}
+
+type BlockContentContentRoot struct {
+	// Children corresponds to the JSON schema field "children".
+	Children []BlockContentContentRootChildrenElem `json:"children" yaml:"children" mapstructure:"children"`
+
+	// Direction corresponds to the JSON schema field "direction".
+	Direction interface{} `json:"direction" yaml:"direction" mapstructure:"direction"`
+
+	// Format corresponds to the JSON schema field "format".
+	Format BlockContentContentRootFormat `json:"format" yaml:"format" mapstructure:"format"`
+
+	// Indent corresponds to the JSON schema field "indent".
+	Indent int `json:"indent" yaml:"indent" mapstructure:"indent"`
+
+	// Type corresponds to the JSON schema field "type".
+	Type string `json:"type" yaml:"type" mapstructure:"type"`
+
+	// Version corresponds to the JSON schema field "version".
+	Version int `json:"version" yaml:"version" mapstructure:"version"`
+}
+
+type BlockContentContentRootChildrenElem struct {
+	// Type corresponds to the JSON schema field "type".
+	Type string `json:"type" yaml:"type" mapstructure:"type"`
+
+	// Version corresponds to the JSON schema field "version".
+	Version int `json:"version" yaml:"version" mapstructure:"version"`
+}
+
+type BlockContentContentRootFormat string
+
+const BlockContentContentRootFormatBlank BlockContentContentRootFormat = ""
+const BlockContentContentRootFormatCenter BlockContentContentRootFormat = "center"
+const BlockContentContentRootFormatEnd BlockContentContentRootFormat = "end"
+const BlockContentContentRootFormatJustify BlockContentContentRootFormat = "justify"
+const BlockContentContentRootFormatLeft BlockContentContentRootFormat = "left"
+const BlockContentContentRootFormatRight BlockContentContentRootFormat = "right"
+const BlockContentContentRootFormatStart BlockContentContentRootFormat = "start"
+
+type BlockContentWithImage struct {
+	// BlockName corresponds to the JSON schema field "blockName".
+	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
+
+	// BlockType corresponds to the JSON schema field "blockType".
+	BlockType string `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Image corresponds to the JSON schema field "image".
+	Image Media `json:"image" yaml:"image" mapstructure:"image"`
+
+	// ImagePosition corresponds to the JSON schema field "imagePosition".
+	ImagePosition BlockContentWithImageImagePosition `json:"imagePosition" yaml:"imagePosition" mapstructure:"imagePosition"`
+
+	// Sticky corresponds to the JSON schema field "sticky".
+	Sticky *bool `json:"sticky,omitempty" yaml:"sticky,omitempty" mapstructure:"sticky,omitempty"`
+
+	// TextLayout corresponds to the JSON schema field "textLayout".
+	TextLayout payload.Blocks `json:"textLayout" yaml:"textLayout" mapstructure:"textLayout"`
+}
+
+type BlockContentWithImageImagePosition string
+
+const BlockContentWithImageImagePositionLeft BlockContentWithImageImagePosition = "left"
+const BlockContentWithImageImagePositionRight BlockContentWithImageImagePosition = "right"
+
+type BlockFAQs struct {
+	// BlockName corresponds to the JSON schema field "blockName".
+	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
+
+	// BlockType corresponds to the JSON schema field "blockType".
+	BlockType string `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
+
+	// Faqs corresponds to the JSON schema field "faqs".
+	Faqs []BlockFAQsFaqsElem `json:"faqs,omitempty" yaml:"faqs,omitempty" mapstructure:"faqs,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+}
+
+type BlockFAQsFaqsElem struct {
+	// Answer corresponds to the JSON schema field "answer".
+	Answer string `json:"answer" yaml:"answer" mapstructure:"answer"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Question corresponds to the JSON schema field "question".
+	Question string `json:"question" yaml:"question" mapstructure:"question"`
+}
+
 type BlockPortfolio struct {
 	// BlockName corresponds to the JSON schema field "blockName".
 	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
@@ -1659,6 +1772,258 @@ const SettingsLocaleTeoUG SettingsLocale = "teo_UG"
 const SettingsLocaleTgTJ SettingsLocale = "tg_TJ"
 const SettingsLocaleTh SettingsLocale = "th"
 const SettingsLocaleThTH SettingsLocale = "th_TH"
+const SettingsLocaleTi SettingsLocale = "ti"
+const SettingsLocaleTiER SettingsLocale = "ti_ER"
+const SettingsLocaleTiET SettingsLocale = "ti_ET"
+const SettingsLocaleTigER SettingsLocale = "tig_ER"
+const SettingsLocaleTkTM SettingsLocale = "tk_TM"
+const SettingsLocaleTlPH SettingsLocale = "tl_PH"
+const SettingsLocaleTnZA SettingsLocale = "tn_ZA"
+const SettingsLocaleTo SettingsLocale = "to"
+const SettingsLocaleToTO SettingsLocale = "to_TO"
+const SettingsLocaleTr SettingsLocale = "tr"
+const SettingsLocaleTrCY SettingsLocale = "tr_CY"
+const SettingsLocaleTrTR SettingsLocale = "tr_TR"
+const SettingsLocaleTsZA SettingsLocale = "ts_ZA"
+const SettingsLocaleTtRU SettingsLocale = "tt_RU"
+const SettingsLocaleTzm SettingsLocale = "tzm"
+const SettingsLocaleTzmLatn SettingsLocale = "tzm_Latn"
+const SettingsLocaleTzmLatnMA SettingsLocale = "tzm_Latn_MA"
+const SettingsLocaleUgCN SettingsLocale = "ug_CN"
+const SettingsLocaleUk SettingsLocale = "uk"
+const SettingsLocaleUkUA SettingsLocale = "uk_UA"
+const SettingsLocaleUnmUS SettingsLocale = "unm_US"
+const SettingsLocaleUr SettingsLocale = "ur"
+const SettingsLocaleUrIN SettingsLocale = "ur_IN"
+const SettingsLocaleUrPK SettingsLocale = "ur_PK"
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockPortfolio) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["blockType"]; !ok || v == nil {
+		return fmt.Errorf("field blockType in BlockPortfolio: required")
+	}
+	if v, ok := raw["title"]; !ok || v == nil {
+		return fmt.Errorf("field title in BlockPortfolio: required")
+	}
+	type Plain BlockPortfolio
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockPortfolio(plain)
+	return nil
+}
+
+const SettingsLocaleUzUZ SettingsLocale = "uz_UZ"
+const SettingsLocaleYiUS SettingsLocale = "yi_US"
+const SettingsLocaleZu SettingsLocale = "zu"
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PayloadMigrations) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in PayloadMigrations: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in PayloadMigrations: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in PayloadMigrations: required")
+	}
+	type Plain PayloadMigrations
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = PayloadMigrations(plain)
+	return nil
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *Pages) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in Pages: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in Pages: required")
+	}
+	if v, ok := raw["layout"]; !ok || v == nil {
+		return fmt.Errorf("field layout in Pages: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in Pages: required")
+	}
+	type Plain Pages
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = Pages(plain)
+	return nil
+}
+
+const SettingsLocaleVi SettingsLocale = "vi"
+const SettingsLocaleZhTW SettingsLocale = "zh_TW"
+
+var enumValues_PostsStatus = []interface{}{
+	"draft",
+	"published",
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PagesStatus) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_PagesStatus {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_PagesStatus, v)
+	}
+	*j = PagesStatus(v)
+	return nil
+}
+
+var enumValues_PagesStatus = []interface{}{
+	"draft",
+	"published",
+}
+
+const SettingsLocaleXhZA SettingsLocale = "xh_ZA"
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PostsStatus) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_PostsStatus {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_PostsStatus, v)
+	}
+	*j = PostsStatus(v)
+	return nil
+}
+
+const SettingsLocaleUzArab SettingsLocale = "uz_Arab"
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *Navigation) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in Navigation: required")
+	}
+	type Plain Navigation
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = Navigation(plain)
+	return nil
+}
+
+const SettingsLocaleZhHans SettingsLocale = "zh_Hans"
+const SettingsLocaleZhHansSG SettingsLocale = "zh_Hans_SG"
+const SettingsLocaleWalET SettingsLocale = "wal_ET"
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *FormSubmissions) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in FormSubmissions: required")
+	}
+	if v, ok := raw["form"]; !ok || v == nil {
+		return fmt.Errorf("field form in FormSubmissions: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in FormSubmissions: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in FormSubmissions: required")
+	}
+	type Plain FormSubmissions
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = FormSubmissions(plain)
+	return nil
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *SettingsLocale) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_SettingsLocale {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_SettingsLocale, v)
+	}
+	*j = SettingsLocale(v)
+	return nil
+}
+
+const SettingsLocaleZhHantTW SettingsLocale = "zh_Hant_TW"
+const SettingsLocaleVeZA SettingsLocale = "ve_ZA"
+const SettingsLocaleZhCN SettingsLocale = "zh_CN"
+const SettingsLocaleViVN SettingsLocale = "vi_VN"
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *FormSubmissionsSubmissionDataElem) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["field"]; !ok || v == nil {
+		return fmt.Errorf("field field in FormSubmissionsSubmissionDataElem: required")
+	}
+	if v, ok := raw["value"]; !ok || v == nil {
+		return fmt.Errorf("field value in FormSubmissionsSubmissionDataElem: required")
+	}
+	type Plain FormSubmissionsSubmissionDataElem
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = FormSubmissionsSubmissionDataElem(plain)
+	return nil
+}
 
 // UnmarshalJSON implements json.Unmarshaler.
 func (j *Forms) UnmarshalJSON(b []byte) error {
@@ -1684,41 +2049,6 @@ func (j *Forms) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	*j = Forms(plain)
-	return nil
-}
-
-const SettingsLocaleVunTZ SettingsLocale = "vun_TZ"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Redirects) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["code"]; !ok || v == nil {
-		return fmt.Errorf("field code in Redirects: required")
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in Redirects: required")
-	}
-	if v, ok := raw["from"]; !ok || v == nil {
-		return fmt.Errorf("field from in Redirects: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Redirects: required")
-	}
-	if v, ok := raw["to"]; !ok || v == nil {
-		return fmt.Errorf("field to in Redirects: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in Redirects: required")
-	}
-	type Plain Redirects
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Redirects(plain)
 	return nil
 }
 
@@ -2257,423 +2587,7 @@ var enumValues_SettingsLocale = []interface{}{
 	"mt_MT",
 }
 
-const SettingsLocaleZhHansSG SettingsLocale = "zh_Hans_SG"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *RedirectsCode) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_RedirectsCode {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_RedirectsCode, v)
-	}
-	*j = RedirectsCode(v)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *SettingsLocale) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_SettingsLocale {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_SettingsLocale, v)
-	}
-	*j = SettingsLocale(v)
-	return nil
-}
-
-var enumValues_RedirectsCode = []interface{}{
-	"301",
-	"302",
-	"307",
-	"308",
-	"410",
-	"451",
-}
-
-const SettingsLocaleUzArabAF SettingsLocale = "uz_Arab_AF"
-const SettingsLocaleTiER SettingsLocale = "ti_ER"
-const SettingsLocaleVi SettingsLocale = "vi"
-const SettingsLocaleUzUZ SettingsLocale = "uz_UZ"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Posts) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in Posts: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Posts: required")
-	}
-	if v, ok := raw["title"]; !ok || v == nil {
-		return fmt.Errorf("field title in Posts: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in Posts: required")
-	}
-	type Plain Posts
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Posts(plain)
-	return nil
-}
-
-const SettingsLocaleUkUA SettingsLocale = "uk_UA"
-const SettingsLocaleUzArab SettingsLocale = "uz_Arab"
-const SettingsLocaleZhHans SettingsLocale = "zh_Hans"
-const SettingsLocaleUnmUS SettingsLocale = "unm_US"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PostsContent) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["root"]; !ok || v == nil {
-		return fmt.Errorf("field root in PostsContent: required")
-	}
-	type Plain PostsContent
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = PostsContent(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PostsContentRoot) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["children"]; !ok || v == nil {
-		return fmt.Errorf("field children in PostsContentRoot: required")
-	}
-	if v, ok := raw["direction"]; !ok || v == nil {
-		return fmt.Errorf("field direction in PostsContentRoot: required")
-	}
-	if v, ok := raw["format"]; !ok || v == nil {
-		return fmt.Errorf("field format in PostsContentRoot: required")
-	}
-	if v, ok := raw["indent"]; !ok || v == nil {
-		return fmt.Errorf("field indent in PostsContentRoot: required")
-	}
-	if v, ok := raw["type"]; !ok || v == nil {
-		return fmt.Errorf("field type in PostsContentRoot: required")
-	}
-	if v, ok := raw["version"]; !ok || v == nil {
-		return fmt.Errorf("field version in PostsContentRoot: required")
-	}
-	type Plain PostsContentRoot
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = PostsContentRoot(plain)
-	return nil
-}
-
-const SettingsLocaleZhHantTW SettingsLocale = "zh_Hant_TW"
-const SettingsLocaleTnZA SettingsLocale = "tn_ZA"
-const SettingsLocaleWalET SettingsLocale = "wal_ET"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PostsContentRootFormat) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_PostsContentRootFormat {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_PostsContentRootFormat, v)
-	}
-	*j = PostsContentRootFormat(v)
-	return nil
-}
-
-var enumValues_PostsContentRootFormat = []interface{}{
-	"left",
-	"start",
-	"center",
-	"right",
-	"end",
-	"justify",
-	"",
-}
-
-const SettingsLocaleVeZA SettingsLocale = "ve_ZA"
-const SettingsLocaleUgCN SettingsLocale = "ug_CN"
-const SettingsLocaleZhCN SettingsLocale = "zh_CN"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PostsContentRootChildrenElem) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["type"]; !ok || v == nil {
-		return fmt.Errorf("field type in PostsContentRootChildrenElem: required")
-	}
-	if v, ok := raw["version"]; !ok || v == nil {
-		return fmt.Errorf("field version in PostsContentRootChildrenElem: required")
-	}
-	type Plain PostsContentRootChildrenElem
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = PostsContentRootChildrenElem(plain)
-	return nil
-}
-
-const SettingsLocaleViVN SettingsLocale = "vi_VN"
-const SettingsLocaleVun SettingsLocale = "vun"
-const SettingsLocaleTlPH SettingsLocale = "tl_PH"
-const SettingsLocaleXogUG SettingsLocale = "xog_UG"
-const SettingsLocaleUk SettingsLocale = "uk"
-const SettingsLocaleZh SettingsLocale = "zh"
-const SettingsLocaleZhHantMO SettingsLocale = "zh_Hant_MO"
-const SettingsLocaleWaeCH SettingsLocale = "wae_CH"
-const SettingsLocaleZhHant SettingsLocale = "zh_Hant"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PostsStatus) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_PostsStatus {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_PostsStatus, v)
-	}
-	*j = PostsStatus(v)
-	return nil
-}
-
-const SettingsLocaleYo SettingsLocale = "yo"
-const SettingsLocaleUr SettingsLocale = "ur"
 const SettingsLocaleWoSN SettingsLocale = "wo_SN"
-
-var enumValues_PostsStatus = []interface{}{
-	"draft",
-	"published",
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PayloadPreferences) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in PayloadPreferences: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in PayloadPreferences: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in PayloadPreferences: required")
-	}
-	if v, ok := raw["user"]; !ok || v == nil {
-		return fmt.Errorf("field user in PayloadPreferences: required")
-	}
-	type Plain PayloadPreferences
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = PayloadPreferences(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PayloadMigrations) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in PayloadMigrations: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in PayloadMigrations: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in PayloadMigrations: required")
-	}
-	type Plain PayloadMigrations
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = PayloadMigrations(plain)
-	return nil
-}
-
-const SettingsLocaleUzLatn SettingsLocale = "uz_Latn"
-const SettingsLocaleYueHK SettingsLocale = "yue_HK"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Pages) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in Pages: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Pages: required")
-	}
-	if v, ok := raw["layout"]; !ok || v == nil {
-		return fmt.Errorf("field layout in Pages: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in Pages: required")
-	}
-	type Plain Pages
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Pages(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PagesStatus) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_PagesStatus {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_PagesStatus, v)
-	}
-	*j = PagesStatus(v)
-	return nil
-}
-
-const SettingsLocaleTo SettingsLocale = "to"
-
-var enumValues_PagesStatus = []interface{}{
-	"draft",
-	"published",
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Navigation) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Navigation: required")
-	}
-	type Plain Navigation
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Navigation(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *FormSubmissions) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in FormSubmissions: required")
-	}
-	if v, ok := raw["form"]; !ok || v == nil {
-		return fmt.Errorf("field form in FormSubmissions: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in FormSubmissions: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in FormSubmissions: required")
-	}
-	type Plain FormSubmissions
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = FormSubmissions(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *FormSubmissionsSubmissionDataElem) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["field"]; !ok || v == nil {
-		return fmt.Errorf("field field in FormSubmissionsSubmissionDataElem: required")
-	}
-	if v, ok := raw["value"]; !ok || v == nil {
-		return fmt.Errorf("field value in FormSubmissionsSubmissionDataElem: required")
-	}
-	type Plain FormSubmissionsSubmissionDataElem
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = FormSubmissionsSubmissionDataElem(plain)
-	return nil
-}
-
-const SettingsLocaleZhHK SettingsLocale = "zh_HK"
-const SettingsLocaleToTO SettingsLocale = "to_TO"
-const SettingsLocaleTzmLatnMA SettingsLocale = "tzm_Latn_MA"
-const SettingsLocaleXog SettingsLocale = "xog"
-const SettingsLocaleTigER SettingsLocale = "tig_ER"
-const SettingsLocaleWaBE SettingsLocale = "wa_BE"
 
 // UnmarshalJSON implements json.Unmarshaler.
 func (j *FormsRedirect) UnmarshalJSON(b []byte) error {
@@ -2711,8 +2625,6 @@ func (j *FormsEmailsElem) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-const SettingsLocaleTzmLatn SettingsLocale = "tzm_Latn"
-
 // UnmarshalJSON implements json.Unmarshaler.
 func (j *FormsEmailsElemMessage) UnmarshalJSON(b []byte) error {
 	var raw map[string]interface{}
@@ -2731,8 +2643,28 @@ func (j *FormsEmailsElemMessage) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-const SettingsLocaleZuZA SettingsLocale = "zu_ZA"
-const SettingsLocaleZhSG SettingsLocale = "zh_SG"
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PostsContentRootChildrenElem) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["type"]; !ok || v == nil {
+		return fmt.Errorf("field type in PostsContentRootChildrenElem: required")
+	}
+	if v, ok := raw["version"]; !ok || v == nil {
+		return fmt.Errorf("field version in PostsContentRootChildrenElem: required")
+	}
+	type Plain PostsContentRootChildrenElem
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = PostsContentRootChildrenElem(plain)
+	return nil
+}
+
+const SettingsLocaleYueHK SettingsLocale = "yue_HK"
 
 // UnmarshalJSON implements json.Unmarshaler.
 func (j *FormsEmailsElemMessageRoot) UnmarshalJSON(b []byte) error {
@@ -2787,6 +2719,8 @@ func (j *FormsEmailsElemMessageRootFormat) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+const SettingsLocaleZhSG SettingsLocale = "zh_SG"
+
 var enumValues_FormsEmailsElemMessageRootFormat = []interface{}{
 	"left",
 	"start",
@@ -2838,17 +2772,36 @@ func (j *FormsConfirmationType) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-const SettingsLocaleTsZA SettingsLocale = "ts_ZA"
-const SettingsLocaleYiUS SettingsLocale = "yi_US"
-
 var enumValues_FormsConfirmationType = []interface{}{
 	"message",
 	"redirect",
 }
 
-const SettingsLocaleTzm SettingsLocale = "tzm"
-const SettingsLocaleTi SettingsLocale = "ti"
-const SettingsLocaleZhHansHK SettingsLocale = "zh_Hans_HK"
+const SettingsLocaleWaBE SettingsLocale = "wa_BE"
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *RedirectsCode) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_RedirectsCode {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_RedirectsCode, v)
+	}
+	*j = RedirectsCode(v)
+	return nil
+}
+
+const SettingsLocaleYoNG SettingsLocale = "yo_NG"
+const SettingsLocaleVun SettingsLocale = "vun"
+const SettingsLocaleVunTZ SettingsLocale = "vun_TZ"
 
 type Social struct {
 	// Facebook corresponds to the JSON schema field "facebook".
@@ -2891,8 +2844,6 @@ func (j *BlockReviews) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-const SettingsLocaleTkTM SettingsLocale = "tk_TM"
-
 // UnmarshalJSON implements json.Unmarshaler.
 func (j *Reviews) UnmarshalJSON(b []byte) error {
 	var raw map[string]interface{}
@@ -2923,8 +2874,38 @@ func (j *Reviews) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-const SettingsLocaleZhTW SettingsLocale = "zh_TW"
-const SettingsLocaleXhZA SettingsLocale = "xh_ZA"
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *Redirects) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["code"]; !ok || v == nil {
+		return fmt.Errorf("field code in Redirects: required")
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in Redirects: required")
+	}
+	if v, ok := raw["from"]; !ok || v == nil {
+		return fmt.Errorf("field from in Redirects: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in Redirects: required")
+	}
+	if v, ok := raw["to"]; !ok || v == nil {
+		return fmt.Errorf("field to in Redirects: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in Redirects: required")
+	}
+	type Plain Redirects
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = Redirects(plain)
+	return nil
+}
 
 // UnmarshalJSON implements json.Unmarshaler.
 func (j *ReviewsAuthor) UnmarshalJSON(b []byte) error {
@@ -2950,36 +2931,62 @@ func (j *ReviewsAuthor) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-const SettingsLocaleYoNG SettingsLocale = "yo_NG"
-const SettingsLocaleZhHansMO SettingsLocale = "zh_Hans_MO"
-const SettingsLocaleUz SettingsLocale = "uz"
-const SettingsLocaleUzCyrl SettingsLocale = "uz_Cyrl"
+var enumValues_PostsContentRootFormat = []interface{}{
+	"left",
+	"start",
+	"center",
+	"right",
+	"end",
+	"justify",
+	"",
+}
 
 // UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockPortfolio) UnmarshalJSON(b []byte) error {
+func (j *PostsContentRootFormat) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_PostsContentRootFormat {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_PostsContentRootFormat, v)
+	}
+	*j = PostsContentRootFormat(v)
+	return nil
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PayloadPreferences) UnmarshalJSON(b []byte) error {
 	var raw map[string]interface{}
 	if err := json.Unmarshal(b, &raw); err != nil {
 		return err
 	}
-	if v, ok := raw["blockType"]; !ok || v == nil {
-		return fmt.Errorf("field blockType in BlockPortfolio: required")
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in PayloadPreferences: required")
 	}
-	if v, ok := raw["title"]; !ok || v == nil {
-		return fmt.Errorf("field title in BlockPortfolio: required")
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in PayloadPreferences: required")
 	}
-	type Plain BlockPortfolio
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in PayloadPreferences: required")
+	}
+	if v, ok := raw["user"]; !ok || v == nil {
+		return fmt.Errorf("field user in PayloadPreferences: required")
+	}
+	type Plain PayloadPreferences
 	var plain Plain
 	if err := json.Unmarshal(b, &plain); err != nil {
 		return err
 	}
-	*j = BlockPortfolio(plain)
+	*j = PayloadPreferences(plain)
 	return nil
 }
-
-const SettingsLocaleTiET SettingsLocale = "ti_ET"
-const SettingsLocaleUrPK SettingsLocale = "ur_PK"
-const SettingsLocaleTtRU SettingsLocale = "tt_RU"
-const SettingsLocaleZhHansCN SettingsLocale = "zh_Hans_CN"
 
 // UnmarshalJSON implements json.Unmarshaler.
 func (j *Portfolio) UnmarshalJSON(b []byte) error {
@@ -3057,6 +3064,184 @@ func (j *Clients) UnmarshalJSON(b []byte) error {
 }
 
 // UnmarshalJSON implements json.Unmarshaler.
+func (j *PortfolioCategories) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in PortfolioCategories: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in PortfolioCategories: required")
+	}
+	if v, ok := raw["title"]; !ok || v == nil {
+		return fmt.Errorf("field title in PortfolioCategories: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in PortfolioCategories: required")
+	}
+	type Plain PortfolioCategories
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = PortfolioCategories(plain)
+	return nil
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockFAQs) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["blockType"]; !ok || v == nil {
+		return fmt.Errorf("field blockType in BlockFAQs: required")
+	}
+	type Plain BlockFAQs
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockFAQs(plain)
+	return nil
+}
+
+const SettingsLocaleXogUG SettingsLocale = "xog_UG"
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PostsContentRoot) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["children"]; !ok || v == nil {
+		return fmt.Errorf("field children in PostsContentRoot: required")
+	}
+	if v, ok := raw["direction"]; !ok || v == nil {
+		return fmt.Errorf("field direction in PostsContentRoot: required")
+	}
+	if v, ok := raw["format"]; !ok || v == nil {
+		return fmt.Errorf("field format in PostsContentRoot: required")
+	}
+	if v, ok := raw["indent"]; !ok || v == nil {
+		return fmt.Errorf("field indent in PostsContentRoot: required")
+	}
+	if v, ok := raw["type"]; !ok || v == nil {
+		return fmt.Errorf("field type in PostsContentRoot: required")
+	}
+	if v, ok := raw["version"]; !ok || v == nil {
+		return fmt.Errorf("field version in PostsContentRoot: required")
+	}
+	type Plain PostsContentRoot
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = PostsContentRoot(plain)
+	return nil
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockFAQsFaqsElem) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["answer"]; !ok || v == nil {
+		return fmt.Errorf("field answer in BlockFAQsFaqsElem: required")
+	}
+	if v, ok := raw["question"]; !ok || v == nil {
+		return fmt.Errorf("field question in BlockFAQsFaqsElem: required")
+	}
+	type Plain BlockFAQsFaqsElem
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockFAQsFaqsElem(plain)
+	return nil
+}
+
+const SettingsLocaleZh SettingsLocale = "zh"
+const SettingsLocaleXog SettingsLocale = "xog"
+const SettingsLocaleZhHansHK SettingsLocale = "zh_Hans_HK"
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentWithImage) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["blockType"]; !ok || v == nil {
+		return fmt.Errorf("field blockType in BlockContentWithImage: required")
+	}
+	if v, ok := raw["image"]; !ok || v == nil {
+		return fmt.Errorf("field image in BlockContentWithImage: required")
+	}
+	if v, ok := raw["imagePosition"]; !ok || v == nil {
+		return fmt.Errorf("field imagePosition in BlockContentWithImage: required")
+	}
+	if v, ok := raw["textLayout"]; !ok || v == nil {
+		return fmt.Errorf("field textLayout in BlockContentWithImage: required")
+	}
+	type Plain BlockContentWithImage
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContentWithImage(plain)
+	return nil
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentWithImageImagePosition) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_BlockContentWithImageImagePosition {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_BlockContentWithImageImagePosition, v)
+	}
+	*j = BlockContentWithImageImagePosition(v)
+	return nil
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PostsContent) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["root"]; !ok || v == nil {
+		return fmt.Errorf("field root in PostsContent: required")
+	}
+	type Plain PostsContent
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = PostsContent(plain)
+	return nil
+}
+
+var enumValues_BlockContentWithImageImagePosition = []interface{}{
+	"left",
+	"right",
+}
+
+const SettingsLocaleZhHantMO SettingsLocale = "zh_Hant_MO"
+const SettingsLocaleWaeCH SettingsLocale = "wae_CH"
+
+// UnmarshalJSON implements json.Unmarshaler.
 func (j *Media) UnmarshalJSON(b []byte) error {
 	var raw map[string]interface{}
 	if err := json.Unmarshal(b, &raw); err != nil {
@@ -3083,6 +3268,11 @@ func (j *Media) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+const SettingsLocaleUzArabAF SettingsLocale = "uz_Arab_AF"
+const SettingsLocaleZhHant SettingsLocale = "zh_Hant"
+const SettingsLocaleUz SettingsLocale = "uz"
+const SettingsLocaleUzCyrl SettingsLocale = "uz_Cyrl"
+
 // UnmarshalJSON implements json.Unmarshaler.
 func (j *MediaCaption) UnmarshalJSON(b []byte) error {
 	var raw map[string]interface{}
@@ -3101,10 +3291,10 @@ func (j *MediaCaption) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-const SettingsLocaleTr SettingsLocale = "tr"
-const SettingsLocaleZu SettingsLocale = "zu"
-const SettingsLocaleUzCyrlUZ SettingsLocale = "uz_Cyrl_UZ"
-const SettingsLocaleZhHantHK SettingsLocale = "zh_Hant_HK"
+const SettingsLocaleYo SettingsLocale = "yo"
+const SettingsLocaleUzLatnUZ SettingsLocale = "uz_Latn_UZ"
+const SettingsLocaleUzLatn SettingsLocale = "uz_Latn"
+const SettingsLocaleZhHansCN SettingsLocale = "zh_Hans_CN"
 
 // UnmarshalJSON implements json.Unmarshaler.
 func (j *MediaCaptionRoot) UnmarshalJSON(b []byte) error {
@@ -3169,11 +3359,6 @@ var enumValues_MediaCaptionRootFormat = []interface{}{
 	"",
 }
 
-const SettingsLocaleUzLatnUZ SettingsLocale = "uz_Latn_UZ"
-const SettingsLocaleUrIN SettingsLocale = "ur_IN"
-const SettingsLocaleTrTR SettingsLocale = "tr_TR"
-const SettingsLocaleTrCY SettingsLocale = "tr_CY"
-
 // UnmarshalJSON implements json.Unmarshaler.
 func (j *MediaCaptionRootChildrenElem) UnmarshalJSON(b []byte) error {
 	var raw map[string]interface{}
@@ -3193,6 +3378,151 @@ func (j *MediaCaptionRootChildrenElem) UnmarshalJSON(b []byte) error {
 	}
 	*j = MediaCaptionRootChildrenElem(plain)
 	return nil
+}
+
+const SettingsLocaleZuZA SettingsLocale = "zu_ZA"
+const SettingsLocaleZhHansMO SettingsLocale = "zh_Hans_MO"
+const SettingsLocaleUzCyrlUZ SettingsLocale = "uz_Cyrl_UZ"
+const SettingsLocaleZhHantHK SettingsLocale = "zh_Hant_HK"
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContent) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["blockType"]; !ok || v == nil {
+		return fmt.Errorf("field blockType in BlockContent: required")
+	}
+	if v, ok := raw["content"]; !ok || v == nil {
+		return fmt.Errorf("field content in BlockContent: required")
+	}
+	type Plain BlockContent
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContent(plain)
+	return nil
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentContent) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["root"]; !ok || v == nil {
+		return fmt.Errorf("field root in BlockContentContent: required")
+	}
+	type Plain BlockContentContent
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContentContent(plain)
+	return nil
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentContentRoot) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["children"]; !ok || v == nil {
+		return fmt.Errorf("field children in BlockContentContentRoot: required")
+	}
+	if v, ok := raw["direction"]; !ok || v == nil {
+		return fmt.Errorf("field direction in BlockContentContentRoot: required")
+	}
+	if v, ok := raw["format"]; !ok || v == nil {
+		return fmt.Errorf("field format in BlockContentContentRoot: required")
+	}
+	if v, ok := raw["indent"]; !ok || v == nil {
+		return fmt.Errorf("field indent in BlockContentContentRoot: required")
+	}
+	if v, ok := raw["type"]; !ok || v == nil {
+		return fmt.Errorf("field type in BlockContentContentRoot: required")
+	}
+	if v, ok := raw["version"]; !ok || v == nil {
+		return fmt.Errorf("field version in BlockContentContentRoot: required")
+	}
+	type Plain BlockContentContentRoot
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContentContentRoot(plain)
+	return nil
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentContentRootFormat) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_BlockContentContentRootFormat {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_BlockContentContentRootFormat, v)
+	}
+	*j = BlockContentContentRootFormat(v)
+	return nil
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *Posts) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in Posts: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in Posts: required")
+	}
+	if v, ok := raw["title"]; !ok || v == nil {
+		return fmt.Errorf("field title in Posts: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in Posts: required")
+	}
+	type Plain Posts
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = Posts(plain)
+	return nil
+}
+
+var enumValues_RedirectsCode = []interface{}{
+	"301",
+	"302",
+	"307",
+	"308",
+	"410",
+	"451",
+}
+
+const SettingsLocaleZhHK SettingsLocale = "zh_HK"
+
+var enumValues_BlockContentContentRootFormat = []interface{}{
+	"left",
+	"start",
+	"center",
+	"right",
+	"end",
+	"justify",
+	"",
 }
 
 // UnmarshalJSON implements json.Unmarshaler.
@@ -3292,29 +3622,23 @@ func (j *Users) UnmarshalJSON(b []byte) error {
 }
 
 // UnmarshalJSON implements json.Unmarshaler.
-func (j *PortfolioCategories) UnmarshalJSON(b []byte) error {
+func (j *BlockContentContentRootChildrenElem) UnmarshalJSON(b []byte) error {
 	var raw map[string]interface{}
 	if err := json.Unmarshal(b, &raw); err != nil {
 		return err
 	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in PortfolioCategories: required")
+	if v, ok := raw["type"]; !ok || v == nil {
+		return fmt.Errorf("field type in BlockContentContentRootChildrenElem: required")
 	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in PortfolioCategories: required")
+	if v, ok := raw["version"]; !ok || v == nil {
+		return fmt.Errorf("field version in BlockContentContentRootChildrenElem: required")
 	}
-	if v, ok := raw["title"]; !ok || v == nil {
-		return fmt.Errorf("field title in PortfolioCategories: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in PortfolioCategories: required")
-	}
-	type Plain PortfolioCategories
+	type Plain BlockContentContentRootChildrenElem
 	var plain Plain
 	if err := json.Unmarshal(b, &plain); err != nil {
 		return err
 	}
-	*j = PortfolioCategories(plain)
+	*j = BlockContentContentRootChildrenElem(plain)
 	return nil
 }
 

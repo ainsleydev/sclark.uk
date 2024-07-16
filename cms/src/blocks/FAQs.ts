@@ -23,9 +23,9 @@ export const FAQs: Block = {
 					},
 				},
 				{
-					name: "content",
+					name: "answer",
 					type: "textarea",
-					label: "Content",
+					label: "Answer",
 					required: true,
 					admin: {
 						description: "Add a content for the FAQ item.",

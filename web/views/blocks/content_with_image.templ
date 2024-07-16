@@ -1,4 +1,63 @@
 package blocks
 
-templ ContentWithImage() {
+import (
+	"log/slog"
+	"github.com/ainsleydev/sclark.uk/types"
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+	"github.com/ainsleydev/sclark.uk/views/components"
+)
+
+func decodeRichText(block payload.Block) string {
+	type Richtext struct {
+		HTML string `json:"contentHtml"`
+	}
+	var r Richtext
+	if err := block.Decode(&r); err != nil {
+		slog.Error("Error decoding rich text: " + err.Error())
+	}
+	return r.HTML
+}
+
+func decodeFAQs(block payload.Block) types.BlockFAQs {
+	var b types.BlockFAQs
+	if err := block.Decode(&b); err != nil {
+		slog.Error("Error decoding FAQs: " + err.Error())
+	}
+	return b
+}
+
+templ ContentWithImage(props types.BlockContentWithImage) {
+	<section class="section content-with-image">
+		<div class="container">
+			<div class="row justify-content-center">
+				<!-- Image -->
+				<div class={ "col-12 col-tab-10 col-desk-6",
+					templ.KV("order-desk-last", props.ImagePosition == "left") }>
+					if props.Image.Url != nil {
+						<picture>
+							<img loading="lazy" src={ *props.Image.Url } alt={ props.Image.Alt } >
+						</picture>
+					}
+				</div><!-- /Col -->
+				<!-- Content -->
+				<div class="col-12 col-tab-10 col-desk-5">
+					for _, block := range props.TextLayout {
+						@components.Group() {
+							switch block.BlockType {
+								case "content-block":
+									<div class="richtext">
+										@templ.Raw(decodeRichText(block))
+									</div>
+								case "faqs":
+									@components.Collapse(FAQsToCollapse(decodeFAQs(block)))
+								default:
+									{ block.BlockType }
+							}
+						}
+					}
+				</div><!-- /Col -->
+
+			</div><!-- /Row -->
+		</div><!-- /Container -->
+	</section>
 }

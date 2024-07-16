@@ -39,50 +39,9 @@ templ Home() {
 						}
 					</div><!-- /Col -->
 				</div><!-- /Row -->
-				<!-- Content -->
-				<div class="row justify-content-center justify-content-desk-between">
-					<!-- Image -->
-					<div class="col-12 col-tab-10 col-desk-6">
-						@components.Picture("/assets/images/mockups/laptop.png")
-					</div>
-					<!-- Content -->
-					<div class="col-12 col-tab-10 col-desk-5">
-						@components.Group() {
-							<h3>Learning a foreign language isn't easy</h3>
-							<p>Especially when it comes to speaking. It takes time, practice and confidence. But you are not alone. As an English language teacher with 20 years’ experience, I’ve helped adults from all over the world to feel more confident in their English skills – and I can help you too!</p>
-							<p>How? With professional teaching techniques, a deep knowledge of the English language, a lot of patience, and a friendly, positive attitude. I’ll help you feel so comfortable speaking English, that you’ll forget you were ever worried.</p>
-						}
-						@components.Group() {
-							<h3>But you can do it, in 3 easy steps</h3>
-							@components.List(components.ListProps{
-								Ordered: true,
-								Items: []string{
-									"Discuss what you need in our free 20-minute call",
-									"Do something else that’s fucking fantastic",
-									"Book your first set of lessons",
-								},
-							})
-						}
-						@components.Group("mb-0") {
-							<h3>FAQs</h3>
-							@components.Collapse(components.CollapseProps{
-								IsFAQs: true,
-								Items: []components.CollapseItem{
-									{
-										Title:   "How long is each lesson?",
-										Content: "Content",
-									},
-									{
-										Title:   "How regularly should I have lessons?",
-										Content: "Content",
-									},
-								},
-							})
-						}
-					</div>
-				</div><!-- /Row -->
 			</div><!-- /Container -->
 		</section>
+		@blocks.ContentWithImage(content.EnglishLessons)
 		<!-- =====================
 			Content Writing
 			===================== -->

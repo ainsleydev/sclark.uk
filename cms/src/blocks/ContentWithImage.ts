@@ -39,6 +39,11 @@ export const ContentWithImage: Block = {
 						width: "50%",
 						description: "Select the position of the image.",
 					},
+					typescriptSchema: [
+						() => ({
+							type: 'string',
+						}),
+					],
 				},
 				{
 					name: "sticky",
