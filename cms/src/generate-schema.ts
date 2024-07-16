@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import path from "node:path";
 // import { configToJSONSchema, getPayload } from "payload";
-import { getPayload} from "payload";
+import { getPayload } from "payload";
 import { importConfig } from "payload/node";
 import { fileURLToPath } from "node:url";
 import { configToJSONSchema } from "@ainsleydev/payload-helper/src/gen/schema";

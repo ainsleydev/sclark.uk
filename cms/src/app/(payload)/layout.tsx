@@ -11,8 +11,6 @@ type Args = {
 	children: React.ReactNode;
 };
 
-const Layout = ({ children }: Args) => (
-	<RootLayout config={configPromise}>{children}</RootLayout>
-);
+const Layout = ({ children }: Args) => <RootLayout config={configPromise}>{children}</RootLayout>;
 
 export default Layout;

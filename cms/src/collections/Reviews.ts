@@ -10,9 +10,9 @@ export const Reviews: CollectionConfig = {
 		useAsTitle: "author.firstName",
 		defaultColumns: ["title", "author.firstName", "author.lastName"],
 	},
-typescript: {
-	interface: 'Review',
-},
+	typescript: {
+		interface: "Review",
+	},
 	fields: [
 		{
 			name: "content",

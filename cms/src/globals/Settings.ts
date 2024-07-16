@@ -13,16 +13,17 @@ export const Footer: Tab = {
 					type: "text",
 					label: "Title",
 					admin: {
-						description: 'Add a title for the footer area.'
-					}
+						description: "Add a title for the footer area.",
+					},
 				},
 				{
 					name: "content",
 					type: "textarea",
 					label: "Content",
 					admin: {
-						description: 'Add content for the footer that will appear beneath the title.'
-					}
+						description:
+							"Add content for the footer that will appear beneath the title.",
+					},
 				},
 			],
 		},

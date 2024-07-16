@@ -7,7 +7,7 @@ import type { Config, Field } from "payload";
 import sharp from "sharp";
 
 import { Clients } from "./collections/Clients";
-import {Pages} from "./collections/Pages";
+import { Pages } from "./collections/Pages";
 import { Portfolio } from "./collections/Portfolio";
 import { PortfolioCategories } from "./collections/PortfolioCategories";
 import { Posts } from "./collections/Posts";
@@ -26,7 +26,6 @@ import { cloudStoragePlugin } from "@payloadcms/plugin-cloud-storage";
 import { s3Adapter } from "@payloadcms/plugin-cloud-storage/s3";
 import { formBuilderPlugin } from "@payloadcms/plugin-form-builder";
 import { seoPlugin } from "@payloadcms/plugin-seo";
-
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -67,9 +66,9 @@ export default buildConfig({
 			({ jsonSchema }) => {
 				// biome-ignore lint/performance/noDelete: <explanation>
 				delete jsonSchema.properties.auth;
-				return jsonSchema
+				return jsonSchema;
 			},
-		]
+		],
 	},
 	db: postgresAdapter({
 		pool: {
@@ -88,8 +87,7 @@ export default buildConfig({
 			tabbedUI: true,
 			uploadsCollection: "media",
 			// @ts-ignore
-			generateTitle: ({ doc, locale }) =>
-				`Website.com — ${doc?.title?.value ?? ""}`,
+			generateTitle: ({ doc, locale }) => `Website.com — ${doc?.title?.value ?? ""}`,
 			// @ts-ignore
 			generateDescription: ({ doc }) => doc?.excerpt?.value,
 		}),
