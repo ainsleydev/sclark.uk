@@ -230,11 +230,38 @@ export interface Meta {
  */
 export interface Page {
   id: number;
-  layout: (BlockContentWithImage | BlockContentWithImage | BlockLogs | BlockReviews | BlockPortfolio)[];
+  layout: (BlockContentDefault | BlockContentWithImage | BlockLogs | BlockReviews | BlockPortfolio)[];
   isHome?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockContentDefault".
+ */
+export interface BlockContentDefault {
+  style: 'centered' | 'spread';
+  centreAlign?: boolean | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  contentHtml?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'content-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

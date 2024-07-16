@@ -861,7 +861,13 @@
                     "items": {
                         "oneOf": [
                             {
+                                "$ref": "#/definitions/BlockContentDefault"
+                            },
+                            {
                                 "$ref": "#/definitions/BlockContentWithImage"
+                            },
+                            {
+                                "$ref": "#/definitions/BlockLogs"
                             },
                             {
                                 "$ref": "#/definitions/BlockReviews"
@@ -3073,6 +3079,126 @@
                 ]
             }
         },
+        "BlockContentDefault": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "style": {
+                    "type": "string",
+                    "enum": [
+                        "centered",
+                        "spread"
+                    ]
+                },
+                "centreAlign": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "content": {
+                    "type": "object",
+                    "properties": {
+                        "root": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "type": {
+                                    "type": "string"
+                                },
+                                "children": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "additionalProperties": true,
+                                        "properties": {
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "version": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "required": [
+                                            "type",
+                                            "version"
+                                        ]
+                                    }
+                                },
+                                "direction": {
+                                    "oneOf": [
+                                        {
+                                            "enum": [
+                                                "ltr",
+                                                "rtl"
+                                            ]
+                                        },
+                                        {
+                                            "type": "null"
+                                        }
+                                    ]
+                                },
+                                "format": {
+                                    "type": "string",
+                                    "enum": [
+                                        "left",
+                                        "start",
+                                        "center",
+                                        "right",
+                                        "end",
+                                        "justify",
+                                        ""
+                                    ]
+                                },
+                                "indent": {
+                                    "type": "integer"
+                                },
+                                "version": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "children",
+                                "direction",
+                                "format",
+                                "indent",
+                                "type",
+                                "version"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "root"
+                    ]
+                },
+                "contentHtml": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "blockType",
+                "style",
+                "content"
+            ]
+        },
         "BlockContent": {
             "type": "object",
             "additionalProperties": false,
@@ -3293,6 +3419,65 @@
                 "textLayout",
                 "imagePosition",
                 "image"
+            ]
+        },
+        "BlockLogs": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "greyscale": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "logos": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "logo": {
+                                "$ref": "#/definitions/media",
+                                "type": "object"
+                            },
+                            "id": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "logo"
+                        ]
+                    }
+                },
+                "id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "blockType",
+                "title"
             ]
         },
         "BlockReviews": {

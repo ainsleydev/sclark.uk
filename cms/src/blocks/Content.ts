@@ -1,14 +1,12 @@
 import type { Block } from "payload";
-import { FAQs } from "@/blocks/FAQs";
-import { RichText } from "@/blocks/Richtext";
 import {HTMLConverterFeature, lexicalEditor, lexicalHTML} from "@payloadcms/richtext-lexical";
 
 export const Content: Block = {
 	slug: "content-block",
-	interfaceName: "BlockContentWithImage",
+	interfaceName: "BlockContentDefault",
 	labels: {
-		singular: "Content With Image",
-		plural: "Content With Image",
+		singular: "Content",
+		plural: "Content",
 	},
 	fields: [
 		{
@@ -26,8 +24,8 @@ export const Content: Block = {
 							value: "centered",
 						},
 						{
-							label: "Stretch",
-							value: "stretched",
+							label: "Spread",
+							value: "spread",
 						},
 					],
 					admin: {
@@ -36,13 +34,13 @@ export const Content: Block = {
 					},
 				},
 				{
-					name: "alignment",
-					label: "Alignment",
+					name: "centreAlign",
+					label: "Centre Align",
 					type: "checkbox",
 					defaultValue: false,
 					admin: {
 						width: "50%",
-						description: "Check this box to align the text to the right.",
+						description: "Check this box to align the text to the centre.",
 					},
 				},
 			],

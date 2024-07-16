@@ -1,4 +1,19 @@
 package blocks
 
-templ Content() {
+import (
+	"github.com/ainsleydev/sclark.uk/types"
+)
+
+templ Content(props types.BlockContentDefault) {
+	if props.ContentHtml != nil {
+		<section class="section section-padding">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-12 col-tab-10 col-desk-8">
+						@templ.Raw(*props.ContentHtml)
+					</div><!-- /Col -->
+				</div><!-- /Row -->
+			</div><!-- /Container -->
+		</section>
+	}
 }

@@ -17,50 +17,13 @@ templ Home() {
 			English Lessons
 			===================== -->
 		@components.Gradient(components.GradientColourBlue)
-		<section class="section section-padding">
-			<div class="container">
-				<!-- Intro -->
-				<div class="row justify-content-center">
-					<div class="col-12 col-tab-10 col-desk-8">
-						// TODO: Need to add large sizes
-						<h2>Online English Lessons</h2>
-						<p>
-							Are you worried about making mistakes in English?
-							<br/>
-							Do you know what to say in your head, but the words don’t come out
-							<br/>
-							Can you speak some English, but it’s difficult to talk about complex topics?
-							<br/>
-							Do you need to pass an English exam?
-						</p>
-					</div><!-- /Col -->
-				</div><!-- /Row -->
-			</div><!-- /Container -->
-		</section>
+		@blocks.Content(content.EnglishLessonsIntro)
 		@blocks.ContentWithImage(content.EnglishLessons)
 		<!-- =====================
 			Content Writing
 			===================== -->
 		@components.Gradient(components.GradientColourPink)
-		<section class="section section-padding">
-			<div class="container">
-				<!-- Intro -->
-				<div class="row justify-content-center">
-					<div class="col-12 col-tab-10 col-desk-8">
-						<h2>Content Writing Services</h2>
-						<p>
-							Are you worried about making mistakes in English?
-							<br/>
-							Do you know what to say in your head, but the words don’t come out
-							<br/>
-							Can you speak some English, but it’s difficult to talk about complex topics?
-							<br/>
-							Do you need to pass an English exam?
-						</p>
-					</div><!-- /Col -->
-				</div><!-- /Row -->
-			</div><!-- /Container -->
-		</section>
+		@blocks.Content(content.EnglishLessonsIntro)
 		@blocks.ContentWithImage(content.ContentWriting)
 		<!-- =====================
 			Reviews
@@ -74,5 +37,8 @@ templ Home() {
 			Contact
 			===================== -->
 		@blocks.Contact()
+		<!-- =====================
+			Logos
+			===================== -->
 	}
 }
