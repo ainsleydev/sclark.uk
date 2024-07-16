@@ -27,8 +27,8 @@ var Portfolio = types.BlockPortfolio{
 		},
 		{
 			Title:    "Marketing Monday: 3 Email Marketing Best Practices for Education Providers",
-			Date:     "08/10/2022",
-			Url:      "https://decspets.ie/insights/all-you-need-to-know-about-getting-a-pet-tortoise/",
+			Date:     "10/07/2023",
+			Url:      "https://schoolsandagents.com/newsarticle/marketing_monday_1007",
 			Category: types.PortfolioCategories{Title: "International Education"},
 			Company: types.Clients{
 				Name: "Schools and Agents",
@@ -90,7 +90,7 @@ var Portfolio = types.BlockPortfolio{
 			},
 		},
 		{
-			Title:    "How to enhance your website navigation menu for SEO and usability",
+			Title:    "How to Enhance Your Website Navigation Menu for SEO and Usability",
 			Date:     "01/10/2023",
 			Url:      "https://ainsley.dev/insights/enhance-website-navigation-menus-for-seo/",
 			Category: types.PortfolioCategories{Title: "Technology"},
