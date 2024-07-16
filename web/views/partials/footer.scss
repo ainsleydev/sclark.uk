@@ -48,6 +48,7 @@
 		&-link {
 			text-decoration: none;
 			@include h5;
+			font-weight: 500;
 		}
 	}
 
@@ -83,6 +84,9 @@
 			height: auto;
 		}
 	}
+
+	// Desktop
+	// =========================================================================
 
 	@include media-desk {
 

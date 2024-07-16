@@ -51,8 +51,10 @@ templ Contact() {
 				<!-- Form -->
 				<div class="col-12 col-tab-10 col-desk-5">
 					<form class="form">
-						<h4>Get in touch</h4>
-						<p>Fill out the quick form below and we will get back in touch.</p>
+						@components.Group() {
+							<h4>Get in touch</h4>
+							<p>Fill out the quick form below and we will get back in touch.</p>
+						}
 						<div class="form-group">
 							<label class="form-label" for="form-name">Name</label>
 							<input class="form-input" type="text" id="form-name" autocomplete="given-name" />
@@ -63,12 +65,12 @@ templ Contact() {
 						</div>
 						<div class="form-group">
 							<label class="form-label" for="form-message">Message</label>
-							<textarea class="form-input form-textarea" id="form-message" rows="6" spellcheck="true"></textarea>
+							<textarea class="form-input form-textarea" id="form-message" rows="4" spellcheck="true"></textarea>
 						</div>
-
 						@components.Button(components.ButtonProps{
 							Text: "Get In Touch",
 							Filled: true,
+							Block: true,
 						})
 					</form>
 				</div>

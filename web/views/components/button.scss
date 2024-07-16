@@ -12,7 +12,7 @@
 	cursor: pointer;
 	outline: none;
 	font-size: 1rem;
-	font-weight: bold;
+	font-weight: 500;
 	height: auto;
 	user-select: none;
 	line-height: 1;
@@ -37,6 +37,15 @@
 	&-filled {
 		background-color: var(--colour-foreground);
 		color: white;
+	}
+
+	// Block
+	// =========================================================================
+
+	&-block {
+		width: 100%;
+		text-align: center;
+		justify-content: center;
 	}
 
 	// Hover

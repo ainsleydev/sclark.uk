@@ -7,9 +7,8 @@ $fontPath: '/assets/fonts/';
 
 @font-face {
 	font-family: 'Vremena Grotesk';
-	src:
-		url('#{$fontPath}VremenaGroteskBook.woff2') format('woff2'),
-		url('#{$fontPath}VremenaGroteskBook.woff') format('woff');
+	src: url('#{$fontPath}VremenaGroteskBook.woff2') format('woff2'),
+	url('#{$fontPath}VremenaGroteskBook.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
@@ -17,9 +16,18 @@ $fontPath: '/assets/fonts/';
 
 @font-face {
 	font-family: 'Vremena Grotesk';
-	src:
-		url('#{$fontPath}VremenaGroteskBold.woff2') format('woff2'),
-		url('#{$fontPath}VremenaGroteskBold.woff') format('woff');
+	src: local('Vremena Grotesk Medium'), local('VremenaGroteskMedium'),
+	url('#{$fontPath}VremenaGroteskMedium.woff2') format('woff2'),
+	url('#{$fontPath}VremenaGroteskMedium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Vremena Grotesk';
+	src: url('#{$fontPath}VremenaGroteskBold.woff2') format('woff2'),
+	url('#{$fontPath}VremenaGroteskBold.woff') format('woff');
 	font-weight: 600;
 	font-style: normal;
 	font-display: swap;
