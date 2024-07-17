@@ -95,7 +95,8 @@ export default buildConfig({
 			formOverrides: {
 				fields: ({ defaultFields }) => {
 					const filteredFields = defaultFields.filter(
-						(field) => field.name !== "confirmationMessage",
+						// @ts-ignore
+						(field) => field.name !== "confirmationMessage" && field.name !== "confirmationType",
 					);
 					return [
 						...filteredFields,

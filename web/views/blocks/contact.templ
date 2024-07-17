@@ -3,9 +3,10 @@ package blocks
 import (
 	"github.com/ainsleydev/sclark.uk/views/components"
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+	"github.com/ainsleydev/sclark.uk/types"
 )
 
-templ Contact() {
+templ Contact(props types.BlockContact) {
 	{{ settings := payload.MustGetSettings(ctx) }}
 	<section class="section section-fade-blue">
 		<div class="container">
@@ -13,10 +14,16 @@ templ Contact() {
 				<!-- Content -->
 				<div class="col-12 col-tab-10 col-desk-5">
 					@components.Group("group-large") {
-						<h2>Contact now</h2>
-						<p>Don’t just take my word for it – here’s what some of my clients have to say. Don’t just take my word for it – here’s what some of my clients have to say. Don’t just take my word for it – here’s what some of my clients have to say.</p>
+						<!-- Title -->
+						if props.Title != "" {
+							<h2>{ props.Title } </h2>
+						}
+						<!-- Content -->
+						if props.Content != nil {
+							<p>{ *props.Content }</p>
+						}
 					}
-					if settings.Contact != nil {
+					if settings != nil && settings.Contact != nil {
 						<!-- Telephone -->
 						@components.Group() {
 							if settings.Contact.Telephone != nil {
@@ -40,11 +47,13 @@ templ Contact() {
 							}
 						}
 						<!-- Social -->
-						@components.Group("mb-0") {
-							<div class="contact-item">
-								<h6>Connect</h6>
-								@components.Social(components.SocialProps{})
-							</div>
+						if props.IncludeSocial != nil && *props.IncludeSocial == true {
+							@components.Group("mb-0") {
+								<div class="contact-item">
+									<h6>Connect</h6>
+									@components.Social(components.SocialProps{})
+								</div>
+							}
 						}
 					}
 				</div><!-- /Col -->

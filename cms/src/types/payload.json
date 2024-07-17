@@ -874,6 +874,9 @@
                             },
                             {
                                 "$ref": "#/definitions/BlockPortfolio"
+                            },
+                            {
+                                "$ref": "#/definitions/BlockContact"
                             }
                         ]
                     }
@@ -1847,7 +1850,7 @@
                             "github.com/ainsleydev/webkit/pkg/adapters/payload"
                         ],
                         "nillable": false,
-                        "type": "payload.Blocks"
+                        "type": "[]payload.FormField"
                     },
                     "items": {
                         "oneOf": [
@@ -2386,16 +2389,6 @@
                     "type": [
                         "string",
                         "null"
-                    ]
-                },
-                "confirmationType": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "enum": [
-                        "message",
-                        "redirect"
                     ]
                 },
                 "redirect": {
@@ -3544,6 +3537,49 @@
                     "items": {
                         "$ref": "#/definitions/portfolio"
                     }
+                },
+                "id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "blockType",
+                "title"
+            ]
+        },
+        "BlockContact": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "includeSocial": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "form": {
+                    "$ref": "#/definitions/forms"
                 },
                 "id": {
                     "type": [

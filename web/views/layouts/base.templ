@@ -6,8 +6,9 @@ import (
 )
 
 templ Base() {
+	{{ settings := payload.MustGetSettings(ctx) }}
 	<!DOCTYPE html>
-	<html lang="en-GB" class="no-js">
+	<html lang={ settings.Locale } class="no-js">
 		<head>
 			@payload.Head(ctx)
 			<!-- Favicon -->

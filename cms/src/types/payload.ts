@@ -230,7 +230,7 @@ export interface Meta {
  */
 export interface Page {
   id: number;
-  layout: (BlockContentDefault | BlockContentWithImage | BlockLogs | BlockReviews | BlockPortfolio)[];
+  layout: (BlockContentDefault | BlockContentWithImage | BlockLogs | BlockReviews | BlockPortfolio | BlockContact)[];
   isHome?: boolean | null;
   updatedAt: string;
   createdAt: string;
@@ -412,36 +412,16 @@ export interface PortfolioCategory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
+ * via the `definition` "BlockContact".
  */
-export interface User {
-  id: number;
-  name: string;
-  updatedAt: string;
-  createdAt: string;
-  enableAPIKey?: boolean | null;
-  apiKey?: string | null;
-  apiKeyIndex?: string | null;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "redirects".
- */
-export interface Redirect {
-  id: number;
-  from: string;
-  to: string;
-  code: '301' | '302' | '307' | '308' | '410' | '451';
-  updatedAt: string;
-  createdAt: string;
+export interface BlockContact {
+  title: string;
+  content?: string | null;
+  includeSocial?: boolean | null;
+  form?: (number | null) | Form;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contact-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -559,7 +539,6 @@ export interface Form {
       )[]
     | null;
   submitButtonLabel?: string | null;
-  confirmationType?: ('message' | 'redirect') | null;
   redirect?: {
     url: string;
   };
@@ -590,6 +569,39 @@ export interface Form {
       }[]
     | null;
   confirmationMessage?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects".
+ */
+export interface Redirect {
+  id: number;
+  from: string;
+  to: string;
+  code: '301' | '302' | '307' | '308' | '410' | '451';
   updatedAt: string;
   createdAt: string;
 }

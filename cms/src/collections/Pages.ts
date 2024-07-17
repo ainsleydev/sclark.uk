@@ -7,6 +7,7 @@ import { Portfolio } from "@/blocks/Portfolio";
 import { ContentWithImage } from "@/blocks/ContentWithImage";
 import {Logos} from "@/blocks/Logos";
 import {Content} from "@/blocks/Content";
+import {Contact} from "@/blocks/Contact";
 
 export const Pages: CollectionConfig = {
 	slug: "pages",
@@ -80,6 +81,7 @@ export const Pages: CollectionConfig = {
 								Logos,
 								Reviews,
 								Portfolio,
+								Contact,
 							],
 						},
 					],
