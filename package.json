@@ -43,8 +43,8 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",
 		"cz-conventional-changelog": "^3.3.0",
-		"lefthook": "^1.6.18",
-		"turbo": "^2.0.6"
+		"lefthook": "^1.7.2",
+		"turbo": "^2.0.7"
 	},
 	"config": {
 		"commitizen": {
