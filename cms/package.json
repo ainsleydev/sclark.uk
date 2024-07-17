@@ -10,7 +10,7 @@
 		"devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev -p 4000",
 		"gen": "pnpm run generate:schema && pnpm run generate:types",
 		"generate:types": "payload generate:types",
-		"generate:schema": "npx tsx src/generate-schema.ts",
+		"generate:schema": "GEN_GOLANG=true npx tsx src/generate-schema.ts",
 		"payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
 		"start": "cross-env NODE_OPTIONS=--no-deprecation next start",
 		"check": "pnpm run format && pnpm run lint",

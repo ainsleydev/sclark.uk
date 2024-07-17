@@ -204,1997 +204,6 @@ const AddressCountryTanzania AddressCountry = "Tanzania"
 const AddressCountryThailand AddressCountry = "Thailand"
 const AddressCountryTimorLeste AddressCountry = "Timor-Leste"
 const AddressCountryTogo AddressCountry = "Togo"
-const AddressCountryTonga AddressCountry = "Tonga"
-const AddressCountryTrinidadAndTobago AddressCountry = "Trinidad and Tobago"
-const AddressCountryTunisia AddressCountry = "Tunisia"
-const AddressCountryTurkey AddressCountry = "Turkey"
-const AddressCountryTurkmenistan AddressCountry = "Turkmenistan"
-const AddressCountryTuvalu AddressCountry = "Tuvalu"
-const AddressCountryUganda AddressCountry = "Uganda"
-const AddressCountryUkraine AddressCountry = "Ukraine"
-const AddressCountryUnitedArabEmirates AddressCountry = "United Arab Emirates"
-const AddressCountryUnitedKingdom AddressCountry = "United Kingdom"
-const AddressCountryUnitedStatesOfAmerica AddressCountry = "United States of America"
-const AddressCountryUruguay AddressCountry = "Uruguay"
-const AddressCountryUzbekistan AddressCountry = "Uzbekistan"
-const AddressCountryVanuatu AddressCountry = "Vanuatu"
-const AddressCountryVenezuela AddressCountry = "Venezuela"
-const AddressCountryVietnam AddressCountry = "Vietnam"
-const AddressCountryYemen AddressCountry = "Yemen"
-const AddressCountryZambia AddressCountry = "Zambia"
-const AddressCountryZimbabwe AddressCountry = "Zimbabwe"
-
-type BlockContact struct {
-	// BlockName corresponds to the JSON schema field "blockName".
-	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
-
-	// BlockType corresponds to the JSON schema field "blockType".
-	BlockType string `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
-
-	// Content corresponds to the JSON schema field "content".
-	Content *string `json:"content,omitempty" yaml:"content,omitempty" mapstructure:"content,omitempty"`
-
-	// Form corresponds to the JSON schema field "form".
-	Form *Forms `json:"form,omitempty" yaml:"form,omitempty" mapstructure:"form,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-
-	// IncludeSocial corresponds to the JSON schema field "includeSocial".
-	IncludeSocial *bool `json:"includeSocial,omitempty" yaml:"includeSocial,omitempty" mapstructure:"includeSocial,omitempty"`
-
-	// Title corresponds to the JSON schema field "title".
-	Title string `json:"title" yaml:"title" mapstructure:"title"`
-}
-
-type BlockContent struct {
-	// BlockName corresponds to the JSON schema field "blockName".
-	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
-
-	// BlockType corresponds to the JSON schema field "blockType".
-	BlockType string `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
-
-	// Content corresponds to the JSON schema field "content".
-	Content BlockContentContent `json:"content" yaml:"content" mapstructure:"content"`
-
-	// ContentHtml corresponds to the JSON schema field "contentHtml".
-	ContentHtml *string `json:"contentHtml,omitempty" yaml:"contentHtml,omitempty" mapstructure:"contentHtml,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-}
-
-type BlockContentContent struct {
-	// Root corresponds to the JSON schema field "root".
-	Root BlockContentContentRoot `json:"root" yaml:"root" mapstructure:"root"`
-}
-
-type BlockContentContentRoot struct {
-	// Children corresponds to the JSON schema field "children".
-	Children []BlockContentContentRootChildrenElem `json:"children" yaml:"children" mapstructure:"children"`
-
-	// Direction corresponds to the JSON schema field "direction".
-	Direction interface{} `json:"direction" yaml:"direction" mapstructure:"direction"`
-
-	// Format corresponds to the JSON schema field "format".
-	Format BlockContentContentRootFormat `json:"format" yaml:"format" mapstructure:"format"`
-
-	// Indent corresponds to the JSON schema field "indent".
-	Indent int `json:"indent" yaml:"indent" mapstructure:"indent"`
-
-	// Type corresponds to the JSON schema field "type".
-	Type string `json:"type" yaml:"type" mapstructure:"type"`
-
-	// Version corresponds to the JSON schema field "version".
-	Version int `json:"version" yaml:"version" mapstructure:"version"`
-}
-
-type BlockContentContentRootChildrenElem struct {
-	// Type corresponds to the JSON schema field "type".
-	Type string `json:"type" yaml:"type" mapstructure:"type"`
-
-	// Version corresponds to the JSON schema field "version".
-	Version int `json:"version" yaml:"version" mapstructure:"version"`
-}
-
-type BlockContentContentRootFormat string
-
-const BlockContentContentRootFormatBlank BlockContentContentRootFormat = ""
-const BlockContentContentRootFormatCenter BlockContentContentRootFormat = "center"
-const BlockContentContentRootFormatEnd BlockContentContentRootFormat = "end"
-const BlockContentContentRootFormatJustify BlockContentContentRootFormat = "justify"
-const BlockContentContentRootFormatLeft BlockContentContentRootFormat = "left"
-const BlockContentContentRootFormatRight BlockContentContentRootFormat = "right"
-const BlockContentContentRootFormatStart BlockContentContentRootFormat = "start"
-
-type BlockContentDefault struct {
-	// BlockName corresponds to the JSON schema field "blockName".
-	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
-
-	// BlockType corresponds to the JSON schema field "blockType".
-	BlockType string `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
-
-	// CentreAlign corresponds to the JSON schema field "centreAlign".
-	CentreAlign *bool `json:"centreAlign,omitempty" yaml:"centreAlign,omitempty" mapstructure:"centreAlign,omitempty"`
-
-	// Content corresponds to the JSON schema field "content".
-	Content BlockContentDefaultContent `json:"content" yaml:"content" mapstructure:"content"`
-
-	// ContentHtml corresponds to the JSON schema field "contentHtml".
-	ContentHtml *string `json:"contentHtml,omitempty" yaml:"contentHtml,omitempty" mapstructure:"contentHtml,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-
-	// Style corresponds to the JSON schema field "style".
-	Style BlockContentDefaultStyle `json:"style" yaml:"style" mapstructure:"style"`
-}
-
-type BlockContentDefaultContent struct {
-	// Root corresponds to the JSON schema field "root".
-	Root BlockContentDefaultContentRoot `json:"root" yaml:"root" mapstructure:"root"`
-}
-
-type BlockContentDefaultContentRoot struct {
-	// Children corresponds to the JSON schema field "children".
-	Children []BlockContentDefaultContentRootChildrenElem `json:"children" yaml:"children" mapstructure:"children"`
-
-	// Direction corresponds to the JSON schema field "direction".
-	Direction interface{} `json:"direction" yaml:"direction" mapstructure:"direction"`
-
-	// Format corresponds to the JSON schema field "format".
-	Format BlockContentDefaultContentRootFormat `json:"format" yaml:"format" mapstructure:"format"`
-
-	// Indent corresponds to the JSON schema field "indent".
-	Indent int `json:"indent" yaml:"indent" mapstructure:"indent"`
-
-	// Type corresponds to the JSON schema field "type".
-	Type string `json:"type" yaml:"type" mapstructure:"type"`
-
-	// Version corresponds to the JSON schema field "version".
-	Version int `json:"version" yaml:"version" mapstructure:"version"`
-}
-
-type BlockContentDefaultContentRootChildrenElem struct {
-	// Type corresponds to the JSON schema field "type".
-	Type string `json:"type" yaml:"type" mapstructure:"type"`
-
-	// Version corresponds to the JSON schema field "version".
-	Version int `json:"version" yaml:"version" mapstructure:"version"`
-}
-
-type BlockContentDefaultContentRootFormat string
-
-const BlockContentDefaultContentRootFormatBlank BlockContentDefaultContentRootFormat = ""
-const BlockContentDefaultContentRootFormatCenter BlockContentDefaultContentRootFormat = "center"
-const BlockContentDefaultContentRootFormatEnd BlockContentDefaultContentRootFormat = "end"
-const BlockContentDefaultContentRootFormatJustify BlockContentDefaultContentRootFormat = "justify"
-const BlockContentDefaultContentRootFormatLeft BlockContentDefaultContentRootFormat = "left"
-const BlockContentDefaultContentRootFormatRight BlockContentDefaultContentRootFormat = "right"
-const BlockContentDefaultContentRootFormatStart BlockContentDefaultContentRootFormat = "start"
-
-type BlockContentDefaultStyle string
-
-const BlockContentDefaultStyleCentered BlockContentDefaultStyle = "centered"
-const BlockContentDefaultStyleSpread BlockContentDefaultStyle = "spread"
-
-type BlockContentWithImage struct {
-	// BlockName corresponds to the JSON schema field "blockName".
-	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
-
-	// BlockType corresponds to the JSON schema field "blockType".
-	BlockType string `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-
-	// Image corresponds to the JSON schema field "image".
-	Image Media `json:"image" yaml:"image" mapstructure:"image"`
-
-	// ImagePosition corresponds to the JSON schema field "imagePosition".
-	ImagePosition BlockContentWithImageImagePosition `json:"imagePosition" yaml:"imagePosition" mapstructure:"imagePosition"`
-
-	// Sticky corresponds to the JSON schema field "sticky".
-	Sticky *bool `json:"sticky,omitempty" yaml:"sticky,omitempty" mapstructure:"sticky,omitempty"`
-
-	// TextLayout corresponds to the JSON schema field "textLayout".
-	TextLayout payload.Blocks `json:"textLayout" yaml:"textLayout" mapstructure:"textLayout"`
-}
-
-type BlockContentWithImageImagePosition string
-
-const BlockContentWithImageImagePositionLeft BlockContentWithImageImagePosition = "left"
-const BlockContentWithImageImagePositionRight BlockContentWithImageImagePosition = "right"
-
-type BlockFAQs struct {
-	// BlockName corresponds to the JSON schema field "blockName".
-	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
-
-	// BlockType corresponds to the JSON schema field "blockType".
-	BlockType string `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
-
-	// Faqs corresponds to the JSON schema field "faqs".
-	Faqs []BlockFAQsFaqsElem `json:"faqs,omitempty" yaml:"faqs,omitempty" mapstructure:"faqs,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-}
-
-type BlockFAQsFaqsElem struct {
-	// Answer corresponds to the JSON schema field "answer".
-	Answer string `json:"answer" yaml:"answer" mapstructure:"answer"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-
-	// Question corresponds to the JSON schema field "question".
-	Question string `json:"question" yaml:"question" mapstructure:"question"`
-}
-
-type BlockLogs struct {
-	// BlockName corresponds to the JSON schema field "blockName".
-	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
-
-	// BlockType corresponds to the JSON schema field "blockType".
-	BlockType string `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
-
-	// Greyscale corresponds to the JSON schema field "greyscale".
-	Greyscale *bool `json:"greyscale,omitempty" yaml:"greyscale,omitempty" mapstructure:"greyscale,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-
-	// Logos corresponds to the JSON schema field "logos".
-	Logos []BlockLogsLogosElem `json:"logos,omitempty" yaml:"logos,omitempty" mapstructure:"logos,omitempty"`
-
-	// Title corresponds to the JSON schema field "title".
-	Title string `json:"title" yaml:"title" mapstructure:"title"`
-}
-
-type BlockLogsLogosElem struct {
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-
-	// Logo corresponds to the JSON schema field "logo".
-	Logo Media `json:"logo" yaml:"logo" mapstructure:"logo"`
-}
-
-type BlockPortfolio struct {
-	// BlockName corresponds to the JSON schema field "blockName".
-	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
-
-	// BlockType corresponds to the JSON schema field "blockType".
-	BlockType string `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
-
-	// Content corresponds to the JSON schema field "content".
-	Content *string `json:"content,omitempty" yaml:"content,omitempty" mapstructure:"content,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-
-	// Items corresponds to the JSON schema field "items".
-	Items []Portfolio `json:"items,omitempty" yaml:"items,omitempty" mapstructure:"items,omitempty"`
-
-	// Title corresponds to the JSON schema field "title".
-	Title string `json:"title" yaml:"title" mapstructure:"title"`
-}
-
-type BlockReviews struct {
-	// BlockName corresponds to the JSON schema field "blockName".
-	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
-
-	// BlockType corresponds to the JSON schema field "blockType".
-	BlockType string `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
-
-	// Content corresponds to the JSON schema field "content".
-	Content *string `json:"content,omitempty" yaml:"content,omitempty" mapstructure:"content,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-
-	// Items corresponds to the JSON schema field "items".
-	Items []Reviews `json:"items,omitempty" yaml:"items,omitempty" mapstructure:"items,omitempty"`
-
-	// Title corresponds to the JSON schema field "title".
-	Title string `json:"title" yaml:"title" mapstructure:"title"`
-}
-
-type Clients struct {
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// Logo corresponds to the JSON schema field "logo".
-	Logo Media `json:"logo" yaml:"logo" mapstructure:"logo"`
-
-	// Name corresponds to the JSON schema field "name".
-	Name string `json:"name" yaml:"name" mapstructure:"name"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url string `json:"url" yaml:"url" mapstructure:"url"`
-}
-
-type CodeInjection struct {
-	// Footer corresponds to the JSON schema field "footer".
-	Footer *string `json:"footer,omitempty" yaml:"footer,omitempty" mapstructure:"footer,omitempty"`
-
-	// Head corresponds to the JSON schema field "head".
-	Head *string `json:"head,omitempty" yaml:"head,omitempty" mapstructure:"head,omitempty"`
-}
-
-type Config struct {
-	// Collections corresponds to the JSON schema field "collections".
-	Collections ConfigCollections `json:"collections" yaml:"collections" mapstructure:"collections"`
-
-	// Globals corresponds to the JSON schema field "globals".
-	Globals ConfigGlobals `json:"globals" yaml:"globals" mapstructure:"globals"`
-}
-
-type ConfigCollections struct {
-	// Clients corresponds to the JSON schema field "clients".
-	Clients Clients `json:"clients" yaml:"clients" mapstructure:"clients"`
-
-	// FormSubmissions corresponds to the JSON schema field "form-submissions".
-	FormSubmissions FormSubmissions `json:"form-submissions" yaml:"form-submissions" mapstructure:"form-submissions"`
-
-	// Forms corresponds to the JSON schema field "forms".
-	Forms Forms `json:"forms" yaml:"forms" mapstructure:"forms"`
-
-	// Media corresponds to the JSON schema field "media".
-	Media Media `json:"media" yaml:"media" mapstructure:"media"`
-
-	// Pages corresponds to the JSON schema field "pages".
-	Pages Pages `json:"pages" yaml:"pages" mapstructure:"pages"`
-
-	// PayloadMigrations corresponds to the JSON schema field "payload-migrations".
-	PayloadMigrations PayloadMigrations `json:"payload-migrations" yaml:"payload-migrations" mapstructure:"payload-migrations"`
-
-	// PayloadPreferences corresponds to the JSON schema field "payload-preferences".
-	PayloadPreferences PayloadPreferences `json:"payload-preferences" yaml:"payload-preferences" mapstructure:"payload-preferences"`
-
-	// Portfolio corresponds to the JSON schema field "portfolio".
-	Portfolio Portfolio `json:"portfolio" yaml:"portfolio" mapstructure:"portfolio"`
-
-	// PortfolioCategories corresponds to the JSON schema field
-	// "portfolio-categories".
-	PortfolioCategories PortfolioCategories `json:"portfolio-categories" yaml:"portfolio-categories" mapstructure:"portfolio-categories"`
-
-	// Posts corresponds to the JSON schema field "posts".
-	Posts Posts `json:"posts" yaml:"posts" mapstructure:"posts"`
-
-	// Redirects corresponds to the JSON schema field "redirects".
-	Redirects Redirects `json:"redirects" yaml:"redirects" mapstructure:"redirects"`
-
-	// Reviews corresponds to the JSON schema field "reviews".
-	Reviews Reviews `json:"reviews" yaml:"reviews" mapstructure:"reviews"`
-
-	// Users corresponds to the JSON schema field "users".
-	Users Users `json:"users" yaml:"users" mapstructure:"users"`
-}
-
-type ConfigGlobals struct {
-	// Navigation corresponds to the JSON schema field "navigation".
-	Navigation Navigation `json:"navigation" yaml:"navigation" mapstructure:"navigation"`
-
-	// Settings corresponds to the JSON schema field "settings".
-	Settings Settings `json:"settings" yaml:"settings" mapstructure:"settings"`
-}
-
-type Contact struct {
-	// Email corresponds to the JSON schema field "email".
-	Email *string `json:"email,omitempty" yaml:"email,omitempty" mapstructure:"email,omitempty"`
-
-	// Telephone corresponds to the JSON schema field "telephone".
-	Telephone *string `json:"telephone,omitempty" yaml:"telephone,omitempty" mapstructure:"telephone,omitempty"`
-}
-
-type FormSubmissions struct {
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
-
-	// Form corresponds to the JSON schema field "form".
-	Form Forms `json:"form" yaml:"form" mapstructure:"form"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// SubmissionData corresponds to the JSON schema field "submissionData".
-	SubmissionData []FormSubmissionsSubmissionDataElem `json:"submissionData,omitempty" yaml:"submissionData,omitempty" mapstructure:"submissionData,omitempty"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
-}
-
-type FormSubmissionsSubmissionDataElem struct {
-	// Field corresponds to the JSON schema field "field".
-	Field string `json:"field" yaml:"field" mapstructure:"field"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-
-	// Value corresponds to the JSON schema field "value".
-	Value string `json:"value" yaml:"value" mapstructure:"value"`
-}
-
-type Forms struct {
-	// ConfirmationMessage corresponds to the JSON schema field "confirmationMessage".
-	ConfirmationMessage *string `json:"confirmationMessage,omitempty" yaml:"confirmationMessage,omitempty" mapstructure:"confirmationMessage,omitempty"`
-
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
-
-	// Emails corresponds to the JSON schema field "emails".
-	Emails []FormsEmailsElem `json:"emails,omitempty" yaml:"emails,omitempty" mapstructure:"emails,omitempty"`
-
-	// Fields corresponds to the JSON schema field "fields".
-	Fields *[]payload.FormField `json:"fields,omitempty" yaml:"fields,omitempty" mapstructure:"fields,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// Redirect corresponds to the JSON schema field "redirect".
-	Redirect *FormsRedirect `json:"redirect,omitempty" yaml:"redirect,omitempty" mapstructure:"redirect,omitempty"`
-
-	// SubmitButtonLabel corresponds to the JSON schema field "submitButtonLabel".
-	SubmitButtonLabel *string `json:"submitButtonLabel,omitempty" yaml:"submitButtonLabel,omitempty" mapstructure:"submitButtonLabel,omitempty"`
-
-	// Title corresponds to the JSON schema field "title".
-	Title string `json:"title" yaml:"title" mapstructure:"title"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
-}
-
-type FormsEmailsElem struct {
-	// Bcc corresponds to the JSON schema field "bcc".
-	Bcc *string `json:"bcc,omitempty" yaml:"bcc,omitempty" mapstructure:"bcc,omitempty"`
-
-	// Cc corresponds to the JSON schema field "cc".
-	Cc *string `json:"cc,omitempty" yaml:"cc,omitempty" mapstructure:"cc,omitempty"`
-
-	// EmailFrom corresponds to the JSON schema field "emailFrom".
-	EmailFrom *string `json:"emailFrom,omitempty" yaml:"emailFrom,omitempty" mapstructure:"emailFrom,omitempty"`
-
-	// EmailTo corresponds to the JSON schema field "emailTo".
-	EmailTo *string `json:"emailTo,omitempty" yaml:"emailTo,omitempty" mapstructure:"emailTo,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-
-	// Message corresponds to the JSON schema field "message".
-	Message *FormsEmailsElemMessage `json:"message,omitempty" yaml:"message,omitempty" mapstructure:"message,omitempty"`
-
-	// ReplyTo corresponds to the JSON schema field "replyTo".
-	ReplyTo *string `json:"replyTo,omitempty" yaml:"replyTo,omitempty" mapstructure:"replyTo,omitempty"`
-
-	// Subject corresponds to the JSON schema field "subject".
-	Subject string `json:"subject" yaml:"subject" mapstructure:"subject"`
-}
-
-type FormsEmailsElemMessage struct {
-	// Root corresponds to the JSON schema field "root".
-	Root FormsEmailsElemMessageRoot `json:"root" yaml:"root" mapstructure:"root"`
-}
-
-type FormsEmailsElemMessageRoot struct {
-	// Children corresponds to the JSON schema field "children".
-	Children []FormsEmailsElemMessageRootChildrenElem `json:"children" yaml:"children" mapstructure:"children"`
-
-	// Direction corresponds to the JSON schema field "direction".
-	Direction interface{} `json:"direction" yaml:"direction" mapstructure:"direction"`
-
-	// Format corresponds to the JSON schema field "format".
-	Format FormsEmailsElemMessageRootFormat `json:"format" yaml:"format" mapstructure:"format"`
-
-	// Indent corresponds to the JSON schema field "indent".
-	Indent int `json:"indent" yaml:"indent" mapstructure:"indent"`
-
-	// Type corresponds to the JSON schema field "type".
-	Type string `json:"type" yaml:"type" mapstructure:"type"`
-
-	// Version corresponds to the JSON schema field "version".
-	Version int `json:"version" yaml:"version" mapstructure:"version"`
-}
-
-type FormsEmailsElemMessageRootChildrenElem struct {
-	// Type corresponds to the JSON schema field "type".
-	Type string `json:"type" yaml:"type" mapstructure:"type"`
-
-	// Version corresponds to the JSON schema field "version".
-	Version int `json:"version" yaml:"version" mapstructure:"version"`
-}
-
-type FormsEmailsElemMessageRootFormat string
-
-const FormsEmailsElemMessageRootFormatBlank FormsEmailsElemMessageRootFormat = ""
-const FormsEmailsElemMessageRootFormatCenter FormsEmailsElemMessageRootFormat = "center"
-const FormsEmailsElemMessageRootFormatEnd FormsEmailsElemMessageRootFormat = "end"
-const FormsEmailsElemMessageRootFormatJustify FormsEmailsElemMessageRootFormat = "justify"
-const FormsEmailsElemMessageRootFormatLeft FormsEmailsElemMessageRootFormat = "left"
-const FormsEmailsElemMessageRootFormatRight FormsEmailsElemMessageRootFormat = "right"
-const FormsEmailsElemMessageRootFormatStart FormsEmailsElemMessageRootFormat = "start"
-
-type FormsRedirect struct {
-	// Url corresponds to the JSON schema field "url".
-	Url string `json:"url" yaml:"url" mapstructure:"url"`
-}
-
-type Maintenance struct {
-	// Content corresponds to the JSON schema field "content".
-	Content *string `json:"content,omitempty" yaml:"content,omitempty" mapstructure:"content,omitempty"`
-
-	// Enabled corresponds to the JSON schema field "enabled".
-	Enabled *bool `json:"enabled,omitempty" yaml:"enabled,omitempty" mapstructure:"enabled,omitempty"`
-
-	// Title corresponds to the JSON schema field "title".
-	Title *string `json:"title,omitempty" yaml:"title,omitempty" mapstructure:"title,omitempty"`
-}
-
-type Media struct {
-	// Alt corresponds to the JSON schema field "alt".
-	Alt string `json:"alt" yaml:"alt" mapstructure:"alt"`
-
-	// Caption corresponds to the JSON schema field "caption".
-	Caption *MediaCaption `json:"caption,omitempty" yaml:"caption,omitempty" mapstructure:"caption,omitempty"`
-
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
-
-	// Filename corresponds to the JSON schema field "filename".
-	Filename *string `json:"filename,omitempty" yaml:"filename,omitempty" mapstructure:"filename,omitempty"`
-
-	// Filesize corresponds to the JSON schema field "filesize".
-	Filesize *float64 `json:"filesize,omitempty" yaml:"filesize,omitempty" mapstructure:"filesize,omitempty"`
-
-	// FocalX corresponds to the JSON schema field "focalX".
-	FocalX *float64 `json:"focalX,omitempty" yaml:"focalX,omitempty" mapstructure:"focalX,omitempty"`
-
-	// FocalY corresponds to the JSON schema field "focalY".
-	FocalY *float64 `json:"focalY,omitempty" yaml:"focalY,omitempty" mapstructure:"focalY,omitempty"`
-
-	// Height corresponds to the JSON schema field "height".
-	Height *float64 `json:"height,omitempty" yaml:"height,omitempty" mapstructure:"height,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// MimeType corresponds to the JSON schema field "mimeType".
-	MimeType *string `json:"mimeType,omitempty" yaml:"mimeType,omitempty" mapstructure:"mimeType,omitempty"`
-
-	// Sizes corresponds to the JSON schema field "sizes".
-	Sizes *MediaSizes `json:"sizes,omitempty" yaml:"sizes,omitempty" mapstructure:"sizes,omitempty"`
-
-	// ThumbnailURL corresponds to the JSON schema field "thumbnailURL".
-	ThumbnailURL *string `json:"thumbnailURL,omitempty" yaml:"thumbnailURL,omitempty" mapstructure:"thumbnailURL,omitempty"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url *string `json:"url,omitempty" yaml:"url,omitempty" mapstructure:"url,omitempty"`
-
-	// Width corresponds to the JSON schema field "width".
-	Width *float64 `json:"width,omitempty" yaml:"width,omitempty" mapstructure:"width,omitempty"`
-}
-
-type MediaCaption struct {
-	// Root corresponds to the JSON schema field "root".
-	Root MediaCaptionRoot `json:"root" yaml:"root" mapstructure:"root"`
-}
-
-type MediaCaptionRoot struct {
-	// Children corresponds to the JSON schema field "children".
-	Children []MediaCaptionRootChildrenElem `json:"children" yaml:"children" mapstructure:"children"`
-
-	// Direction corresponds to the JSON schema field "direction".
-	Direction interface{} `json:"direction" yaml:"direction" mapstructure:"direction"`
-
-	// Format corresponds to the JSON schema field "format".
-	Format MediaCaptionRootFormat `json:"format" yaml:"format" mapstructure:"format"`
-
-	// Indent corresponds to the JSON schema field "indent".
-	Indent int `json:"indent" yaml:"indent" mapstructure:"indent"`
-
-	// Type corresponds to the JSON schema field "type".
-	Type string `json:"type" yaml:"type" mapstructure:"type"`
-
-	// Version corresponds to the JSON schema field "version".
-	Version int `json:"version" yaml:"version" mapstructure:"version"`
-}
-
-type MediaCaptionRootChildrenElem struct {
-	// Type corresponds to the JSON schema field "type".
-	Type string `json:"type" yaml:"type" mapstructure:"type"`
-
-	// Version corresponds to the JSON schema field "version".
-	Version int `json:"version" yaml:"version" mapstructure:"version"`
-}
-
-type MediaCaptionRootFormat string
-
-const MediaCaptionRootFormatBlank MediaCaptionRootFormat = ""
-const MediaCaptionRootFormatCenter MediaCaptionRootFormat = "center"
-const MediaCaptionRootFormatEnd MediaCaptionRootFormat = "end"
-const MediaCaptionRootFormatJustify MediaCaptionRootFormat = "justify"
-const MediaCaptionRootFormatLeft MediaCaptionRootFormat = "left"
-const MediaCaptionRootFormatRight MediaCaptionRootFormat = "right"
-const MediaCaptionRootFormatStart MediaCaptionRootFormat = "start"
-
-type MediaSizes struct {
-	// Avif corresponds to the JSON schema field "avif".
-	Avif *MediaSizesAvif `json:"avif,omitempty" yaml:"avif,omitempty" mapstructure:"avif,omitempty"`
-
-	// Mobile corresponds to the JSON schema field "mobile".
-	Mobile *MediaSizesMobile `json:"mobile,omitempty" yaml:"mobile,omitempty" mapstructure:"mobile,omitempty"`
-
-	// MobileAvif corresponds to the JSON schema field "mobile_avif".
-	MobileAvif *MediaSizesMobileAvif `json:"mobile_avif,omitempty" yaml:"mobile_avif,omitempty" mapstructure:"mobile_avif,omitempty"`
-
-	// MobileWebp corresponds to the JSON schema field "mobile_webp".
-	MobileWebp *MediaSizesMobileWebp `json:"mobile_webp,omitempty" yaml:"mobile_webp,omitempty" mapstructure:"mobile_webp,omitempty"`
-
-	// Tablet corresponds to the JSON schema field "tablet".
-	Tablet *MediaSizesTablet `json:"tablet,omitempty" yaml:"tablet,omitempty" mapstructure:"tablet,omitempty"`
-
-	// TabletAvif corresponds to the JSON schema field "tablet_avif".
-	TabletAvif *MediaSizesTabletAvif `json:"tablet_avif,omitempty" yaml:"tablet_avif,omitempty" mapstructure:"tablet_avif,omitempty"`
-
-	// TabletWebp corresponds to the JSON schema field "tablet_webp".
-	TabletWebp *MediaSizesTabletWebp `json:"tablet_webp,omitempty" yaml:"tablet_webp,omitempty" mapstructure:"tablet_webp,omitempty"`
-
-	// Thumbnail corresponds to the JSON schema field "thumbnail".
-	Thumbnail *MediaSizesThumbnail `json:"thumbnail,omitempty" yaml:"thumbnail,omitempty" mapstructure:"thumbnail,omitempty"`
-
-	// ThumbnailAvif corresponds to the JSON schema field "thumbnail_avif".
-	ThumbnailAvif *MediaSizesThumbnailAvif `json:"thumbnail_avif,omitempty" yaml:"thumbnail_avif,omitempty" mapstructure:"thumbnail_avif,omitempty"`
-
-	// ThumbnailWebp corresponds to the JSON schema field "thumbnail_webp".
-	ThumbnailWebp *MediaSizesThumbnailWebp `json:"thumbnail_webp,omitempty" yaml:"thumbnail_webp,omitempty" mapstructure:"thumbnail_webp,omitempty"`
-
-	// Webp corresponds to the JSON schema field "webp".
-	Webp *MediaSizesWebp `json:"webp,omitempty" yaml:"webp,omitempty" mapstructure:"webp,omitempty"`
-}
-
-type MediaSizesAvif struct {
-	// Filename corresponds to the JSON schema field "filename".
-	Filename *string `json:"filename,omitempty" yaml:"filename,omitempty" mapstructure:"filename,omitempty"`
-
-	// Filesize corresponds to the JSON schema field "filesize".
-	Filesize *float64 `json:"filesize,omitempty" yaml:"filesize,omitempty" mapstructure:"filesize,omitempty"`
-
-	// Height corresponds to the JSON schema field "height".
-	Height *float64 `json:"height,omitempty" yaml:"height,omitempty" mapstructure:"height,omitempty"`
-
-	// MimeType corresponds to the JSON schema field "mimeType".
-	MimeType *string `json:"mimeType,omitempty" yaml:"mimeType,omitempty" mapstructure:"mimeType,omitempty"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url *string `json:"url,omitempty" yaml:"url,omitempty" mapstructure:"url,omitempty"`
-
-	// Width corresponds to the JSON schema field "width".
-	Width *float64 `json:"width,omitempty" yaml:"width,omitempty" mapstructure:"width,omitempty"`
-}
-
-type MediaSizesMobile struct {
-	// Filename corresponds to the JSON schema field "filename".
-	Filename *string `json:"filename,omitempty" yaml:"filename,omitempty" mapstructure:"filename,omitempty"`
-
-	// Filesize corresponds to the JSON schema field "filesize".
-	Filesize *float64 `json:"filesize,omitempty" yaml:"filesize,omitempty" mapstructure:"filesize,omitempty"`
-
-	// Height corresponds to the JSON schema field "height".
-	Height *float64 `json:"height,omitempty" yaml:"height,omitempty" mapstructure:"height,omitempty"`
-
-	// MimeType corresponds to the JSON schema field "mimeType".
-	MimeType *string `json:"mimeType,omitempty" yaml:"mimeType,omitempty" mapstructure:"mimeType,omitempty"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url *string `json:"url,omitempty" yaml:"url,omitempty" mapstructure:"url,omitempty"`
-
-	// Width corresponds to the JSON schema field "width".
-	Width *float64 `json:"width,omitempty" yaml:"width,omitempty" mapstructure:"width,omitempty"`
-}
-
-type MediaSizesMobileAvif struct {
-	// Filename corresponds to the JSON schema field "filename".
-	Filename *string `json:"filename,omitempty" yaml:"filename,omitempty" mapstructure:"filename,omitempty"`
-
-	// Filesize corresponds to the JSON schema field "filesize".
-	Filesize *float64 `json:"filesize,omitempty" yaml:"filesize,omitempty" mapstructure:"filesize,omitempty"`
-
-	// Height corresponds to the JSON schema field "height".
-	Height *float64 `json:"height,omitempty" yaml:"height,omitempty" mapstructure:"height,omitempty"`
-
-	// MimeType corresponds to the JSON schema field "mimeType".
-	MimeType *string `json:"mimeType,omitempty" yaml:"mimeType,omitempty" mapstructure:"mimeType,omitempty"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url *string `json:"url,omitempty" yaml:"url,omitempty" mapstructure:"url,omitempty"`
-
-	// Width corresponds to the JSON schema field "width".
-	Width *float64 `json:"width,omitempty" yaml:"width,omitempty" mapstructure:"width,omitempty"`
-}
-
-type MediaSizesMobileWebp struct {
-	// Filename corresponds to the JSON schema field "filename".
-	Filename *string `json:"filename,omitempty" yaml:"filename,omitempty" mapstructure:"filename,omitempty"`
-
-	// Filesize corresponds to the JSON schema field "filesize".
-	Filesize *float64 `json:"filesize,omitempty" yaml:"filesize,omitempty" mapstructure:"filesize,omitempty"`
-
-	// Height corresponds to the JSON schema field "height".
-	Height *float64 `json:"height,omitempty" yaml:"height,omitempty" mapstructure:"height,omitempty"`
-
-	// MimeType corresponds to the JSON schema field "mimeType".
-	MimeType *string `json:"mimeType,omitempty" yaml:"mimeType,omitempty" mapstructure:"mimeType,omitempty"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url *string `json:"url,omitempty" yaml:"url,omitempty" mapstructure:"url,omitempty"`
-
-	// Width corresponds to the JSON schema field "width".
-	Width *float64 `json:"width,omitempty" yaml:"width,omitempty" mapstructure:"width,omitempty"`
-}
-
-type MediaSizesTablet struct {
-	// Filename corresponds to the JSON schema field "filename".
-	Filename *string `json:"filename,omitempty" yaml:"filename,omitempty" mapstructure:"filename,omitempty"`
-
-	// Filesize corresponds to the JSON schema field "filesize".
-	Filesize *float64 `json:"filesize,omitempty" yaml:"filesize,omitempty" mapstructure:"filesize,omitempty"`
-
-	// Height corresponds to the JSON schema field "height".
-	Height *float64 `json:"height,omitempty" yaml:"height,omitempty" mapstructure:"height,omitempty"`
-
-	// MimeType corresponds to the JSON schema field "mimeType".
-	MimeType *string `json:"mimeType,omitempty" yaml:"mimeType,omitempty" mapstructure:"mimeType,omitempty"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url *string `json:"url,omitempty" yaml:"url,omitempty" mapstructure:"url,omitempty"`
-
-	// Width corresponds to the JSON schema field "width".
-	Width *float64 `json:"width,omitempty" yaml:"width,omitempty" mapstructure:"width,omitempty"`
-}
-
-type MediaSizesTabletAvif struct {
-	// Filename corresponds to the JSON schema field "filename".
-	Filename *string `json:"filename,omitempty" yaml:"filename,omitempty" mapstructure:"filename,omitempty"`
-
-	// Filesize corresponds to the JSON schema field "filesize".
-	Filesize *float64 `json:"filesize,omitempty" yaml:"filesize,omitempty" mapstructure:"filesize,omitempty"`
-
-	// Height corresponds to the JSON schema field "height".
-	Height *float64 `json:"height,omitempty" yaml:"height,omitempty" mapstructure:"height,omitempty"`
-
-	// MimeType corresponds to the JSON schema field "mimeType".
-	MimeType *string `json:"mimeType,omitempty" yaml:"mimeType,omitempty" mapstructure:"mimeType,omitempty"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url *string `json:"url,omitempty" yaml:"url,omitempty" mapstructure:"url,omitempty"`
-
-	// Width corresponds to the JSON schema field "width".
-	Width *float64 `json:"width,omitempty" yaml:"width,omitempty" mapstructure:"width,omitempty"`
-}
-
-type MediaSizesTabletWebp struct {
-	// Filename corresponds to the JSON schema field "filename".
-	Filename *string `json:"filename,omitempty" yaml:"filename,omitempty" mapstructure:"filename,omitempty"`
-
-	// Filesize corresponds to the JSON schema field "filesize".
-	Filesize *float64 `json:"filesize,omitempty" yaml:"filesize,omitempty" mapstructure:"filesize,omitempty"`
-
-	// Height corresponds to the JSON schema field "height".
-	Height *float64 `json:"height,omitempty" yaml:"height,omitempty" mapstructure:"height,omitempty"`
-
-	// MimeType corresponds to the JSON schema field "mimeType".
-	MimeType *string `json:"mimeType,omitempty" yaml:"mimeType,omitempty" mapstructure:"mimeType,omitempty"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url *string `json:"url,omitempty" yaml:"url,omitempty" mapstructure:"url,omitempty"`
-
-	// Width corresponds to the JSON schema field "width".
-	Width *float64 `json:"width,omitempty" yaml:"width,omitempty" mapstructure:"width,omitempty"`
-}
-
-type MediaSizesThumbnail struct {
-	// Filename corresponds to the JSON schema field "filename".
-	Filename *string `json:"filename,omitempty" yaml:"filename,omitempty" mapstructure:"filename,omitempty"`
-
-	// Filesize corresponds to the JSON schema field "filesize".
-	Filesize *float64 `json:"filesize,omitempty" yaml:"filesize,omitempty" mapstructure:"filesize,omitempty"`
-
-	// Height corresponds to the JSON schema field "height".
-	Height *float64 `json:"height,omitempty" yaml:"height,omitempty" mapstructure:"height,omitempty"`
-
-	// MimeType corresponds to the JSON schema field "mimeType".
-	MimeType *string `json:"mimeType,omitempty" yaml:"mimeType,omitempty" mapstructure:"mimeType,omitempty"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url *string `json:"url,omitempty" yaml:"url,omitempty" mapstructure:"url,omitempty"`
-
-	// Width corresponds to the JSON schema field "width".
-	Width *float64 `json:"width,omitempty" yaml:"width,omitempty" mapstructure:"width,omitempty"`
-}
-
-type MediaSizesThumbnailAvif struct {
-	// Filename corresponds to the JSON schema field "filename".
-	Filename *string `json:"filename,omitempty" yaml:"filename,omitempty" mapstructure:"filename,omitempty"`
-
-	// Filesize corresponds to the JSON schema field "filesize".
-	Filesize *float64 `json:"filesize,omitempty" yaml:"filesize,omitempty" mapstructure:"filesize,omitempty"`
-
-	// Height corresponds to the JSON schema field "height".
-	Height *float64 `json:"height,omitempty" yaml:"height,omitempty" mapstructure:"height,omitempty"`
-
-	// MimeType corresponds to the JSON schema field "mimeType".
-	MimeType *string `json:"mimeType,omitempty" yaml:"mimeType,omitempty" mapstructure:"mimeType,omitempty"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url *string `json:"url,omitempty" yaml:"url,omitempty" mapstructure:"url,omitempty"`
-
-	// Width corresponds to the JSON schema field "width".
-	Width *float64 `json:"width,omitempty" yaml:"width,omitempty" mapstructure:"width,omitempty"`
-}
-
-type MediaSizesThumbnailWebp struct {
-	// Filename corresponds to the JSON schema field "filename".
-	Filename *string `json:"filename,omitempty" yaml:"filename,omitempty" mapstructure:"filename,omitempty"`
-
-	// Filesize corresponds to the JSON schema field "filesize".
-	Filesize *float64 `json:"filesize,omitempty" yaml:"filesize,omitempty" mapstructure:"filesize,omitempty"`
-
-	// Height corresponds to the JSON schema field "height".
-	Height *float64 `json:"height,omitempty" yaml:"height,omitempty" mapstructure:"height,omitempty"`
-
-	// MimeType corresponds to the JSON schema field "mimeType".
-	MimeType *string `json:"mimeType,omitempty" yaml:"mimeType,omitempty" mapstructure:"mimeType,omitempty"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url *string `json:"url,omitempty" yaml:"url,omitempty" mapstructure:"url,omitempty"`
-
-	// Width corresponds to the JSON schema field "width".
-	Width *float64 `json:"width,omitempty" yaml:"width,omitempty" mapstructure:"width,omitempty"`
-}
-
-type MediaSizesWebp struct {
-	// Filename corresponds to the JSON schema field "filename".
-	Filename *string `json:"filename,omitempty" yaml:"filename,omitempty" mapstructure:"filename,omitempty"`
-
-	// Filesize corresponds to the JSON schema field "filesize".
-	Filesize *float64 `json:"filesize,omitempty" yaml:"filesize,omitempty" mapstructure:"filesize,omitempty"`
-
-	// Height corresponds to the JSON schema field "height".
-	Height *float64 `json:"height,omitempty" yaml:"height,omitempty" mapstructure:"height,omitempty"`
-
-	// MimeType corresponds to the JSON schema field "mimeType".
-	MimeType *string `json:"mimeType,omitempty" yaml:"mimeType,omitempty" mapstructure:"mimeType,omitempty"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url *string `json:"url,omitempty" yaml:"url,omitempty" mapstructure:"url,omitempty"`
-
-	// Width corresponds to the JSON schema field "width".
-	Width *float64 `json:"width,omitempty" yaml:"width,omitempty" mapstructure:"width,omitempty"`
-}
-
-type Navigation struct {
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt *string `json:"createdAt,omitempty" yaml:"createdAt,omitempty" mapstructure:"createdAt,omitempty"`
-
-	// Header corresponds to the JSON schema field "header".
-	Header NavigationHeaderLinks `json:"header,omitempty" yaml:"header,omitempty" mapstructure:"header,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt *string `json:"updatedAt,omitempty" yaml:"updatedAt,omitempty" mapstructure:"updatedAt,omitempty"`
-}
-
-type NavigationHeaderLinks []struct {
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-
-	// Title corresponds to the JSON schema field "title".
-	Title string `json:"title" yaml:"title" mapstructure:"title"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url string `json:"url" yaml:"url" mapstructure:"url"`
-}
-
-type Pages struct {
-	// Status corresponds to the JSON schema field "_status".
-	Status *PagesStatus `json:"_status,omitempty" yaml:"_status,omitempty" mapstructure:"_status,omitempty"`
-
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// IsHome corresponds to the JSON schema field "isHome".
-	IsHome *bool `json:"isHome,omitempty" yaml:"isHome,omitempty" mapstructure:"isHome,omitempty"`
-
-	// Layout corresponds to the JSON schema field "layout".
-	Layout payload.Blocks `json:"layout" yaml:"layout" mapstructure:"layout"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
-}
-
-type PagesStatus string
-
-const PagesStatusDraft PagesStatus = "draft"
-const PagesStatusPublished PagesStatus = "published"
-
-type PayloadMigrations struct {
-	// Batch corresponds to the JSON schema field "batch".
-	Batch *float64 `json:"batch,omitempty" yaml:"batch,omitempty" mapstructure:"batch,omitempty"`
-
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// Name corresponds to the JSON schema field "name".
-	Name *string `json:"name,omitempty" yaml:"name,omitempty" mapstructure:"name,omitempty"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
-}
-
-type PayloadPreferences struct {
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// Key corresponds to the JSON schema field "key".
-	Key *string `json:"key,omitempty" yaml:"key,omitempty" mapstructure:"key,omitempty"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
-
-	// User corresponds to the JSON schema field "user".
-	User interface{} `json:"user" yaml:"user" mapstructure:"user"`
-
-	// Value corresponds to the JSON schema field "value".
-	Value interface{} `json:"value,omitempty" yaml:"value,omitempty" mapstructure:"value,omitempty"`
-}
-
-type Portfolio struct {
-	// Category corresponds to the JSON schema field "category".
-	Category PortfolioCategories `json:"category" yaml:"category" mapstructure:"category"`
-
-	// Company corresponds to the JSON schema field "company".
-	Company Clients `json:"company" yaml:"company" mapstructure:"company"`
-
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
-
-	// Date corresponds to the JSON schema field "date".
-	Date string `json:"date" yaml:"date" mapstructure:"date"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// Image corresponds to the JSON schema field "image".
-	Image Media `json:"image" yaml:"image" mapstructure:"image"`
-
-	// Title corresponds to the JSON schema field "title".
-	Title string `json:"title" yaml:"title" mapstructure:"title"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
-
-	// Url corresponds to the JSON schema field "url".
-	Url string `json:"url" yaml:"url" mapstructure:"url"`
-}
-
-type PortfolioCategories struct {
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// Title corresponds to the JSON schema field "title".
-	Title string `json:"title" yaml:"title" mapstructure:"title"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
-}
-
-type Posts struct {
-	// Status corresponds to the JSON schema field "_status".
-	Status *PostsStatus `json:"_status,omitempty" yaml:"_status,omitempty" mapstructure:"_status,omitempty"`
-
-	// Content corresponds to the JSON schema field "content".
-	Content *PostsContent `json:"content,omitempty" yaml:"content,omitempty" mapstructure:"content,omitempty"`
-
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
-
-	// Excerpt corresponds to the JSON schema field "excerpt".
-	Excerpt *string `json:"excerpt,omitempty" yaml:"excerpt,omitempty" mapstructure:"excerpt,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// Meta corresponds to the JSON schema field "meta".
-	Meta *payload.SettingsMeta `json:"meta,omitempty" yaml:"meta,omitempty" mapstructure:"meta,omitempty"`
-
-	// PublishedAt corresponds to the JSON schema field "publishedAt".
-	PublishedAt *string `json:"publishedAt,omitempty" yaml:"publishedAt,omitempty" mapstructure:"publishedAt,omitempty"`
-
-	// RelatedPosts corresponds to the JSON schema field "relatedPosts".
-	RelatedPosts []Posts `json:"relatedPosts,omitempty" yaml:"relatedPosts,omitempty" mapstructure:"relatedPosts,omitempty"`
-
-	// Tags corresponds to the JSON schema field "tags".
-	Tags []PostsTagsElem `json:"tags,omitempty" yaml:"tags,omitempty" mapstructure:"tags,omitempty"`
-
-	// Thumbnail corresponds to the JSON schema field "thumbnail".
-	Thumbnail *Media `json:"thumbnail,omitempty" yaml:"thumbnail,omitempty" mapstructure:"thumbnail,omitempty"`
-
-	// Title corresponds to the JSON schema field "title".
-	Title string `json:"title" yaml:"title" mapstructure:"title"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
-}
-
-type PostsContent struct {
-	// Root corresponds to the JSON schema field "root".
-	Root PostsContentRoot `json:"root" yaml:"root" mapstructure:"root"`
-}
-
-type PostsContentRoot struct {
-	// Children corresponds to the JSON schema field "children".
-	Children []PostsContentRootChildrenElem `json:"children" yaml:"children" mapstructure:"children"`
-
-	// Direction corresponds to the JSON schema field "direction".
-	Direction interface{} `json:"direction" yaml:"direction" mapstructure:"direction"`
-
-	// Format corresponds to the JSON schema field "format".
-	Format PostsContentRootFormat `json:"format" yaml:"format" mapstructure:"format"`
-
-	// Indent corresponds to the JSON schema field "indent".
-	Indent int `json:"indent" yaml:"indent" mapstructure:"indent"`
-
-	// Type corresponds to the JSON schema field "type".
-	Type string `json:"type" yaml:"type" mapstructure:"type"`
-
-	// Version corresponds to the JSON schema field "version".
-	Version int `json:"version" yaml:"version" mapstructure:"version"`
-}
-
-type PostsContentRootChildrenElem struct {
-	// Type corresponds to the JSON schema field "type".
-	Type string `json:"type" yaml:"type" mapstructure:"type"`
-
-	// Version corresponds to the JSON schema field "version".
-	Version int `json:"version" yaml:"version" mapstructure:"version"`
-}
-
-type PostsContentRootFormat string
-
-const PostsContentRootFormatBlank PostsContentRootFormat = ""
-const PostsContentRootFormatCenter PostsContentRootFormat = "center"
-const PostsContentRootFormatEnd PostsContentRootFormat = "end"
-const PostsContentRootFormatJustify PostsContentRootFormat = "justify"
-const PostsContentRootFormatLeft PostsContentRootFormat = "left"
-const PostsContentRootFormatRight PostsContentRootFormat = "right"
-const PostsContentRootFormatStart PostsContentRootFormat = "start"
-
-type PostsStatus string
-
-const PostsStatusDraft PostsStatus = "draft"
-const PostsStatusPublished PostsStatus = "published"
-
-type PostsTagsElem struct {
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-
-	// Tag corresponds to the JSON schema field "tag".
-	Tag *string `json:"tag,omitempty" yaml:"tag,omitempty" mapstructure:"tag,omitempty"`
-}
-
-type Redirects struct {
-	// Code corresponds to the JSON schema field "code".
-	Code RedirectsCode `json:"code" yaml:"code" mapstructure:"code"`
-
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
-
-	// From corresponds to the JSON schema field "from".
-	From string `json:"from" yaml:"from" mapstructure:"from"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// To corresponds to the JSON schema field "to".
-	To string `json:"to" yaml:"to" mapstructure:"to"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
-}
-
-type RedirectsCode string
-
-const RedirectsCodeA301 RedirectsCode = "301"
-const RedirectsCodeA302 RedirectsCode = "302"
-const RedirectsCodeA307 RedirectsCode = "307"
-const RedirectsCodeA308 RedirectsCode = "308"
-const RedirectsCodeA410 RedirectsCode = "410"
-const RedirectsCodeA451 RedirectsCode = "451"
-
-type Reviews struct {
-	// Author corresponds to the JSON schema field "author".
-	Author ReviewsAuthor `json:"author" yaml:"author" mapstructure:"author"`
-
-	// Content corresponds to the JSON schema field "content".
-	Content string `json:"content" yaml:"content" mapstructure:"content"`
-
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
-}
-
-type ReviewsAuthor struct {
-	// Description corresponds to the JSON schema field "description".
-	Description string `json:"description" yaml:"description" mapstructure:"description"`
-
-	// FirstName corresponds to the JSON schema field "firstName".
-	FirstName string `json:"firstName" yaml:"firstName" mapstructure:"firstName"`
-
-	// LastName corresponds to the JSON schema field "lastName".
-	LastName string `json:"lastName" yaml:"lastName" mapstructure:"lastName"`
-}
-
-type Settings struct {
-	// Address corresponds to the JSON schema field "address".
-	Address *Address `json:"address,omitempty" yaml:"address,omitempty" mapstructure:"address,omitempty"`
-
-	// CodeInjection corresponds to the JSON schema field "codeInjection".
-	CodeInjection *CodeInjection `json:"codeInjection,omitempty" yaml:"codeInjection,omitempty" mapstructure:"codeInjection,omitempty"`
-
-	// Contact corresponds to the JSON schema field "contact".
-	Contact *Contact `json:"contact,omitempty" yaml:"contact,omitempty" mapstructure:"contact,omitempty"`
-
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt *string `json:"createdAt,omitempty" yaml:"createdAt,omitempty" mapstructure:"createdAt,omitempty"`
-
-	// Footer corresponds to the JSON schema field "footer".
-	Footer *SettingsFooter `json:"footer,omitempty" yaml:"footer,omitempty" mapstructure:"footer,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// Locale corresponds to the JSON schema field "locale".
-	Locale *SettingsLocale `json:"locale,omitempty" yaml:"locale,omitempty" mapstructure:"locale,omitempty"`
-
-	// Logo corresponds to the JSON schema field "logo".
-	Logo *Media `json:"logo,omitempty" yaml:"logo,omitempty" mapstructure:"logo,omitempty"`
-
-	// Maintenance corresponds to the JSON schema field "maintenance".
-	Maintenance *Maintenance `json:"maintenance,omitempty" yaml:"maintenance,omitempty" mapstructure:"maintenance,omitempty"`
-
-	// Meta corresponds to the JSON schema field "meta".
-	Meta *payload.SettingsMeta `json:"meta,omitempty" yaml:"meta,omitempty" mapstructure:"meta,omitempty"`
-
-	// Robots corresponds to the JSON schema field "robots".
-	Robots *string `json:"robots,omitempty" yaml:"robots,omitempty" mapstructure:"robots,omitempty"`
-
-	// SiteName corresponds to the JSON schema field "siteName".
-	SiteName *string `json:"siteName,omitempty" yaml:"siteName,omitempty" mapstructure:"siteName,omitempty"`
-
-	// Social corresponds to the JSON schema field "social".
-	Social *Social `json:"social,omitempty" yaml:"social,omitempty" mapstructure:"social,omitempty"`
-
-	// TagLine corresponds to the JSON schema field "tagLine".
-	TagLine *string `json:"tagLine,omitempty" yaml:"tagLine,omitempty" mapstructure:"tagLine,omitempty"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt *string `json:"updatedAt,omitempty" yaml:"updatedAt,omitempty" mapstructure:"updatedAt,omitempty"`
-}
-
-type SettingsFooter struct {
-	// Content corresponds to the JSON schema field "content".
-	Content *string `json:"content,omitempty" yaml:"content,omitempty" mapstructure:"content,omitempty"`
-
-	// Title corresponds to the JSON schema field "title".
-	Title *string `json:"title,omitempty" yaml:"title,omitempty" mapstructure:"title,omitempty"`
-}
-
-type SettingsLocale string
-
-const SettingsLocaleAaDJ SettingsLocale = "aa_DJ"
-const SettingsLocaleAaER SettingsLocale = "aa_ER"
-const SettingsLocaleAaET SettingsLocale = "aa_ET"
-const SettingsLocaleAf SettingsLocale = "af"
-const SettingsLocaleAfNA SettingsLocale = "af_NA"
-const SettingsLocaleAfZA SettingsLocale = "af_ZA"
-const SettingsLocaleAk SettingsLocale = "ak"
-const SettingsLocaleAkGH SettingsLocale = "ak_GH"
-const SettingsLocaleAm SettingsLocale = "am"
-const SettingsLocaleAmET SettingsLocale = "am_ET"
-const SettingsLocaleAnES SettingsLocale = "an_ES"
-const SettingsLocaleAr SettingsLocale = "ar"
-const SettingsLocaleArAE SettingsLocale = "ar_AE"
-const SettingsLocaleArBH SettingsLocale = "ar_BH"
-const SettingsLocaleArDZ SettingsLocale = "ar_DZ"
-const SettingsLocaleArEG SettingsLocale = "ar_EG"
-const SettingsLocaleArIN SettingsLocale = "ar_IN"
-const SettingsLocaleArIQ SettingsLocale = "ar_IQ"
-const SettingsLocaleArJO SettingsLocale = "ar_JO"
-const SettingsLocaleArKW SettingsLocale = "ar_KW"
-const SettingsLocaleArLB SettingsLocale = "ar_LB"
-const SettingsLocaleArLY SettingsLocale = "ar_LY"
-const SettingsLocaleArMA SettingsLocale = "ar_MA"
-const SettingsLocaleArOM SettingsLocale = "ar_OM"
-const SettingsLocaleArQA SettingsLocale = "ar_QA"
-const SettingsLocaleArSA SettingsLocale = "ar_SA"
-const SettingsLocaleArSD SettingsLocale = "ar_SD"
-const SettingsLocaleArSY SettingsLocale = "ar_SY"
-const SettingsLocaleArTN SettingsLocale = "ar_TN"
-const SettingsLocaleArYE SettingsLocale = "ar_YE"
-const SettingsLocaleAs SettingsLocale = "as"
-const SettingsLocaleAsIN SettingsLocale = "as_IN"
-const SettingsLocaleAsa SettingsLocale = "asa"
-const SettingsLocaleAsaTZ SettingsLocale = "asa_TZ"
-const SettingsLocaleAstES SettingsLocale = "ast_ES"
-const SettingsLocaleAz SettingsLocale = "az"
-const SettingsLocaleAzAZ SettingsLocale = "az_AZ"
-const SettingsLocaleAzCyrl SettingsLocale = "az_Cyrl"
-const SettingsLocaleAzCyrlAZ SettingsLocale = "az_Cyrl_AZ"
-const SettingsLocaleAzLatn SettingsLocale = "az_Latn"
-const SettingsLocaleAzLatnAZ SettingsLocale = "az_Latn_AZ"
-const SettingsLocaleBe SettingsLocale = "be"
-const SettingsLocaleBeBY SettingsLocale = "be_BY"
-const SettingsLocaleBem SettingsLocale = "bem"
-const SettingsLocaleBemZM SettingsLocale = "bem_ZM"
-const SettingsLocaleBerDZ SettingsLocale = "ber_DZ"
-const SettingsLocaleBerMA SettingsLocale = "ber_MA"
-const SettingsLocaleBez SettingsLocale = "bez"
-const SettingsLocaleBezTZ SettingsLocale = "bez_TZ"
-const SettingsLocaleBg SettingsLocale = "bg"
-const SettingsLocaleBgBG SettingsLocale = "bg_BG"
-const SettingsLocaleBhoIN SettingsLocale = "bho_IN"
-const SettingsLocaleBm SettingsLocale = "bm"
-const SettingsLocaleBmML SettingsLocale = "bm_ML"
-const SettingsLocaleBn SettingsLocale = "bn"
-const SettingsLocaleBnBD SettingsLocale = "bn_BD"
-const SettingsLocaleBnIN SettingsLocale = "bn_IN"
-const SettingsLocaleBo SettingsLocale = "bo"
-const SettingsLocaleBoCN SettingsLocale = "bo_CN"
-const SettingsLocaleBoIN SettingsLocale = "bo_IN"
-const SettingsLocaleBrFR SettingsLocale = "br_FR"
-const SettingsLocaleBrxIN SettingsLocale = "brx_IN"
-const SettingsLocaleBs SettingsLocale = "bs"
-const SettingsLocaleBsBA SettingsLocale = "bs_BA"
-const SettingsLocaleBynER SettingsLocale = "byn_ER"
-const SettingsLocaleCa SettingsLocale = "ca"
-const SettingsLocaleCaAD SettingsLocale = "ca_AD"
-const SettingsLocaleCaES SettingsLocale = "ca_ES"
-const SettingsLocaleCaFR SettingsLocale = "ca_FR"
-const SettingsLocaleCaIT SettingsLocale = "ca_IT"
-const SettingsLocaleCgg SettingsLocale = "cgg"
-const SettingsLocaleCggUG SettingsLocale = "cgg_UG"
-const SettingsLocaleChr SettingsLocale = "chr"
-const SettingsLocaleChrUS SettingsLocale = "chr_US"
-const SettingsLocaleCrhUA SettingsLocale = "crh_UA"
-const SettingsLocaleCs SettingsLocale = "cs"
-const SettingsLocaleCsCZ SettingsLocale = "cs_CZ"
-const SettingsLocaleCsbPL SettingsLocale = "csb_PL"
-const SettingsLocaleCvRU SettingsLocale = "cv_RU"
-const SettingsLocaleCy SettingsLocale = "cy"
-const SettingsLocaleCyGB SettingsLocale = "cy_GB"
-const SettingsLocaleDa SettingsLocale = "da"
-const SettingsLocaleDaDK SettingsLocale = "da_DK"
-const SettingsLocaleDav SettingsLocale = "dav"
-const SettingsLocaleDavKE SettingsLocale = "dav_KE"
-const SettingsLocaleDe SettingsLocale = "de"
-const SettingsLocaleDeAT SettingsLocale = "de_AT"
-const SettingsLocaleDeBE SettingsLocale = "de_BE"
-const SettingsLocaleDeCH SettingsLocale = "de_CH"
-const SettingsLocaleDeDE SettingsLocale = "de_DE"
-const SettingsLocaleDeLI SettingsLocale = "de_LI"
-const SettingsLocaleDeLU SettingsLocale = "de_LU"
-const SettingsLocaleDvMV SettingsLocale = "dv_MV"
-const SettingsLocaleDzBT SettingsLocale = "dz_BT"
-const SettingsLocaleEbu SettingsLocale = "ebu"
-const SettingsLocaleEbuKE SettingsLocale = "ebu_KE"
-const SettingsLocaleEe SettingsLocale = "ee"
-const SettingsLocaleEeGH SettingsLocale = "ee_GH"
-const SettingsLocaleEeTG SettingsLocale = "ee_TG"
-const SettingsLocaleEl SettingsLocale = "el"
-const SettingsLocaleElCY SettingsLocale = "el_CY"
-const SettingsLocaleElGR SettingsLocale = "el_GR"
-const SettingsLocaleEn SettingsLocale = "en"
-const SettingsLocaleEnAG SettingsLocale = "en_AG"
-const SettingsLocaleEnAS SettingsLocale = "en_AS"
-const SettingsLocaleEnAU SettingsLocale = "en_AU"
-const SettingsLocaleEnBE SettingsLocale = "en_BE"
-const SettingsLocaleEnBW SettingsLocale = "en_BW"
-const SettingsLocaleEnBZ SettingsLocale = "en_BZ"
-const SettingsLocaleEnCA SettingsLocale = "en_CA"
-const SettingsLocaleEnDK SettingsLocale = "en_DK"
-const SettingsLocaleEnGB SettingsLocale = "en_GB"
-const SettingsLocaleEnGU SettingsLocale = "en_GU"
-const SettingsLocaleEnHK SettingsLocale = "en_HK"
-const SettingsLocaleEnIE SettingsLocale = "en_IE"
-const SettingsLocaleEnIN SettingsLocale = "en_IN"
-const SettingsLocaleEnJM SettingsLocale = "en_JM"
-const SettingsLocaleEnMH SettingsLocale = "en_MH"
-const SettingsLocaleEnMP SettingsLocale = "en_MP"
-const SettingsLocaleEnMT SettingsLocale = "en_MT"
-const SettingsLocaleEnMU SettingsLocale = "en_MU"
-const SettingsLocaleEnNA SettingsLocale = "en_NA"
-const SettingsLocaleEnNG SettingsLocale = "en_NG"
-const SettingsLocaleEnNZ SettingsLocale = "en_NZ"
-const SettingsLocaleEnPH SettingsLocale = "en_PH"
-const SettingsLocaleEnPK SettingsLocale = "en_PK"
-const SettingsLocaleEnSG SettingsLocale = "en_SG"
-const SettingsLocaleEnTT SettingsLocale = "en_TT"
-const SettingsLocaleEnUM SettingsLocale = "en_UM"
-const SettingsLocaleEnUS SettingsLocale = "en_US"
-const SettingsLocaleEnVI SettingsLocale = "en_VI"
-const SettingsLocaleEnZA SettingsLocale = "en_ZA"
-const SettingsLocaleEnZM SettingsLocale = "en_ZM"
-const SettingsLocaleEnZW SettingsLocale = "en_ZW"
-const SettingsLocaleEo SettingsLocale = "eo"
-const SettingsLocaleEs SettingsLocale = "es"
-const SettingsLocaleEs419 SettingsLocale = "es_419"
-const SettingsLocaleEsAR SettingsLocale = "es_AR"
-const SettingsLocaleEsBO SettingsLocale = "es_BO"
-const SettingsLocaleEsCL SettingsLocale = "es_CL"
-const SettingsLocaleEsCO SettingsLocale = "es_CO"
-const SettingsLocaleEsCR SettingsLocale = "es_CR"
-const SettingsLocaleEsCU SettingsLocale = "es_CU"
-const SettingsLocaleEsDO SettingsLocale = "es_DO"
-const SettingsLocaleEsEC SettingsLocale = "es_EC"
-const SettingsLocaleEsES SettingsLocale = "es_ES"
-const SettingsLocaleEsGQ SettingsLocale = "es_GQ"
-const SettingsLocaleEsGT SettingsLocale = "es_GT"
-const SettingsLocaleEsHN SettingsLocale = "es_HN"
-const SettingsLocaleEsMX SettingsLocale = "es_MX"
-const SettingsLocaleEsNI SettingsLocale = "es_NI"
-const SettingsLocaleEsPA SettingsLocale = "es_PA"
-const SettingsLocaleEsPE SettingsLocale = "es_PE"
-const SettingsLocaleEsPR SettingsLocale = "es_PR"
-const SettingsLocaleEsPY SettingsLocale = "es_PY"
-const SettingsLocaleEsSV SettingsLocale = "es_SV"
-const SettingsLocaleEsUS SettingsLocale = "es_US"
-const SettingsLocaleEsUY SettingsLocale = "es_UY"
-const SettingsLocaleEsVE SettingsLocale = "es_VE"
-const SettingsLocaleEt SettingsLocale = "et"
-const SettingsLocaleEtEE SettingsLocale = "et_EE"
-const SettingsLocaleEu SettingsLocale = "eu"
-const SettingsLocaleEuES SettingsLocale = "eu_ES"
-const SettingsLocaleFa SettingsLocale = "fa"
-const SettingsLocaleFaAF SettingsLocale = "fa_AF"
-const SettingsLocaleFaIR SettingsLocale = "fa_IR"
-const SettingsLocaleFf SettingsLocale = "ff"
-const SettingsLocaleFfSN SettingsLocale = "ff_SN"
-const SettingsLocaleFi SettingsLocale = "fi"
-const SettingsLocaleFiFI SettingsLocale = "fi_FI"
-const SettingsLocaleFil SettingsLocale = "fil"
-const SettingsLocaleFilPH SettingsLocale = "fil_PH"
-const SettingsLocaleFo SettingsLocale = "fo"
-const SettingsLocaleFoFO SettingsLocale = "fo_FO"
-const SettingsLocaleFr SettingsLocale = "fr"
-const SettingsLocaleFrBE SettingsLocale = "fr_BE"
-const SettingsLocaleFrBF SettingsLocale = "fr_BF"
-const SettingsLocaleFrBI SettingsLocale = "fr_BI"
-const SettingsLocaleFrBJ SettingsLocale = "fr_BJ"
-const SettingsLocaleFrBL SettingsLocale = "fr_BL"
-const SettingsLocaleFrCA SettingsLocale = "fr_CA"
-const SettingsLocaleFrCD SettingsLocale = "fr_CD"
-const SettingsLocaleFrCF SettingsLocale = "fr_CF"
-const SettingsLocaleFrCG SettingsLocale = "fr_CG"
-const SettingsLocaleFrCH SettingsLocale = "fr_CH"
-const SettingsLocaleFrCI SettingsLocale = "fr_CI"
-const SettingsLocaleFrCM SettingsLocale = "fr_CM"
-const SettingsLocaleFrDJ SettingsLocale = "fr_DJ"
-const SettingsLocaleFrFR SettingsLocale = "fr_FR"
-const SettingsLocaleFrGA SettingsLocale = "fr_GA"
-const SettingsLocaleFrGN SettingsLocale = "fr_GN"
-const SettingsLocaleFrGP SettingsLocale = "fr_GP"
-const SettingsLocaleFrGQ SettingsLocale = "fr_GQ"
-const SettingsLocaleFrKM SettingsLocale = "fr_KM"
-const SettingsLocaleFrLU SettingsLocale = "fr_LU"
-const SettingsLocaleFrMC SettingsLocale = "fr_MC"
-const SettingsLocaleFrMF SettingsLocale = "fr_MF"
-const SettingsLocaleFrMG SettingsLocale = "fr_MG"
-const SettingsLocaleFrML SettingsLocale = "fr_ML"
-const SettingsLocaleFrMQ SettingsLocale = "fr_MQ"
-const SettingsLocaleFrNE SettingsLocale = "fr_NE"
-const SettingsLocaleFrRE SettingsLocale = "fr_RE"
-const SettingsLocaleFrRW SettingsLocale = "fr_RW"
-const SettingsLocaleFrSN SettingsLocale = "fr_SN"
-const SettingsLocaleFrTD SettingsLocale = "fr_TD"
-const SettingsLocaleFrTG SettingsLocale = "fr_TG"
-const SettingsLocaleFurIT SettingsLocale = "fur_IT"
-const SettingsLocaleFyDE SettingsLocale = "fy_DE"
-const SettingsLocaleFyNL SettingsLocale = "fy_NL"
-const SettingsLocaleGa SettingsLocale = "ga"
-const SettingsLocaleGaIE SettingsLocale = "ga_IE"
-const SettingsLocaleGdGB SettingsLocale = "gd_GB"
-const SettingsLocaleGezER SettingsLocale = "gez_ER"
-const SettingsLocaleGezET SettingsLocale = "gez_ET"
-const SettingsLocaleGl SettingsLocale = "gl"
-const SettingsLocaleGlES SettingsLocale = "gl_ES"
-const SettingsLocaleGsw SettingsLocale = "gsw"
-const SettingsLocaleGswCH SettingsLocale = "gsw_CH"
-const SettingsLocaleGu SettingsLocale = "gu"
-const SettingsLocaleGuIN SettingsLocale = "gu_IN"
-const SettingsLocaleGuz SettingsLocale = "guz"
-const SettingsLocaleGuzKE SettingsLocale = "guz_KE"
-const SettingsLocaleGv SettingsLocale = "gv"
-const SettingsLocaleGvGB SettingsLocale = "gv_GB"
-const SettingsLocaleHa SettingsLocale = "ha"
-const SettingsLocaleHaLatn SettingsLocale = "ha_Latn"
-const SettingsLocaleHaLatnGH SettingsLocale = "ha_Latn_GH"
-const SettingsLocaleHaLatnNE SettingsLocale = "ha_Latn_NE"
-const SettingsLocaleHaLatnNG SettingsLocale = "ha_Latn_NG"
-const SettingsLocaleHaNG SettingsLocale = "ha_NG"
-const SettingsLocaleHaw SettingsLocale = "haw"
-const SettingsLocaleHawUS SettingsLocale = "haw_US"
-const SettingsLocaleHe SettingsLocale = "he"
-const SettingsLocaleHeIL SettingsLocale = "he_IL"
-const SettingsLocaleHi SettingsLocale = "hi"
-const SettingsLocaleHiIN SettingsLocale = "hi_IN"
-const SettingsLocaleHneIN SettingsLocale = "hne_IN"
-const SettingsLocaleHr SettingsLocale = "hr"
-const SettingsLocaleHrHR SettingsLocale = "hr_HR"
-const SettingsLocaleHsbDE SettingsLocale = "hsb_DE"
-const SettingsLocaleHtHT SettingsLocale = "ht_HT"
-const SettingsLocaleHu SettingsLocale = "hu"
-const SettingsLocaleHuHU SettingsLocale = "hu_HU"
-const SettingsLocaleHy SettingsLocale = "hy"
-const SettingsLocaleHyAM SettingsLocale = "hy_AM"
-const SettingsLocaleId SettingsLocale = "id"
-const SettingsLocaleIdID SettingsLocale = "id_ID"
-const SettingsLocaleIg SettingsLocale = "ig"
-const SettingsLocaleIgNG SettingsLocale = "ig_NG"
-const SettingsLocaleIi SettingsLocale = "ii"
-const SettingsLocaleIiCN SettingsLocale = "ii_CN"
-const SettingsLocaleIkCA SettingsLocale = "ik_CA"
-const SettingsLocaleIs SettingsLocale = "is"
-const SettingsLocaleIsIS SettingsLocale = "is_IS"
-const SettingsLocaleIt SettingsLocale = "it"
-const SettingsLocaleItCH SettingsLocale = "it_CH"
-const SettingsLocaleItIT SettingsLocale = "it_IT"
-const SettingsLocaleIuCA SettingsLocale = "iu_CA"
-const SettingsLocaleIwIL SettingsLocale = "iw_IL"
-const SettingsLocaleJa SettingsLocale = "ja"
-const SettingsLocaleJaJP SettingsLocale = "ja_JP"
-const SettingsLocaleJmc SettingsLocale = "jmc"
-const SettingsLocaleJmcTZ SettingsLocale = "jmc_TZ"
-const SettingsLocaleKa SettingsLocale = "ka"
-const SettingsLocaleKaGE SettingsLocale = "ka_GE"
-const SettingsLocaleKab SettingsLocale = "kab"
-const SettingsLocaleKabDZ SettingsLocale = "kab_DZ"
-const SettingsLocaleKam SettingsLocale = "kam"
-const SettingsLocaleKamKE SettingsLocale = "kam_KE"
-const SettingsLocaleKde SettingsLocale = "kde"
-const SettingsLocaleKdeTZ SettingsLocale = "kde_TZ"
-const SettingsLocaleKea SettingsLocale = "kea"
-const SettingsLocaleKeaCV SettingsLocale = "kea_CV"
-const SettingsLocaleKhq SettingsLocale = "khq"
-const SettingsLocaleKhqML SettingsLocale = "khq_ML"
-const SettingsLocaleKi SettingsLocale = "ki"
-const SettingsLocaleKiKE SettingsLocale = "ki_KE"
-const SettingsLocaleKk SettingsLocale = "kk"
-const SettingsLocaleKkCyrl SettingsLocale = "kk_Cyrl"
-const SettingsLocaleKkCyrlKZ SettingsLocale = "kk_Cyrl_KZ"
-const SettingsLocaleKkKZ SettingsLocale = "kk_KZ"
-const SettingsLocaleKl SettingsLocale = "kl"
-const SettingsLocaleKlGL SettingsLocale = "kl_GL"
-const SettingsLocaleKln SettingsLocale = "kln"
-const SettingsLocaleKlnKE SettingsLocale = "kln_KE"
-const SettingsLocaleKm SettingsLocale = "km"
-const SettingsLocaleKmKH SettingsLocale = "km_KH"
-const SettingsLocaleKn SettingsLocale = "kn"
-const SettingsLocaleKnIN SettingsLocale = "kn_IN"
-const SettingsLocaleKo SettingsLocale = "ko"
-const SettingsLocaleKoKR SettingsLocale = "ko_KR"
-const SettingsLocaleKok SettingsLocale = "kok"
-const SettingsLocaleKokIN SettingsLocale = "kok_IN"
-const SettingsLocaleKsIN SettingsLocale = "ks_IN"
-const SettingsLocaleKuTR SettingsLocale = "ku_TR"
-const SettingsLocaleKw SettingsLocale = "kw"
-const SettingsLocaleKwGB SettingsLocale = "kw_GB"
-const SettingsLocaleKyKG SettingsLocale = "ky_KG"
-const SettingsLocaleLag SettingsLocale = "lag"
-const SettingsLocaleLagTZ SettingsLocale = "lag_TZ"
-const SettingsLocaleLbLU SettingsLocale = "lb_LU"
-const SettingsLocaleLg SettingsLocale = "lg"
-const SettingsLocaleLgUG SettingsLocale = "lg_UG"
-const SettingsLocaleLiBE SettingsLocale = "li_BE"
-const SettingsLocaleLiNL SettingsLocale = "li_NL"
-const SettingsLocaleLijIT SettingsLocale = "lij_IT"
-const SettingsLocaleLoLA SettingsLocale = "lo_LA"
-const SettingsLocaleLt SettingsLocale = "lt"
-const SettingsLocaleLtLT SettingsLocale = "lt_LT"
-const SettingsLocaleLuo SettingsLocale = "luo"
-const SettingsLocaleLuoKE SettingsLocale = "luo_KE"
-const SettingsLocaleLuy SettingsLocale = "luy"
-const SettingsLocaleLuyKE SettingsLocale = "luy_KE"
-const SettingsLocaleLv SettingsLocale = "lv"
-const SettingsLocaleLvLV SettingsLocale = "lv_LV"
-const SettingsLocaleMagIN SettingsLocale = "mag_IN"
-const SettingsLocaleMaiIN SettingsLocale = "mai_IN"
-const SettingsLocaleMas SettingsLocale = "mas"
-const SettingsLocaleMasKE SettingsLocale = "mas_KE"
-const SettingsLocaleMasTZ SettingsLocale = "mas_TZ"
-const SettingsLocaleMer SettingsLocale = "mer"
-const SettingsLocaleMerKE SettingsLocale = "mer_KE"
-const SettingsLocaleMfe SettingsLocale = "mfe"
-const SettingsLocaleMfeMU SettingsLocale = "mfe_MU"
-const SettingsLocaleMg SettingsLocale = "mg"
-const SettingsLocaleMgMG SettingsLocale = "mg_MG"
-const SettingsLocaleMhrRU SettingsLocale = "mhr_RU"
-const SettingsLocaleMiNZ SettingsLocale = "mi_NZ"
-const SettingsLocaleMk SettingsLocale = "mk"
-const SettingsLocaleMkMK SettingsLocale = "mk_MK"
-const SettingsLocaleMl SettingsLocale = "ml"
-const SettingsLocaleMlIN SettingsLocale = "ml_IN"
-const SettingsLocaleMnMN SettingsLocale = "mn_MN"
-const SettingsLocaleMr SettingsLocale = "mr"
-const SettingsLocaleMrIN SettingsLocale = "mr_IN"
-const SettingsLocaleMs SettingsLocale = "ms"
-const SettingsLocaleMsBN SettingsLocale = "ms_BN"
-const SettingsLocaleMsMY SettingsLocale = "ms_MY"
-const SettingsLocaleMt SettingsLocale = "mt"
-const SettingsLocaleMtMT SettingsLocale = "mt_MT"
-const SettingsLocaleMy SettingsLocale = "my"
-const SettingsLocaleMyMM SettingsLocale = "my_MM"
-const SettingsLocaleNanTW SettingsLocale = "nan_TW"
-const SettingsLocaleNaq SettingsLocale = "naq"
-const SettingsLocaleNaqNA SettingsLocale = "naq_NA"
-const SettingsLocaleNb SettingsLocale = "nb"
-const SettingsLocaleNbNO SettingsLocale = "nb_NO"
-const SettingsLocaleNd SettingsLocale = "nd"
-const SettingsLocaleNdZW SettingsLocale = "nd_ZW"
-const SettingsLocaleNdsDE SettingsLocale = "nds_DE"
-const SettingsLocaleNdsNL SettingsLocale = "nds_NL"
-const SettingsLocaleNe SettingsLocale = "ne"
-const SettingsLocaleNeIN SettingsLocale = "ne_IN"
-const SettingsLocaleNeNP SettingsLocale = "ne_NP"
-const SettingsLocaleNl SettingsLocale = "nl"
-const SettingsLocaleNlAW SettingsLocale = "nl_AW"
-const SettingsLocaleNlBE SettingsLocale = "nl_BE"
-const SettingsLocaleNlNL SettingsLocale = "nl_NL"
-const SettingsLocaleNn SettingsLocale = "nn"
-const SettingsLocaleNnNO SettingsLocale = "nn_NO"
-const SettingsLocaleNrZA SettingsLocale = "nr_ZA"
-const SettingsLocaleNsoZA SettingsLocale = "nso_ZA"
-const SettingsLocaleNyn SettingsLocale = "nyn"
-const SettingsLocaleNynUG SettingsLocale = "nyn_UG"
-const SettingsLocaleOcFR SettingsLocale = "oc_FR"
-const SettingsLocaleOm SettingsLocale = "om"
-const SettingsLocaleOmET SettingsLocale = "om_ET"
-const SettingsLocaleOmKE SettingsLocale = "om_KE"
-const SettingsLocaleOr SettingsLocale = "or"
-const SettingsLocaleOrIN SettingsLocale = "or_IN"
-const SettingsLocaleOsRU SettingsLocale = "os_RU"
-const SettingsLocalePa SettingsLocale = "pa"
-const SettingsLocalePaArab SettingsLocale = "pa_Arab"
-const SettingsLocalePaArabPK SettingsLocale = "pa_Arab_PK"
-const SettingsLocalePaGuru SettingsLocale = "pa_Guru"
-const SettingsLocalePaGuruIN SettingsLocale = "pa_Guru_IN"
-const SettingsLocalePaIN SettingsLocale = "pa_IN"
-const SettingsLocalePaPK SettingsLocale = "pa_PK"
-const SettingsLocalePapAN SettingsLocale = "pap_AN"
-const SettingsLocalePl SettingsLocale = "pl"
-const SettingsLocalePlPL SettingsLocale = "pl_PL"
-const SettingsLocalePs SettingsLocale = "ps"
-const SettingsLocalePsAF SettingsLocale = "ps_AF"
-const SettingsLocalePt SettingsLocale = "pt"
-const SettingsLocalePtBR SettingsLocale = "pt_BR"
-const SettingsLocalePtGW SettingsLocale = "pt_GW"
-const SettingsLocalePtMZ SettingsLocale = "pt_MZ"
-const SettingsLocalePtPT SettingsLocale = "pt_PT"
-const SettingsLocaleRm SettingsLocale = "rm"
-const SettingsLocaleRmCH SettingsLocale = "rm_CH"
-const SettingsLocaleRo SettingsLocale = "ro"
-const SettingsLocaleRoMD SettingsLocale = "ro_MD"
-const SettingsLocaleRoRO SettingsLocale = "ro_RO"
-const SettingsLocaleRof SettingsLocale = "rof"
-const SettingsLocaleRofTZ SettingsLocale = "rof_TZ"
-const SettingsLocaleRu SettingsLocale = "ru"
-const SettingsLocaleRuMD SettingsLocale = "ru_MD"
-const SettingsLocaleRuRU SettingsLocale = "ru_RU"
-const SettingsLocaleRuUA SettingsLocale = "ru_UA"
-const SettingsLocaleRw SettingsLocale = "rw"
-const SettingsLocaleRwRW SettingsLocale = "rw_RW"
-const SettingsLocaleRwk SettingsLocale = "rwk"
-const SettingsLocaleRwkTZ SettingsLocale = "rwk_TZ"
-const SettingsLocaleSaIN SettingsLocale = "sa_IN"
-const SettingsLocaleSaq SettingsLocale = "saq"
-const SettingsLocaleSaqKE SettingsLocale = "saq_KE"
-const SettingsLocaleScIT SettingsLocale = "sc_IT"
-const SettingsLocaleSdIN SettingsLocale = "sd_IN"
-const SettingsLocaleSeNO SettingsLocale = "se_NO"
-const SettingsLocaleSeh SettingsLocale = "seh"
-const SettingsLocaleSehMZ SettingsLocale = "seh_MZ"
-const SettingsLocaleSes SettingsLocale = "ses"
-const SettingsLocaleSesML SettingsLocale = "ses_ML"
-const SettingsLocaleSg SettingsLocale = "sg"
-const SettingsLocaleSgCF SettingsLocale = "sg_CF"
-const SettingsLocaleShi SettingsLocale = "shi"
-const SettingsLocaleShiLatn SettingsLocale = "shi_Latn"
-const SettingsLocaleShiLatnMA SettingsLocale = "shi_Latn_MA"
-const SettingsLocaleShiTfng SettingsLocale = "shi_Tfng"
-const SettingsLocaleShiTfngMA SettingsLocale = "shi_Tfng_MA"
-const SettingsLocaleShsCA SettingsLocale = "shs_CA"
-const SettingsLocaleSi SettingsLocale = "si"
-const SettingsLocaleSiLK SettingsLocale = "si_LK"
-const SettingsLocaleSidET SettingsLocale = "sid_ET"
-const SettingsLocaleSk SettingsLocale = "sk"
-const SettingsLocaleSkSK SettingsLocale = "sk_SK"
-const SettingsLocaleSl SettingsLocale = "sl"
-const SettingsLocaleSlSI SettingsLocale = "sl_SI"
-const SettingsLocaleSn SettingsLocale = "sn"
-const SettingsLocaleSnZW SettingsLocale = "sn_ZW"
-const SettingsLocaleSo SettingsLocale = "so"
-const SettingsLocaleSoDJ SettingsLocale = "so_DJ"
-const SettingsLocaleSoET SettingsLocale = "so_ET"
-const SettingsLocaleSoKE SettingsLocale = "so_KE"
-const SettingsLocaleSoSO SettingsLocale = "so_SO"
-const SettingsLocaleSq SettingsLocale = "sq"
-const SettingsLocaleSqAL SettingsLocale = "sq_AL"
-const SettingsLocaleSqMK SettingsLocale = "sq_MK"
-const SettingsLocaleSr SettingsLocale = "sr"
-const SettingsLocaleSrCyrl SettingsLocale = "sr_Cyrl"
-const SettingsLocaleSrCyrlBA SettingsLocale = "sr_Cyrl_BA"
-const SettingsLocaleSrCyrlME SettingsLocale = "sr_Cyrl_ME"
-const SettingsLocaleSrCyrlRS SettingsLocale = "sr_Cyrl_RS"
-const SettingsLocaleSrLatn SettingsLocale = "sr_Latn"
-const SettingsLocaleSrLatnBA SettingsLocale = "sr_Latn_BA"
-const SettingsLocaleSrLatnME SettingsLocale = "sr_Latn_ME"
-const SettingsLocaleSrLatnRS SettingsLocale = "sr_Latn_RS"
-const SettingsLocaleSrME SettingsLocale = "sr_ME"
-const SettingsLocaleSrRS SettingsLocale = "sr_RS"
-const SettingsLocaleSsZA SettingsLocale = "ss_ZA"
-const SettingsLocaleStZA SettingsLocale = "st_ZA"
-const SettingsLocaleSv SettingsLocale = "sv"
-const SettingsLocaleSvFI SettingsLocale = "sv_FI"
-const SettingsLocaleSvSE SettingsLocale = "sv_SE"
-const SettingsLocaleSw SettingsLocale = "sw"
-const SettingsLocaleSwKE SettingsLocale = "sw_KE"
-const SettingsLocaleSwTZ SettingsLocale = "sw_TZ"
-const SettingsLocaleTa SettingsLocale = "ta"
-const SettingsLocaleTaIN SettingsLocale = "ta_IN"
-const SettingsLocaleTaLK SettingsLocale = "ta_LK"
-const SettingsLocaleTe SettingsLocale = "te"
-const SettingsLocaleTeIN SettingsLocale = "te_IN"
-const SettingsLocaleTeo SettingsLocale = "teo"
-const SettingsLocaleTeoKE SettingsLocale = "teo_KE"
-const SettingsLocaleTeoUG SettingsLocale = "teo_UG"
-const SettingsLocaleTgTJ SettingsLocale = "tg_TJ"
-const SettingsLocaleTh SettingsLocale = "th"
-const SettingsLocaleThTH SettingsLocale = "th_TH"
-const SettingsLocaleTi SettingsLocale = "ti"
-const SettingsLocaleTiER SettingsLocale = "ti_ER"
-const SettingsLocaleTiET SettingsLocale = "ti_ET"
-const SettingsLocaleTigER SettingsLocale = "tig_ER"
-const SettingsLocaleTkTM SettingsLocale = "tk_TM"
-const SettingsLocaleTlPH SettingsLocale = "tl_PH"
-const SettingsLocaleTnZA SettingsLocale = "tn_ZA"
-const SettingsLocaleTo SettingsLocale = "to"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *MediaCaptionRootFormat) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_MediaCaptionRootFormat {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_MediaCaptionRootFormat, v)
-	}
-	*j = MediaCaptionRootFormat(v)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PostsStatus) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_PostsStatus {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_PostsStatus, v)
-	}
-	*j = PostsStatus(v)
-	return nil
-}
-
-var enumValues_PostsStatus = []interface{}{
-	"draft",
-	"published",
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PayloadPreferences) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in PayloadPreferences: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in PayloadPreferences: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in PayloadPreferences: required")
-	}
-	if v, ok := raw["user"]; !ok || v == nil {
-		return fmt.Errorf("field user in PayloadPreferences: required")
-	}
-	type Plain PayloadPreferences
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = PayloadPreferences(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PostsContentRootChildrenElem) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["type"]; !ok || v == nil {
-		return fmt.Errorf("field type in PostsContentRootChildrenElem: required")
-	}
-	if v, ok := raw["version"]; !ok || v == nil {
-		return fmt.Errorf("field version in PostsContentRootChildrenElem: required")
-	}
-	type Plain PostsContentRootChildrenElem
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = PostsContentRootChildrenElem(plain)
-	return nil
-}
-
-const SettingsLocaleUzArabAF SettingsLocale = "uz_Arab_AF"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PayloadMigrations) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in PayloadMigrations: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in PayloadMigrations: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in PayloadMigrations: required")
-	}
-	type Plain PayloadMigrations
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = PayloadMigrations(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Pages) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in Pages: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Pages: required")
-	}
-	if v, ok := raw["layout"]; !ok || v == nil {
-		return fmt.Errorf("field layout in Pages: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in Pages: required")
-	}
-	type Plain Pages
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Pages(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PagesStatus) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_PagesStatus {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_PagesStatus, v)
-	}
-	*j = PagesStatus(v)
-	return nil
-}
-
-var enumValues_PagesStatus = []interface{}{
-	"draft",
-	"published",
-}
-var enumValues_PostsContentRootFormat = []interface{}{
-	"left",
-	"start",
-	"center",
-	"right",
-	"end",
-	"justify",
-	"",
-}
-
-const SettingsLocaleVunTZ SettingsLocale = "vun_TZ"
-const SettingsLocaleWaBE SettingsLocale = "wa_BE"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Navigation) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Navigation: required")
-	}
-	type Plain Navigation
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Navigation(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PostsContentRootFormat) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_PostsContentRootFormat {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_PostsContentRootFormat, v)
-	}
-	*j = PostsContentRootFormat(v)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PostsContentRoot) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["children"]; !ok || v == nil {
-		return fmt.Errorf("field children in PostsContentRoot: required")
-	}
-	if v, ok := raw["direction"]; !ok || v == nil {
-		return fmt.Errorf("field direction in PostsContentRoot: required")
-	}
-	if v, ok := raw["format"]; !ok || v == nil {
-		return fmt.Errorf("field format in PostsContentRoot: required")
-	}
-	if v, ok := raw["indent"]; !ok || v == nil {
-		return fmt.Errorf("field indent in PostsContentRoot: required")
-	}
-	if v, ok := raw["type"]; !ok || v == nil {
-		return fmt.Errorf("field type in PostsContentRoot: required")
-	}
-	if v, ok := raw["version"]; !ok || v == nil {
-		return fmt.Errorf("field version in PostsContentRoot: required")
-	}
-	type Plain PostsContentRoot
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = PostsContentRoot(plain)
-	return nil
-}
-
-const SettingsLocaleZhHansSG SettingsLocale = "zh_Hans_SG"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *FormSubmissions) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in FormSubmissions: required")
-	}
-	if v, ok := raw["form"]; !ok || v == nil {
-		return fmt.Errorf("field form in FormSubmissions: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in FormSubmissions: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in FormSubmissions: required")
-	}
-	type Plain FormSubmissions
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = FormSubmissions(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PostsContent) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["root"]; !ok || v == nil {
-		return fmt.Errorf("field root in PostsContent: required")
-	}
-	type Plain PostsContent
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = PostsContent(plain)
-	return nil
-}
 
 // UnmarshalJSON implements json.Unmarshaler.
 func (j *FormSubmissionsSubmissionDataElem) UnmarshalJSON(b []byte) error {
@@ -2214,1831 +223,6 @@ func (j *FormSubmissionsSubmissionDataElem) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	*j = FormSubmissionsSubmissionDataElem(plain)
-	return nil
-}
-
-const SettingsLocaleYoNG SettingsLocale = "yo_NG"
-const SettingsLocaleZhSG SettingsLocale = "zh_SG"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Posts) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in Posts: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Posts: required")
-	}
-	if v, ok := raw["title"]; !ok || v == nil {
-		return fmt.Errorf("field title in Posts: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in Posts: required")
-	}
-	type Plain Posts
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Posts(plain)
-	return nil
-}
-
-const SettingsLocaleUzUZ SettingsLocale = "uz_UZ"
-
-type Social struct {
-	// Facebook corresponds to the JSON schema field "facebook".
-	Facebook *string `json:"facebook,omitempty" yaml:"facebook,omitempty" mapstructure:"facebook,omitempty"`
-
-	// Instagram corresponds to the JSON schema field "instagram".
-	Instagram *string `json:"instagram,omitempty" yaml:"instagram,omitempty" mapstructure:"instagram,omitempty"`
-
-	// LinkedIn corresponds to the JSON schema field "linkedIn".
-	LinkedIn *string `json:"linkedIn,omitempty" yaml:"linkedIn,omitempty" mapstructure:"linkedIn,omitempty"`
-
-	// Tiktok corresponds to the JSON schema field "tiktok".
-	Tiktok *string `json:"tiktok,omitempty" yaml:"tiktok,omitempty" mapstructure:"tiktok,omitempty"`
-
-	// X corresponds to the JSON schema field "x".
-	X *string `json:"x,omitempty" yaml:"x,omitempty" mapstructure:"x,omitempty"`
-
-	// Youtube corresponds to the JSON schema field "youtube".
-	Youtube *string `json:"youtube,omitempty" yaml:"youtube,omitempty" mapstructure:"youtube,omitempty"`
-}
-
-var enumValues_RedirectsCode = []interface{}{
-	"301",
-	"302",
-	"307",
-	"308",
-	"410",
-	"451",
-}
-
-const SettingsLocaleTsZA SettingsLocale = "ts_ZA"
-const SettingsLocaleTrCY SettingsLocale = "tr_CY"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *RedirectsCode) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_RedirectsCode {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_RedirectsCode, v)
-	}
-	*j = RedirectsCode(v)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockReviews) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["blockType"]; !ok || v == nil {
-		return fmt.Errorf("field blockType in BlockReviews: required")
-	}
-	if v, ok := raw["title"]; !ok || v == nil {
-		return fmt.Errorf("field title in BlockReviews: required")
-	}
-	type Plain BlockReviews
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockReviews(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Reviews) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["author"]; !ok || v == nil {
-		return fmt.Errorf("field author in Reviews: required")
-	}
-	if v, ok := raw["content"]; !ok || v == nil {
-		return fmt.Errorf("field content in Reviews: required")
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in Reviews: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Reviews: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in Reviews: required")
-	}
-	type Plain Reviews
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Reviews(plain)
-	return nil
-}
-
-const SettingsLocaleTzmLatnMA SettingsLocale = "tzm_Latn_MA"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Redirects) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["code"]; !ok || v == nil {
-		return fmt.Errorf("field code in Redirects: required")
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in Redirects: required")
-	}
-	if v, ok := raw["from"]; !ok || v == nil {
-		return fmt.Errorf("field from in Redirects: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Redirects: required")
-	}
-	if v, ok := raw["to"]; !ok || v == nil {
-		return fmt.Errorf("field to in Redirects: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in Redirects: required")
-	}
-	type Plain Redirects
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Redirects(plain)
-	return nil
-}
-
-var enumValues_SettingsLocale = []interface{}{
-	"as_IN",
-	"fy_NL",
-	"gl_ES",
-	"he_IL",
-	"kk_KZ",
-	"nl_NL",
-	"ti_ER",
-	"cs",
-	"gu_IN",
-	"nso_ZA",
-	"ki",
-	"ki_KE",
-	"vi",
-	"ks_IN",
-	"ca_AD",
-	"en_NG",
-	"es_PY",
-	"fr_FR",
-	"sl_SI",
-	"ta_IN",
-	"bm_ML",
-	"eu_ES",
-	"pa",
-	"uz_Arab",
-	"zh_Hans",
-	"ha_Latn_GH",
-	"khq_ML",
-	"pap_AN",
-	"sid_ET",
-	"zh_Hant_TW",
-	"eo",
-	"ha_Latn_NE",
-	"hi",
-	"sl",
-	"sr_Cyrl",
-	"ug_CN",
-	"fr_CG",
-	"mhr_RU",
-	"so_KE",
-	"te",
-	"vun",
-	"ak_GH",
-	"fr_RE",
-	"st_ZA",
-	"en_IE",
-	"om_KE",
-	"es_SV",
-	"luo",
-	"lv",
-	"ru_UA",
-	"ses",
-	"shi_Tfng",
-	"cy",
-	"it_CH",
-	"saq",
-	"fr_CM",
-	"ha_NG",
-	"or",
-	"sa_IN",
-	"da_DK",
-	"pl",
-	"sw",
-	"pa_Arab_PK",
-	"aa_ER",
-	"ar_IQ",
-	"en_DK",
-	"fr_ML",
-	"mr",
-	"nds_NL",
-	"or_IN",
-	"shi_Tfng_MA",
-	"to",
-	"lv_LV",
-	"zh_HK",
-	"az_Cyrl",
-	"nd",
-	"pt_PT",
-	"ee",
-	"fr_MG",
-	"fr_SN",
-	"nb",
-	"ne_NP",
-	"ar",
-	"en_AG",
-	"fr_NE",
-	"ja_JP",
-	"km",
-	"tzm_Latn",
-	"zu_ZA",
-	"fil_PH",
-	"sv_SE",
-	"en_SG",
-	"sr_Cyrl_ME",
-	"fr_BE",
-	"fr_CI",
-	"id_ID",
-	"sq_AL",
-	"dv_MV",
-	"rw",
-	"sd_IN",
-	"yo_NG",
-	"af",
-	"bg_BG",
-	"en_VI",
-	"es_MX",
-	"fil",
-	"es_UY",
-	"gv_GB",
-	"ar_SD",
-	"fr_TG",
-	"kk_Cyrl_KZ",
-	"ps_AF",
-	"shi",
-	"sn",
-	"es_ES",
-	"sg",
-	"tt_RU",
-	"zu",
-	"hu",
-	"hu_HU",
-	"ii",
-	"lg_UG",
-	"aa_ET",
-	"nl",
-	"rof",
-	"ar_OM",
-	"en_GB",
-	"es_EC",
-	"ml_IN",
-	"sk",
-	"tr_TR",
-	"kl_GL",
-	"mai_IN",
-	"ur_IN",
-	"de_LI",
-	"ha_Latn",
-	"hsb_DE",
-	"ne",
-	"pt_GW",
-	"sq",
-	"tr_CY",
-	"byn_ER",
-	"ebu",
-	"pa_Guru_IN",
-	"ebu_KE",
-	"he",
-	"ss_ZA",
-	"uz_Latn_UZ",
-	"mas_KE",
-	"mk",
-	"de_DE",
-	"ha_Latn_NG",
-	"bho_IN",
-	"es_US",
-	"kam_KE",
-	"tr",
-	"es_NI",
-	"kea",
-	"ur_PK",
-	"bem_ZM",
-	"chr",
-	"sr_Latn_RS",
-	"sr_ME",
-	"ca_FR",
-	"en_ZA",
-	"es_AR",
-	"fr_BL",
-	"pa_PK",
-	"pt",
-	"fa",
-	"is",
-	"rw_RW",
-	"ti_ET",
-	"guz",
-	"mfe_MU",
-	"nn",
-	"teo_KE",
-	"zh_Hans_MO",
-	"af_ZA",
-	"ee_TG",
-	"fr_MQ",
-	"lt_LT",
-	"pa_Guru",
-	"saq_KE",
-	"xh_ZA",
-	"zh_TW",
-	"bn",
-	"mas",
-	"ms",
-	"my_MM",
-	"shi_Latn_MA",
-	"ta_LK",
-	"ti",
-	"ik_CA",
-	"lag",
-	"tzm",
-	"yi_US",
-	"fr_BF",
-	"teo",
-	"ar_BH",
-	"en_NA",
-	"hy",
-	"lo_LA",
-	"sr_RS",
-	"sv_FI",
-	"bem",
-	"es_GQ",
-	"gl",
-	"sr_Latn_BA",
-	"ts_ZA",
-	"seh_MZ",
-	"az_AZ",
-	"en_AU",
-	"fa_IR",
-	"gu",
-	"haw_US",
-	"ml",
-	"nan_TW",
-	"zh_SG",
-	"bez_TZ",
-	"ka_GE",
-	"kw",
-	"aa_DJ",
-	"ar_QA",
-	"br_FR",
-	"luy",
-	"tig_ER",
-	"hne_IN",
-	"mer_KE",
-	"nd_ZW",
-	"ne_IN",
-	"pa_Arab",
-	"te_IN",
-	"ar_MA",
-	"es",
-	"ko",
-	"xog",
-	"shi_Latn",
-	"so_ET",
-	"sv",
-	"fr_BJ",
-	"seh",
-	"bez",
-	"fr_TD",
-	"mk_MK",
-	"mt",
-	"sr_Cyrl_RS",
-	"tzm_Latn_MA",
-	"ar_KW",
-	"en_AS",
-	"en_BZ",
-	"es_VE",
-	"fr_GP",
-	"om",
-	"so_DJ",
-	"fur_IT",
-	"haw",
-	"mr_IN",
-	"rwk_TZ",
-	"az",
-	"kab",
-	"to_TO",
-	"bn_IN",
-	"de_LU",
-	"dz_BT",
-	"fr_CH",
-	"ar_LB",
-	"bs_BA",
-	"ca",
-	"es_PA",
-	"am",
-	"es_DO",
-	"hr_HR",
-	"kde",
-	"ig_NG",
-	"kln",
-	"ku_TR",
-	"pa_IN",
-	"fi_FI",
-	"gsw",
-	"khq",
-	"ru_MD",
-	"shs_CA",
-	"uz_Latn",
-	"yo",
-	"es_PE",
-	"fo",
-	"ro",
-	"az_Latn_AZ",
-	"csb_PL",
-	"fr_RW",
-	"nl_AW",
-	"ro_RO",
-	"se_NO",
-	"sk_SK",
-	"zh_Hant",
-	"it_IT",
-	"lb_LU",
-	"mn_MN",
-	"tg_TJ",
-	"wae_CH",
-	"ar_DZ",
-	"id",
-	"ht_HT",
-	"pt_MZ",
-	"ru",
-	"en",
-	"ro_MD",
-	"cy_GB",
-	"gez_ET",
-	"mag_IN",
-	"nb_NO",
-	"sr_Latn_ME",
-	"zh_Hant_MO",
-	"en_HK",
-	"en_NZ",
-	"fr_MC",
-	"kl",
-	"luo_KE",
-	"nds_DE",
-	"sq_MK",
-	"ar_YE",
-	"el",
-	"rwk",
-	"zh",
-	"ky_KG",
-	"uk",
-	"xog_UG",
-	"be",
-	"bo_IN",
-	"cgg_UG",
-	"de_BE",
-	"fa_AF",
-	"ga_IE",
-	"th_TH",
-	"tl_PH",
-	"en_MT",
-	"fr_CF",
-	"fr_LU",
-	"kln_KE",
-	"kw_GB",
-	"mas_TZ",
-	"ta",
-	"kok",
-	"mer",
-	"ar_TN",
-	"ee_GH",
-	"fr_DJ",
-	"fr_GA",
-	"kde_TZ",
-	"lt",
-	"dav_KE",
-	"fr_CA",
-	"ga",
-	"ko_KR",
-	"nyn",
-	"vi_VN",
-	"zh_CN",
-	"en_BE",
-	"es_419",
-	"es_CL",
-	"ha",
-	"ve_ZA",
-	"cv_RU",
-	"en_PK",
-	"ii_CN",
-	"wal_ET",
-	"gd_GB",
-	"si_LK",
-	"de",
-	"en_ZW",
-	"ar_AE",
-	"ff",
-	"ff_SN",
-	"sw_TZ",
-	"unm_US",
-	"ms_MY",
-	"so_SO",
-	"sr",
-	"da",
-	"el_CY",
-	"en_MP",
-	"es_GT",
-	"lag_TZ",
-	"so",
-	"uk_UA",
-	"ar_SY",
-	"es_BO",
-	"fy_DE",
-	"li_NL",
-	"mi_NZ",
-	"ak",
-	"bg",
-	"en_MH",
-	"fr_GN",
-	"lg",
-	"naq_NA",
-	"om_ET",
-	"ar_SA",
-	"my",
-	"ar_LY",
-	"ber_DZ",
-	"ca_ES",
-	"fi",
-	"guz_KE",
-	"ja",
-	"jmc",
-	"ig",
-	"es_HN",
-	"et_EE",
-	"fr",
-	"li_BE",
-	"mfe",
-	"sg_CF",
-	"am_ET",
-	"brx_IN",
-	"en_US",
-	"gez_ER",
-	"uz_Arab_AF",
-	"ar_IN",
-	"as",
-	"bs",
-	"fr_GQ",
-	"gv",
-	"vun_TZ",
-	"wa_BE",
-	"fr_BI",
-	"nr_ZA",
-	"sc_IT",
-	"zh_Hans_SG",
-	"af_NA",
-	"oc_FR",
-	"crh_UA",
-	"kk",
-	"kok_IN",
-	"th",
-	"uz_UZ",
-	"az_Cyrl_AZ",
-	"is_IS",
-	"kn",
-	"rof_TZ",
-	"ms_BN",
-	"dav",
-	"en_ZM",
-	"si",
-	"tn_ZA",
-	"ka",
-	"ar_JO",
-	"es_CO",
-	"kea_CV",
-	"lij_IT",
-	"ps",
-	"ber_MA",
-	"fr_MF",
-	"hr",
-	"ru_RU",
-	"fo_FO",
-	"iw_IL",
-	"jmc_TZ",
-	"kn_IN",
-	"mg",
-	"naq",
-	"en_CA",
-	"fr_CD",
-	"ur",
-	"wo_SN",
-	"az_Latn",
-	"bn_BD",
-	"de_AT",
-	"nn_NO",
-	"yue_HK",
-	"en_TT",
-	"es_CR",
-	"pl_PL",
-	"ast_ES",
-	"bm",
-	"cgg",
-	"eu",
-	"gsw_CH",
-	"kk_Cyrl",
-	"nl_BE",
-	"rm_CH",
-	"sr_Latn",
-	"asa",
-	"chr_US",
-	"el_GR",
-	"nyn_UG",
-	"et",
-	"kab_DZ",
-	"rm",
-	"asa_TZ",
-	"be_BY",
-	"bo",
-	"de_CH",
-	"en_UM",
-	"ses_ML",
-	"sw_KE",
-	"en_MU",
-	"iu_CA",
-	"os_RU",
-	"zh_Hans_HK",
-	"an_ES",
-	"bo_CN",
-	"tk_TM",
-	"cs_CZ",
-	"hy_AM",
-	"sn_ZW",
-	"ar_EG",
-	"mg_MG",
-	"teo_UG",
-	"uz",
-	"uz_Cyrl",
-	"en_PH",
-	"hi_IN",
-	"it",
-	"pt_BR",
-	"zh_Hans_CN",
-	"en_GU",
-	"en_IN",
-	"en_JM",
-	"es_CU",
-	"kam",
-	"sr_Cyrl_BA",
-	"uz_Cyrl_UZ",
-	"zh_Hant_HK",
-	"ca_IT",
-	"en_BW",
-	"es_PR",
-	"fr_KM",
-	"km_KH",
-	"luy_KE",
-	"mt_MT",
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *ReviewsAuthor) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["description"]; !ok || v == nil {
-		return fmt.Errorf("field description in ReviewsAuthor: required")
-	}
-	if v, ok := raw["firstName"]; !ok || v == nil {
-		return fmt.Errorf("field firstName in ReviewsAuthor: required")
-	}
-	if v, ok := raw["lastName"]; !ok || v == nil {
-		return fmt.Errorf("field lastName in ReviewsAuthor: required")
-	}
-	type Plain ReviewsAuthor
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = ReviewsAuthor(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockPortfolio) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["blockType"]; !ok || v == nil {
-		return fmt.Errorf("field blockType in BlockPortfolio: required")
-	}
-	if v, ok := raw["title"]; !ok || v == nil {
-		return fmt.Errorf("field title in BlockPortfolio: required")
-	}
-	type Plain BlockPortfolio
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockPortfolio(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *SettingsLocale) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_SettingsLocale {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_SettingsLocale, v)
-	}
-	*j = SettingsLocale(v)
-	return nil
-}
-
-const SettingsLocaleZuZA SettingsLocale = "zu_ZA"
-const SettingsLocaleTzmLatn SettingsLocale = "tzm_Latn"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Portfolio) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["category"]; !ok || v == nil {
-		return fmt.Errorf("field category in Portfolio: required")
-	}
-	if v, ok := raw["company"]; !ok || v == nil {
-		return fmt.Errorf("field company in Portfolio: required")
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in Portfolio: required")
-	}
-	if v, ok := raw["date"]; !ok || v == nil {
-		return fmt.Errorf("field date in Portfolio: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Portfolio: required")
-	}
-	if v, ok := raw["image"]; !ok || v == nil {
-		return fmt.Errorf("field image in Portfolio: required")
-	}
-	if v, ok := raw["title"]; !ok || v == nil {
-		return fmt.Errorf("field title in Portfolio: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in Portfolio: required")
-	}
-	if v, ok := raw["url"]; !ok || v == nil {
-		return fmt.Errorf("field url in Portfolio: required")
-	}
-	type Plain Portfolio
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Portfolio(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Clients) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in Clients: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Clients: required")
-	}
-	if v, ok := raw["logo"]; !ok || v == nil {
-		return fmt.Errorf("field logo in Clients: required")
-	}
-	if v, ok := raw["name"]; !ok || v == nil {
-		return fmt.Errorf("field name in Clients: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in Clients: required")
-	}
-	if v, ok := raw["url"]; !ok || v == nil {
-		return fmt.Errorf("field url in Clients: required")
-	}
-	type Plain Clients
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Clients(plain)
-	return nil
-}
-
-const SettingsLocaleToTO SettingsLocale = "to_TO"
-const SettingsLocaleZhHK SettingsLocale = "zh_HK"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *PortfolioCategories) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in PortfolioCategories: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in PortfolioCategories: required")
-	}
-	if v, ok := raw["title"]; !ok || v == nil {
-		return fmt.Errorf("field title in PortfolioCategories: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in PortfolioCategories: required")
-	}
-	type Plain PortfolioCategories
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = PortfolioCategories(plain)
-	return nil
-}
-
-const SettingsLocaleTtRU SettingsLocale = "tt_RU"
-const SettingsLocaleUkUA SettingsLocale = "uk_UA"
-const SettingsLocaleZu SettingsLocale = "zu"
-const SettingsLocaleYiUS SettingsLocale = "yi_US"
-const SettingsLocaleTzm SettingsLocale = "tzm"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockLogs) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["blockType"]; !ok || v == nil {
-		return fmt.Errorf("field blockType in BlockLogs: required")
-	}
-	if v, ok := raw["title"]; !ok || v == nil {
-		return fmt.Errorf("field title in BlockLogs: required")
-	}
-	type Plain BlockLogs
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockLogs(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockLogsLogosElem) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["logo"]; !ok || v == nil {
-		return fmt.Errorf("field logo in BlockLogsLogosElem: required")
-	}
-	type Plain BlockLogsLogosElem
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockLogsLogosElem(plain)
-	return nil
-}
-
-const SettingsLocaleUr SettingsLocale = "ur"
-const SettingsLocaleWoSN SettingsLocale = "wo_SN"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockFAQs) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["blockType"]; !ok || v == nil {
-		return fmt.Errorf("field blockType in BlockFAQs: required")
-	}
-	type Plain BlockFAQs
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockFAQs(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockFAQsFaqsElem) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["answer"]; !ok || v == nil {
-		return fmt.Errorf("field answer in BlockFAQsFaqsElem: required")
-	}
-	if v, ok := raw["question"]; !ok || v == nil {
-		return fmt.Errorf("field question in BlockFAQsFaqsElem: required")
-	}
-	type Plain BlockFAQsFaqsElem
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockFAQsFaqsElem(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContentWithImage) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["blockType"]; !ok || v == nil {
-		return fmt.Errorf("field blockType in BlockContentWithImage: required")
-	}
-	if v, ok := raw["image"]; !ok || v == nil {
-		return fmt.Errorf("field image in BlockContentWithImage: required")
-	}
-	if v, ok := raw["imagePosition"]; !ok || v == nil {
-		return fmt.Errorf("field imagePosition in BlockContentWithImage: required")
-	}
-	if v, ok := raw["textLayout"]; !ok || v == nil {
-		return fmt.Errorf("field textLayout in BlockContentWithImage: required")
-	}
-	type Plain BlockContentWithImage
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockContentWithImage(plain)
-	return nil
-}
-
-const SettingsLocaleUgCN SettingsLocale = "ug_CN"
-const SettingsLocaleYueHK SettingsLocale = "yue_HK"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContentWithImageImagePosition) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_BlockContentWithImageImagePosition {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_BlockContentWithImageImagePosition, v)
-	}
-	*j = BlockContentWithImageImagePosition(v)
-	return nil
-}
-
-var enumValues_BlockContentWithImageImagePosition = []interface{}{
-	"left",
-	"right",
-}
-
-const SettingsLocaleUnmUS SettingsLocale = "unm_US"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Media) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["alt"]; !ok || v == nil {
-		return fmt.Errorf("field alt in Media: required")
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in Media: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Media: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in Media: required")
-	}
-	type Plain Media
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Media(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *MediaCaption) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["root"]; !ok || v == nil {
-		return fmt.Errorf("field root in MediaCaption: required")
-	}
-	type Plain MediaCaption
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = MediaCaption(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *MediaCaptionRoot) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["children"]; !ok || v == nil {
-		return fmt.Errorf("field children in MediaCaptionRoot: required")
-	}
-	if v, ok := raw["direction"]; !ok || v == nil {
-		return fmt.Errorf("field direction in MediaCaptionRoot: required")
-	}
-	if v, ok := raw["format"]; !ok || v == nil {
-		return fmt.Errorf("field format in MediaCaptionRoot: required")
-	}
-	if v, ok := raw["indent"]; !ok || v == nil {
-		return fmt.Errorf("field indent in MediaCaptionRoot: required")
-	}
-	if v, ok := raw["type"]; !ok || v == nil {
-		return fmt.Errorf("field type in MediaCaptionRoot: required")
-	}
-	if v, ok := raw["version"]; !ok || v == nil {
-		return fmt.Errorf("field version in MediaCaptionRoot: required")
-	}
-	type Plain MediaCaptionRoot
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = MediaCaptionRoot(plain)
-	return nil
-}
-
-const SettingsLocaleXog SettingsLocale = "xog"
-const SettingsLocaleUzLatn SettingsLocale = "uz_Latn"
-const SettingsLocaleZhTW SettingsLocale = "zh_TW"
-const SettingsLocaleXhZA SettingsLocale = "xh_ZA"
-const SettingsLocaleYo SettingsLocale = "yo"
-const SettingsLocaleVi SettingsLocale = "vi"
-
-var enumValues_MediaCaptionRootFormat = []interface{}{
-	"left",
-	"start",
-	"center",
-	"right",
-	"end",
-	"justify",
-	"",
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *MediaCaptionRootChildrenElem) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["type"]; !ok || v == nil {
-		return fmt.Errorf("field type in MediaCaptionRootChildrenElem: required")
-	}
-	if v, ok := raw["version"]; !ok || v == nil {
-		return fmt.Errorf("field version in MediaCaptionRootChildrenElem: required")
-	}
-	type Plain MediaCaptionRootChildrenElem
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = MediaCaptionRootChildrenElem(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContentDefault) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["blockType"]; !ok || v == nil {
-		return fmt.Errorf("field blockType in BlockContentDefault: required")
-	}
-	if v, ok := raw["content"]; !ok || v == nil {
-		return fmt.Errorf("field content in BlockContentDefault: required")
-	}
-	if v, ok := raw["style"]; !ok || v == nil {
-		return fmt.Errorf("field style in BlockContentDefault: required")
-	}
-	type Plain BlockContentDefault
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockContentDefault(plain)
-	return nil
-}
-
-const SettingsLocaleZhHansMO SettingsLocale = "zh_Hans_MO"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContentDefaultStyle) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_BlockContentDefaultStyle {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_BlockContentDefaultStyle, v)
-	}
-	*j = BlockContentDefaultStyle(v)
-	return nil
-}
-
-const SettingsLocaleWalET SettingsLocale = "wal_ET"
-const SettingsLocaleVeZA SettingsLocale = "ve_ZA"
-
-var enumValues_BlockContentDefaultStyle = []interface{}{
-	"centered",
-	"spread",
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContentDefaultContent) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["root"]; !ok || v == nil {
-		return fmt.Errorf("field root in BlockContentDefaultContent: required")
-	}
-	type Plain BlockContentDefaultContent
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockContentDefaultContent(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContentDefaultContentRoot) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["children"]; !ok || v == nil {
-		return fmt.Errorf("field children in BlockContentDefaultContentRoot: required")
-	}
-	if v, ok := raw["direction"]; !ok || v == nil {
-		return fmt.Errorf("field direction in BlockContentDefaultContentRoot: required")
-	}
-	if v, ok := raw["format"]; !ok || v == nil {
-		return fmt.Errorf("field format in BlockContentDefaultContentRoot: required")
-	}
-	if v, ok := raw["indent"]; !ok || v == nil {
-		return fmt.Errorf("field indent in BlockContentDefaultContentRoot: required")
-	}
-	if v, ok := raw["type"]; !ok || v == nil {
-		return fmt.Errorf("field type in BlockContentDefaultContentRoot: required")
-	}
-	if v, ok := raw["version"]; !ok || v == nil {
-		return fmt.Errorf("field version in BlockContentDefaultContentRoot: required")
-	}
-	type Plain BlockContentDefaultContentRoot
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockContentDefaultContentRoot(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContentDefaultContentRootFormat) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_BlockContentDefaultContentRootFormat {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_BlockContentDefaultContentRootFormat, v)
-	}
-	*j = BlockContentDefaultContentRootFormat(v)
-	return nil
-}
-
-var enumValues_BlockContentDefaultContentRootFormat = []interface{}{
-	"left",
-	"start",
-	"center",
-	"right",
-	"end",
-	"justify",
-	"",
-}
-
-const SettingsLocaleZhHant SettingsLocale = "zh_Hant"
-const SettingsLocaleUzArab SettingsLocale = "uz_Arab"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContentDefaultContentRootChildrenElem) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["type"]; !ok || v == nil {
-		return fmt.Errorf("field type in BlockContentDefaultContentRootChildrenElem: required")
-	}
-	if v, ok := raw["version"]; !ok || v == nil {
-		return fmt.Errorf("field version in BlockContentDefaultContentRootChildrenElem: required")
-	}
-	type Plain BlockContentDefaultContentRootChildrenElem
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockContentDefaultContentRootChildrenElem(plain)
-	return nil
-}
-
-const SettingsLocaleZhHans SettingsLocale = "zh_Hans"
-const SettingsLocaleZhCN SettingsLocale = "zh_CN"
-const SettingsLocaleZhHansHK SettingsLocale = "zh_Hans_HK"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContent) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["blockType"]; !ok || v == nil {
-		return fmt.Errorf("field blockType in BlockContent: required")
-	}
-	if v, ok := raw["content"]; !ok || v == nil {
-		return fmt.Errorf("field content in BlockContent: required")
-	}
-	type Plain BlockContent
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockContent(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContentContent) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["root"]; !ok || v == nil {
-		return fmt.Errorf("field root in BlockContentContent: required")
-	}
-	type Plain BlockContentContent
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockContentContent(plain)
-	return nil
-}
-
-const SettingsLocaleViVN SettingsLocale = "vi_VN"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContentContentRoot) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["children"]; !ok || v == nil {
-		return fmt.Errorf("field children in BlockContentContentRoot: required")
-	}
-	if v, ok := raw["direction"]; !ok || v == nil {
-		return fmt.Errorf("field direction in BlockContentContentRoot: required")
-	}
-	if v, ok := raw["format"]; !ok || v == nil {
-		return fmt.Errorf("field format in BlockContentContentRoot: required")
-	}
-	if v, ok := raw["indent"]; !ok || v == nil {
-		return fmt.Errorf("field indent in BlockContentContentRoot: required")
-	}
-	if v, ok := raw["type"]; !ok || v == nil {
-		return fmt.Errorf("field type in BlockContentContentRoot: required")
-	}
-	if v, ok := raw["version"]; !ok || v == nil {
-		return fmt.Errorf("field version in BlockContentContentRoot: required")
-	}
-	type Plain BlockContentContentRoot
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockContentContentRoot(plain)
-	return nil
-}
-
-const SettingsLocaleTrTR SettingsLocale = "tr_TR"
-const SettingsLocaleWaeCH SettingsLocale = "wae_CH"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContentContentRootFormat) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_BlockContentContentRootFormat {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_BlockContentContentRootFormat, v)
-	}
-	*j = BlockContentContentRootFormat(v)
-	return nil
-}
-
-const SettingsLocaleZhHantMO SettingsLocale = "zh_Hant_MO"
-const SettingsLocaleZhHantTW SettingsLocale = "zh_Hant_TW"
-const SettingsLocaleUz SettingsLocale = "uz"
-const SettingsLocaleUzCyrl SettingsLocale = "uz_Cyrl"
-
-var enumValues_BlockContentContentRootFormat = []interface{}{
-	"left",
-	"start",
-	"center",
-	"right",
-	"end",
-	"justify",
-	"",
-}
-
-const SettingsLocaleZh SettingsLocale = "zh"
-const SettingsLocaleUrPK SettingsLocale = "ur_PK"
-const SettingsLocaleUrIN SettingsLocale = "ur_IN"
-const SettingsLocaleZhHansCN SettingsLocale = "zh_Hans_CN"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContentContentRootChildrenElem) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["type"]; !ok || v == nil {
-		return fmt.Errorf("field type in BlockContentContentRootChildrenElem: required")
-	}
-	if v, ok := raw["version"]; !ok || v == nil {
-		return fmt.Errorf("field version in BlockContentContentRootChildrenElem: required")
-	}
-	type Plain BlockContentContentRootChildrenElem
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockContentContentRootChildrenElem(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *BlockContact) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["blockType"]; !ok || v == nil {
-		return fmt.Errorf("field blockType in BlockContact: required")
-	}
-	if v, ok := raw["title"]; !ok || v == nil {
-		return fmt.Errorf("field title in BlockContact: required")
-	}
-	type Plain BlockContact
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = BlockContact(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Forms) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in Forms: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Forms: required")
-	}
-	if v, ok := raw["title"]; !ok || v == nil {
-		return fmt.Errorf("field title in Forms: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in Forms: required")
-	}
-	type Plain Forms
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Forms(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *FormsRedirect) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["url"]; !ok || v == nil {
-		return fmt.Errorf("field url in FormsRedirect: required")
-	}
-	type Plain FormsRedirect
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = FormsRedirect(plain)
-	return nil
-}
-
-const SettingsLocaleTr SettingsLocale = "tr"
-const SettingsLocaleUk SettingsLocale = "uk"
-const SettingsLocaleUzCyrlUZ SettingsLocale = "uz_Cyrl_UZ"
-const SettingsLocaleZhHantHK SettingsLocale = "zh_Hant_HK"
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *FormsEmailsElem) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["subject"]; !ok || v == nil {
-		return fmt.Errorf("field subject in FormsEmailsElem: required")
-	}
-	type Plain FormsEmailsElem
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = FormsEmailsElem(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *FormsEmailsElemMessage) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["root"]; !ok || v == nil {
-		return fmt.Errorf("field root in FormsEmailsElemMessage: required")
-	}
-	type Plain FormsEmailsElemMessage
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = FormsEmailsElemMessage(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *FormsEmailsElemMessageRoot) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["children"]; !ok || v == nil {
-		return fmt.Errorf("field children in FormsEmailsElemMessageRoot: required")
-	}
-	if v, ok := raw["direction"]; !ok || v == nil {
-		return fmt.Errorf("field direction in FormsEmailsElemMessageRoot: required")
-	}
-	if v, ok := raw["format"]; !ok || v == nil {
-		return fmt.Errorf("field format in FormsEmailsElemMessageRoot: required")
-	}
-	if v, ok := raw["indent"]; !ok || v == nil {
-		return fmt.Errorf("field indent in FormsEmailsElemMessageRoot: required")
-	}
-	if v, ok := raw["type"]; !ok || v == nil {
-		return fmt.Errorf("field type in FormsEmailsElemMessageRoot: required")
-	}
-	if v, ok := raw["version"]; !ok || v == nil {
-		return fmt.Errorf("field version in FormsEmailsElemMessageRoot: required")
-	}
-	type Plain FormsEmailsElemMessageRoot
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = FormsEmailsElemMessageRoot(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *FormsEmailsElemMessageRootFormat) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_FormsEmailsElemMessageRootFormat {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_FormsEmailsElemMessageRootFormat, v)
-	}
-	*j = FormsEmailsElemMessageRootFormat(v)
-	return nil
-}
-
-const SettingsLocaleUzLatnUZ SettingsLocale = "uz_Latn_UZ"
-const SettingsLocaleXogUG SettingsLocale = "xog_UG"
-const SettingsLocaleVun SettingsLocale = "vun"
-
-var enumValues_FormsEmailsElemMessageRootFormat = []interface{}{
-	"left",
-	"start",
-	"center",
-	"right",
-	"end",
-	"justify",
-	"",
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Settings) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Settings: required")
-	}
-	type Plain Settings
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Settings(plain)
-	return nil
-}
-
-type Users struct {
-	// ApiKey corresponds to the JSON schema field "apiKey".
-	ApiKey *string `json:"apiKey,omitempty" yaml:"apiKey,omitempty" mapstructure:"apiKey,omitempty"`
-
-	// ApiKeyIndex corresponds to the JSON schema field "apiKeyIndex".
-	ApiKeyIndex *string `json:"apiKeyIndex,omitempty" yaml:"apiKeyIndex,omitempty" mapstructure:"apiKeyIndex,omitempty"`
-
-	// CreatedAt corresponds to the JSON schema field "createdAt".
-	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
-
-	// Email corresponds to the JSON schema field "email".
-	Email string `json:"email" yaml:"email" mapstructure:"email"`
-
-	// EnableAPIKey corresponds to the JSON schema field "enableAPIKey".
-	EnableAPIKey *bool `json:"enableAPIKey,omitempty" yaml:"enableAPIKey,omitempty" mapstructure:"enableAPIKey,omitempty"`
-
-	// Hash corresponds to the JSON schema field "hash".
-	Hash *string `json:"hash,omitempty" yaml:"hash,omitempty" mapstructure:"hash,omitempty"`
-
-	// Id corresponds to the JSON schema field "id".
-	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
-
-	// LockUntil corresponds to the JSON schema field "lockUntil".
-	LockUntil *string `json:"lockUntil,omitempty" yaml:"lockUntil,omitempty" mapstructure:"lockUntil,omitempty"`
-
-	// LoginAttempts corresponds to the JSON schema field "loginAttempts".
-	LoginAttempts *float64 `json:"loginAttempts,omitempty" yaml:"loginAttempts,omitempty" mapstructure:"loginAttempts,omitempty"`
-
-	// Name corresponds to the JSON schema field "name".
-	Name string `json:"name" yaml:"name" mapstructure:"name"`
-
-	// Password corresponds to the JSON schema field "password".
-	Password *string `json:"password,omitempty" yaml:"password,omitempty" mapstructure:"password,omitempty"`
-
-	// ResetPasswordExpiration corresponds to the JSON schema field
-	// "resetPasswordExpiration".
-	ResetPasswordExpiration *string `json:"resetPasswordExpiration,omitempty" yaml:"resetPasswordExpiration,omitempty" mapstructure:"resetPasswordExpiration,omitempty"`
-
-	// ResetPasswordToken corresponds to the JSON schema field "resetPasswordToken".
-	ResetPasswordToken *string `json:"resetPasswordToken,omitempty" yaml:"resetPasswordToken,omitempty" mapstructure:"resetPasswordToken,omitempty"`
-
-	// Salt corresponds to the JSON schema field "salt".
-	Salt *string `json:"salt,omitempty" yaml:"salt,omitempty" mapstructure:"salt,omitempty"`
-
-	// UpdatedAt corresponds to the JSON schema field "updatedAt".
-	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *Users) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["createdAt"]; !ok || v == nil {
-		return fmt.Errorf("field createdAt in Users: required")
-	}
-	if v, ok := raw["email"]; !ok || v == nil {
-		return fmt.Errorf("field email in Users: required")
-	}
-	if v, ok := raw["id"]; !ok || v == nil {
-		return fmt.Errorf("field id in Users: required")
-	}
-	if v, ok := raw["name"]; !ok || v == nil {
-		return fmt.Errorf("field name in Users: required")
-	}
-	if v, ok := raw["updatedAt"]; !ok || v == nil {
-		return fmt.Errorf("field updatedAt in Users: required")
-	}
-	type Plain Users
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = Users(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *FormsEmailsElemMessageRootChildrenElem) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["type"]; !ok || v == nil {
-		return fmt.Errorf("field type in FormsEmailsElemMessageRootChildrenElem: required")
-	}
-	if v, ok := raw["version"]; !ok || v == nil {
-		return fmt.Errorf("field version in FormsEmailsElemMessageRootChildrenElem: required")
-	}
-	type Plain FormsEmailsElemMessageRootChildrenElem
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = FormsEmailsElemMessageRootChildrenElem(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *ConfigCollections) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["clients"]; !ok || v == nil {
-		return fmt.Errorf("field clients in ConfigCollections: required")
-	}
-	if v, ok := raw["form-submissions"]; !ok || v == nil {
-		return fmt.Errorf("field form-submissions in ConfigCollections: required")
-	}
-	if v, ok := raw["forms"]; !ok || v == nil {
-		return fmt.Errorf("field forms in ConfigCollections: required")
-	}
-	if v, ok := raw["media"]; !ok || v == nil {
-		return fmt.Errorf("field media in ConfigCollections: required")
-	}
-	if v, ok := raw["pages"]; !ok || v == nil {
-		return fmt.Errorf("field pages in ConfigCollections: required")
-	}
-	if v, ok := raw["payload-migrations"]; !ok || v == nil {
-		return fmt.Errorf("field payload-migrations in ConfigCollections: required")
-	}
-	if v, ok := raw["payload-preferences"]; !ok || v == nil {
-		return fmt.Errorf("field payload-preferences in ConfigCollections: required")
-	}
-	if v, ok := raw["portfolio"]; !ok || v == nil {
-		return fmt.Errorf("field portfolio in ConfigCollections: required")
-	}
-	if v, ok := raw["portfolio-categories"]; !ok || v == nil {
-		return fmt.Errorf("field portfolio-categories in ConfigCollections: required")
-	}
-	if v, ok := raw["posts"]; !ok || v == nil {
-		return fmt.Errorf("field posts in ConfigCollections: required")
-	}
-	if v, ok := raw["redirects"]; !ok || v == nil {
-		return fmt.Errorf("field redirects in ConfigCollections: required")
-	}
-	if v, ok := raw["reviews"]; !ok || v == nil {
-		return fmt.Errorf("field reviews in ConfigCollections: required")
-	}
-	if v, ok := raw["users"]; !ok || v == nil {
-		return fmt.Errorf("field users in ConfigCollections: required")
-	}
-	type Plain ConfigCollections
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = ConfigCollections(plain)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *AddressCountry) UnmarshalJSON(b []byte) error {
-	var v string
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	var ok bool
-	for _, expected := range enumValues_AddressCountry {
-		if reflect.DeepEqual(v, expected) {
-			ok = true
-			break
-		}
-	}
-	if !ok {
-		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_AddressCountry, v)
-	}
-	*j = AddressCountry(v)
-	return nil
-}
-
-// UnmarshalJSON implements json.Unmarshaler.
-func (j *ConfigGlobals) UnmarshalJSON(b []byte) error {
-	var raw map[string]interface{}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return err
-	}
-	if v, ok := raw["navigation"]; !ok || v == nil {
-		return fmt.Errorf("field navigation in ConfigGlobals: required")
-	}
-	if v, ok := raw["settings"]; !ok || v == nil {
-		return fmt.Errorf("field settings in ConfigGlobals: required")
-	}
-	type Plain ConfigGlobals
-	var plain Plain
-	if err := json.Unmarshal(b, &plain); err != nil {
-		return err
-	}
-	*j = ConfigGlobals(plain)
 	return nil
 }
 
@@ -4239,6 +423,2166 @@ var enumValues_AddressCountry = []interface{}{
 	"Zimbabwe",
 }
 
+const AddressCountryTonga AddressCountry = "Tonga"
+const AddressCountryTrinidadAndTobago AddressCountry = "Trinidad and Tobago"
+const AddressCountryTunisia AddressCountry = "Tunisia"
+const AddressCountryTurkey AddressCountry = "Turkey"
+const AddressCountryTurkmenistan AddressCountry = "Turkmenistan"
+const AddressCountryTuvalu AddressCountry = "Tuvalu"
+const AddressCountryUganda AddressCountry = "Uganda"
+const AddressCountryUkraine AddressCountry = "Ukraine"
+const AddressCountryUnitedArabEmirates AddressCountry = "United Arab Emirates"
+const AddressCountryUnitedKingdom AddressCountry = "United Kingdom"
+const AddressCountryUnitedStatesOfAmerica AddressCountry = "United States of America"
+const AddressCountryUruguay AddressCountry = "Uruguay"
+const AddressCountryUzbekistan AddressCountry = "Uzbekistan"
+const AddressCountryVanuatu AddressCountry = "Vanuatu"
+const AddressCountryVenezuela AddressCountry = "Venezuela"
+const AddressCountryVietnam AddressCountry = "Vietnam"
+const AddressCountryYemen AddressCountry = "Yemen"
+const AddressCountryZambia AddressCountry = "Zambia"
+const AddressCountryZimbabwe AddressCountry = "Zimbabwe"
+
+type BlockContact struct {
+	// BlockName corresponds to the JSON schema field "blockName".
+	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
+
+	// BlockType corresponds to the JSON schema field "blockType".
+	BlockType interface{} `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
+
+	// Content corresponds to the JSON schema field "content".
+	Content *string `json:"content,omitempty" yaml:"content,omitempty" mapstructure:"content,omitempty"`
+
+	// Form corresponds to the JSON schema field "form".
+	Form interface{} `json:"form,omitempty" yaml:"form,omitempty" mapstructure:"form,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// IncludeSocial corresponds to the JSON schema field "includeSocial".
+	IncludeSocial *bool `json:"includeSocial,omitempty" yaml:"includeSocial,omitempty" mapstructure:"includeSocial,omitempty"`
+
+	// Title corresponds to the JSON schema field "title".
+	Title string `json:"title" yaml:"title" mapstructure:"title"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContact) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["blockType"]; !ok || v == nil {
+		return fmt.Errorf("field blockType in BlockContact: required")
+	}
+	if v, ok := raw["title"]; !ok || v == nil {
+		return fmt.Errorf("field title in BlockContact: required")
+	}
+	type Plain BlockContact
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContact(plain)
+	return nil
+}
+
+type BlockContentContentRootChildrenElem struct {
+	// Type corresponds to the JSON schema field "type".
+	Type string `json:"type" yaml:"type" mapstructure:"type"`
+
+	// Version corresponds to the JSON schema field "version".
+	Version int `json:"version" yaml:"version" mapstructure:"version"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentContentRootChildrenElem) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["type"]; !ok || v == nil {
+		return fmt.Errorf("field type in BlockContentContentRootChildrenElem: required")
+	}
+	if v, ok := raw["version"]; !ok || v == nil {
+		return fmt.Errorf("field version in BlockContentContentRootChildrenElem: required")
+	}
+	type Plain BlockContentContentRootChildrenElem
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContentContentRootChildrenElem(plain)
+	return nil
+}
+
+type BlockContentContentRootFormat string
+
+var enumValues_BlockContentContentRootFormat = []interface{}{
+	"left",
+	"start",
+	"center",
+	"right",
+	"end",
+	"justify",
+	"",
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentContentRootFormat) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_BlockContentContentRootFormat {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_BlockContentContentRootFormat, v)
+	}
+	*j = BlockContentContentRootFormat(v)
+	return nil
+}
+
+const BlockContentContentRootFormatBlank BlockContentContentRootFormat = ""
+const BlockContentContentRootFormatCenter BlockContentContentRootFormat = "center"
+const BlockContentContentRootFormatEnd BlockContentContentRootFormat = "end"
+
+type BlockContentContentRoot struct {
+	// Children corresponds to the JSON schema field "children".
+	Children []BlockContentContentRootChildrenElem `json:"children" yaml:"children" mapstructure:"children"`
+
+	// Direction corresponds to the JSON schema field "direction".
+	Direction interface{} `json:"direction" yaml:"direction" mapstructure:"direction"`
+
+	// Format corresponds to the JSON schema field "format".
+	Format BlockContentContentRootFormat `json:"format" yaml:"format" mapstructure:"format"`
+
+	// Indent corresponds to the JSON schema field "indent".
+	Indent int `json:"indent" yaml:"indent" mapstructure:"indent"`
+
+	// Type corresponds to the JSON schema field "type".
+	Type string `json:"type" yaml:"type" mapstructure:"type"`
+
+	// Version corresponds to the JSON schema field "version".
+	Version int `json:"version" yaml:"version" mapstructure:"version"`
+}
+
+const BlockContentContentRootFormatJustify BlockContentContentRootFormat = "justify"
+const BlockContentContentRootFormatLeft BlockContentContentRootFormat = "left"
+const BlockContentContentRootFormatRight BlockContentContentRootFormat = "right"
+const BlockContentContentRootFormatStart BlockContentContentRootFormat = "start"
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentContentRoot) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["children"]; !ok || v == nil {
+		return fmt.Errorf("field children in BlockContentContentRoot: required")
+	}
+	if v, ok := raw["direction"]; !ok || v == nil {
+		return fmt.Errorf("field direction in BlockContentContentRoot: required")
+	}
+	if v, ok := raw["format"]; !ok || v == nil {
+		return fmt.Errorf("field format in BlockContentContentRoot: required")
+	}
+	if v, ok := raw["indent"]; !ok || v == nil {
+		return fmt.Errorf("field indent in BlockContentContentRoot: required")
+	}
+	if v, ok := raw["type"]; !ok || v == nil {
+		return fmt.Errorf("field type in BlockContentContentRoot: required")
+	}
+	if v, ok := raw["version"]; !ok || v == nil {
+		return fmt.Errorf("field version in BlockContentContentRoot: required")
+	}
+	type Plain BlockContentContentRoot
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContentContentRoot(plain)
+	return nil
+}
+
+type BlockContentContent struct {
+	// Root corresponds to the JSON schema field "root".
+	Root BlockContentContentRoot `json:"root" yaml:"root" mapstructure:"root"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentContent) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["root"]; !ok || v == nil {
+		return fmt.Errorf("field root in BlockContentContent: required")
+	}
+	type Plain BlockContentContent
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContentContent(plain)
+	return nil
+}
+
+type BlockContent struct {
+	// BlockName corresponds to the JSON schema field "blockName".
+	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
+
+	// BlockType corresponds to the JSON schema field "blockType".
+	BlockType interface{} `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
+
+	// Content corresponds to the JSON schema field "content".
+	Content BlockContentContent `json:"content" yaml:"content" mapstructure:"content"`
+
+	// ContentHtml corresponds to the JSON schema field "contentHtml".
+	ContentHtml *string `json:"contentHtml,omitempty" yaml:"contentHtml,omitempty" mapstructure:"contentHtml,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContent) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["blockType"]; !ok || v == nil {
+		return fmt.Errorf("field blockType in BlockContent: required")
+	}
+	if v, ok := raw["content"]; !ok || v == nil {
+		return fmt.Errorf("field content in BlockContent: required")
+	}
+	type Plain BlockContent
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContent(plain)
+	return nil
+}
+
+type BlockContentDefaultContentRootChildrenElem struct {
+	// Type corresponds to the JSON schema field "type".
+	Type string `json:"type" yaml:"type" mapstructure:"type"`
+
+	// Version corresponds to the JSON schema field "version".
+	Version int `json:"version" yaml:"version" mapstructure:"version"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentDefaultContentRootChildrenElem) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["type"]; !ok || v == nil {
+		return fmt.Errorf("field type in BlockContentDefaultContentRootChildrenElem: required")
+	}
+	if v, ok := raw["version"]; !ok || v == nil {
+		return fmt.Errorf("field version in BlockContentDefaultContentRootChildrenElem: required")
+	}
+	type Plain BlockContentDefaultContentRootChildrenElem
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContentDefaultContentRootChildrenElem(plain)
+	return nil
+}
+
+type BlockContentDefaultContentRootFormat string
+
+var enumValues_BlockContentDefaultContentRootFormat = []interface{}{
+	"left",
+	"start",
+	"center",
+	"right",
+	"end",
+	"justify",
+	"",
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentDefaultContentRootFormat) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_BlockContentDefaultContentRootFormat {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_BlockContentDefaultContentRootFormat, v)
+	}
+	*j = BlockContentDefaultContentRootFormat(v)
+	return nil
+}
+
+const BlockContentDefaultContentRootFormatLeft BlockContentDefaultContentRootFormat = "left"
+const BlockContentDefaultContentRootFormatStart BlockContentDefaultContentRootFormat = "start"
+const BlockContentDefaultContentRootFormatCenter BlockContentDefaultContentRootFormat = "center"
+const BlockContentDefaultContentRootFormatRight BlockContentDefaultContentRootFormat = "right"
+const BlockContentDefaultContentRootFormatEnd BlockContentDefaultContentRootFormat = "end"
+const BlockContentDefaultContentRootFormatJustify BlockContentDefaultContentRootFormat = "justify"
+const BlockContentDefaultContentRootFormatBlank BlockContentDefaultContentRootFormat = ""
+
+type BlockContentDefaultContentRoot struct {
+	// Children corresponds to the JSON schema field "children".
+	Children []BlockContentDefaultContentRootChildrenElem `json:"children" yaml:"children" mapstructure:"children"`
+
+	// Direction corresponds to the JSON schema field "direction".
+	Direction interface{} `json:"direction" yaml:"direction" mapstructure:"direction"`
+
+	// Format corresponds to the JSON schema field "format".
+	Format BlockContentDefaultContentRootFormat `json:"format" yaml:"format" mapstructure:"format"`
+
+	// Indent corresponds to the JSON schema field "indent".
+	Indent int `json:"indent" yaml:"indent" mapstructure:"indent"`
+
+	// Type corresponds to the JSON schema field "type".
+	Type string `json:"type" yaml:"type" mapstructure:"type"`
+
+	// Version corresponds to the JSON schema field "version".
+	Version int `json:"version" yaml:"version" mapstructure:"version"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentDefaultContentRoot) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["children"]; !ok || v == nil {
+		return fmt.Errorf("field children in BlockContentDefaultContentRoot: required")
+	}
+	if v, ok := raw["direction"]; !ok || v == nil {
+		return fmt.Errorf("field direction in BlockContentDefaultContentRoot: required")
+	}
+	if v, ok := raw["format"]; !ok || v == nil {
+		return fmt.Errorf("field format in BlockContentDefaultContentRoot: required")
+	}
+	if v, ok := raw["indent"]; !ok || v == nil {
+		return fmt.Errorf("field indent in BlockContentDefaultContentRoot: required")
+	}
+	if v, ok := raw["type"]; !ok || v == nil {
+		return fmt.Errorf("field type in BlockContentDefaultContentRoot: required")
+	}
+	if v, ok := raw["version"]; !ok || v == nil {
+		return fmt.Errorf("field version in BlockContentDefaultContentRoot: required")
+	}
+	type Plain BlockContentDefaultContentRoot
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContentDefaultContentRoot(plain)
+	return nil
+}
+
+type BlockContentDefaultContent struct {
+	// Root corresponds to the JSON schema field "root".
+	Root BlockContentDefaultContentRoot `json:"root" yaml:"root" mapstructure:"root"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentDefaultContent) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["root"]; !ok || v == nil {
+		return fmt.Errorf("field root in BlockContentDefaultContent: required")
+	}
+	type Plain BlockContentDefaultContent
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContentDefaultContent(plain)
+	return nil
+}
+
+type BlockContentDefaultStyle string
+
+var enumValues_BlockContentDefaultStyle = []interface{}{
+	"centered",
+	"spread",
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentDefaultStyle) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_BlockContentDefaultStyle {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_BlockContentDefaultStyle, v)
+	}
+	*j = BlockContentDefaultStyle(v)
+	return nil
+}
+
+const BlockContentDefaultStyleCentered BlockContentDefaultStyle = "centered"
+const BlockContentDefaultStyleSpread BlockContentDefaultStyle = "spread"
+
+type BlockContentDefault struct {
+	// BlockName corresponds to the JSON schema field "blockName".
+	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
+
+	// BlockType corresponds to the JSON schema field "blockType".
+	BlockType interface{} `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
+
+	// CentreAlign corresponds to the JSON schema field "centreAlign".
+	CentreAlign *bool `json:"centreAlign,omitempty" yaml:"centreAlign,omitempty" mapstructure:"centreAlign,omitempty"`
+
+	// Content corresponds to the JSON schema field "content".
+	Content BlockContentDefaultContent `json:"content" yaml:"content" mapstructure:"content"`
+
+	// ContentHtml corresponds to the JSON schema field "contentHtml".
+	ContentHtml *string `json:"contentHtml,omitempty" yaml:"contentHtml,omitempty" mapstructure:"contentHtml,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Style corresponds to the JSON schema field "style".
+	Style BlockContentDefaultStyle `json:"style" yaml:"style" mapstructure:"style"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentDefault) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["blockType"]; !ok || v == nil {
+		return fmt.Errorf("field blockType in BlockContentDefault: required")
+	}
+	if v, ok := raw["content"]; !ok || v == nil {
+		return fmt.Errorf("field content in BlockContentDefault: required")
+	}
+	if v, ok := raw["style"]; !ok || v == nil {
+		return fmt.Errorf("field style in BlockContentDefault: required")
+	}
+	type Plain BlockContentDefault
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContentDefault(plain)
+	return nil
+}
+
+type BlockContentWithImage struct {
+	// BlockName corresponds to the JSON schema field "blockName".
+	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
+
+	// BlockType corresponds to the JSON schema field "blockType".
+	BlockType interface{} `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Image corresponds to the JSON schema field "image".
+	Image interface{} `json:"image" yaml:"image" mapstructure:"image"`
+
+	// ImagePosition corresponds to the JSON schema field "imagePosition".
+	ImagePosition string `json:"imagePosition" yaml:"imagePosition" mapstructure:"imagePosition"`
+
+	// Sticky corresponds to the JSON schema field "sticky".
+	Sticky *bool `json:"sticky,omitempty" yaml:"sticky,omitempty" mapstructure:"sticky,omitempty"`
+
+	// TextLayout corresponds to the JSON schema field "textLayout".
+	TextLayout []interface{} `json:"textLayout" yaml:"textLayout" mapstructure:"textLayout"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockContentWithImage) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["blockType"]; !ok || v == nil {
+		return fmt.Errorf("field blockType in BlockContentWithImage: required")
+	}
+	if v, ok := raw["image"]; !ok || v == nil {
+		return fmt.Errorf("field image in BlockContentWithImage: required")
+	}
+	if v, ok := raw["imagePosition"]; !ok || v == nil {
+		return fmt.Errorf("field imagePosition in BlockContentWithImage: required")
+	}
+	if v, ok := raw["textLayout"]; !ok || v == nil {
+		return fmt.Errorf("field textLayout in BlockContentWithImage: required")
+	}
+	type Plain BlockContentWithImage
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockContentWithImage(plain)
+	return nil
+}
+
+type BlockFAQsFaqsElem struct {
+	// Answer corresponds to the JSON schema field "answer".
+	Answer string `json:"answer" yaml:"answer" mapstructure:"answer"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Question corresponds to the JSON schema field "question".
+	Question string `json:"question" yaml:"question" mapstructure:"question"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockFAQsFaqsElem) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["answer"]; !ok || v == nil {
+		return fmt.Errorf("field answer in BlockFAQsFaqsElem: required")
+	}
+	if v, ok := raw["question"]; !ok || v == nil {
+		return fmt.Errorf("field question in BlockFAQsFaqsElem: required")
+	}
+	type Plain BlockFAQsFaqsElem
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockFAQsFaqsElem(plain)
+	return nil
+}
+
+type BlockFAQs struct {
+	// BlockName corresponds to the JSON schema field "blockName".
+	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
+
+	// BlockType corresponds to the JSON schema field "blockType".
+	BlockType interface{} `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
+
+	// Faqs corresponds to the JSON schema field "faqs".
+	Faqs []BlockFAQsFaqsElem `json:"faqs,omitempty" yaml:"faqs,omitempty" mapstructure:"faqs,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockFAQs) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["blockType"]; !ok || v == nil {
+		return fmt.Errorf("field blockType in BlockFAQs: required")
+	}
+	type Plain BlockFAQs
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockFAQs(plain)
+	return nil
+}
+
+type BlockLogsLogosElem struct {
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Logo corresponds to the JSON schema field "logo".
+	Logo interface{} `json:"logo" yaml:"logo" mapstructure:"logo"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockLogsLogosElem) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["logo"]; !ok || v == nil {
+		return fmt.Errorf("field logo in BlockLogsLogosElem: required")
+	}
+	type Plain BlockLogsLogosElem
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockLogsLogosElem(plain)
+	return nil
+}
+
+type BlockLogs struct {
+	// BlockName corresponds to the JSON schema field "blockName".
+	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
+
+	// BlockType corresponds to the JSON schema field "blockType".
+	BlockType interface{} `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
+
+	// Greyscale corresponds to the JSON schema field "greyscale".
+	Greyscale *bool `json:"greyscale,omitempty" yaml:"greyscale,omitempty" mapstructure:"greyscale,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Logos corresponds to the JSON schema field "logos".
+	Logos []BlockLogsLogosElem `json:"logos,omitempty" yaml:"logos,omitempty" mapstructure:"logos,omitempty"`
+
+	// Title corresponds to the JSON schema field "title".
+	Title string `json:"title" yaml:"title" mapstructure:"title"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockLogs) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["blockType"]; !ok || v == nil {
+		return fmt.Errorf("field blockType in BlockLogs: required")
+	}
+	if v, ok := raw["title"]; !ok || v == nil {
+		return fmt.Errorf("field title in BlockLogs: required")
+	}
+	type Plain BlockLogs
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockLogs(plain)
+	return nil
+}
+
+type BlockPortfolio struct {
+	// BlockName corresponds to the JSON schema field "blockName".
+	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
+
+	// BlockType corresponds to the JSON schema field "blockType".
+	BlockType interface{} `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
+
+	// Content corresponds to the JSON schema field "content".
+	Content *string `json:"content,omitempty" yaml:"content,omitempty" mapstructure:"content,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Items corresponds to the JSON schema field "items".
+	Items []interface{} `json:"items,omitempty" yaml:"items,omitempty" mapstructure:"items,omitempty"`
+
+	// Title corresponds to the JSON schema field "title".
+	Title string `json:"title" yaml:"title" mapstructure:"title"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockPortfolio) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["blockType"]; !ok || v == nil {
+		return fmt.Errorf("field blockType in BlockPortfolio: required")
+	}
+	if v, ok := raw["title"]; !ok || v == nil {
+		return fmt.Errorf("field title in BlockPortfolio: required")
+	}
+	type Plain BlockPortfolio
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockPortfolio(plain)
+	return nil
+}
+
+type BlockReviews struct {
+	// BlockName corresponds to the JSON schema field "blockName".
+	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
+
+	// BlockType corresponds to the JSON schema field "blockType".
+	BlockType interface{} `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
+
+	// Content corresponds to the JSON schema field "content".
+	Content *string `json:"content,omitempty" yaml:"content,omitempty" mapstructure:"content,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Items corresponds to the JSON schema field "items".
+	Items []interface{} `json:"items,omitempty" yaml:"items,omitempty" mapstructure:"items,omitempty"`
+
+	// Title corresponds to the JSON schema field "title".
+	Title string `json:"title" yaml:"title" mapstructure:"title"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *BlockReviews) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["blockType"]; !ok || v == nil {
+		return fmt.Errorf("field blockType in BlockReviews: required")
+	}
+	if v, ok := raw["title"]; !ok || v == nil {
+		return fmt.Errorf("field title in BlockReviews: required")
+	}
+	type Plain BlockReviews
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = BlockReviews(plain)
+	return nil
+}
+
+type CodeInjection struct {
+	// Footer corresponds to the JSON schema field "footer".
+	Footer *string `json:"footer,omitempty" yaml:"footer,omitempty" mapstructure:"footer,omitempty"`
+
+	// Head corresponds to the JSON schema field "head".
+	Head *string `json:"head,omitempty" yaml:"head,omitempty" mapstructure:"head,omitempty"`
+}
+
+type Contact struct {
+	// Email corresponds to the JSON schema field "email".
+	Email *string `json:"email,omitempty" yaml:"email,omitempty" mapstructure:"email,omitempty"`
+
+	// Telephone corresponds to the JSON schema field "telephone".
+	Telephone *string `json:"telephone,omitempty" yaml:"telephone,omitempty" mapstructure:"telephone,omitempty"`
+}
+
+type Maintenance struct {
+	// Content corresponds to the JSON schema field "content".
+	Content *string `json:"content,omitempty" yaml:"content,omitempty" mapstructure:"content,omitempty"`
+
+	// Enabled corresponds to the JSON schema field "enabled".
+	Enabled *bool `json:"enabled,omitempty" yaml:"enabled,omitempty" mapstructure:"enabled,omitempty"`
+
+	// Title corresponds to the JSON schema field "title".
+	Title *string `json:"title,omitempty" yaml:"title,omitempty" mapstructure:"title,omitempty"`
+}
+
+type Meta struct {
+	// CanonicalURL corresponds to the JSON schema field "canonicalURL".
+	CanonicalURL *string `json:"canonicalURL,omitempty" yaml:"canonicalURL,omitempty" mapstructure:"canonicalURL,omitempty"`
+
+	// Description corresponds to the JSON schema field "description".
+	Description *string `json:"description,omitempty" yaml:"description,omitempty" mapstructure:"description,omitempty"`
+
+	// Image corresponds to the JSON schema field "image".
+	Image interface{} `json:"image,omitempty" yaml:"image,omitempty" mapstructure:"image,omitempty"`
+
+	// Private corresponds to the JSON schema field "private".
+	Private *bool `json:"private,omitempty" yaml:"private,omitempty" mapstructure:"private,omitempty"`
+
+	// StructuredData corresponds to the JSON schema field "structuredData".
+	StructuredData interface{} `json:"structuredData,omitempty" yaml:"structuredData,omitempty" mapstructure:"structuredData,omitempty"`
+
+	// Title corresponds to the JSON schema field "title".
+	Title *string `json:"title,omitempty" yaml:"title,omitempty" mapstructure:"title,omitempty"`
+}
+
+type NavigationHeaderLinks []struct {
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Title corresponds to the JSON schema field "title".
+	Title string `json:"title" yaml:"title" mapstructure:"title"`
+
+	// Url corresponds to the JSON schema field "url".
+	Url string `json:"url" yaml:"url" mapstructure:"url"`
+}
+
+type Social struct {
+	// Facebook corresponds to the JSON schema field "facebook".
+	Facebook *string `json:"facebook,omitempty" yaml:"facebook,omitempty" mapstructure:"facebook,omitempty"`
+
+	// Instagram corresponds to the JSON schema field "instagram".
+	Instagram *string `json:"instagram,omitempty" yaml:"instagram,omitempty" mapstructure:"instagram,omitempty"`
+
+	// LinkedIn corresponds to the JSON schema field "linkedIn".
+	LinkedIn *string `json:"linkedIn,omitempty" yaml:"linkedIn,omitempty" mapstructure:"linkedIn,omitempty"`
+
+	// Tiktok corresponds to the JSON schema field "tiktok".
+	Tiktok *string `json:"tiktok,omitempty" yaml:"tiktok,omitempty" mapstructure:"tiktok,omitempty"`
+
+	// X corresponds to the JSON schema field "x".
+	X *string `json:"x,omitempty" yaml:"x,omitempty" mapstructure:"x,omitempty"`
+
+	// Youtube corresponds to the JSON schema field "youtube".
+	Youtube *string `json:"youtube,omitempty" yaml:"youtube,omitempty" mapstructure:"youtube,omitempty"`
+}
+
+type Auth interface{}
+
+type Clients struct {
+	// CreatedAt corresponds to the JSON schema field "createdAt".
+	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
+
+	// Logo corresponds to the JSON schema field "logo".
+	Logo interface{} `json:"logo" yaml:"logo" mapstructure:"logo"`
+
+	// Name corresponds to the JSON schema field "name".
+	Name string `json:"name" yaml:"name" mapstructure:"name"`
+
+	// UpdatedAt corresponds to the JSON schema field "updatedAt".
+	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
+
+	// Url corresponds to the JSON schema field "url".
+	Url string `json:"url" yaml:"url" mapstructure:"url"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *Clients) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in Clients: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in Clients: required")
+	}
+	if v, ok := raw["logo"]; !ok || v == nil {
+		return fmt.Errorf("field logo in Clients: required")
+	}
+	if v, ok := raw["name"]; !ok || v == nil {
+		return fmt.Errorf("field name in Clients: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in Clients: required")
+	}
+	if v, ok := raw["url"]; !ok || v == nil {
+		return fmt.Errorf("field url in Clients: required")
+	}
+	type Plain Clients
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = Clients(plain)
+	return nil
+}
+
+type FormSubmissionsSubmissionDataElem struct {
+	// Field corresponds to the JSON schema field "field".
+	Field string `json:"field" yaml:"field" mapstructure:"field"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Value corresponds to the JSON schema field "value".
+	Value string `json:"value" yaml:"value" mapstructure:"value"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *AddressCountry) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_AddressCountry {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_AddressCountry, v)
+	}
+	*j = AddressCountry(v)
+	return nil
+}
+
+type FormSubmissions struct {
+	// CreatedAt corresponds to the JSON schema field "createdAt".
+	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
+
+	// Form corresponds to the JSON schema field "form".
+	Form interface{} `json:"form" yaml:"form" mapstructure:"form"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
+
+	// SubmissionData corresponds to the JSON schema field "submissionData".
+	SubmissionData []FormSubmissionsSubmissionDataElem `json:"submissionData,omitempty" yaml:"submissionData,omitempty" mapstructure:"submissionData,omitempty"`
+
+	// UpdatedAt corresponds to the JSON schema field "updatedAt".
+	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *FormSubmissions) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in FormSubmissions: required")
+	}
+	if v, ok := raw["form"]; !ok || v == nil {
+		return fmt.Errorf("field form in FormSubmissions: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in FormSubmissions: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in FormSubmissions: required")
+	}
+	type Plain FormSubmissions
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = FormSubmissions(plain)
+	return nil
+}
+
+type FormsEmailsElemMessageRootChildrenElem struct {
+	// Type corresponds to the JSON schema field "type".
+	Type string `json:"type" yaml:"type" mapstructure:"type"`
+
+	// Version corresponds to the JSON schema field "version".
+	Version int `json:"version" yaml:"version" mapstructure:"version"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *FormsEmailsElemMessageRootChildrenElem) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["type"]; !ok || v == nil {
+		return fmt.Errorf("field type in FormsEmailsElemMessageRootChildrenElem: required")
+	}
+	if v, ok := raw["version"]; !ok || v == nil {
+		return fmt.Errorf("field version in FormsEmailsElemMessageRootChildrenElem: required")
+	}
+	type Plain FormsEmailsElemMessageRootChildrenElem
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = FormsEmailsElemMessageRootChildrenElem(plain)
+	return nil
+}
+
+type FormsEmailsElemMessageRootFormat string
+
+var enumValues_FormsEmailsElemMessageRootFormat = []interface{}{
+	"left",
+	"start",
+	"center",
+	"right",
+	"end",
+	"justify",
+	"",
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *FormsEmailsElemMessageRootFormat) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_FormsEmailsElemMessageRootFormat {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_FormsEmailsElemMessageRootFormat, v)
+	}
+	*j = FormsEmailsElemMessageRootFormat(v)
+	return nil
+}
+
+const FormsEmailsElemMessageRootFormatLeft FormsEmailsElemMessageRootFormat = "left"
+const FormsEmailsElemMessageRootFormatStart FormsEmailsElemMessageRootFormat = "start"
+const FormsEmailsElemMessageRootFormatCenter FormsEmailsElemMessageRootFormat = "center"
+const FormsEmailsElemMessageRootFormatRight FormsEmailsElemMessageRootFormat = "right"
+const FormsEmailsElemMessageRootFormatEnd FormsEmailsElemMessageRootFormat = "end"
+const FormsEmailsElemMessageRootFormatJustify FormsEmailsElemMessageRootFormat = "justify"
+const FormsEmailsElemMessageRootFormatBlank FormsEmailsElemMessageRootFormat = ""
+
+type FormsEmailsElemMessageRoot struct {
+	// Children corresponds to the JSON schema field "children".
+	Children []FormsEmailsElemMessageRootChildrenElem `json:"children" yaml:"children" mapstructure:"children"`
+
+	// Direction corresponds to the JSON schema field "direction".
+	Direction interface{} `json:"direction" yaml:"direction" mapstructure:"direction"`
+
+	// Format corresponds to the JSON schema field "format".
+	Format FormsEmailsElemMessageRootFormat `json:"format" yaml:"format" mapstructure:"format"`
+
+	// Indent corresponds to the JSON schema field "indent".
+	Indent int `json:"indent" yaml:"indent" mapstructure:"indent"`
+
+	// Type corresponds to the JSON schema field "type".
+	Type string `json:"type" yaml:"type" mapstructure:"type"`
+
+	// Version corresponds to the JSON schema field "version".
+	Version int `json:"version" yaml:"version" mapstructure:"version"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *FormsEmailsElemMessageRoot) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["children"]; !ok || v == nil {
+		return fmt.Errorf("field children in FormsEmailsElemMessageRoot: required")
+	}
+	if v, ok := raw["direction"]; !ok || v == nil {
+		return fmt.Errorf("field direction in FormsEmailsElemMessageRoot: required")
+	}
+	if v, ok := raw["format"]; !ok || v == nil {
+		return fmt.Errorf("field format in FormsEmailsElemMessageRoot: required")
+	}
+	if v, ok := raw["indent"]; !ok || v == nil {
+		return fmt.Errorf("field indent in FormsEmailsElemMessageRoot: required")
+	}
+	if v, ok := raw["type"]; !ok || v == nil {
+		return fmt.Errorf("field type in FormsEmailsElemMessageRoot: required")
+	}
+	if v, ok := raw["version"]; !ok || v == nil {
+		return fmt.Errorf("field version in FormsEmailsElemMessageRoot: required")
+	}
+	type Plain FormsEmailsElemMessageRoot
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = FormsEmailsElemMessageRoot(plain)
+	return nil
+}
+
+type FormsEmailsElemMessage struct {
+	// Root corresponds to the JSON schema field "root".
+	Root FormsEmailsElemMessageRoot `json:"root" yaml:"root" mapstructure:"root"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *FormsEmailsElemMessage) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["root"]; !ok || v == nil {
+		return fmt.Errorf("field root in FormsEmailsElemMessage: required")
+	}
+	type Plain FormsEmailsElemMessage
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = FormsEmailsElemMessage(plain)
+	return nil
+}
+
+type FormsEmailsElem struct {
+	// Bcc corresponds to the JSON schema field "bcc".
+	Bcc *string `json:"bcc,omitempty" yaml:"bcc,omitempty" mapstructure:"bcc,omitempty"`
+
+	// Cc corresponds to the JSON schema field "cc".
+	Cc *string `json:"cc,omitempty" yaml:"cc,omitempty" mapstructure:"cc,omitempty"`
+
+	// EmailFrom corresponds to the JSON schema field "emailFrom".
+	EmailFrom *string `json:"emailFrom,omitempty" yaml:"emailFrom,omitempty" mapstructure:"emailFrom,omitempty"`
+
+	// EmailTo corresponds to the JSON schema field "emailTo".
+	EmailTo *string `json:"emailTo,omitempty" yaml:"emailTo,omitempty" mapstructure:"emailTo,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Message corresponds to the JSON schema field "message".
+	Message *FormsEmailsElemMessage `json:"message,omitempty" yaml:"message,omitempty" mapstructure:"message,omitempty"`
+
+	// ReplyTo corresponds to the JSON schema field "replyTo".
+	ReplyTo *string `json:"replyTo,omitempty" yaml:"replyTo,omitempty" mapstructure:"replyTo,omitempty"`
+
+	// Subject corresponds to the JSON schema field "subject".
+	Subject string `json:"subject" yaml:"subject" mapstructure:"subject"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *FormsEmailsElem) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["subject"]; !ok || v == nil {
+		return fmt.Errorf("field subject in FormsEmailsElem: required")
+	}
+	type Plain FormsEmailsElem
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = FormsEmailsElem(plain)
+	return nil
+}
+
+type FormsRedirect struct {
+	// Url corresponds to the JSON schema field "url".
+	Url string `json:"url" yaml:"url" mapstructure:"url"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *FormsRedirect) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["url"]; !ok || v == nil {
+		return fmt.Errorf("field url in FormsRedirect: required")
+	}
+	type Plain FormsRedirect
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = FormsRedirect(plain)
+	return nil
+}
+
+type Forms struct {
+	// ConfirmationMessage corresponds to the JSON schema field "confirmationMessage".
+	ConfirmationMessage *string `json:"confirmationMessage,omitempty" yaml:"confirmationMessage,omitempty" mapstructure:"confirmationMessage,omitempty"`
+
+	// CreatedAt corresponds to the JSON schema field "createdAt".
+	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
+
+	// Emails corresponds to the JSON schema field "emails".
+	Emails []FormsEmailsElem `json:"emails,omitempty" yaml:"emails,omitempty" mapstructure:"emails,omitempty"`
+
+	// Fields corresponds to the JSON schema field "fields".
+	Fields []interface{} `json:"fields,omitempty" yaml:"fields,omitempty" mapstructure:"fields,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
+
+	// Redirect corresponds to the JSON schema field "redirect".
+	Redirect *FormsRedirect `json:"redirect,omitempty" yaml:"redirect,omitempty" mapstructure:"redirect,omitempty"`
+
+	// SubmitButtonLabel corresponds to the JSON schema field "submitButtonLabel".
+	SubmitButtonLabel *string `json:"submitButtonLabel,omitempty" yaml:"submitButtonLabel,omitempty" mapstructure:"submitButtonLabel,omitempty"`
+
+	// Title corresponds to the JSON schema field "title".
+	Title string `json:"title" yaml:"title" mapstructure:"title"`
+
+	// UpdatedAt corresponds to the JSON schema field "updatedAt".
+	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *Forms) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in Forms: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in Forms: required")
+	}
+	if v, ok := raw["title"]; !ok || v == nil {
+		return fmt.Errorf("field title in Forms: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in Forms: required")
+	}
+	type Plain Forms
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = Forms(plain)
+	return nil
+}
+
+type Media payload.Media
+
+type Navigation struct {
+	// CreatedAt corresponds to the JSON schema field "createdAt".
+	CreatedAt *string `json:"createdAt,omitempty" yaml:"createdAt,omitempty" mapstructure:"createdAt,omitempty"`
+
+	// Header corresponds to the JSON schema field "header".
+	Header NavigationHeaderLinks `json:"header,omitempty" yaml:"header,omitempty" mapstructure:"header,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
+
+	// UpdatedAt corresponds to the JSON schema field "updatedAt".
+	UpdatedAt *string `json:"updatedAt,omitempty" yaml:"updatedAt,omitempty" mapstructure:"updatedAt,omitempty"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *Navigation) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in Navigation: required")
+	}
+	type Plain Navigation
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = Navigation(plain)
+	return nil
+}
+
+type PagesStatus string
+
+var enumValues_PagesStatus = []interface{}{
+	"draft",
+	"published",
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PagesStatus) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_PagesStatus {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_PagesStatus, v)
+	}
+	*j = PagesStatus(v)
+	return nil
+}
+
+const PagesStatusDraft PagesStatus = "draft"
+const PagesStatusPublished PagesStatus = "published"
+
+type Pages struct {
+	// Status corresponds to the JSON schema field "_status".
+	Status *PagesStatus `json:"_status,omitempty" yaml:"_status,omitempty" mapstructure:"_status,omitempty"`
+
+	// CreatedAt corresponds to the JSON schema field "createdAt".
+	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
+
+	// IsHome corresponds to the JSON schema field "isHome".
+	IsHome *bool `json:"isHome,omitempty" yaml:"isHome,omitempty" mapstructure:"isHome,omitempty"`
+
+	// Layout corresponds to the JSON schema field "layout".
+	Layout []interface{} `json:"layout" yaml:"layout" mapstructure:"layout"`
+
+	// UpdatedAt corresponds to the JSON schema field "updatedAt".
+	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *Pages) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in Pages: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in Pages: required")
+	}
+	if v, ok := raw["layout"]; !ok || v == nil {
+		return fmt.Errorf("field layout in Pages: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in Pages: required")
+	}
+	type Plain Pages
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = Pages(plain)
+	return nil
+}
+
+type PayloadMigrations struct {
+	// Batch corresponds to the JSON schema field "batch".
+	Batch *float64 `json:"batch,omitempty" yaml:"batch,omitempty" mapstructure:"batch,omitempty"`
+
+	// CreatedAt corresponds to the JSON schema field "createdAt".
+	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
+
+	// Name corresponds to the JSON schema field "name".
+	Name *string `json:"name,omitempty" yaml:"name,omitempty" mapstructure:"name,omitempty"`
+
+	// UpdatedAt corresponds to the JSON schema field "updatedAt".
+	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PayloadMigrations) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in PayloadMigrations: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in PayloadMigrations: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in PayloadMigrations: required")
+	}
+	type Plain PayloadMigrations
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = PayloadMigrations(plain)
+	return nil
+}
+
+type PayloadPreferences struct {
+	// CreatedAt corresponds to the JSON schema field "createdAt".
+	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
+
+	// Key corresponds to the JSON schema field "key".
+	Key *string `json:"key,omitempty" yaml:"key,omitempty" mapstructure:"key,omitempty"`
+
+	// UpdatedAt corresponds to the JSON schema field "updatedAt".
+	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
+
+	// User corresponds to the JSON schema field "user".
+	User interface{} `json:"user" yaml:"user" mapstructure:"user"`
+
+	// Value corresponds to the JSON schema field "value".
+	Value interface{} `json:"value,omitempty" yaml:"value,omitempty" mapstructure:"value,omitempty"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PayloadPreferences) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in PayloadPreferences: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in PayloadPreferences: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in PayloadPreferences: required")
+	}
+	if v, ok := raw["user"]; !ok || v == nil {
+		return fmt.Errorf("field user in PayloadPreferences: required")
+	}
+	type Plain PayloadPreferences
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = PayloadPreferences(plain)
+	return nil
+}
+
+type Portfolio struct {
+	// Category corresponds to the JSON schema field "category".
+	Category interface{} `json:"category" yaml:"category" mapstructure:"category"`
+
+	// Company corresponds to the JSON schema field "company".
+	Company interface{} `json:"company" yaml:"company" mapstructure:"company"`
+
+	// CreatedAt corresponds to the JSON schema field "createdAt".
+	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
+
+	// Date corresponds to the JSON schema field "date".
+	Date string `json:"date" yaml:"date" mapstructure:"date"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
+
+	// Image corresponds to the JSON schema field "image".
+	Image interface{} `json:"image" yaml:"image" mapstructure:"image"`
+
+	// Title corresponds to the JSON schema field "title".
+	Title string `json:"title" yaml:"title" mapstructure:"title"`
+
+	// UpdatedAt corresponds to the JSON schema field "updatedAt".
+	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
+
+	// Url corresponds to the JSON schema field "url".
+	Url string `json:"url" yaml:"url" mapstructure:"url"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *Portfolio) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["category"]; !ok || v == nil {
+		return fmt.Errorf("field category in Portfolio: required")
+	}
+	if v, ok := raw["company"]; !ok || v == nil {
+		return fmt.Errorf("field company in Portfolio: required")
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in Portfolio: required")
+	}
+	if v, ok := raw["date"]; !ok || v == nil {
+		return fmt.Errorf("field date in Portfolio: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in Portfolio: required")
+	}
+	if v, ok := raw["image"]; !ok || v == nil {
+		return fmt.Errorf("field image in Portfolio: required")
+	}
+	if v, ok := raw["title"]; !ok || v == nil {
+		return fmt.Errorf("field title in Portfolio: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in Portfolio: required")
+	}
+	if v, ok := raw["url"]; !ok || v == nil {
+		return fmt.Errorf("field url in Portfolio: required")
+	}
+	type Plain Portfolio
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = Portfolio(plain)
+	return nil
+}
+
+type PortfolioCategories struct {
+	// CreatedAt corresponds to the JSON schema field "createdAt".
+	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
+
+	// Title corresponds to the JSON schema field "title".
+	Title string `json:"title" yaml:"title" mapstructure:"title"`
+
+	// UpdatedAt corresponds to the JSON schema field "updatedAt".
+	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PortfolioCategories) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in PortfolioCategories: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in PortfolioCategories: required")
+	}
+	if v, ok := raw["title"]; !ok || v == nil {
+		return fmt.Errorf("field title in PortfolioCategories: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in PortfolioCategories: required")
+	}
+	type Plain PortfolioCategories
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = PortfolioCategories(plain)
+	return nil
+}
+
+type PostsStatus string
+
+var enumValues_PostsStatus = []interface{}{
+	"draft",
+	"published",
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PostsStatus) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_PostsStatus {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_PostsStatus, v)
+	}
+	*j = PostsStatus(v)
+	return nil
+}
+
+const PostsStatusDraft PostsStatus = "draft"
+const PostsStatusPublished PostsStatus = "published"
+
+type PostsContentRootChildrenElem struct {
+	// Type corresponds to the JSON schema field "type".
+	Type string `json:"type" yaml:"type" mapstructure:"type"`
+
+	// Version corresponds to the JSON schema field "version".
+	Version int `json:"version" yaml:"version" mapstructure:"version"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PostsContentRootChildrenElem) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["type"]; !ok || v == nil {
+		return fmt.Errorf("field type in PostsContentRootChildrenElem: required")
+	}
+	if v, ok := raw["version"]; !ok || v == nil {
+		return fmt.Errorf("field version in PostsContentRootChildrenElem: required")
+	}
+	type Plain PostsContentRootChildrenElem
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = PostsContentRootChildrenElem(plain)
+	return nil
+}
+
+type PostsContentRootFormat string
+
+var enumValues_PostsContentRootFormat = []interface{}{
+	"left",
+	"start",
+	"center",
+	"right",
+	"end",
+	"justify",
+	"",
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PostsContentRootFormat) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_PostsContentRootFormat {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_PostsContentRootFormat, v)
+	}
+	*j = PostsContentRootFormat(v)
+	return nil
+}
+
+const PostsContentRootFormatLeft PostsContentRootFormat = "left"
+const PostsContentRootFormatStart PostsContentRootFormat = "start"
+const PostsContentRootFormatCenter PostsContentRootFormat = "center"
+const PostsContentRootFormatRight PostsContentRootFormat = "right"
+const PostsContentRootFormatEnd PostsContentRootFormat = "end"
+const PostsContentRootFormatJustify PostsContentRootFormat = "justify"
+const PostsContentRootFormatBlank PostsContentRootFormat = ""
+
+type PostsContentRoot struct {
+	// Children corresponds to the JSON schema field "children".
+	Children []PostsContentRootChildrenElem `json:"children" yaml:"children" mapstructure:"children"`
+
+	// Direction corresponds to the JSON schema field "direction".
+	Direction interface{} `json:"direction" yaml:"direction" mapstructure:"direction"`
+
+	// Format corresponds to the JSON schema field "format".
+	Format PostsContentRootFormat `json:"format" yaml:"format" mapstructure:"format"`
+
+	// Indent corresponds to the JSON schema field "indent".
+	Indent int `json:"indent" yaml:"indent" mapstructure:"indent"`
+
+	// Type corresponds to the JSON schema field "type".
+	Type string `json:"type" yaml:"type" mapstructure:"type"`
+
+	// Version corresponds to the JSON schema field "version".
+	Version int `json:"version" yaml:"version" mapstructure:"version"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PostsContentRoot) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["children"]; !ok || v == nil {
+		return fmt.Errorf("field children in PostsContentRoot: required")
+	}
+	if v, ok := raw["direction"]; !ok || v == nil {
+		return fmt.Errorf("field direction in PostsContentRoot: required")
+	}
+	if v, ok := raw["format"]; !ok || v == nil {
+		return fmt.Errorf("field format in PostsContentRoot: required")
+	}
+	if v, ok := raw["indent"]; !ok || v == nil {
+		return fmt.Errorf("field indent in PostsContentRoot: required")
+	}
+	if v, ok := raw["type"]; !ok || v == nil {
+		return fmt.Errorf("field type in PostsContentRoot: required")
+	}
+	if v, ok := raw["version"]; !ok || v == nil {
+		return fmt.Errorf("field version in PostsContentRoot: required")
+	}
+	type Plain PostsContentRoot
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = PostsContentRoot(plain)
+	return nil
+}
+
+type PostsContent struct {
+	// Root corresponds to the JSON schema field "root".
+	Root PostsContentRoot `json:"root" yaml:"root" mapstructure:"root"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *PostsContent) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["root"]; !ok || v == nil {
+		return fmt.Errorf("field root in PostsContent: required")
+	}
+	type Plain PostsContent
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = PostsContent(plain)
+	return nil
+}
+
+type PostsTagsElem struct {
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Tag corresponds to the JSON schema field "tag".
+	Tag *string `json:"tag,omitempty" yaml:"tag,omitempty" mapstructure:"tag,omitempty"`
+}
+
+type Posts struct {
+	// Status corresponds to the JSON schema field "_status".
+	Status *PostsStatus `json:"_status,omitempty" yaml:"_status,omitempty" mapstructure:"_status,omitempty"`
+
+	// Content corresponds to the JSON schema field "content".
+	Content *PostsContent `json:"content,omitempty" yaml:"content,omitempty" mapstructure:"content,omitempty"`
+
+	// CreatedAt corresponds to the JSON schema field "createdAt".
+	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
+
+	// Excerpt corresponds to the JSON schema field "excerpt".
+	Excerpt *string `json:"excerpt,omitempty" yaml:"excerpt,omitempty" mapstructure:"excerpt,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
+
+	// Meta corresponds to the JSON schema field "meta".
+	Meta *Meta `json:"meta,omitempty" yaml:"meta,omitempty" mapstructure:"meta,omitempty"`
+
+	// PublishedAt corresponds to the JSON schema field "publishedAt".
+	PublishedAt *string `json:"publishedAt,omitempty" yaml:"publishedAt,omitempty" mapstructure:"publishedAt,omitempty"`
+
+	// RelatedPosts corresponds to the JSON schema field "relatedPosts".
+	RelatedPosts []interface{} `json:"relatedPosts,omitempty" yaml:"relatedPosts,omitempty" mapstructure:"relatedPosts,omitempty"`
+
+	// Tags corresponds to the JSON schema field "tags".
+	Tags []PostsTagsElem `json:"tags,omitempty" yaml:"tags,omitempty" mapstructure:"tags,omitempty"`
+
+	// Thumbnail corresponds to the JSON schema field "thumbnail".
+	Thumbnail interface{} `json:"thumbnail,omitempty" yaml:"thumbnail,omitempty" mapstructure:"thumbnail,omitempty"`
+
+	// Title corresponds to the JSON schema field "title".
+	Title string `json:"title" yaml:"title" mapstructure:"title"`
+
+	// UpdatedAt corresponds to the JSON schema field "updatedAt".
+	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *Posts) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in Posts: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in Posts: required")
+	}
+	if v, ok := raw["title"]; !ok || v == nil {
+		return fmt.Errorf("field title in Posts: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in Posts: required")
+	}
+	type Plain Posts
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = Posts(plain)
+	return nil
+}
+
+type RedirectsCode string
+
+var enumValues_RedirectsCode = []interface{}{
+	"301",
+	"302",
+	"307",
+	"308",
+	"410",
+	"451",
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *RedirectsCode) UnmarshalJSON(b []byte) error {
+	var v string
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	var ok bool
+	for _, expected := range enumValues_RedirectsCode {
+		if reflect.DeepEqual(v, expected) {
+			ok = true
+			break
+		}
+	}
+	if !ok {
+		return fmt.Errorf("invalid value (expected one of %#v): %#v", enumValues_RedirectsCode, v)
+	}
+	*j = RedirectsCode(v)
+	return nil
+}
+
+const RedirectsCodeA301 RedirectsCode = "301"
+const RedirectsCodeA302 RedirectsCode = "302"
+const RedirectsCodeA307 RedirectsCode = "307"
+const RedirectsCodeA308 RedirectsCode = "308"
+const RedirectsCodeA410 RedirectsCode = "410"
+const RedirectsCodeA451 RedirectsCode = "451"
+
+type Redirects struct {
+	// Code corresponds to the JSON schema field "code".
+	Code RedirectsCode `json:"code" yaml:"code" mapstructure:"code"`
+
+	// CreatedAt corresponds to the JSON schema field "createdAt".
+	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
+
+	// From corresponds to the JSON schema field "from".
+	From string `json:"from" yaml:"from" mapstructure:"from"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
+
+	// To corresponds to the JSON schema field "to".
+	To string `json:"to" yaml:"to" mapstructure:"to"`
+
+	// UpdatedAt corresponds to the JSON schema field "updatedAt".
+	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *Redirects) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["code"]; !ok || v == nil {
+		return fmt.Errorf("field code in Redirects: required")
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in Redirects: required")
+	}
+	if v, ok := raw["from"]; !ok || v == nil {
+		return fmt.Errorf("field from in Redirects: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in Redirects: required")
+	}
+	if v, ok := raw["to"]; !ok || v == nil {
+		return fmt.Errorf("field to in Redirects: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in Redirects: required")
+	}
+	type Plain Redirects
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = Redirects(plain)
+	return nil
+}
+
+type ReviewsAuthor struct {
+	// Description corresponds to the JSON schema field "description".
+	Description string `json:"description" yaml:"description" mapstructure:"description"`
+
+	// FirstName corresponds to the JSON schema field "firstName".
+	FirstName string `json:"firstName" yaml:"firstName" mapstructure:"firstName"`
+
+	// LastName corresponds to the JSON schema field "lastName".
+	LastName string `json:"lastName" yaml:"lastName" mapstructure:"lastName"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *ReviewsAuthor) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["description"]; !ok || v == nil {
+		return fmt.Errorf("field description in ReviewsAuthor: required")
+	}
+	if v, ok := raw["firstName"]; !ok || v == nil {
+		return fmt.Errorf("field firstName in ReviewsAuthor: required")
+	}
+	if v, ok := raw["lastName"]; !ok || v == nil {
+		return fmt.Errorf("field lastName in ReviewsAuthor: required")
+	}
+	type Plain ReviewsAuthor
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = ReviewsAuthor(plain)
+	return nil
+}
+
+type Reviews struct {
+	// Author corresponds to the JSON schema field "author".
+	Author ReviewsAuthor `json:"author" yaml:"author" mapstructure:"author"`
+
+	// Content corresponds to the JSON schema field "content".
+	Content string `json:"content" yaml:"content" mapstructure:"content"`
+
+	// CreatedAt corresponds to the JSON schema field "createdAt".
+	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
+
+	// UpdatedAt corresponds to the JSON schema field "updatedAt".
+	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *Reviews) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["author"]; !ok || v == nil {
+		return fmt.Errorf("field author in Reviews: required")
+	}
+	if v, ok := raw["content"]; !ok || v == nil {
+		return fmt.Errorf("field content in Reviews: required")
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in Reviews: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in Reviews: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in Reviews: required")
+	}
+	type Plain Reviews
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = Reviews(plain)
+	return nil
+}
+
+type Settings payload.Settings
+
+type Users struct {
+	// ApiKey corresponds to the JSON schema field "apiKey".
+	ApiKey *string `json:"apiKey,omitempty" yaml:"apiKey,omitempty" mapstructure:"apiKey,omitempty"`
+
+	// ApiKeyIndex corresponds to the JSON schema field "apiKeyIndex".
+	ApiKeyIndex *string `json:"apiKeyIndex,omitempty" yaml:"apiKeyIndex,omitempty" mapstructure:"apiKeyIndex,omitempty"`
+
+	// CreatedAt corresponds to the JSON schema field "createdAt".
+	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
+
+	// Email corresponds to the JSON schema field "email".
+	Email string `json:"email" yaml:"email" mapstructure:"email"`
+
+	// EnableAPIKey corresponds to the JSON schema field "enableAPIKey".
+	EnableAPIKey *bool `json:"enableAPIKey,omitempty" yaml:"enableAPIKey,omitempty" mapstructure:"enableAPIKey,omitempty"`
+
+	// Hash corresponds to the JSON schema field "hash".
+	Hash *string `json:"hash,omitempty" yaml:"hash,omitempty" mapstructure:"hash,omitempty"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
+
+	// LockUntil corresponds to the JSON schema field "lockUntil".
+	LockUntil *string `json:"lockUntil,omitempty" yaml:"lockUntil,omitempty" mapstructure:"lockUntil,omitempty"`
+
+	// LoginAttempts corresponds to the JSON schema field "loginAttempts".
+	LoginAttempts *float64 `json:"loginAttempts,omitempty" yaml:"loginAttempts,omitempty" mapstructure:"loginAttempts,omitempty"`
+
+	// Name corresponds to the JSON schema field "name".
+	Name string `json:"name" yaml:"name" mapstructure:"name"`
+
+	// Password corresponds to the JSON schema field "password".
+	Password *string `json:"password,omitempty" yaml:"password,omitempty" mapstructure:"password,omitempty"`
+
+	// ResetPasswordExpiration corresponds to the JSON schema field
+	// "resetPasswordExpiration".
+	ResetPasswordExpiration *string `json:"resetPasswordExpiration,omitempty" yaml:"resetPasswordExpiration,omitempty" mapstructure:"resetPasswordExpiration,omitempty"`
+
+	// ResetPasswordToken corresponds to the JSON schema field "resetPasswordToken".
+	ResetPasswordToken *string `json:"resetPasswordToken,omitempty" yaml:"resetPasswordToken,omitempty" mapstructure:"resetPasswordToken,omitempty"`
+
+	// Salt corresponds to the JSON schema field "salt".
+	Salt *string `json:"salt,omitempty" yaml:"salt,omitempty" mapstructure:"salt,omitempty"`
+
+	// UpdatedAt corresponds to the JSON schema field "updatedAt".
+	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *Users) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["createdAt"]; !ok || v == nil {
+		return fmt.Errorf("field createdAt in Users: required")
+	}
+	if v, ok := raw["email"]; !ok || v == nil {
+		return fmt.Errorf("field email in Users: required")
+	}
+	if v, ok := raw["id"]; !ok || v == nil {
+		return fmt.Errorf("field id in Users: required")
+	}
+	if v, ok := raw["name"]; !ok || v == nil {
+		return fmt.Errorf("field name in Users: required")
+	}
+	if v, ok := raw["updatedAt"]; !ok || v == nil {
+		return fmt.Errorf("field updatedAt in Users: required")
+	}
+	type Plain Users
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = Users(plain)
+	return nil
+}
+
+type ConfigCollections struct {
+	// Clients corresponds to the JSON schema field "clients".
+	Clients Clients `json:"clients" yaml:"clients" mapstructure:"clients"`
+
+	// FormSubmissions corresponds to the JSON schema field "form-submissions".
+	FormSubmissions FormSubmissions `json:"form-submissions" yaml:"form-submissions" mapstructure:"form-submissions"`
+
+	// Forms corresponds to the JSON schema field "forms".
+	Forms Forms `json:"forms" yaml:"forms" mapstructure:"forms"`
+
+	// Media corresponds to the JSON schema field "media".
+	Media Media `json:"media" yaml:"media" mapstructure:"media"`
+
+	// Pages corresponds to the JSON schema field "pages".
+	Pages Pages `json:"pages" yaml:"pages" mapstructure:"pages"`
+
+	// PayloadMigrations corresponds to the JSON schema field "payload-migrations".
+	PayloadMigrations PayloadMigrations `json:"payload-migrations" yaml:"payload-migrations" mapstructure:"payload-migrations"`
+
+	// PayloadPreferences corresponds to the JSON schema field "payload-preferences".
+	PayloadPreferences PayloadPreferences `json:"payload-preferences" yaml:"payload-preferences" mapstructure:"payload-preferences"`
+
+	// Portfolio corresponds to the JSON schema field "portfolio".
+	Portfolio Portfolio `json:"portfolio" yaml:"portfolio" mapstructure:"portfolio"`
+
+	// PortfolioCategories corresponds to the JSON schema field
+	// "portfolio-categories".
+	PortfolioCategories PortfolioCategories `json:"portfolio-categories" yaml:"portfolio-categories" mapstructure:"portfolio-categories"`
+
+	// Posts corresponds to the JSON schema field "posts".
+	Posts Posts `json:"posts" yaml:"posts" mapstructure:"posts"`
+
+	// Redirects corresponds to the JSON schema field "redirects".
+	Redirects Redirects `json:"redirects" yaml:"redirects" mapstructure:"redirects"`
+
+	// Reviews corresponds to the JSON schema field "reviews".
+	Reviews Reviews `json:"reviews" yaml:"reviews" mapstructure:"reviews"`
+
+	// Users corresponds to the JSON schema field "users".
+	Users Users `json:"users" yaml:"users" mapstructure:"users"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *ConfigCollections) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["clients"]; !ok || v == nil {
+		return fmt.Errorf("field clients in ConfigCollections: required")
+	}
+	if v, ok := raw["form-submissions"]; !ok || v == nil {
+		return fmt.Errorf("field form-submissions in ConfigCollections: required")
+	}
+	if v, ok := raw["forms"]; !ok || v == nil {
+		return fmt.Errorf("field forms in ConfigCollections: required")
+	}
+	if v, ok := raw["media"]; !ok || v == nil {
+		return fmt.Errorf("field media in ConfigCollections: required")
+	}
+	if v, ok := raw["pages"]; !ok || v == nil {
+		return fmt.Errorf("field pages in ConfigCollections: required")
+	}
+	if v, ok := raw["payload-migrations"]; !ok || v == nil {
+		return fmt.Errorf("field payload-migrations in ConfigCollections: required")
+	}
+	if v, ok := raw["payload-preferences"]; !ok || v == nil {
+		return fmt.Errorf("field payload-preferences in ConfigCollections: required")
+	}
+	if v, ok := raw["portfolio"]; !ok || v == nil {
+		return fmt.Errorf("field portfolio in ConfigCollections: required")
+	}
+	if v, ok := raw["portfolio-categories"]; !ok || v == nil {
+		return fmt.Errorf("field portfolio-categories in ConfigCollections: required")
+	}
+	if v, ok := raw["posts"]; !ok || v == nil {
+		return fmt.Errorf("field posts in ConfigCollections: required")
+	}
+	if v, ok := raw["redirects"]; !ok || v == nil {
+		return fmt.Errorf("field redirects in ConfigCollections: required")
+	}
+	if v, ok := raw["reviews"]; !ok || v == nil {
+		return fmt.Errorf("field reviews in ConfigCollections: required")
+	}
+	if v, ok := raw["users"]; !ok || v == nil {
+		return fmt.Errorf("field users in ConfigCollections: required")
+	}
+	type Plain ConfigCollections
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = ConfigCollections(plain)
+	return nil
+}
+
+type ConfigGlobals struct {
+	// Navigation corresponds to the JSON schema field "navigation".
+	Navigation Navigation `json:"navigation" yaml:"navigation" mapstructure:"navigation"`
+
+	// Settings corresponds to the JSON schema field "settings".
+	Settings Settings `json:"settings" yaml:"settings" mapstructure:"settings"`
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (j *ConfigGlobals) UnmarshalJSON(b []byte) error {
+	var raw map[string]interface{}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	if v, ok := raw["navigation"]; !ok || v == nil {
+		return fmt.Errorf("field navigation in ConfigGlobals: required")
+	}
+	if v, ok := raw["settings"]; !ok || v == nil {
+		return fmt.Errorf("field settings in ConfigGlobals: required")
+	}
+	type Plain ConfigGlobals
+	var plain Plain
+	if err := json.Unmarshal(b, &plain); err != nil {
+		return err
+	}
+	*j = ConfigGlobals(plain)
+	return nil
+}
+
+type Config struct {
+	// Collections corresponds to the JSON schema field "collections".
+	Collections ConfigCollections `json:"collections" yaml:"collections" mapstructure:"collections"`
+
+	// Globals corresponds to the JSON schema field "globals".
+	Globals ConfigGlobals `json:"globals" yaml:"globals" mapstructure:"globals"`
+
+	// Locale corresponds to the JSON schema field "locale".
+	Locale interface{} `json:"locale" yaml:"locale" mapstructure:"locale"`
+
+	// User corresponds to the JSON schema field "user".
+	User interface{} `json:"user" yaml:"user" mapstructure:"user"`
+}
+
 // UnmarshalJSON implements json.Unmarshaler.
 func (j *Config) UnmarshalJSON(b []byte) error {
 	var raw map[string]interface{}
@@ -4251,10 +2595,19 @@ func (j *Config) UnmarshalJSON(b []byte) error {
 	if v, ok := raw["globals"]; !ok || v == nil {
 		return fmt.Errorf("field globals in Config: required")
 	}
+	if v, ok := raw["locale"]; !ok || v == nil {
+		return fmt.Errorf("field locale in Config: required")
+	}
+	if v, ok := raw["user"]; !ok || v == nil {
+		return fmt.Errorf("field user in Config: required")
+	}
 	type Plain Config
 	var plain Plain
 	if err := json.Unmarshal(b, &plain); err != nil {
 		return err
+	}
+	if plain.Locale != nil {
+		return fmt.Errorf("field %s: must be null", "locale")
 	}
 	*j = Config(plain)
 	return nil

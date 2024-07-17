@@ -2,7 +2,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
-import { Tab, buildConfig } from "payload";
+import { buildConfig } from "payload";
 import type { Config, Field } from "payload";
 import sharp from "sharp";
 
@@ -64,8 +64,48 @@ export default buildConfig({
 		outputFile: path.resolve(dirname, "./types/payload.ts"),
 		schema: [
 			({ jsonSchema }) => {
+				if (!jsonSchema.properties) {
+					jsonSchema.properties = {};
+				}
 				// biome-ignore lint/performance/noDelete: <explanation>
 				delete jsonSchema.properties.auth;
+				return jsonSchema;
+			},
+			({ jsonSchema }) => {
+				const genGoLang = env.bool("GEN_GOLANG", false);
+				if (!genGoLang) {
+					return jsonSchema;
+				}
+
+				if (!jsonSchema.definitions) {
+					jsonSchema.definitions = {};
+				}
+
+			    jsonSchema.definitions.settings = {
+					type: 'object',
+					additionalProperties: false,
+					fields: [],
+					goJSONSchema: {
+						imports: [
+							"github.com/ainsleydev/webkit/pkg/adapters/payload"
+						],
+						nillable: false,
+						type: "payload.Settings",
+					}
+				}
+
+				jsonSchema.definitions.media = {
+					type: 'object',
+					additionalProperties: false,
+					goJSONSchema: {
+						imports: [
+							"github.com/ainsleydev/webkit/pkg/adapters/payload"
+						],
+						nillable: false,
+						type: "payload.Media",
+					}
+				}
+
 				return jsonSchema;
 			},
 		],
@@ -79,6 +119,68 @@ export default buildConfig({
 	}),
 	sharp,
 	plugins: [
+		(incomingConfig: Config): Config => {
+			const genGoLang = env.bool("GEN_GOLANG", false);
+			if (!genGoLang) {
+				return incomingConfig;
+			}
+
+			const config = incomingConfig;
+
+			const mapper = (field: Field): Field => {
+				console.log(field.type, field.name, field.fields?.map((f) => f.name));
+				switch (field.type) {
+					case 'blocks':
+						field.typescriptSchema = [
+							() => ({
+								goJSONSchema: {
+									imports: [
+										"github.com/ainsleydev/webkit/pkg/adapters/payload"
+									],
+									nillable: false,
+									type: "payload.Blocks",
+								}
+							}),
+						];
+						break;
+					case 'richText':
+						field.typescriptSchema = [
+							() => ({
+								type: 'string',
+								goJSONSchema: {
+									imports: [
+										"github.com/ainsleydev/webkit/pkg/adapters/payload"
+									],
+									nillable: false,
+									type: "payload.RichText",
+								}
+							}),
+						];
+						break;
+					case 'tabs': {
+						field.tabs.forEach((tab) => {
+							tab.fields = tab.fields.map((f) => mapper(f));
+						});
+						break;
+					}
+					case 'array':
+					case 'row':
+					case 'collapsible': {
+						field.fields = field.fields.map((f) => mapper(f));
+					}
+				}
+
+				return field;
+			}
+
+			if (config.collections) {
+				config.collections.forEach((collection) => {
+					collection.fields = collection.fields.map((field) => mapper(field));
+				})
+			}
+
+			return incomingConfig;
+		},
 		seoPlugin({
 			collections: ["posts"],
 			globals: ["settings"],
