@@ -1,2553 +1,1134 @@
 {
-    "additionalProperties": false,
-    "definitions": {
-        "settings": {
-            "type": "object",
-            "additionalProperties": false,
-            "goJSONSchema": {
-                "imports": [
-                    "github.com/ainsleydev/webkit/pkg/adapters/payload"
-                ],
-                "nillable": false,
-                "type": "payload.Settings"
-            }
-        },
-        "navigation": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "Navigation",
-            "properties": {
-                "id": {
-                    "type": "number"
-                },
-                "header": {
-                    "$ref": "#/definitions/NavigationHeaderLinks"
-                },
-                "updatedAt": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "createdAt": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "id"
-            ]
-        },
-        "posts": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "Post",
-            "properties": {
-                "id": {
-                    "type": "number"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "excerpt": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "content": {
-                    "type": "string",
-                    "goJSONSchema": {
-                        "imports": [
-                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
-                        ],
-                        "nillable": false,
-                        "type": "payload.RichText"
-                    }
-                },
-                "thumbnail": {
-                    "oneOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "$ref": "#/definitions/media"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "meta": {
-                    "$ref": "#/definitions/Meta"
-                },
-                "publishedAt": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "relatedPosts": {
-                    "type": [
-                        "array",
-                        "null"
-                    ],
-                    "items": {
-                        "oneOf": [
-                            {
-                                "type": "number"
-                            },
-                            {
-                                "$ref": "#/definitions/posts"
-                            }
-                        ]
-                    }
-                },
-                "tags": {
-                    "type": [
-                        "array",
-                        "null"
-                    ],
-                    "items": {
-                        "type": "object",
-                        "additionalProperties": false,
-                        "properties": {
-                            "tag": {
-                                "type": [
-                                    "string",
-                                    "null"
-                                ]
-                            },
-                            "id": {
-                                "type": [
-                                    "string",
-                                    "null"
-                                ]
-                            }
-                        },
-                        "required": []
-                    }
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                },
-                "_status": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "enum": [
-                        "draft",
-                        "published"
-                    ]
-                }
-            },
-            "required": [
-                "id",
-                "title",
-                "updatedAt",
-                "createdAt"
-            ]
-        },
-        "pages": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "Page",
-            "properties": {
-                "id": {
-                    "type": "number"
-                },
-                "layout": {
-                    "goJSONSchema": {
-                        "imports": [
-                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
-                        ],
-                        "nillable": false,
-                        "type": "payload.Blocks"
-                    }
-                },
-                "isHome": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                },
-                "_status": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "enum": [
-                        "draft",
-                        "published"
-                    ]
-                }
-            },
-            "required": [
-                "id",
-                "layout",
-                "updatedAt",
-                "createdAt"
-            ]
-        },
-        "clients": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "Client",
-            "properties": {
-                "id": {
-                    "type": "number"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "url": {
-                    "type": "string"
-                },
-                "logo": {
-                    "oneOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "$ref": "#/definitions/media"
-                        }
-                    ]
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "name",
-                "url",
-                "logo",
-                "updatedAt",
-                "createdAt"
-            ]
-        },
-        "reviews": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "Review",
-            "properties": {
-                "id": {
-                    "type": "number"
-                },
-                "content": {
-                    "type": "string"
-                },
-                "author": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "firstName": {
-                            "type": "string"
-                        },
-                        "lastName": {
-                            "type": "string"
-                        },
-                        "description": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "firstName",
-                        "lastName",
-                        "description"
-                    ]
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "content",
-                "author",
-                "updatedAt",
-                "createdAt"
-            ]
-        },
-        "portfolio": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "Portfolio",
-            "properties": {
-                "id": {
-                    "type": "number"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "url": {
-                    "type": "string"
-                },
-                "date": {
-                    "type": "string"
-                },
-                "company": {
-                    "oneOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "$ref": "#/definitions/clients"
-                        }
-                    ]
-                },
-                "category": {
-                    "oneOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "$ref": "#/definitions/portfolio-categories"
-                        }
-                    ]
-                },
-                "image": {
-                    "oneOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "$ref": "#/definitions/media"
-                        }
-                    ]
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "title",
-                "url",
-                "date",
-                "company",
-                "category",
-                "image",
-                "updatedAt",
-                "createdAt"
-            ]
-        },
-        "portfolio-categories": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "PortfolioCategory",
-            "properties": {
-                "id": {
-                    "type": "number"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "title",
-                "updatedAt",
-                "createdAt"
-            ]
-        },
-        "media": {
-            "type": "object",
-            "additionalProperties": false,
-            "goJSONSchema": {
-                "imports": [
-                    "github.com/ainsleydev/webkit/pkg/adapters/payload"
-                ],
-                "nillable": false,
-                "type": "payload.Media"
-            }
-        },
-        "users": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "User",
-            "properties": {
-                "id": {
-                    "type": "number"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                },
-                "enableAPIKey": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "apiKey": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "apiKeyIndex": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "email": {
-                    "type": "string"
-                },
-                "resetPasswordToken": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "resetPasswordExpiration": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "salt": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "hash": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "loginAttempts": {
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "lockUntil": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "password": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "id",
-                "name",
-                "updatedAt",
-                "createdAt",
-                "email"
-            ]
-        },
-        "redirects": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "Redirect",
-            "properties": {
-                "id": {
-                    "type": "number"
-                },
-                "from": {
-                    "type": "string"
-                },
-                "to": {
-                    "type": "string"
-                },
-                "code": {
-                    "type": "string",
-                    "enum": [
-                        "301",
-                        "302",
-                        "307",
-                        "308",
-                        "410",
-                        "451"
-                    ]
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "from",
-                "to",
-                "code",
-                "updatedAt",
-                "createdAt"
-            ]
-        },
-        "forms": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "Form",
-            "properties": {
-                "id": {
-                    "type": "number"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "fields": {
-                    "type": [
-                        "array",
-                        "null"
-                    ],
-                    "items": {
-                        "oneOf": [
-                            {
-                                "type": "object",
-                                "additionalProperties": false,
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "label": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "width": {
-                                        "type": [
-                                            "number",
-                                            "null"
-                                        ]
-                                    },
-                                    "required": {
-                                        "type": [
-                                            "boolean",
-                                            "null"
-                                        ]
-                                    },
-                                    "defaultValue": {
-                                        "type": [
-                                            "boolean",
-                                            "null"
-                                        ]
-                                    },
-                                    "id": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockName": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockType": {
-                                        "const": "checkbox"
-                                    }
-                                },
-                                "required": [
-                                    "blockType",
-                                    "name"
-                                ]
-                            },
-                            {
-                                "type": "object",
-                                "additionalProperties": false,
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "label": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "width": {
-                                        "type": [
-                                            "number",
-                                            "null"
-                                        ]
-                                    },
-                                    "required": {
-                                        "type": [
-                                            "boolean",
-                                            "null"
-                                        ]
-                                    },
-                                    "id": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockName": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockType": {
-                                        "const": "country"
-                                    }
-                                },
-                                "required": [
-                                    "blockType",
-                                    "name"
-                                ]
-                            },
-                            {
-                                "type": "object",
-                                "additionalProperties": false,
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "label": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "width": {
-                                        "type": [
-                                            "number",
-                                            "null"
-                                        ]
-                                    },
-                                    "required": {
-                                        "type": [
-                                            "boolean",
-                                            "null"
-                                        ]
-                                    },
-                                    "id": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockName": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockType": {
-                                        "const": "email"
-                                    }
-                                },
-                                "required": [
-                                    "blockType",
-                                    "name"
-                                ]
-                            },
-                            {
-                                "type": "object",
-                                "additionalProperties": false,
-                                "properties": {
-                                    "message": {
-                                        "type": [
-                                            "object",
-                                            "null"
-                                        ],
-                                        "properties": {
-                                            "root": {
-                                                "type": "object",
-                                                "additionalProperties": false,
-                                                "properties": {
-                                                    "type": {
-                                                        "type": "string"
-                                                    },
-                                                    "children": {
-                                                        "type": "array",
-                                                        "items": {
-                                                            "type": "object",
-                                                            "additionalProperties": true,
-                                                            "properties": {
-                                                                "type": {
-                                                                    "type": "string"
-                                                                },
-                                                                "version": {
-                                                                    "type": "integer"
-                                                                }
-                                                            },
-                                                            "required": [
-                                                                "type",
-                                                                "version"
-                                                            ]
-                                                        }
-                                                    },
-                                                    "direction": {
-                                                        "oneOf": [
-                                                            {
-                                                                "enum": [
-                                                                    "ltr",
-                                                                    "rtl"
-                                                                ]
-                                                            },
-                                                            {
-                                                                "type": "null"
-                                                            }
-                                                        ]
-                                                    },
-                                                    "format": {
-                                                        "type": "string",
-                                                        "enum": [
-                                                            "left",
-                                                            "start",
-                                                            "center",
-                                                            "right",
-                                                            "end",
-                                                            "justify",
-                                                            ""
-                                                        ]
-                                                    },
-                                                    "indent": {
-                                                        "type": "integer"
-                                                    },
-                                                    "version": {
-                                                        "type": "integer"
-                                                    }
-                                                },
-                                                "required": [
-                                                    "children",
-                                                    "direction",
-                                                    "format",
-                                                    "indent",
-                                                    "type",
-                                                    "version"
-                                                ]
-                                            }
-                                        },
-                                        "required": [
-                                            "root"
-                                        ]
-                                    },
-                                    "id": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockName": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockType": {
-                                        "const": "message"
-                                    }
-                                },
-                                "required": [
-                                    "blockType"
-                                ]
-                            },
-                            {
-                                "type": "object",
-                                "additionalProperties": false,
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "label": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "width": {
-                                        "type": [
-                                            "number",
-                                            "null"
-                                        ]
-                                    },
-                                    "defaultValue": {
-                                        "type": [
-                                            "number",
-                                            "null"
-                                        ]
-                                    },
-                                    "required": {
-                                        "type": [
-                                            "boolean",
-                                            "null"
-                                        ]
-                                    },
-                                    "id": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockName": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockType": {
-                                        "const": "number"
-                                    }
-                                },
-                                "required": [
-                                    "blockType",
-                                    "name"
-                                ]
-                            },
-                            {
-                                "type": "object",
-                                "additionalProperties": false,
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "label": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "width": {
-                                        "type": [
-                                            "number",
-                                            "null"
-                                        ]
-                                    },
-                                    "defaultValue": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "options": {
-                                        "type": [
-                                            "array",
-                                            "null"
-                                        ],
-                                        "items": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "label": {
-                                                    "type": "string"
-                                                },
-                                                "value": {
-                                                    "type": "string"
-                                                },
-                                                "id": {
-                                                    "type": [
-                                                        "string",
-                                                        "null"
-                                                    ]
-                                                }
-                                            },
-                                            "required": [
-                                                "label",
-                                                "value"
-                                            ]
-                                        }
-                                    },
-                                    "required": {
-                                        "type": [
-                                            "boolean",
-                                            "null"
-                                        ]
-                                    },
-                                    "id": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockName": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockType": {
-                                        "const": "select"
-                                    }
-                                },
-                                "required": [
-                                    "blockType",
-                                    "name"
-                                ]
-                            },
-                            {
-                                "type": "object",
-                                "additionalProperties": false,
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "label": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "width": {
-                                        "type": [
-                                            "number",
-                                            "null"
-                                        ]
-                                    },
-                                    "required": {
-                                        "type": [
-                                            "boolean",
-                                            "null"
-                                        ]
-                                    },
-                                    "id": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockName": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockType": {
-                                        "const": "state"
-                                    }
-                                },
-                                "required": [
-                                    "blockType",
-                                    "name"
-                                ]
-                            },
-                            {
-                                "type": "object",
-                                "additionalProperties": false,
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "label": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "width": {
-                                        "type": [
-                                            "number",
-                                            "null"
-                                        ]
-                                    },
-                                    "defaultValue": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "required": {
-                                        "type": [
-                                            "boolean",
-                                            "null"
-                                        ]
-                                    },
-                                    "id": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockName": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockType": {
-                                        "const": "text"
-                                    }
-                                },
-                                "required": [
-                                    "blockType",
-                                    "name"
-                                ]
-                            },
-                            {
-                                "type": "object",
-                                "additionalProperties": false,
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "label": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "width": {
-                                        "type": [
-                                            "number",
-                                            "null"
-                                        ]
-                                    },
-                                    "defaultValue": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "required": {
-                                        "type": [
-                                            "boolean",
-                                            "null"
-                                        ]
-                                    },
-                                    "id": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockName": {
-                                        "type": [
-                                            "string",
-                                            "null"
-                                        ]
-                                    },
-                                    "blockType": {
-                                        "const": "textarea"
-                                    }
-                                },
-                                "required": [
-                                    "blockType",
-                                    "name"
-                                ]
-                            }
-                        ]
-                    }
-                },
-                "submitButtonLabel": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "redirect": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "url": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "url"
-                    ]
-                },
-                "emails": {
-                    "type": [
-                        "array",
-                        "null"
-                    ],
-                    "items": {
-                        "type": "object",
-                        "additionalProperties": false,
-                        "properties": {
-                            "emailTo": {
-                                "type": [
-                                    "string",
-                                    "null"
-                                ]
-                            },
-                            "cc": {
-                                "type": [
-                                    "string",
-                                    "null"
-                                ]
-                            },
-                            "bcc": {
-                                "type": [
-                                    "string",
-                                    "null"
-                                ]
-                            },
-                            "replyTo": {
-                                "type": [
-                                    "string",
-                                    "null"
-                                ]
-                            },
-                            "emailFrom": {
-                                "type": [
-                                    "string",
-                                    "null"
-                                ]
-                            },
-                            "subject": {
-                                "type": "string"
-                            },
-                            "message": {
-                                "type": [
-                                    "object",
-                                    "null"
-                                ],
-                                "properties": {
-                                    "root": {
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "properties": {
-                                            "type": {
-                                                "type": "string"
-                                            },
-                                            "children": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "object",
-                                                    "additionalProperties": true,
-                                                    "properties": {
-                                                        "type": {
-                                                            "type": "string"
-                                                        },
-                                                        "version": {
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "type",
-                                                        "version"
-                                                    ]
-                                                }
-                                            },
-                                            "direction": {
-                                                "oneOf": [
-                                                    {
-                                                        "enum": [
-                                                            "ltr",
-                                                            "rtl"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "type": "null"
-                                                    }
-                                                ]
-                                            },
-                                            "format": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "left",
-                                                    "start",
-                                                    "center",
-                                                    "right",
-                                                    "end",
-                                                    "justify",
-                                                    ""
-                                                ]
-                                            },
-                                            "indent": {
-                                                "type": "integer"
-                                            },
-                                            "version": {
-                                                "type": "integer"
-                                            }
-                                        },
-                                        "required": [
-                                            "children",
-                                            "direction",
-                                            "format",
-                                            "indent",
-                                            "type",
-                                            "version"
-                                        ]
-                                    }
-                                },
-                                "required": [
-                                    "root"
-                                ]
-                            },
-                            "id": {
-                                "type": [
-                                    "string",
-                                    "null"
-                                ]
-                            }
-                        },
-                        "required": [
-                            "subject"
-                        ]
-                    }
-                },
-                "confirmationMessage": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "title",
-                "updatedAt",
-                "createdAt"
-            ]
-        },
-        "form-submissions": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "FormSubmission",
-            "properties": {
-                "id": {
-                    "type": "number"
-                },
-                "form": {
-                    "oneOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "$ref": "#/definitions/forms"
-                        }
-                    ]
-                },
-                "submissionData": {
-                    "type": [
-                        "array",
-                        "null"
-                    ],
-                    "items": {
-                        "type": "object",
-                        "additionalProperties": false,
-                        "properties": {
-                            "field": {
-                                "type": "string"
-                            },
-                            "value": {
-                                "type": "string"
-                            },
-                            "id": {
-                                "type": [
-                                    "string",
-                                    "null"
-                                ]
-                            }
-                        },
-                        "required": [
-                            "field",
-                            "value"
-                        ]
-                    }
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "form",
-                "updatedAt",
-                "createdAt"
-            ]
-        },
-        "payload-preferences": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "PayloadPreference",
-            "properties": {
-                "id": {
-                    "type": "number"
-                },
-                "user": {
-                    "oneOf": [
-                        {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "relationTo": {
-                                    "const": "users"
-                                },
-                                "value": {
-                                    "oneOf": [
-                                        {
-                                            "type": "number"
-                                        },
-                                        {
-                                            "$ref": "#/definitions/users"
-                                        }
-                                    ]
-                                }
-                            },
-                            "required": [
-                                "value",
-                                "relationTo"
-                            ]
-                        }
-                    ]
-                },
-                "key": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "value": {
-                    "type": [
-                        "object",
-                        "array",
-                        "string",
-                        "number",
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "user",
-                "updatedAt",
-                "createdAt"
-            ]
-        },
-        "payload-migrations": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "PayloadMigration",
-            "properties": {
-                "id": {
-                    "type": "number"
-                },
-                "name": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "batch": {
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "updatedAt": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "updatedAt",
-                "createdAt"
-            ]
-        },
-        "CodeInjection": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "head": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "footer": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": []
-        },
-        "Contact": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "email": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "telephone": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": []
-        },
-        "Address": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "line1": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "line2": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "city": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "county": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "postcode": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "country": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "enum": [
-                        "Afghanistan",
-                        "Albania",
-                        "Algeria",
-                        "Andorra",
-                        "Angola",
-                        "Antigua and Barbuda",
-                        "Argentina",
-                        "Armenia",
-                        "Australia",
-                        "Austria",
-                        "Azerbaijan",
-                        "Bahamas",
-                        "Bahrain",
-                        "Bangladesh",
-                        "Barbados",
-                        "Belarus",
-                        "Belgium",
-                        "Belize",
-                        "Benin",
-                        "Bhutan",
-                        "Bolivia",
-                        "Bosnia and Herzegovina",
-                        "Botswana",
-                        "Brazil",
-                        "Brunei",
-                        "Bulgaria",
-                        "Burkina Faso",
-                        "Burundi",
-                        "Cabo Verde",
-                        "Cambodia",
-                        "Cameroon",
-                        "Canada",
-                        "Central African Republic",
-                        "Chad",
-                        "Chile",
-                        "China",
-                        "Colombia",
-                        "Comoros",
-                        "Congo (Congo-Brazzaville)",
-                        "Costa Rica",
-                        "Croatia",
-                        "Cuba",
-                        "Cyprus",
-                        "Czechia (Czech Republic)",
-                        "Democratic Republic of the Congo",
-                        "Denmark",
-                        "Djibouti",
-                        "Dominica",
-                        "Dominican Republic",
-                        "Ecuador",
-                        "Egypt",
-                        "El Salvador",
-                        "Equatorial Guinea",
-                        "Eritrea",
-                        "Estonia",
-                        "Eswatini (formerly Swaziland)",
-                        "Ethiopia",
-                        "Fiji",
-                        "Finland",
-                        "France",
-                        "Gabon",
-                        "Gambia",
-                        "Georgia",
-                        "Germany",
-                        "Ghana",
-                        "Greece",
-                        "Grenada",
-                        "Guatemala",
-                        "Guinea",
-                        "Guinea-Bissau",
-                        "Guyana",
-                        "Haiti",
-                        "Honduras",
-                        "Hungary",
-                        "Iceland",
-                        "India",
-                        "Indonesia",
-                        "Iran",
-                        "Iraq",
-                        "Ireland",
-                        "Israel",
-                        "Italy",
-                        "Jamaica",
-                        "Japan",
-                        "Jordan",
-                        "Kazakhstan",
-                        "Kenya",
-                        "Kiribati",
-                        "Kuwait",
-                        "Kyrgyzstan",
-                        "Laos",
-                        "Latvia",
-                        "Lebanon",
-                        "Lesotho",
-                        "Liberia",
-                        "Libya",
-                        "Liechtenstein",
-                        "Lithuania",
-                        "Luxembourg",
-                        "Madagascar",
-                        "Malawi",
-                        "Malaysia",
-                        "Maldives",
-                        "Mali",
-                        "Malta",
-                        "Marshall Islands",
-                        "Mauritania",
-                        "Mauritius",
-                        "Mexico",
-                        "Micronesia",
-                        "Moldova",
-                        "Monaco",
-                        "Mongolia",
-                        "Montenegro",
-                        "Morocco",
-                        "Mozambique",
-                        "Myanmar (formerly Burma)",
-                        "Namibia",
-                        "Nauru",
-                        "Nepal",
-                        "Netherlands",
-                        "New Zealand",
-                        "Nicaragua",
-                        "Niger",
-                        "Nigeria",
-                        "North Korea",
-                        "North Macedonia",
-                        "Norway",
-                        "Oman",
-                        "Pakistan",
-                        "Palau",
-                        "Palestine State",
-                        "Panama",
-                        "Papua New Guinea",
-                        "Paraguay",
-                        "Peru",
-                        "Philippines",
-                        "Poland",
-                        "Portugal",
-                        "Qatar",
-                        "Romania",
-                        "Russia",
-                        "Rwanda",
-                        "Saint Kitts and Nevis",
-                        "Saint Lucia",
-                        "Saint Vincent and the Grenadines",
-                        "Samoa",
-                        "San Marino",
-                        "Sao Tome and Principe",
-                        "Saudi Arabia",
-                        "Senegal",
-                        "Serbia",
-                        "Seychelles",
-                        "Sierra Leone",
-                        "Singapore",
-                        "Slovakia",
-                        "Slovenia",
-                        "Solomon Islands",
-                        "Somalia",
-                        "South Africa",
-                        "South Korea",
-                        "South Sudan",
-                        "Spain",
-                        "Sri Lanka",
-                        "Sudan",
-                        "Suriname",
-                        "Sweden",
-                        "Switzerland",
-                        "Syria",
-                        "Taiwan",
-                        "Tajikistan",
-                        "Tanzania",
-                        "Thailand",
-                        "Timor-Leste",
-                        "Togo",
-                        "Tonga",
-                        "Trinidad and Tobago",
-                        "Tunisia",
-                        "Turkey",
-                        "Turkmenistan",
-                        "Tuvalu",
-                        "Uganda",
-                        "Ukraine",
-                        "United Arab Emirates",
-                        "United Kingdom",
-                        "United States of America",
-                        "Uruguay",
-                        "Uzbekistan",
-                        "Vanuatu",
-                        "Venezuela",
-                        "Vietnam",
-                        "Yemen",
-                        "Zambia",
-                        "Zimbabwe"
-                    ]
-                }
-            },
-            "required": []
-        },
-        "Social": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "linkedIn": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "x": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "facebook": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "instagram": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "youtube": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "tiktok": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": []
-        },
-        "Maintenance": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "enabled": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "title": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "content": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": []
-        },
-        "Meta": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "image": {
-                    "oneOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "$ref": "#/definitions/media"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "private": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "canonicalURL": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "structuredData": {
-                    "type": [
-                        "object",
-                        "array",
-                        "string",
-                        "number",
-                        "boolean",
-                        "null"
-                    ]
-                }
-            },
-            "required": []
-        },
-        "NavigationHeaderLinks": {
-            "type": [
-                "array",
-                "null"
-            ],
-            "items": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                    "title": {
-                        "type": "string"
-                    },
-                    "url": {
-                        "type": "string"
-                    },
-                    "id": {
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    }
-                },
-                "required": [
-                    "title",
-                    "url"
-                ]
-            }
-        },
-        "BlockContentDefault": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "style": {
-                    "type": "string",
-                    "enum": [
-                        "centered",
-                        "spread"
-                    ]
-                },
-                "centreAlign": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "content": {
-                    "type": "object",
-                    "properties": {
-                        "root": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "children": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "additionalProperties": true,
-                                        "properties": {
-                                            "type": {
-                                                "type": "string"
-                                            },
-                                            "version": {
-                                                "type": "integer"
-                                            }
-                                        },
-                                        "required": [
-                                            "type",
-                                            "version"
-                                        ]
-                                    }
-                                },
-                                "direction": {
-                                    "oneOf": [
-                                        {
-                                            "enum": [
-                                                "ltr",
-                                                "rtl"
-                                            ]
-                                        },
-                                        {
-                                            "type": "null"
-                                        }
-                                    ]
-                                },
-                                "format": {
-                                    "type": "string",
-                                    "enum": [
-                                        "left",
-                                        "start",
-                                        "center",
-                                        "right",
-                                        "end",
-                                        "justify",
-                                        ""
-                                    ]
-                                },
-                                "indent": {
-                                    "type": "integer"
-                                },
-                                "version": {
-                                    "type": "integer"
-                                }
-                            },
-                            "required": [
-                                "children",
-                                "direction",
-                                "format",
-                                "indent",
-                                "type",
-                                "version"
-                            ]
-                        }
-                    },
-                    "required": [
-                        "root"
-                    ]
-                },
-                "contentHtml": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockName": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockType": {
-                    "const": "content-block"
-                }
-            },
-            "required": [
-                "blockType",
-                "style",
-                "content"
-            ]
-        },
-        "BlockContent": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "content": {
-                    "type": "object",
-                    "properties": {
-                        "root": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "children": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "additionalProperties": true,
-                                        "properties": {
-                                            "type": {
-                                                "type": "string"
-                                            },
-                                            "version": {
-                                                "type": "integer"
-                                            }
-                                        },
-                                        "required": [
-                                            "type",
-                                            "version"
-                                        ]
-                                    }
-                                },
-                                "direction": {
-                                    "oneOf": [
-                                        {
-                                            "enum": [
-                                                "ltr",
-                                                "rtl"
-                                            ]
-                                        },
-                                        {
-                                            "type": "null"
-                                        }
-                                    ]
-                                },
-                                "format": {
-                                    "type": "string",
-                                    "enum": [
-                                        "left",
-                                        "start",
-                                        "center",
-                                        "right",
-                                        "end",
-                                        "justify",
-                                        ""
-                                    ]
-                                },
-                                "indent": {
-                                    "type": "integer"
-                                },
-                                "version": {
-                                    "type": "integer"
-                                }
-                            },
-                            "required": [
-                                "children",
-                                "direction",
-                                "format",
-                                "indent",
-                                "type",
-                                "version"
-                            ]
-                        }
-                    },
-                    "required": [
-                        "root"
-                    ]
-                },
-                "contentHtml": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockName": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockType": {
-                    "const": "content-block"
-                }
-            },
-            "required": [
-                "blockType",
-                "content"
-            ]
-        },
-        "BlockFAQs": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "faqs": {
-                    "type": [
-                        "array",
-                        "null"
-                    ],
-                    "items": {
-                        "type": "object",
-                        "additionalProperties": false,
-                        "properties": {
-                            "question": {
-                                "type": "string"
-                            },
-                            "answer": {
-                                "type": "string"
-                            },
-                            "id": {
-                                "type": [
-                                    "string",
-                                    "null"
-                                ]
-                            }
-                        },
-                        "required": [
-                            "question",
-                            "answer"
-                        ]
-                    }
-                },
-                "id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockName": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockType": {
-                    "const": "faqs-block"
-                }
-            },
-            "required": [
-                "blockType"
-            ]
-        },
-        "BlockContentWithImage": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "textLayout": {
-                    "type": "array",
-                    "items": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/definitions/BlockContent"
-                            },
-                            {
-                                "$ref": "#/definitions/BlockFAQs"
-                            }
-                        ]
-                    }
-                },
-                "imagePosition": {
-                    "type": "string"
-                },
-                "sticky": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "image": {
-                    "oneOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "$ref": "#/definitions/media"
-                        }
-                    ]
-                },
-                "id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockName": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockType": {
-                    "const": "content-with-image-block"
-                }
-            },
-            "required": [
-                "blockType",
-                "textLayout",
-                "imagePosition",
-                "image"
-            ]
-        },
-        "BlockLogs": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string"
-                },
-                "greyscale": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "logos": {
-                    "type": [
-                        "array",
-                        "null"
-                    ],
-                    "items": {
-                        "type": "object",
-                        "additionalProperties": false,
-                        "properties": {
-                            "logo": {
-                                "oneOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/media"
-                                    }
-                                ]
-                            },
-                            "id": {
-                                "type": [
-                                    "string",
-                                    "null"
-                                ]
-                            }
-                        },
-                        "required": [
-                            "logo"
-                        ]
-                    }
-                },
-                "id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockName": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockType": {
-                    "const": "logos-block"
-                }
-            },
-            "required": [
-                "blockType",
-                "title"
-            ]
-        },
-        "BlockReviews": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string"
-                },
-                "content": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "items": {
-                    "type": [
-                        "array",
-                        "null"
-                    ],
-                    "items": {
-                        "oneOf": [
-                            {
-                                "type": "number"
-                            },
-                            {
-                                "$ref": "#/definitions/reviews"
-                            }
-                        ]
-                    }
-                },
-                "id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockName": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockType": {
-                    "const": "reviews-block"
-                }
-            },
-            "required": [
-                "blockType",
-                "title"
-            ]
-        },
-        "BlockPortfolio": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string"
-                },
-                "content": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "items": {
-                    "type": [
-                        "array",
-                        "null"
-                    ],
-                    "items": {
-                        "oneOf": [
-                            {
-                                "type": "number"
-                            },
-                            {
-                                "$ref": "#/definitions/portfolio"
-                            }
-                        ]
-                    }
-                },
-                "id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockName": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockType": {
-                    "const": "portfolio-block"
-                }
-            },
-            "required": [
-                "blockType",
-                "title"
-            ]
-        },
-        "BlockContact": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string"
-                },
-                "content": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "includeSocial": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
-                },
-                "form": {
-                    "oneOf": [
-                        {
-                            "type": [
-                                "number",
-                                "null"
-                            ]
-                        },
-                        {
-                            "$ref": "#/definitions/forms"
-                        }
-                    ]
-                },
-                "id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockName": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "blockType": {
-                    "const": "contact-block"
-                }
-            },
-            "required": [
-                "blockType",
-                "title"
-            ]
-        },
-        "auth": {
-            "users": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                    "forgotPassword": {
-                        "additionalProperties": false,
-                        "properties": {
-                            "email": {
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "email"
-                        ]
-                    },
-                    "login": {
-                        "additionalProperties": false,
-                        "properties": {
-                            "password": {
-                                "type": "string"
-                            },
-                            "email": {
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "password",
-                            "email"
-                        ]
-                    },
-                    "registerFirstUser": {
-                        "additionalProperties": false,
-                        "properties": {
-                            "email": {
-                                "type": "string"
-                            },
-                            "password": {
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "email",
-                            "password"
-                        ]
-                    }
-                },
-                "required": [
-                    "forgotPassword",
-                    "login",
-                    "registerFirstUser"
-                ],
-                "title": "UserAuthOperations"
-            }
-        }
-    },
-    "type": "object",
-    "properties": {
-        "collections": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "posts": {
-                    "$ref": "#/definitions/posts"
-                },
-                "pages": {
-                    "$ref": "#/definitions/pages"
-                },
-                "clients": {
-                    "$ref": "#/definitions/clients"
-                },
-                "reviews": {
-                    "$ref": "#/definitions/reviews"
-                },
-                "portfolio": {
-                    "$ref": "#/definitions/portfolio"
-                },
-                "portfolio-categories": {
-                    "$ref": "#/definitions/portfolio-categories"
-                },
-                "media": {
-                    "$ref": "#/definitions/media"
-                },
-                "users": {
-                    "$ref": "#/definitions/users"
-                },
-                "redirects": {
-                    "$ref": "#/definitions/redirects"
-                },
-                "forms": {
-                    "$ref": "#/definitions/forms"
-                },
-                "form-submissions": {
-                    "$ref": "#/definitions/form-submissions"
-                },
-                "payload-preferences": {
-                    "$ref": "#/definitions/payload-preferences"
-                },
-                "payload-migrations": {
-                    "$ref": "#/definitions/payload-migrations"
-                }
-            },
-            "required": [
-                "posts",
-                "pages",
-                "clients",
-                "reviews",
-                "portfolio",
-                "portfolio-categories",
-                "media",
-                "users",
-                "redirects",
-                "forms",
-                "form-submissions",
-                "payload-preferences",
-                "payload-migrations"
-            ]
-        },
-        "globals": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "settings": {
-                    "$ref": "#/definitions/settings"
-                },
-                "navigation": {
-                    "$ref": "#/definitions/navigation"
-                }
-            },
-            "required": [
-                "settings",
-                "navigation"
-            ]
-        },
-        "locale": {
-            "type": "null"
-        },
-        "user": {
-            "oneOf": [
-                {
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/users"
-                        },
-                        {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "collection": {
-                                    "type": "string",
-                                    "enum": [
-                                        "users"
-                                    ]
-                                }
-                            },
-                            "required": [
-                                "collection"
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    },
-    "required": [
-        "user",
-        "locale",
-        "collections",
-        "globals",
-        "auth"
-    ],
-    "title": "Config"
+	"additionalProperties": false,
+	"definitions": {
+		"settings": {
+			"type": "object",
+			"fields": [],
+			"goJSONSchema": {
+				"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+				"nillable": false,
+				"type": "payload.Settings"
+			}
+		},
+		"navigation": {
+			"type": "object",
+			"additionalProperties": false,
+			"title": "Navigation",
+			"properties": {
+				"id": {
+					"type": "number"
+				},
+				"header": {
+					"$ref": "#/definitions/NavigationHeaderLinks",
+					"payload": {
+						"name": "header",
+						"type": "array",
+						"label": "Items"
+					}
+				},
+				"updatedAt": {
+					"type": ["string", "null"]
+				},
+				"createdAt": {
+					"type": ["string", "null"]
+				}
+			},
+			"required": ["id"]
+		},
+		"posts": {
+			"type": "object",
+			"additionalProperties": false,
+			"title": "Post",
+			"properties": {
+				"id": {
+					"type": "number"
+				},
+				"title": {
+					"type": "string",
+					"payload": {
+						"name": "title",
+						"type": "text",
+						"label": "Title"
+					}
+				},
+				"excerpt": {
+					"type": ["string", "null"],
+					"payload": {
+						"name": "excerpt",
+						"type": "textarea",
+						"label": "Excerpt"
+					}
+				},
+				"content": {
+					"type": "string",
+					"goJSONSchema": {
+						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+						"nillable": false,
+						"type": "payload.RichText"
+					},
+					"payload": {
+						"name": "content",
+						"type": "richText",
+						"label": "Content"
+					}
+				},
+				"thumbnail": {
+					"goJSONSchema": {
+						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+						"nillable": false,
+						"type": "payload.Media"
+					},
+					"payload": {
+						"name": "thumbnail",
+						"type": "upload",
+						"label": "Thumbnail"
+					}
+				},
+				"meta": {
+					"goJSONSchema": {
+						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+						"nillable": true,
+						"type": "payload.SettingsMeta"
+					},
+					"payload": {
+						"name": "meta",
+						"type": "group",
+						"label": "SEO"
+					}
+				},
+				"publishedAt": {
+					"type": ["string", "null"],
+					"payload": {
+						"name": "publishedAt",
+						"type": "date",
+						"label": "Published At"
+					}
+				},
+				"relatedPosts": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/posts"
+					},
+					"payload": {
+						"name": "relatedPosts",
+						"type": "relationship",
+						"label": "Related Posts",
+						"hasMany": true,
+						"relationTo": "posts"
+					}
+				},
+				"tags": {
+					"type": ["array", "null"],
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"properties": {
+							"tag": {
+								"type": ["string", "null"],
+								"payload": {
+									"name": "tag",
+									"type": "text",
+									"label": "Tag"
+								}
+							},
+							"id": {
+								"type": ["string", "null"]
+							}
+						},
+						"required": []
+					},
+					"payload": {
+						"name": "tags",
+						"type": "array",
+						"label": "Tags"
+					}
+				},
+				"updatedAt": {
+					"type": "string"
+				},
+				"createdAt": {
+					"type": "string"
+				},
+				"_status": {
+					"type": ["string", "null"],
+					"enum": ["draft", "published"]
+				}
+			},
+			"required": ["id", "title", "updatedAt", "createdAt"]
+		},
+		"pages": {
+			"type": "object",
+			"additionalProperties": false,
+			"title": "Page",
+			"properties": {
+				"id": {
+					"type": "number"
+				},
+				"layout": {
+					"goJSONSchema": {
+						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+						"nillable": false,
+						"type": "payload.Blocks"
+					},
+					"payload": {
+						"name": "layout",
+						"type": "blocks",
+						"label": "Layout"
+					}
+				},
+				"isHome": {
+					"type": ["boolean", "null"],
+					"payload": {
+						"name": "isHome",
+						"type": "checkbox",
+						"label": "Is Home"
+					}
+				},
+				"updatedAt": {
+					"type": "string"
+				},
+				"createdAt": {
+					"type": "string"
+				},
+				"_status": {
+					"type": ["string", "null"],
+					"enum": ["draft", "published"]
+				}
+			},
+			"required": ["id", "layout", "updatedAt", "createdAt"]
+		},
+		"clients": {
+			"type": "object",
+			"additionalProperties": false,
+			"title": "Client",
+			"properties": {
+				"id": {
+					"type": "number"
+				},
+				"name": {
+					"type": "string",
+					"payload": {
+						"name": "name",
+						"type": "text",
+						"label": "Name"
+					}
+				},
+				"url": {
+					"type": "string",
+					"payload": {
+						"name": "url",
+						"type": "text",
+						"label": "Website"
+					}
+				},
+				"logo": {
+					"goJSONSchema": {
+						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+						"nillable": true,
+						"type": "payload.Media"
+					},
+					"payload": {
+						"name": "logo",
+						"type": "upload",
+						"label": "Logo"
+					}
+				},
+				"updatedAt": {
+					"type": "string"
+				},
+				"createdAt": {
+					"type": "string"
+				}
+			},
+			"required": ["id", "name", "url", "logo", "updatedAt", "createdAt"]
+		},
+		"reviews": {
+			"type": "object",
+			"additionalProperties": false,
+			"title": "Review",
+			"properties": {
+				"id": {
+					"type": "number"
+				},
+				"content": {
+					"type": "string",
+					"payload": {
+						"name": "content",
+						"type": "textarea",
+						"label": "Content"
+					}
+				},
+				"author": {
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"firstName": {
+							"type": "string",
+							"payload": {
+								"name": "firstName",
+								"type": "text",
+								"label": "First Name"
+							}
+						},
+						"lastName": {
+							"type": "string",
+							"payload": {
+								"name": "lastName",
+								"type": "text",
+								"label": "Last Name"
+							}
+						},
+						"description": {
+							"type": "string",
+							"payload": {
+								"name": "description",
+								"type": "text",
+								"label": "Description"
+							}
+						}
+					},
+					"required": ["firstName", "lastName", "description"],
+					"payload": {
+						"name": "author",
+						"type": "group",
+						"label": "Author"
+					}
+				},
+				"updatedAt": {
+					"type": "string"
+				},
+				"createdAt": {
+					"type": "string"
+				}
+			},
+			"required": ["id", "content", "author", "updatedAt", "createdAt"]
+		},
+		"portfolio": {
+			"type": "object",
+			"additionalProperties": false,
+			"title": "Portfolio",
+			"properties": {
+				"id": {
+					"type": "number"
+				},
+				"title": {
+					"type": "string",
+					"payload": {
+						"name": "title",
+						"type": "text",
+						"label": "Title"
+					}
+				},
+				"url": {
+					"type": "string",
+					"payload": {
+						"name": "url",
+						"type": "text",
+						"label": "Link"
+					}
+				},
+				"date": {
+					"type": "string",
+					"payload": {
+						"name": "date",
+						"type": "date",
+						"label": "Date"
+					}
+				},
+				"company": {
+					"payload": {
+						"name": "company",
+						"type": "relationship",
+						"label": "Company",
+						"relationTo": "clients"
+					},
+					"$ref": "#/definitions/clients"
+				},
+				"category": {
+					"payload": {
+						"name": "category",
+						"type": "relationship",
+						"label": "Category",
+						"hasMany": false,
+						"relationTo": "portfolio-categories"
+					},
+					"$ref": "#/definitions/portfolio-categories"
+				},
+				"image": {
+					"goJSONSchema": {
+						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+						"nillable": true,
+						"type": "payload.Media"
+					},
+					"payload": {
+						"name": "image",
+						"type": "upload",
+						"label": "Image"
+					}
+				},
+				"updatedAt": {
+					"type": "string"
+				},
+				"createdAt": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"id",
+				"title",
+				"url",
+				"date",
+				"company",
+				"category",
+				"image",
+				"updatedAt",
+				"createdAt"
+			]
+		},
+		"portfolio-categories": {
+			"type": "object",
+			"additionalProperties": false,
+			"title": "PortfolioCategory",
+			"properties": {
+				"id": {
+					"type": "number"
+				},
+				"title": {
+					"type": "string",
+					"payload": {
+						"name": "title",
+						"type": "text",
+						"label": "Title"
+					}
+				},
+				"updatedAt": {
+					"type": "string"
+				},
+				"createdAt": {
+					"type": "string"
+				}
+			},
+			"required": ["id", "title", "updatedAt", "createdAt"]
+		},
+		"users": {
+			"type": "object",
+			"additionalProperties": false,
+			"title": "User",
+			"properties": {
+				"id": {
+					"type": "number"
+				},
+				"name": {
+					"type": "string",
+					"payload": {
+						"name": "name",
+						"type": "text",
+						"label": "Name"
+					}
+				},
+				"updatedAt": {
+					"type": "string"
+				},
+				"createdAt": {
+					"type": "string"
+				},
+				"enableAPIKey": {
+					"type": ["boolean", "null"]
+				},
+				"apiKey": {
+					"type": ["string", "null"]
+				},
+				"apiKeyIndex": {
+					"type": ["string", "null"]
+				},
+				"email": {
+					"type": "string"
+				},
+				"resetPasswordToken": {
+					"type": ["string", "null"]
+				},
+				"resetPasswordExpiration": {
+					"type": ["string", "null"]
+				},
+				"salt": {
+					"type": ["string", "null"]
+				},
+				"hash": {
+					"type": ["string", "null"]
+				},
+				"loginAttempts": {
+					"type": ["number", "null"]
+				},
+				"lockUntil": {
+					"type": ["string", "null"]
+				},
+				"password": {
+					"type": ["string", "null"]
+				}
+			},
+			"required": ["id", "name", "updatedAt", "createdAt", "email"]
+		},
+		"forms": {
+			"type": "object",
+			"goJSONSchema": {
+				"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+				"nillable": false,
+				"type": "payload.Form"
+			},
+			"fields": []
+		},
+		"form-submissions": {
+			"type": "object",
+			"goJSONSchema": {
+				"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+				"nillable": false,
+				"type": "payload.FormSubmission"
+			},
+			"fields": []
+		},
+		"payload-preferences": {
+			"type": "object",
+			"additionalProperties": false,
+			"title": "PayloadPreference",
+			"properties": {
+				"id": {
+					"type": "number"
+				},
+				"user": {
+					"oneOf": [
+						{
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"relationTo": {
+									"const": "users"
+								},
+								"value": {
+									"oneOf": [
+										{
+											"type": "number"
+										},
+										{
+											"$ref": "#/definitions/users"
+										}
+									]
+								}
+							},
+							"required": ["value", "relationTo"]
+						}
+					]
+				},
+				"key": {
+					"type": ["string", "null"]
+				},
+				"value": {
+					"type": ["object", "array", "string", "number", "boolean", "null"]
+				},
+				"updatedAt": {
+					"type": "string"
+				},
+				"createdAt": {
+					"type": "string"
+				}
+			},
+			"required": ["id", "user", "updatedAt", "createdAt"]
+		},
+		"payload-migrations": {
+			"type": "object",
+			"additionalProperties": false,
+			"title": "PayloadMigration",
+			"properties": {
+				"id": {
+					"type": "number"
+				},
+				"name": {
+					"type": ["string", "null"]
+				},
+				"batch": {
+					"type": ["number", "null"]
+				},
+				"updatedAt": {
+					"type": "string"
+				},
+				"createdAt": {
+					"type": "string"
+				}
+			},
+			"required": ["id", "updatedAt", "createdAt"]
+		},
+		"NavigationHeaderLinks": {
+			"type": ["array", "null"],
+			"items": {
+				"type": "object",
+				"additionalProperties": false,
+				"properties": {
+					"title": {
+						"type": "string",
+						"payload": {
+							"name": "title",
+							"type": "text",
+							"label": "Title"
+						}
+					},
+					"url": {
+						"type": "string",
+						"payload": {
+							"name": "url",
+							"type": "text",
+							"label": "URL"
+						}
+					},
+					"id": {
+						"type": ["string", "null"]
+					}
+				},
+				"required": ["title", "url"]
+			}
+		},
+		"BlockContentDefault": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"style": {
+					"type": "string",
+					"enum": ["centered", "spread"],
+					"payload": {
+						"name": "style",
+						"type": "select",
+						"label": "Style"
+					}
+				},
+				"centreAlign": {
+					"type": ["boolean", "null"],
+					"payload": {
+						"name": "centreAlign",
+						"type": "checkbox",
+						"label": "Centre Align"
+					}
+				},
+				"content": {
+					"type": "string",
+					"goJSONSchema": {
+						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+						"nillable": false,
+						"type": "payload.RichText"
+					},
+					"payload": {
+						"name": "content",
+						"type": "richText",
+						"label": "Content"
+					}
+				},
+				"contentHtml": {
+					"type": ["string", "null"],
+					"payload": {
+						"name": "contentHtml",
+						"type": "code",
+						"label": "Content Html"
+					}
+				},
+				"id": {
+					"type": ["string", "null"]
+				},
+				"blockName": {
+					"type": ["string", "null"]
+				},
+				"blockType": {
+					"type": "string"
+				}
+			},
+			"required": ["blockType", "style", "content"]
+		},
+		"BlockContent": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"content": {
+					"type": "string",
+					"goJSONSchema": {
+						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+						"nillable": false,
+						"type": "payload.RichText"
+					},
+					"payload": {
+						"name": "content",
+						"type": "richText",
+						"label": "Content"
+					}
+				},
+				"contentHtml": {
+					"type": ["string", "null"],
+					"payload": {
+						"name": "contentHtml",
+						"type": "code",
+						"label": "Content Html"
+					}
+				},
+				"id": {
+					"type": ["string", "null"]
+				},
+				"blockName": {
+					"type": ["string", "null"]
+				},
+				"blockType": {
+					"type": "string"
+				}
+			},
+			"required": ["blockType", "content"]
+		},
+		"BlockFAQs": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"faqs": {
+					"type": ["array", "null"],
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"properties": {
+							"question": {
+								"type": "string",
+								"payload": {
+									"name": "question",
+									"type": "text",
+									"label": "Title"
+								}
+							},
+							"answer": {
+								"type": "string",
+								"payload": {
+									"name": "answer",
+									"type": "textarea",
+									"label": "Answer"
+								}
+							},
+							"id": {
+								"type": ["string", "null"]
+							}
+						},
+						"required": ["question", "answer"]
+					},
+					"payload": {
+						"name": "faqs",
+						"type": "array",
+						"label": "FAQs"
+					}
+				},
+				"id": {
+					"type": ["string", "null"]
+				},
+				"blockName": {
+					"type": ["string", "null"]
+				},
+				"blockType": {
+					"type": "string"
+				}
+			},
+			"required": ["blockType"]
+		},
+		"BlockContentWithImage": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"textLayout": {
+					"goJSONSchema": {
+						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+						"nillable": false,
+						"type": "payload.Blocks"
+					},
+					"payload": {
+						"name": "textLayout",
+						"type": "blocks",
+						"label": "Text Layout"
+					}
+				},
+				"imagePosition": {
+					"type": "string",
+					"payload": {
+						"name": "imagePosition",
+						"type": "select",
+						"label": "Image Position"
+					}
+				},
+				"sticky": {
+					"type": ["boolean", "null"],
+					"payload": {
+						"name": "sticky",
+						"type": "checkbox",
+						"label": "Sticky Image"
+					}
+				},
+				"image": {
+					"goJSONSchema": {
+						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+						"nillable": true,
+						"type": "payload.Media"
+					},
+					"payload": {
+						"name": "image",
+						"type": "upload",
+						"label": "Image"
+					}
+				},
+				"id": {
+					"type": ["string", "null"]
+				},
+				"blockName": {
+					"type": ["string", "null"]
+				},
+				"blockType": {
+					"type": "string"
+				}
+			},
+			"required": ["blockType", "textLayout", "imagePosition", "image"]
+		},
+		"BlockLogs": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"title": {
+					"type": "string",
+					"payload": {
+						"name": "title",
+						"type": "text",
+						"label": "Title"
+					}
+				},
+				"greyscale": {
+					"type": ["boolean", "null"],
+					"payload": {
+						"name": "greyscale",
+						"type": "checkbox",
+						"label": "Greyscale"
+					}
+				},
+				"logos": {
+					"type": ["array", "null"],
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"properties": {
+							"logo": {
+								"goJSONSchema": {
+									"imports": [
+										"github.com/ainsleydev/webkit/pkg/adapters/payload"
+									],
+									"nillable": true,
+									"type": "payload.Media"
+								},
+								"payload": {
+									"name": "logo",
+									"type": "upload",
+									"label": "Logo"
+								}
+							},
+							"id": {
+								"type": ["string", "null"]
+							}
+						},
+						"required": ["logo"]
+					},
+					"payload": {
+						"name": "logos",
+						"type": "array",
+						"label": "Logos"
+					}
+				},
+				"id": {
+					"type": ["string", "null"]
+				},
+				"blockName": {
+					"type": ["string", "null"]
+				},
+				"blockType": {
+					"type": "string"
+				}
+			},
+			"required": ["blockType", "title"]
+		},
+		"BlockReviews": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"title": {
+					"type": "string",
+					"payload": {
+						"name": "title",
+						"type": "text",
+						"label": "Title"
+					}
+				},
+				"content": {
+					"type": ["string", "null"],
+					"payload": {
+						"name": "content",
+						"type": "textarea",
+						"label": "Content"
+					}
+				},
+				"items": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/reviews"
+					},
+					"payload": {
+						"name": "items",
+						"type": "relationship",
+						"label": "Reviews",
+						"hasMany": true,
+						"relationTo": "reviews"
+					}
+				},
+				"id": {
+					"type": ["string", "null"]
+				},
+				"blockName": {
+					"type": ["string", "null"]
+				},
+				"blockType": {
+					"type": "string"
+				}
+			},
+			"required": ["blockType", "title"]
+		},
+		"BlockPortfolio": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"title": {
+					"type": "string",
+					"payload": {
+						"name": "title",
+						"type": "text",
+						"label": "Title"
+					}
+				},
+				"content": {
+					"type": ["string", "null"],
+					"payload": {
+						"name": "content",
+						"type": "textarea",
+						"label": "Content"
+					}
+				},
+				"items": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/portfolio"
+					},
+					"payload": {
+						"name": "items",
+						"type": "relationship",
+						"label": "Portfolio",
+						"hasMany": true,
+						"relationTo": "portfolio"
+					}
+				},
+				"id": {
+					"type": ["string", "null"]
+				},
+				"blockName": {
+					"type": ["string", "null"]
+				},
+				"blockType": {
+					"type": "string"
+				}
+			},
+			"required": ["blockType", "title"]
+		},
+		"BlockContact": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"title": {
+					"type": "string",
+					"payload": {
+						"name": "title",
+						"type": "text",
+						"label": "Title"
+					}
+				},
+				"content": {
+					"type": ["string", "null"],
+					"payload": {
+						"name": "content",
+						"type": "textarea",
+						"label": "Content"
+					}
+				},
+				"includeSocial": {
+					"type": ["boolean", "null"],
+					"payload": {
+						"name": "includeSocial",
+						"type": "checkbox",
+						"label": "Include Social Links?"
+					}
+				},
+				"form": {
+					"goJSONSchema": {
+						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
+						"nillable": false,
+						"type": "payload.Form"
+					},
+					"payload": {
+						"name": "form",
+						"type": "relationship",
+						"label": "Form",
+						"hasMany": false,
+						"relationTo": "forms"
+					}
+				},
+				"id": {
+					"type": ["string", "null"]
+				},
+				"blockName": {
+					"type": ["string", "null"]
+				},
+				"blockType": {
+					"type": "string"
+				}
+			},
+			"required": ["blockType", "title"]
+		},
+		"auth": {
+			"users": {
+				"type": "object",
+				"additionalProperties": false,
+				"properties": {
+					"forgotPassword": {
+						"additionalProperties": false,
+						"properties": {
+							"email": {
+								"type": "string"
+							}
+						},
+						"required": ["email"]
+					},
+					"login": {
+						"additionalProperties": false,
+						"properties": {
+							"password": {
+								"type": "string"
+							},
+							"email": {
+								"type": "string"
+							}
+						},
+						"required": ["password", "email"]
+					},
+					"registerFirstUser": {
+						"additionalProperties": false,
+						"properties": {
+							"email": {
+								"type": "string"
+							},
+							"password": {
+								"type": "string"
+							}
+						},
+						"required": ["email", "password"]
+					}
+				},
+				"required": ["forgotPassword", "login", "registerFirstUser"],
+				"title": "UserAuthOperations"
+			}
+		}
+	},
+	"type": "object",
+	"properties": {
+		"collections": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"posts": {
+					"$ref": "#/definitions/posts"
+				},
+				"pages": {
+					"$ref": "#/definitions/pages"
+				},
+				"clients": {
+					"$ref": "#/definitions/clients"
+				},
+				"reviews": {
+					"$ref": "#/definitions/reviews"
+				},
+				"portfolio": {
+					"$ref": "#/definitions/portfolio"
+				},
+				"portfolio-categories": {
+					"$ref": "#/definitions/portfolio-categories"
+				},
+				"users": {
+					"$ref": "#/definitions/users"
+				},
+				"forms": {
+					"$ref": "#/definitions/forms"
+				},
+				"form-submissions": {
+					"$ref": "#/definitions/form-submissions"
+				},
+				"payload-preferences": {
+					"$ref": "#/definitions/payload-preferences"
+				},
+				"payload-migrations": {
+					"$ref": "#/definitions/payload-migrations"
+				}
+			},
+			"required": [
+				"posts",
+				"pages",
+				"clients",
+				"reviews",
+				"portfolio",
+				"portfolio-categories",
+				"media",
+				"users",
+				"redirects",
+				"forms",
+				"form-submissions",
+				"payload-preferences",
+				"payload-migrations"
+			]
+		},
+		"globals": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"settings": {
+					"$ref": "#/definitions/settings"
+				},
+				"navigation": {
+					"$ref": "#/definitions/navigation"
+				}
+			},
+			"required": ["settings", "navigation"]
+		},
+		"locale": {
+			"type": "null"
+		},
+		"user": {
+			"oneOf": [
+				{
+					"allOf": [
+						{
+							"$ref": "#/definitions/users"
+						},
+						{
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"collection": {
+									"type": "string",
+									"enum": ["users"]
+								}
+							},
+							"required": ["collection"]
+						}
+					]
+				}
+			]
+		}
+	},
+	"required": ["user", "locale", "collections", "globals", "auth"],
+	"title": "Config"
 }

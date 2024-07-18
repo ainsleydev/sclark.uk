@@ -20,7 +20,7 @@
 		"docker:run": "docker run -it --init --env-file .env -p 3000:3000 --rm -ti ainsley.dev/web",
 		"gen": "pnpm run generate:templ && pnpm run generate:types && pnpm run generate:modernizr",
 		"generate:templ": "TEMPL_EXPERIMENT=rawgo go generate ./...",
-		"generate:types": "go-jsonschema -p types --struct-name-from-title ../cms/src/types/payload.json > ./types/cms.go",
+		"generate:types": "go-jsonschema -p types --only-models --struct-name-from-title --capitalization strings --verbose ../cms/src/types/payload.json > ./types/cms.go",
 		"generate:modernizr": "modernizr --config modernizr.json --dest ./assets/js/modernizr.js",
 		"test": "go test ./... -race $$(go list ./... | temp) -coverprofile=../../coverage.out -covermode=atomic",
 		"cover": "go tool cover -html=coverage.out",
