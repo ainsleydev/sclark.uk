@@ -5,9 +5,9 @@ import "github.com/ainsleydev/sclark.uk/types"
 templ PortfolioItem(props types.Portfolio) {
 	<a href={ templ.SafeURL(props.Url) } class="portfolio-item" target="_blank">
 		<!-- Image -->
-		if props.Image.Url != nil {
+		if props.Image.URL != "" {
 			<picture class="portfolio-item-image">
-				<img loading="lazy" src={ *props.Image.Url } alt={ props.Image.Alt } >
+				<img loading="lazy" src={ props.Image.URL } alt={ props.Image.Alt() } >
 			</picture>
 		}
 		<!-- Content -->
@@ -32,9 +32,9 @@ templ PortfolioItem(props types.Portfolio) {
 				</h5>
 			</div>
 			<!-- Logo -->
-			if props.Company.Logo.Url != nil {
+			if props.Company.Logo.URL != "" {
 				<picture class="portfolio-item-logo">
-					<img loading="lazy" src={ *props.Company.Logo.Url } alt={ props.Company.Logo.Alt } >
+					<img loading="lazy" src={ props.Company.Logo.URL } alt={ props.Company.Logo.Alt() } >
 				</picture>
 			}
 		</div>

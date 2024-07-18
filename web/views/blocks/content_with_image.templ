@@ -34,10 +34,10 @@ templ ContentWithImage(props types.BlockContentWithImage) {
 				<!-- Image -->
 				<div class={ "col-12 col-tab-10 col-desk-6",
 					templ.KV("order-desk-last", props.ImagePosition == "right") }>
-					if props.Image.Url != nil {
+					if props.Image.URL != "" {
 						<picture class={ "content-image",
 						templ.KV("content-image-sticky", ptr.Bool(props.Sticky)) }>
-							<img loading="lazy" src={ *props.Image.Url } alt={ props.Image.Alt } >
+							<img loading="lazy" src={ props.Image.URL } alt={ props.Image.Alt() } >
 						</picture>
 					}
 				</div><!-- /Col -->

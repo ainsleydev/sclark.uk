@@ -2,6 +2,7 @@ package content
 
 import (
 	"github.com/ainsleydev/sclark.uk/types"
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 	"github.com/ainsleydev/webkit/pkg/util/ptr"
 )
 
@@ -17,12 +18,12 @@ var Portfolio = types.BlockPortfolio{
 			Company: types.Clients{
 				Name: "Dec's Pets",
 				Url:  "https://decspets.ie",
-				Logo: types.Media{
-					Url: ptr.StringPtr("/assets/exports/logos/coloured/decs-pets.svg"),
+				Logo: payload.Media{
+					URL: "/assets/exports/logos/coloured/decs-pets.svg",
 				},
 			},
-			Image: types.Media{
-				Url: ptr.StringPtr("/assets/exports/portfolio/pet-tortoise.jpg"),
+			Image: payload.Media{
+				URL: "/assets/exports/portfolio/pet-tortoise.jpg",
 			},
 		},
 		{
@@ -33,12 +34,12 @@ var Portfolio = types.BlockPortfolio{
 			Company: types.Clients{
 				Name: "Schools and Agents",
 				Url:  "https://schoolsandagents.com/",
-				Logo: types.Media{
-					Url: ptr.StringPtr("/assets/exports/logos/coloured/schools-and-agents.svg"),
+				Logo: payload.Media{
+					URL: "/assets/exports/logos/coloured/schools-and-agents.svg",
 				},
 			},
-			Image: types.Media{
-				Url: ptr.StringPtr("/assets/exports/portfolio/email-marketing.jpg"),
+			Image: payload.Media{
+				URL: "/assets/exports/portfolio/email-marketing.jpg",
 			},
 		},
 		{
@@ -49,12 +50,12 @@ var Portfolio = types.BlockPortfolio{
 			Company: types.Clients{
 				Name: "ainsley.dev",
 				Url:  "https://ainsley.dev",
-				Logo: types.Media{
-					Url: ptr.StringPtr("/assets/exports/logos/coloured/ainsley-dev.svg"),
+				Logo: payload.Media{
+					URL: "/assets/exports/logos/coloured/ainsley-dev.svg",
 				},
 			},
-			Image: types.Media{
-				Url: ptr.StringPtr("/assets/exports/portfolio/prebuilt-themes.jpg"),
+			Image: payload.Media{
+				URL: "/assets/exports/portfolio/prebuilt-themes.jpg",
 			},
 		},
 		{
@@ -65,12 +66,12 @@ var Portfolio = types.BlockPortfolio{
 			Company: types.Clients{
 				Name: "Bailogik",
 				Url:  "https://www.bailogik.com/",
-				Logo: types.Media{
-					Url: ptr.StringPtr("/assets/exports/logos/coloured/bailogik.svg"),
+				Logo: payload.Media{
+					URL: "/assets/exports/logos/coloured/bailogik.svg",
 				},
 			},
-			Image: types.Media{
-				Url: ptr.StringPtr("/assets/exports/portfolio/social-media-strategy.jpg"),
+			Image: payload.Media{
+				URL: "/assets/exports/portfolio/social-media-strategy.jpg",
 			},
 		},
 		{
@@ -81,12 +82,12 @@ var Portfolio = types.BlockPortfolio{
 			Company: types.Clients{
 				Name: "Britcent",
 				Url:  "https://britcent.uk/",
-				Logo: types.Media{
-					Url: ptr.StringPtr("/assets/exports/logos/coloured/britcent.svg"),
+				Logo: payload.Media{
+					URL: "/assets/exports/logos/coloured/britcent.svg",
 				},
 			},
-			Image: types.Media{
-				Url: ptr.StringPtr("/assets/exports/portfolio/corona-survival-guide.jpg"),
+			Image: payload.Media{
+				URL: "/assets/exports/portfolio/corona-survival-guide.jpg",
 			},
 		},
 		{
@@ -97,12 +98,12 @@ var Portfolio = types.BlockPortfolio{
 			Company: types.Clients{
 				Name: "ainsley.dev",
 				Url:  "https://ainsley.dev",
-				Logo: types.Media{
-					Url: ptr.StringPtr("/assets/exports/logos/coloured/ainsley-dev.svg"),
+				Logo: payload.Media{
+					URL: "/assets/exports/logos/coloured/ainsley-dev.svg",
 				},
 			},
-			Image: types.Media{
-				Url: ptr.StringPtr("/assets/exports/portfolio/enhance-nav-menus.jpg"),
+			Image: payload.Media{
+				URL: "/assets/exports/portfolio/enhance-nav-menus.jpg",
 			},
 		},
 	},

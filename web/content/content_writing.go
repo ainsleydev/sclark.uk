@@ -18,7 +18,7 @@ var ContentWriting = types.BlockContentWithImage{
 		URL: "/assets/images/mockups/tablet.png",
 	},
 	Sticky:        ptr.BoolPtr(true),
-	ImagePosition: types.Imag,
+	ImagePosition: "right",
 	TextLayout: payload.Blocks{
 		{
 			BlockType: "content-block",
