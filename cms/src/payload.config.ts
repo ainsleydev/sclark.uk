@@ -79,9 +79,7 @@ export default buildConfig({
 			fields: SEOFields as Field[],
 			tabbedUI: true,
 			uploadsCollection: "media",
-			// @ts-ignore
 			generateTitle: ({ doc, locale }) => `Website.com — ${doc?.title?.value ?? ""}`,
-			// @ts-ignore
 			generateDescription: ({ doc }) => doc?.excerpt?.value,
 		}),
 		formBuilderPlugin({
@@ -100,6 +98,7 @@ export default buildConfig({
 						);
 					});
 
+					// TODO: Also need to make Label required.
 					defaultFields.forEach((field) => {
 						if (!fieldIsBlockType(field)) return;
 						if (field.name === "fields") {
@@ -112,6 +111,25 @@ export default buildConfig({
 					});
 
 					return [
+						{
+							name: "heading",
+							type: "text",
+							label: "Heading",
+							required: true,
+							admin: {
+								description:
+									"Add a heading for the form that will appear within the form.",
+							},
+						},
+						{
+							name: "content",
+							type: "textarea",
+							label: "Content",
+							admin: {
+								description:
+									"Add content for the form that will appear above the fields.",
+							},
+						},
 						...filteredFields,
 						{
 							name: "confirmationMessage",
@@ -131,13 +149,13 @@ export default buildConfig({
 			fields: {
 				text: true,
 				textarea: true,
-				select: true,
+				select: false,
 				email: true,
-				state: true,
-				country: true,
-				checkbox: true,
-				number: true,
-				message: true,
+				state: false,
+				country: false,
+				checkbox: false,
+				number: false,
+				message: false,
 				payment: false,
 			},
 		}),

@@ -64,20 +64,14 @@ templ Contact(props types.BlockContact) {
 							<h4>Get in touch</h4>
 							<p>Fill out the quick form below and we will get back in touch.</p>
 						}
-						<div class="form-group">
-							<label class="form-label" for="form-name">Name</label>
-							<input class="form-input" type="text" id="form-name" autocomplete="given-name" />
-						</div>
-						<div class="form-group">
-							<label class="form-label" for="form-email">Email</label>
-							<input class="form-input" type="text" id="form-email" autocomplete="email" />
-						</div>
-						<div class="form-group">
-							<label class="form-label" for="form-message">Message</label>
-							<textarea class="form-input form-textarea" id="form-message" rows="4" spellcheck="true"></textarea>
-						</div>
+						for _, field := range props.Form.Fields {
+							<div class="form-group">
+								<label class="form-label" for={ field.ID }>{ field.Label }</label>
+								@field
+							</div>
+						}
 						@components.Button(components.ButtonProps{
-							Text: "Get In Touch",
+							Text: props.Form.ButtonLabel("Get In Touch"),
 							Filled: true,
 							Block: true,
 						})

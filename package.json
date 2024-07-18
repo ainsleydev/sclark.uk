@@ -35,7 +35,6 @@
 		"build:web": "turbo build --filter=web",
 		"lint": "turbo lint",
 		"fix": "turbo lint",
-		"commit": "cz",
 		"gen": "turbo run gen --filter=cms && turbo run gen --filter=web",
 		"test": "turbo run test --filter=web"
 	},
