@@ -1,20 +1,20 @@
-import type { CollectionConfig } from "payload";
+import type { CollectionConfig } from 'payload';
 // import {Hero} from '../fields/Hero';
-import { SlugField } from "@nouance/payload-better-fields-plugin";
+import { SlugField } from '@nouance/payload-better-fields-plugin';
 // import {findBySlug} from 'adev-payload/src/endpoints/slug';
-import { Reviews } from "@/blocks/Reviews";
-import { Portfolio } from "@/blocks/Portfolio";
-import { ContentWithImage } from "@/blocks/ContentWithImage";
-import {Logos} from "@/blocks/Logos";
-import {Content} from "@/blocks/Content";
-import {Contact} from "@/blocks/Contact";
+import { Reviews } from '@/blocks/Reviews';
+import { Portfolio } from '@/blocks/Portfolio';
+import { ContentWithImage } from '@/blocks/ContentWithImage';
+import { Logos } from '@/blocks/Logos';
+import { Content } from '@/blocks/Content';
+import { Contact } from '@/blocks/Contact';
 
 export const Pages: CollectionConfig = {
-	slug: "pages",
+	slug: 'pages',
 	timestamps: true,
 	labels: {
-		singular: "Page",
-		plural: "Pages",
+		singular: 'Page',
+		plural: 'Pages',
 	},
 	versions: {
 		drafts: true,
@@ -54,7 +54,7 @@ export const Pages: CollectionConfig = {
 	],
 	fields: [
 		{
-			type: "tabs",
+			type: 'tabs',
 			tabs: [
 				// {
 				// 	label: 'Hero',
@@ -69,20 +69,13 @@ export const Pages: CollectionConfig = {
 				// 	],
 				// },
 				{
-					label: "Content",
+					label: 'Content',
 					fields: [
 						{
-							name: "layout",
-							type: "blocks",
+							name: 'layout',
+							type: 'blocks',
 							required: true,
-							blocks: [
-								Content,
-								ContentWithImage,
-								Logos,
-								Reviews,
-								Portfolio,
-								Contact,
-							],
+							blocks: [Content, ContentWithImage, Logos, Reviews, Portfolio, Contact],
 						},
 					],
 				},
@@ -103,13 +96,13 @@ export const Pages: CollectionConfig = {
 		// 	},
 		// ),
 		{
-			name: "isHome",
-			label: "Is Home",
-			type: "checkbox",
+			name: 'isHome',
+			label: 'Is Home',
+			type: 'checkbox',
 			defaultValue: false,
 			unique: true,
 			admin: {
-				position: "sidebar",
+				position: 'sidebar',
 			},
 		},
 	],

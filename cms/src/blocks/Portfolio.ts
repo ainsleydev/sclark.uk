@@ -1,35 +1,35 @@
-import type { Block } from "payload";
+import type { Block } from 'payload';
 
 export const Portfolio: Block = {
-	slug: "portfolio-block",
-	interfaceName: "BlockPortfolio",
+	slug: 'portfolio-block',
+	interfaceName: 'BlockPortfolio',
 	labels: {
-		singular: "Portfolio Item",
-		plural: "Portfolio",
+		singular: 'Portfolio Item',
+		plural: 'Portfolio',
 	},
 	fields: [
 		{
-			name: "title",
-			type: "text",
-			label: "Title",
+			name: 'title',
+			type: 'text',
+			label: 'Title',
 			required: true,
 			admin: {
-				description: "Add a title for the portfolio block.",
+				description: 'Add a title for the portfolio block.',
 			},
 		},
 		{
-			name: "content",
-			type: "textarea",
-			label: "Content",
+			name: 'content',
+			type: 'textarea',
+			label: 'Content',
 			admin: {
-				description: "Add a content for the portfolio block.",
+				description: 'Add a content for the portfolio block.',
 			},
 		},
 		{
-			type: "relationship",
-			name: "items",
-			label: "Portfolio",
-			relationTo: "portfolio",
+			type: 'relationship',
+			name: 'items',
+			label: 'Portfolio',
+			relationTo: 'portfolio',
 			hasMany: true,
 			admin: {
 				isSortable: true,

@@ -1,90 +1,90 @@
-import { validateURL } from "@ainsleydev/payload-helper/src/util/validation";
-import type { CollectionConfig } from "payload";
+import { validateURL } from '@ainsleydev/payload-helper/src/util/validation';
+import type { CollectionConfig } from 'payload';
 
 export const Portfolio: CollectionConfig = {
-	slug: "portfolio",
+	slug: 'portfolio',
 	labels: {
-		singular: "Portfolio Item",
-		plural: "Portfolio",
+		singular: 'Portfolio Item',
+		plural: 'Portfolio',
 	},
 	admin: {
-		useAsTitle: "title",
-		defaultColumns: ["title", "company", "category", "date"],
+		useAsTitle: 'title',
+		defaultColumns: ['title', 'company', 'category', 'date'],
 	},
 	fields: [
 		{
-			name: "title",
-			label: "Title",
-			type: "text",
+			name: 'title',
+			label: 'Title',
+			type: 'text',
 			required: true,
 			admin: {
-				description: "The title of this project or blog post.",
+				description: 'The title of this project or blog post.',
 			},
 		},
 		{
-			type: "row",
+			type: 'row',
 			fields: [
 				{
-					name: "url",
-					label: "Link",
-					type: "text",
+					name: 'url',
+					label: 'Link',
+					type: 'text',
 					required: true,
 					validate: validateURL,
 					admin: {
-						width: "50%",
-						description: "The URL of this project or blog post.",
+						width: '50%',
+						description: 'The URL of this project or blog post.',
 					},
 				},
 				{
-					name: "date",
-					label: "Date",
-					type: "date",
+					name: 'date',
+					label: 'Date',
+					type: 'date',
 					required: true,
 					admin: {
-						width: "50%",
-						description: "The date this project or blog post was published on.",
+						width: '50%',
+						description: 'The date this project or blog post was published on.',
 					},
 				},
 			],
 		},
 		{
-			type: "row",
+			type: 'row',
 			fields: [
 				{
-					name: "company",
-					label: "Company",
-					type: "relationship",
-					relationTo: "clients",
+					name: 'company',
+					label: 'Company',
+					type: 'relationship',
+					relationTo: 'clients',
 					required: true,
 					admin: {
-						width: "50%",
+						width: '50%',
 						description:
-							"Attach a company to the portfolio item, that the project was completed for.",
+							'Attach a company to the portfolio item, that the project was completed for.',
 					},
 				},
 				{
-					name: "category",
-					label: "Category",
-					type: "relationship",
-					relationTo: "portfolio-categories",
+					name: 'category',
+					label: 'Category',
+					type: 'relationship',
+					relationTo: 'portfolio-categories',
 					hasMany: false,
 					required: true,
 					admin: {
-						width: "50%",
+						width: '50%',
 						allowCreate: true,
-						description: "Select a category for this portfolio item.",
+						description: 'Select a category for this portfolio item.',
 					},
 				},
 			],
 		},
 		{
-			name: "image",
-			label: "Image",
-			type: "upload",
-			relationTo: "media",
+			name: 'image',
+			label: 'Image',
+			type: 'upload',
+			relationTo: 'media',
 			required: true,
 			admin: {
-				description: "Attach a main image for the portfolio item.",
+				description: 'Attach a main image for the portfolio item.',
 			},
 		},
 	],

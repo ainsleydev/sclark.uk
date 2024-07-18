@@ -1,51 +1,51 @@
-import { validateURL } from "@ainsleydev/payload-helper/src/util/validation";
-import type { CollectionConfig, UploadField } from "payload";
+import { validateURL } from '@ainsleydev/payload-helper/src/util/validation';
+import type { CollectionConfig, UploadField } from 'payload';
 
 export const Clients: CollectionConfig = {
-	slug: "clients",
+	slug: 'clients',
 	labels: {
-		singular: "Client",
-		plural: "Clients",
+		singular: 'Client',
+		plural: 'Clients',
 	},
 	admin: {
-		useAsTitle: "name",
-		defaultColumns: ["name", "url"],
+		useAsTitle: 'name',
+		defaultColumns: ['name', 'url'],
 	},
 	fields: [
 		{
-			name: "name",
-			label: "Name",
-			type: "text",
+			name: 'name',
+			label: 'Name',
+			type: 'text',
 			required: true,
 			admin: {
-				description: "The name of the client or company.",
+				description: 'The name of the client or company.',
 			},
 		},
 		{
-			name: "url",
-			label: "Website",
-			type: "text",
+			name: 'url',
+			label: 'Website',
+			type: 'text',
 			required: true,
 			validate: validateURL,
 			admin: {
 				description: {
-					name: "The website of the client or company.",
+					name: 'The website of the client or company.',
 				},
 			},
 		},
 		{
-			name: "logo",
-			type: "upload",
-			relationTo: "media",
+			name: 'logo',
+			type: 'upload',
+			relationTo: 'media',
 			required: true,
 			filterOptions: {
 				mimeType: {
-					contains: "image",
+					contains: 'image',
 				},
 			},
 			admin: {
 				description:
-					"Attach a logo of the client or company, this should be black in SVG format.",
+					'Attach a logo of the client or company, this should be black in SVG format.',
 			},
 		} as UploadField,
 	],

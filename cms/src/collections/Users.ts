@@ -1,9 +1,9 @@
-import type { CollectionConfig } from "payload";
+import type { CollectionConfig } from 'payload';
 
 export const Users: CollectionConfig = {
-	slug: "users",
+	slug: 'users',
 	admin: {
-		useAsTitle: "email",
+		useAsTitle: 'email',
 	},
 	auth: {
 		maxLoginAttempts: 5,
@@ -12,17 +12,17 @@ export const Users: CollectionConfig = {
 	},
 	fields: [
 		{
-			name: "name",
-			type: "text",
+			name: 'name',
+			type: 'text',
 			required: true,
 			validate: (value: string) => {
 				if (!value) {
-					return "Name is required";
+					return 'Name is required';
 				}
 
-				const names = value.split(" ");
+				const names = value.split(' ');
 				if (names.length !== 2) {
-					return "Name must include both first and last name";
+					return 'Name must include both first and last name';
 				}
 
 				return true;

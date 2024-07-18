@@ -1,22 +1,18 @@
-import type { Block } from "payload";
-import {
-	HTMLConverterFeature,
-	lexicalEditor,
-	lexicalHTML
-} from '@payloadcms/richtext-lexical'
+import type { Block } from 'payload';
+import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from '@payloadcms/richtext-lexical';
 
 export const RichText: Block = {
-	slug: "content-block",
-	interfaceName: "BlockContent",
+	slug: 'content-block',
+	interfaceName: 'BlockContent',
 	labels: {
-		singular: "Content",
-		plural: "Content",
+		singular: 'Content',
+		plural: 'Content',
 	},
 	fields: [
 		{
-			name: "content",
-			label: "Content",
-			type: "richText",
+			name: 'content',
+			label: 'Content',
+			type: 'richText',
 			required: true,
 			editor: lexicalEditor({
 				features: ({ defaultFeatures }) => [

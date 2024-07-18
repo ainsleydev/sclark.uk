@@ -46,7 +46,17 @@
 			"recommended": true,
 			"complexity": {
 				"noForEach": "off"
+			},
+			"performance": {
+				"noDelete": "off"
 			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"jsxQuoteStyle": "single",
+			"trailingCommas": "all"
 		}
 	},
 	"overrides": [

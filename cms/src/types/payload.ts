@@ -28,14 +28,14 @@ export interface Config {
 		clients: Client;
 		reviews: Review;
 		portfolio: Portfolio;
-		"portfolio-categories": PortfolioCategory;
+		'portfolio-categories': PortfolioCategory;
 		media: Media;
 		users: User;
 		redirects: Redirect;
 		forms: Form;
-		"form-submissions": FormSubmission;
-		"payload-preferences": PayloadPreference;
-		"payload-migrations": PayloadMigration;
+		'form-submissions': FormSubmission;
+		'payload-preferences': PayloadPreference;
+		'payload-migrations': PayloadMigration;
 	};
 	globals: {
 		settings: Settings;
@@ -43,7 +43,7 @@ export interface Config {
 	};
 	locale: null;
 	user: User & {
-		collection: "users";
+		collection: 'users';
 	};
 }
 export interface UserAuthOperations {
@@ -75,8 +75,8 @@ export interface Post {
 				version: number;
 				[k: string]: unknown;
 			}[];
-			direction: ("ltr" | "rtl") | null;
-			format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+			direction: ('ltr' | 'rtl') | null;
+			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
 			indent: number;
 			version: number;
 		};
@@ -109,7 +109,7 @@ export interface Post {
 		| null;
 	updatedAt: string;
 	createdAt: string;
-	_status?: ("draft" | "published") | null;
+	_status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -126,8 +126,8 @@ export interface Media {
 				version: number;
 				[k: string]: unknown;
 			}[];
-			direction: ("ltr" | "rtl") | null;
-			format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+			direction: ('ltr' | 'rtl') | null;
+			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
 			indent: number;
 			version: number;
 		};
@@ -252,14 +252,14 @@ export interface Page {
 	isHome?: boolean | null;
 	updatedAt: string;
 	createdAt: string;
-	_status?: ("draft" | "published") | null;
+	_status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BlockContentDefault".
  */
 export interface BlockContentDefault {
-	style: "centered" | "spread";
+	style: 'centered' | 'spread';
 	centreAlign?: boolean | null;
 	content: {
 		root: {
@@ -269,8 +269,8 @@ export interface BlockContentDefault {
 				version: number;
 				[k: string]: unknown;
 			}[];
-			direction: ("ltr" | "rtl") | null;
-			format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+			direction: ('ltr' | 'rtl') | null;
+			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
 			indent: number;
 			version: number;
 		};
@@ -279,7 +279,7 @@ export interface BlockContentDefault {
 	contentHtml?: string | null;
 	id?: string | null;
 	blockName?: string | null;
-	blockType: "content-block";
+	blockType: 'content-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -292,7 +292,7 @@ export interface BlockContentWithImage {
 	image: number | Media;
 	id?: string | null;
 	blockName?: string | null;
-	blockType: "content-with-image-block";
+	blockType: 'content-with-image-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -307,8 +307,8 @@ export interface BlockContent {
 				version: number;
 				[k: string]: unknown;
 			}[];
-			direction: ("ltr" | "rtl") | null;
-			format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+			direction: ('ltr' | 'rtl') | null;
+			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
 			indent: number;
 			version: number;
 		};
@@ -317,7 +317,7 @@ export interface BlockContent {
 	contentHtml?: string | null;
 	id?: string | null;
 	blockName?: string | null;
-	blockType: "content-block";
+	blockType: 'content-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -333,7 +333,7 @@ export interface BlockFAQs {
 		| null;
 	id?: string | null;
 	blockName?: string | null;
-	blockType: "faqs-block";
+	blockType: 'faqs-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -350,7 +350,7 @@ export interface BlockLogs {
 		| null;
 	id?: string | null;
 	blockName?: string | null;
-	blockType: "logos-block";
+	blockType: 'logos-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -362,7 +362,7 @@ export interface BlockReviews {
 	items?: (number | Review)[] | null;
 	id?: string | null;
 	blockName?: string | null;
-	blockType: "reviews-block";
+	blockType: 'reviews-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -389,7 +389,7 @@ export interface BlockPortfolio {
 	items?: (number | Portfolio)[] | null;
 	id?: string | null;
 	blockName?: string | null;
-	blockType: "portfolio-block";
+	blockType: 'portfolio-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -439,7 +439,7 @@ export interface BlockContact {
 	form?: (number | null) | Form;
 	id?: string | null;
 	blockName?: string | null;
-	blockType: "contact-block";
+	blockType: 'contact-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -459,7 +459,7 @@ export interface Form {
 						required?: boolean | null;
 						id?: string | null;
 						blockName?: string | null;
-						blockType: "email";
+						blockType: 'email';
 				  }
 				| {
 						name: string;
@@ -469,7 +469,7 @@ export interface Form {
 						required?: boolean | null;
 						id?: string | null;
 						blockName?: string | null;
-						blockType: "text";
+						blockType: 'text';
 				  }
 				| {
 						name: string;
@@ -479,7 +479,7 @@ export interface Form {
 						required?: boolean | null;
 						id?: string | null;
 						blockName?: string | null;
-						blockType: "textarea";
+						blockType: 'textarea';
 				  }
 		  )[]
 		| null;
@@ -503,8 +503,8 @@ export interface Form {
 							version: number;
 							[k: string]: unknown;
 						}[];
-						direction: ("ltr" | "rtl") | null;
-						format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+						direction: ('ltr' | 'rtl') | null;
+						format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
 						indent: number;
 						version: number;
 					};
@@ -546,7 +546,7 @@ export interface Redirect {
 	id: number;
 	from: string;
 	to: string;
-	code: "301" | "302" | "307" | "308" | "410" | "451";
+	code: '301' | '302' | '307' | '308' | '410' | '451';
 	updatedAt: string;
 	createdAt: string;
 }
@@ -574,7 +574,7 @@ export interface FormSubmission {
 export interface PayloadPreference {
 	id: number;
 	user: {
-		relationTo: "users";
+		relationTo: 'users';
 		value: number | User;
 	};
 	key?: string | null;
@@ -628,200 +628,200 @@ export interface Settings {
 		postcode?: string | null;
 		country?:
 			| (
-					| "Afghanistan"
-					| "Albania"
-					| "Algeria"
-					| "Andorra"
-					| "Angola"
-					| "Antigua and Barbuda"
-					| "Argentina"
-					| "Armenia"
-					| "Australia"
-					| "Austria"
-					| "Azerbaijan"
-					| "Bahamas"
-					| "Bahrain"
-					| "Bangladesh"
-					| "Barbados"
-					| "Belarus"
-					| "Belgium"
-					| "Belize"
-					| "Benin"
-					| "Bhutan"
-					| "Bolivia"
-					| "Bosnia and Herzegovina"
-					| "Botswana"
-					| "Brazil"
-					| "Brunei"
-					| "Bulgaria"
-					| "Burkina Faso"
-					| "Burundi"
-					| "Cabo Verde"
-					| "Cambodia"
-					| "Cameroon"
-					| "Canada"
-					| "Central African Republic"
-					| "Chad"
-					| "Chile"
-					| "China"
-					| "Colombia"
-					| "Comoros"
-					| "Congo (Congo-Brazzaville)"
-					| "Costa Rica"
-					| "Croatia"
-					| "Cuba"
-					| "Cyprus"
-					| "Czechia (Czech Republic)"
-					| "Democratic Republic of the Congo"
-					| "Denmark"
-					| "Djibouti"
-					| "Dominica"
-					| "Dominican Republic"
-					| "Ecuador"
-					| "Egypt"
-					| "El Salvador"
-					| "Equatorial Guinea"
-					| "Eritrea"
-					| "Estonia"
-					| "Eswatini (formerly Swaziland)"
-					| "Ethiopia"
-					| "Fiji"
-					| "Finland"
-					| "France"
-					| "Gabon"
-					| "Gambia"
-					| "Georgia"
-					| "Germany"
-					| "Ghana"
-					| "Greece"
-					| "Grenada"
-					| "Guatemala"
-					| "Guinea"
-					| "Guinea-Bissau"
-					| "Guyana"
-					| "Haiti"
-					| "Honduras"
-					| "Hungary"
-					| "Iceland"
-					| "India"
-					| "Indonesia"
-					| "Iran"
-					| "Iraq"
-					| "Ireland"
-					| "Israel"
-					| "Italy"
-					| "Jamaica"
-					| "Japan"
-					| "Jordan"
-					| "Kazakhstan"
-					| "Kenya"
-					| "Kiribati"
-					| "Kuwait"
-					| "Kyrgyzstan"
-					| "Laos"
-					| "Latvia"
-					| "Lebanon"
-					| "Lesotho"
-					| "Liberia"
-					| "Libya"
-					| "Liechtenstein"
-					| "Lithuania"
-					| "Luxembourg"
-					| "Madagascar"
-					| "Malawi"
-					| "Malaysia"
-					| "Maldives"
-					| "Mali"
-					| "Malta"
-					| "Marshall Islands"
-					| "Mauritania"
-					| "Mauritius"
-					| "Mexico"
-					| "Micronesia"
-					| "Moldova"
-					| "Monaco"
-					| "Mongolia"
-					| "Montenegro"
-					| "Morocco"
-					| "Mozambique"
-					| "Myanmar (formerly Burma)"
-					| "Namibia"
-					| "Nauru"
-					| "Nepal"
-					| "Netherlands"
-					| "New Zealand"
-					| "Nicaragua"
-					| "Niger"
-					| "Nigeria"
-					| "North Korea"
-					| "North Macedonia"
-					| "Norway"
-					| "Oman"
-					| "Pakistan"
-					| "Palau"
-					| "Palestine State"
-					| "Panama"
-					| "Papua New Guinea"
-					| "Paraguay"
-					| "Peru"
-					| "Philippines"
-					| "Poland"
-					| "Portugal"
-					| "Qatar"
-					| "Romania"
-					| "Russia"
-					| "Rwanda"
-					| "Saint Kitts and Nevis"
-					| "Saint Lucia"
-					| "Saint Vincent and the Grenadines"
-					| "Samoa"
-					| "San Marino"
-					| "Sao Tome and Principe"
-					| "Saudi Arabia"
-					| "Senegal"
-					| "Serbia"
-					| "Seychelles"
-					| "Sierra Leone"
-					| "Singapore"
-					| "Slovakia"
-					| "Slovenia"
-					| "Solomon Islands"
-					| "Somalia"
-					| "South Africa"
-					| "South Korea"
-					| "South Sudan"
-					| "Spain"
-					| "Sri Lanka"
-					| "Sudan"
-					| "Suriname"
-					| "Sweden"
-					| "Switzerland"
-					| "Syria"
-					| "Taiwan"
-					| "Tajikistan"
-					| "Tanzania"
-					| "Thailand"
-					| "Timor-Leste"
-					| "Togo"
-					| "Tonga"
-					| "Trinidad and Tobago"
-					| "Tunisia"
-					| "Turkey"
-					| "Turkmenistan"
-					| "Tuvalu"
-					| "Uganda"
-					| "Ukraine"
-					| "United Arab Emirates"
-					| "United Kingdom"
-					| "United States of America"
-					| "Uruguay"
-					| "Uzbekistan"
-					| "Vanuatu"
-					| "Venezuela"
-					| "Vietnam"
-					| "Yemen"
-					| "Zambia"
-					| "Zimbabwe"
+					| 'Afghanistan'
+					| 'Albania'
+					| 'Algeria'
+					| 'Andorra'
+					| 'Angola'
+					| 'Antigua and Barbuda'
+					| 'Argentina'
+					| 'Armenia'
+					| 'Australia'
+					| 'Austria'
+					| 'Azerbaijan'
+					| 'Bahamas'
+					| 'Bahrain'
+					| 'Bangladesh'
+					| 'Barbados'
+					| 'Belarus'
+					| 'Belgium'
+					| 'Belize'
+					| 'Benin'
+					| 'Bhutan'
+					| 'Bolivia'
+					| 'Bosnia and Herzegovina'
+					| 'Botswana'
+					| 'Brazil'
+					| 'Brunei'
+					| 'Bulgaria'
+					| 'Burkina Faso'
+					| 'Burundi'
+					| 'Cabo Verde'
+					| 'Cambodia'
+					| 'Cameroon'
+					| 'Canada'
+					| 'Central African Republic'
+					| 'Chad'
+					| 'Chile'
+					| 'China'
+					| 'Colombia'
+					| 'Comoros'
+					| 'Congo (Congo-Brazzaville)'
+					| 'Costa Rica'
+					| 'Croatia'
+					| 'Cuba'
+					| 'Cyprus'
+					| 'Czechia (Czech Republic)'
+					| 'Democratic Republic of the Congo'
+					| 'Denmark'
+					| 'Djibouti'
+					| 'Dominica'
+					| 'Dominican Republic'
+					| 'Ecuador'
+					| 'Egypt'
+					| 'El Salvador'
+					| 'Equatorial Guinea'
+					| 'Eritrea'
+					| 'Estonia'
+					| 'Eswatini (formerly Swaziland)'
+					| 'Ethiopia'
+					| 'Fiji'
+					| 'Finland'
+					| 'France'
+					| 'Gabon'
+					| 'Gambia'
+					| 'Georgia'
+					| 'Germany'
+					| 'Ghana'
+					| 'Greece'
+					| 'Grenada'
+					| 'Guatemala'
+					| 'Guinea'
+					| 'Guinea-Bissau'
+					| 'Guyana'
+					| 'Haiti'
+					| 'Honduras'
+					| 'Hungary'
+					| 'Iceland'
+					| 'India'
+					| 'Indonesia'
+					| 'Iran'
+					| 'Iraq'
+					| 'Ireland'
+					| 'Israel'
+					| 'Italy'
+					| 'Jamaica'
+					| 'Japan'
+					| 'Jordan'
+					| 'Kazakhstan'
+					| 'Kenya'
+					| 'Kiribati'
+					| 'Kuwait'
+					| 'Kyrgyzstan'
+					| 'Laos'
+					| 'Latvia'
+					| 'Lebanon'
+					| 'Lesotho'
+					| 'Liberia'
+					| 'Libya'
+					| 'Liechtenstein'
+					| 'Lithuania'
+					| 'Luxembourg'
+					| 'Madagascar'
+					| 'Malawi'
+					| 'Malaysia'
+					| 'Maldives'
+					| 'Mali'
+					| 'Malta'
+					| 'Marshall Islands'
+					| 'Mauritania'
+					| 'Mauritius'
+					| 'Mexico'
+					| 'Micronesia'
+					| 'Moldova'
+					| 'Monaco'
+					| 'Mongolia'
+					| 'Montenegro'
+					| 'Morocco'
+					| 'Mozambique'
+					| 'Myanmar (formerly Burma)'
+					| 'Namibia'
+					| 'Nauru'
+					| 'Nepal'
+					| 'Netherlands'
+					| 'New Zealand'
+					| 'Nicaragua'
+					| 'Niger'
+					| 'Nigeria'
+					| 'North Korea'
+					| 'North Macedonia'
+					| 'Norway'
+					| 'Oman'
+					| 'Pakistan'
+					| 'Palau'
+					| 'Palestine State'
+					| 'Panama'
+					| 'Papua New Guinea'
+					| 'Paraguay'
+					| 'Peru'
+					| 'Philippines'
+					| 'Poland'
+					| 'Portugal'
+					| 'Qatar'
+					| 'Romania'
+					| 'Russia'
+					| 'Rwanda'
+					| 'Saint Kitts and Nevis'
+					| 'Saint Lucia'
+					| 'Saint Vincent and the Grenadines'
+					| 'Samoa'
+					| 'San Marino'
+					| 'Sao Tome and Principe'
+					| 'Saudi Arabia'
+					| 'Senegal'
+					| 'Serbia'
+					| 'Seychelles'
+					| 'Sierra Leone'
+					| 'Singapore'
+					| 'Slovakia'
+					| 'Slovenia'
+					| 'Solomon Islands'
+					| 'Somalia'
+					| 'South Africa'
+					| 'South Korea'
+					| 'South Sudan'
+					| 'Spain'
+					| 'Sri Lanka'
+					| 'Sudan'
+					| 'Suriname'
+					| 'Sweden'
+					| 'Switzerland'
+					| 'Syria'
+					| 'Taiwan'
+					| 'Tajikistan'
+					| 'Tanzania'
+					| 'Thailand'
+					| 'Timor-Leste'
+					| 'Togo'
+					| 'Tonga'
+					| 'Trinidad and Tobago'
+					| 'Tunisia'
+					| 'Turkey'
+					| 'Turkmenistan'
+					| 'Tuvalu'
+					| 'Uganda'
+					| 'Ukraine'
+					| 'United Arab Emirates'
+					| 'United Kingdom'
+					| 'United States of America'
+					| 'Uruguay'
+					| 'Uzbekistan'
+					| 'Vanuatu'
+					| 'Venezuela'
+					| 'Vietnam'
+					| 'Yemen'
+					| 'Zambia'
+					| 'Zimbabwe'
 			  )
 			| null;
 	};
@@ -879,6 +879,6 @@ export interface Auth {
 	[k: string]: unknown;
 }
 
-declare module "payload" {
+declare module 'payload' {
 	export interface GeneratedTypes extends Config {}
 }

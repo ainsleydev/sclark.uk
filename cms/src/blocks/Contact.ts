@@ -1,44 +1,44 @@
-import type { Block } from "payload";
+import type { Block } from 'payload';
 
 export const Contact: Block = {
-	slug: "contact-block",
-	interfaceName: "BlockContact",
+	slug: 'contact-block',
+	interfaceName: 'BlockContact',
 	labels: {
-		singular: "Contact Form",
-		plural: "Contact Forms",
+		singular: 'Contact Form',
+		plural: 'Contact Forms',
 	},
 	fields: [
 		{
-			name: "title",
-			type: "text",
-			label: "Title",
+			name: 'title',
+			type: 'text',
+			label: 'Title',
 			required: true,
 			admin: {
-				description: "Add a title for the form block.",
+				description: 'Add a title for the form block.',
 			},
 		},
 		{
-			name: "content",
-			type: "textarea",
-			label: "Content",
+			name: 'content',
+			type: 'textarea',
+			label: 'Content',
 			admin: {
-				description: "Add a content for the form block.",
+				description: 'Add a content for the form block.',
 			},
 		},
 		{
-			name: "includeSocial",
-			label: "Include Social Links?",
-			type: "checkbox",
+			name: 'includeSocial',
+			label: 'Include Social Links?',
+			type: 'checkbox',
 			defaultValue: true,
 			admin: {
-				description: "Check this box to include social links in the form block.",
-			}
+				description: 'Check this box to include social links in the form block.',
+			},
 		},
 		{
-			type: "relationship",
-			name: "form",
-			label: "Form",
-			relationTo: "forms",
+			type: 'relationship',
+			name: 'form',
+			label: 'Form',
+			relationTo: 'forms',
 			hasMany: false,
 			admin: {
 				allowCreate: false,
