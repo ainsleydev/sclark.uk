@@ -1,4 +1,5 @@
 import type { RequiredDataFromCollectionSlug } from 'payload';
+import type { BlockContentWithImage, BlockFAQs } from '@/types/payload';
 
 export interface MediaSeed {
 	path: string;
@@ -8,10 +9,7 @@ export interface MediaSeed {
 
 export const clients: (Omit<RequiredDataFromCollectionSlug<'clients'>, 'id' | 'logo'> & {
 	id: number;
-	image: {
-		path: string;
-		alt: string;
-	};
+	image: MediaSeed;
 })[] = [
 	{
 		id: 1,
@@ -115,10 +113,7 @@ export const portfolioCategories: RequiredDataFromCollectionSlug<'portfolio-cate
 
 export const portfolioItems: (Omit<RequiredDataFromCollectionSlug<'portfolio'>, 'id' | 'image'> & {
 	id: number;
-	image: {
-		path: string;
-		alt: string;
-	};
+	image: MediaSeed;
 })[] = [
 	{
 		id: 1,
@@ -193,3 +188,60 @@ export const portfolioItems: (Omit<RequiredDataFromCollectionSlug<'portfolio'>, 
 		},
 	},
 ];
+
+
+const faqs: BlockFAQs = {
+	blockType: 'faqs-block',
+	faqs: [
+		{
+			question: 'How long is each lesson?',
+			answer: "I'm baby farm-to-table kombucha microdosing occupy four dollar toast flexitarian hoodie. Blackbird spyplane vibecession taxidermy kogi, 3 wolf moon shabby chic salvia. Pork belly man braid fashion axe big mood gastropub drinking vinegar gentrify scenester aesthetic tumblr kale chips coloring book. Blackbird spyplane prism pinterest keytar cardigan, hashtag enamel pin craft beer. Sartorial synth cold-pressed snackwave shaman.",
+		},
+		{
+			question: 'How regularly should I have lessons?',
+			answer: "I'm baby farm-to-table kombucha microdosing occupy four dollar toast flexitarian hoodie. Blackbird spyplane vibecession taxidermy kogi, 3 wolf moon shabby chic salvia. Pork belly man braid fashion axe big mood gastropub drinking vinegar gentrify scenester aesthetic tumblr kale chips coloring book. Blackbird spyplane prism pinterest keytar cardigan, hashtag enamel pin craft beer. Sartorial synth cold-pressed snackwave shaman.",
+		},
+		{
+			question: 'Which English levels do you teach?',
+			answer: "I'm baby farm-to-table kombucha microdosing occupy four dollar toast flexitarian hoodie. Blackbird spyplane vibecession taxidermy kogi, 3 wolf moon shabby chic salvia. Pork belly man braid fashion axe big mood gastropub drinking vinegar gentrify scenester aesthetic tumblr kale chips coloring book. Blackbird spyplane prism pinterest keytar cardigan, hashtag enamel pin craft beer. Sartorial synth cold-pressed snackwave shaman.",
+		},
+		{
+			question: 'How will lessons be conducted?',
+			answer: "I'm baby farm-to-table kombucha microdosing occupy four dollar toast flexitarian hoodie. Blackbird spyplane vibecession taxidermy kogi, 3 wolf moon shabby chic salvia. Pork belly man braid fashion axe big mood gastropub drinking vinegar gentrify scenester aesthetic tumblr kale chips coloring book. Blackbird spyplane prism pinterest keytar cardigan, hashtag enamel pin craft beer. Sartorial synth cold-pressed snackwave shaman.",
+		},
+		{
+			question: 'Do I need any special materials or equipment?',
+			answer: "I'm baby farm-to-table kombucha microdosing occupy four dollar toast flexitarian hoodie. Blackbird spyplane vibecession taxidermy kogi, 3 wolf moon shabby chic salvia. Pork belly man braid fashion axe big mood gastropub drinking vinegar gentrify scenester aesthetic tumblr kale chips coloring book. Blackbird spyplane prism pinterest keytar cardigan, hashtag enamel pin craft beer. Sartorial synth cold-pressed snackwave shaman.",
+		},
+	],
+};
+
+export const home: RequiredDataFromCollectionSlug<'pages'> = {
+	isHome: true,
+	_status: 'published',
+	layout: [
+		// {
+		// 	blockType: 'content-block',
+		// 	style: 'centered',
+		// 	content: $generateNodesFromDOM(null, '<h1>Test</h1>' | null),
+		// },
+		{
+			blockType: 'content-with-image-block',
+			image: 1,
+			imagePosition: 'left',
+			textLayout: [faqs],
+		},
+	],
+};
+
+export const contentWritingServicesBlock: Omit<BlockContentWithImage, 'image'> & {
+	image: MediaSeed;
+} = {
+	blockType: 'content-with-image-block',
+	image: {
+		path: 'TODO',
+		alt: 'TODO',
+	},
+	imagePosition: 'left',
+	textLayout: [],
+};

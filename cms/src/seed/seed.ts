@@ -11,6 +11,7 @@ import {
 import { importConfig } from 'payload/node';
 import { down } from './down';
 import { up } from './up';
+import {htmlToLexical, lexicalToHtml} from '@ainsleydev/payload-helper/src/util/lexical';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
