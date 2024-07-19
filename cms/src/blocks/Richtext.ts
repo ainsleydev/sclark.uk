@@ -1,5 +1,5 @@
-import type { Block } from 'payload';
 import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from '@payloadcms/richtext-lexical';
+import type { Block } from 'payload';
 
 export const RichText: Block = {
 	slug: 'content-block',

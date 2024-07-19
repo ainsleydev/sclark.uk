@@ -8,7 +8,7 @@ export const PortfolioCategories: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'title',
-		defaultColumns: ['title'],
+		defaultColumns: ['id', 'title'],
 	},
 	fields: [
 		{

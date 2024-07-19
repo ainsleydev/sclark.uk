@@ -4,6 +4,7 @@ export const Users: CollectionConfig = {
 	slug: 'users',
 	admin: {
 		useAsTitle: 'email',
+		defaultColumns: ['id', 'name', 'email', 'createdAt'],
 	},
 	auth: {
 		maxLoginAttempts: 5,

@@ -1,13 +1,13 @@
-import type { CollectionConfig } from 'payload';
-// import {Hero} from '../fields/Hero';
-import { SlugField } from '@nouance/payload-better-fields-plugin';
-// import {findBySlug} from 'adev-payload/src/endpoints/slug';
-import { Reviews } from '@/blocks/Reviews';
-import { Portfolio } from '@/blocks/Portfolio';
+import { Contact } from '@/blocks/Contact';
+import { Content } from '@/blocks/Content';
 import { ContentWithImage } from '@/blocks/ContentWithImage';
 import { Logos } from '@/blocks/Logos';
-import { Content } from '@/blocks/Content';
-import { Contact } from '@/blocks/Contact';
+import { Portfolio } from '@/blocks/Portfolio';
+// import {findBySlug} from 'adev-payload/src/endpoints/slug';
+import { Reviews } from '@/blocks/Reviews';
+// import {Hero} from '../fields/Hero';
+import { SlugField } from '@nouance/payload-better-fields-plugin';
+import type { CollectionConfig } from 'payload';
 
 export const Pages: CollectionConfig = {
 	slug: 'pages',

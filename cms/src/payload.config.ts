@@ -22,7 +22,7 @@ import { Navigation } from '@ainsleydev/payload-helper/src/globals/Navigation';
 import { Settings } from '@ainsleydev/payload-helper/src/globals/Settings';
 import env from '@ainsleydev/payload-helper/src/util/env';
 
-import { payloadHelper } from '@ainsleydev/payload-helper/src/plugin/plugin';
+import { payloadHelper } from '@ainsleydev/payload-helper';
 
 import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage';
 import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';

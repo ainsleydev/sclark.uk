@@ -8,7 +8,7 @@ export const Reviews: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'author.firstName',
-		defaultColumns: ['title', 'author.firstName', 'author.lastName'],
+		defaultColumns: ['id', 'content', 'updatedAt'],
 	},
 	typescript: {
 		interface: 'Review',
@@ -26,7 +26,6 @@ export const Reviews: CollectionConfig = {
 		{
 			name: 'author',
 			type: 'group',
-			required: true,
 			admin: {
 				hideGutter: true,
 			},

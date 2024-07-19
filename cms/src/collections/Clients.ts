@@ -9,7 +9,7 @@ export const Clients: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: 'name',
-		defaultColumns: ['name', 'url'],
+		defaultColumns: ['id', 'name', 'url', 'createdAt'],
 	},
 	fields: [
 		{
