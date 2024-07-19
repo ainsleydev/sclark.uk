@@ -1,16 +1,16 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import dotenv from 'dotenv';
 import {
+	type PayloadRequest,
 	commitTransaction,
 	getPayload,
 	initTransaction,
 	killTransaction,
-	type PayloadRequest,
 } from 'payload';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import dotenv from 'dotenv';
-import { up } from './up';
-import { down } from './down';
 import { importConfig } from 'payload/node';
+import { down } from './down';
+import { up } from './up';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);

@@ -1,16 +1,16 @@
-import type { Payload, PayloadRequest } from 'payload';
-import { getFileByPath } from 'payload';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import env from '@ainsleydev/payload-helper/src/util/env';
-import type { Media } from '@/types/payload';
 import {
-	clients,
 	type MediaSeed,
+	clients,
 	portfolioCategories,
 	portfolioItems,
 	reviews,
 } from '@/seed/content';
+import type { Media } from '@/types/payload';
+import env from '@ainsleydev/payload-helper/src/util/env';
+import type { Payload, PayloadRequest } from 'payload';
+import { getFileByPath } from 'payload';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
