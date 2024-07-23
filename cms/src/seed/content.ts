@@ -1,5 +1,5 @@
-import type { RequiredDataFromCollectionSlug } from 'payload';
 import type { BlockContentWithImage, BlockFAQs } from '@/types/payload';
+import type { RequiredDataFromCollectionSlug } from 'payload';
 
 export interface MediaSeed {
 	path: string;
@@ -188,7 +188,6 @@ export const portfolioItems: (Omit<RequiredDataFromCollectionSlug<'portfolio'>, 
 		},
 	},
 ];
-
 
 const faqs: BlockFAQs = {
 	blockType: 'faqs-block',
