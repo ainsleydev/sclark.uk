@@ -7,7 +7,7 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	background-color: rgba(#fff, 0.3);
+
 	z-index: var(--header-z-index);
 	transition: all 200ms ease;
 	backdrop-filter: blur(2px);
@@ -38,6 +38,7 @@
 	// =========================================================================
 
 	&-scrolled {
+		background-color: rgba(#fff, 0.3);
 		box-shadow: 0 3px 16px rgba(0, 0, 0, 10%), 0 3px 12px rgba(0, 0, 0, 14%);
 	}
 }

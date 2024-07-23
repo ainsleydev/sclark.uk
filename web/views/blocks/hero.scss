@@ -6,7 +6,7 @@
 	position: relative;
 	display: flex;
 	align-items: center;
-	margin-top: var(--header-height);
+	margin-top: calc(var(--header-height) + 20px);
 	padding-bottom: var(--section-margin);
 	overflow-x: clip; // Temp
 
@@ -23,8 +23,8 @@
 
 	&-wrapper {
 		display: flex;
-		height: calc(100vh - var(--header-height));
-		justify-content: space-around;
+		height: calc(100vh - calc(var(--header-height) + 20px));
+		justify-content: space-between;
 		max-height: 900px;
 		flex-direction: column;
 	}
@@ -36,11 +36,24 @@
 		position: relative;
 		width: 120%;
 		background-color: var(--colour-background);
+		margin-bottom: var(--spacing-default);
 
 		svg {
 			width: 100%;
 			height: 100%;
 		}
+	}
+
+	// Gradient
+	// =========================================================================
+
+	&-gradient {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		z-index: 1;
 	}
 
 	// Small Phones
@@ -50,6 +63,22 @@
 
 		&-btns span {
 			display: none;
+		}
+	}
+
+	// Tablet Only
+	// =========================================================================
+
+	@include media-tab-only {
+
+		&-wrapper {
+			height: auto;
+			max-height: none;
+		}
+
+		&-scrabble {
+			position: relative;
+			width: 100%;
 		}
 	}
 
@@ -64,6 +93,10 @@
 			margin-top: 200px;
 		}
 
+		&-lead {
+			width: 70%;
+		}
+
 		&-wrapper {
 			display: block;
 			height: auto;
@@ -72,11 +105,22 @@
 
 		&-scrabble {
 			position: absolute;
-			top: 50%;
+			top: 30%;
 			width: 60%;
-			right: 0;
+			right: -2rem;
 			height: auto;
 			transform: translateY(-50%);
+			margin-bottom: 0;
+		}
+	}
+
+	// Desktop Large
+	// =========================================================================
+
+	@include media-desk-large {
+
+		&-lead {
+			width: 100%;
 		}
 	}
 }
