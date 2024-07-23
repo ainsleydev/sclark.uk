@@ -11,7 +11,7 @@ import { Collapse } from '../../views/components/collapse';
 const html = document.querySelector('html');
 const header = document.querySelector('.header');
 const nav = document.querySelector('.nav');
-import {homeSequence} from "./pages/home";
+import { homeSequence } from './pages/home';
 
 /**
  * TODO, load in from a different file

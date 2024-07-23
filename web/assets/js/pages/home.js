@@ -1,4 +1,4 @@
-import { timeline, stagger, spring } from 'motion';
+import { spring, stagger, timeline } from 'motion';
 
 /**
  *
@@ -34,17 +34,11 @@ const properties = (at = 0) => {
 				damping: 10,
 			}),
 		},
-	]
-}
+	];
+};
 
 const sequence = [
-	[
-		mapLetters([
-			'#scrabble-word-seo-letter-s',
-			'#scrabble-word-seo-letter-e',
-		]),
-		...properties(0),
-	],
+	[mapLetters(['#scrabble-word-seo-letter-s', '#scrabble-word-seo-letter-e']), ...properties(0)],
 	[
 		mapLetters([
 			'#scrabble-word-content-letter-c',
@@ -93,4 +87,4 @@ const sequence = [
 
 export const homeSequence = () => {
 	timeline(sequence).play();
-}
+};
