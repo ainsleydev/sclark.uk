@@ -90,4 +90,14 @@
 			margin-right: 0;
 		}
 	}
+
+	// Tablet
+	// =========================================================================
+
+	@include media-tab {
+
+		&-hero {
+			justify-content: flex-start;
+		}
+	}
 }

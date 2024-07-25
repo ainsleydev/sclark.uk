@@ -8,12 +8,6 @@ terraform {
 	}
 }
 
-
-#variable "go_path" {
-#	type = string
-#	value = "web"
-#}
-
 locals {
 	env_vars = {for tuple in regexall("(.*?)=(.*)", file("${path.module}/../.env")) : tuple[0] => tuple[1]}
 }
@@ -67,8 +61,8 @@ resource "digitalocean_app" "s-clark-web" {
 			http_port          = 3000
 
 			env {
-				key   = "Test"
-				value = "Test"
+				key   = "app_env"
+				value = "PRODUCTION"
 				scope = "RUN_AND_BUILD_TIME"
 				type  = "SECRET"
 			}

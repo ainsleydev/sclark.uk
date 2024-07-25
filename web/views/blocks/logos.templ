@@ -48,7 +48,7 @@ templ logoImage(img payload.Media, isHero bool) {
 
 templ logosBlock(props types.BlockLogs, opts LogosOptions) {
 	if len(props.Logos) > 0 {
-		<figure class={ "logos", templ.KV("logos-greycale", opts.Greyscale) }>
+		<figure class={ "logos", templ.KV("logos-greycale", opts.Greyscale), templ.KV("logos-hero", opts.IsHero) }>
 			if props.Title != "" {
 				<figcaption class="logos-title">
 					<span class="heading-6">

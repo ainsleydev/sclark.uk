@@ -102,7 +102,7 @@
 
 	@include media-desk {
 
-		&-main &-container {
+		&-main-container {
 			padding-bottom: clamp(40px, 15vw, 120px);
 		}
 

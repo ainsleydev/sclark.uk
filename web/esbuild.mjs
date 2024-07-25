@@ -45,6 +45,10 @@ const options = {
 					to: ["./fonts"],
 				},
 				{
+					from: ["./assets/favicon/**/*"],
+					to: ["./favicon"],
+				},
+				{
 					from: ["./assets/images/**/*.svg"],
 					to: ["./images"],
 				},

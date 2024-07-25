@@ -34,7 +34,7 @@
 	@include media-tab {
 
 		&-col {
-			margin-bottom: calc(var(--grid-gap-width) * 2);
+			margin-bottom: var(--spacing-l);
 
 			&:last-child,
 			&:nth-last-child(2) {
