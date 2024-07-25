@@ -5,3 +5,5 @@ build/
 node_modules/
 .env
 dist/
+go.work
+go.work.sum

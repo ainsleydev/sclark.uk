@@ -5,7 +5,7 @@ go 1.22.4
 require (
 	github.com/a-h/templ v0.2.747
 	github.com/ainsleyclark/go-payloadcms v0.0.1
-	github.com/ainsleydev/webkit v0.0.0-20240703145554-3384d7107d8f
+	github.com/ainsleydev/webkit v0.0.0-20240725184940-80ccac364b82
 )
 
 require (
