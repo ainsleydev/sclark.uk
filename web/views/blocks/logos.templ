@@ -1,15 +1,10 @@
 package blocks
 
-type LogosProps struct {
-	Title  string
-	IsHero bool
-	Items  []LogosItem
-}
+import "github.com/ainsleydev/sclark.uk/types"
 
-type LogosItem struct {
-	Title string
-	Src   string
-	URL   string
+type LogosOptions struct {
+	IsHero bool
+	Greyscale bool
 }
 
 func logosLoadingAttr(isHero bool) string {
@@ -19,25 +14,43 @@ func logosLoadingAttr(isHero bool) string {
 	return "lazy"
 }
 
-templ Logos(props LogosProps) {
-	if len(props.Items) > 0 {
-		<figure class="logos">
+templ Logos(props types.BlockLogs, opts LogosOptions) {
+	if !opts.IsHero {
+		<section class="logos-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						@logosBlock(props, opts)
+					</div><!-- /Col -->
+				</div><!-- /Row -->
+			</div><!-- /Container -->
+		</section>
+	} else {
+		@logosBlock(props, opts)
+	}
+}
+
+templ logosBlock(props types.BlockLogs, opts LogosOptions) {
+	if len(props.Logos) > 0 {
+		<figure class={ "logos", templ.KV("logos-greycale", opts.Greyscale), templ.KV("logos-section", !opts.IsHero) }>
 			if props.Title != "" {
 				<figcaption class="logos-title">
 					<h6>{ props.Title }</h6>
 				</figcaption>
 			}
-			for _, img := range props.Items {
-				if img.URL != "" {
-					<a href={ templ.SafeURL(img.URL) } class="logos-item logos-link" target="_blank">
-						<img loading={ logosLoadingAttr(props.IsHero) } src={ img.Src } alt={ img.Title }/>
+			for _, item := range props.Logos {
+				if item.Link != nil {
+					<a href={ templ.SafeURL(*item.Link) } class="logos-item logos-link" target="_blank">
+						<img loading={ logosLoadingAttr(opts.IsHero) } src={ item.Logo.URL } alt={ item.Logo.Alt() } />
 					</a>
 				} else {
 					<figure class="logos-item">
-						<img loading={ logosLoadingAttr(props.IsHero) } src={ img.Src } alt={ img.Title }/>
+						<img loading={ logosLoadingAttr(opts.IsHero) } src={ item.Logo.URL } alt={ item.Logo.Alt() } />
 					</figure>
 				}
 			}
 		</figure>
 	}
 }
+
+

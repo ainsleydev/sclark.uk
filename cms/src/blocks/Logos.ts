@@ -1,4 +1,5 @@
 import type { Block } from 'payload';
+import { validateURL } from '@ainsleydev/payload-helper/src/util/validation';
 
 export const Logos: Block = {
 	slug: 'logos-block',
@@ -38,6 +39,16 @@ export const Logos: Block = {
 			label: 'Logos',
 			type: 'array',
 			fields: [
+				{
+					name: 'link',
+					label: 'Link',
+					type: 'text',
+					validate: validateURL,
+					admin: {
+						width: '50%',
+						description: 'Add a link to the logo.',
+					},
+				},
 				{
 					name: 'logo',
 					label: 'Logo',

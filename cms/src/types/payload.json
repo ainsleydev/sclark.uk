@@ -1,1134 +1,1493 @@
 {
-	"additionalProperties": false,
-	"definitions": {
-		"settings": {
-			"type": "object",
-			"fields": [],
-			"goJSONSchema": {
-				"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-				"nillable": false,
-				"type": "payload.Settings"
-			}
-		},
-		"navigation": {
-			"type": "object",
-			"additionalProperties": false,
-			"title": "Navigation",
-			"properties": {
-				"id": {
-					"type": "number"
-				},
-				"header": {
-					"$ref": "#/definitions/NavigationHeaderLinks",
-					"payload": {
-						"name": "header",
-						"type": "array",
-						"label": "Items"
-					}
-				},
-				"updatedAt": {
-					"type": ["string", "null"]
-				},
-				"createdAt": {
-					"type": ["string", "null"]
-				}
-			},
-			"required": ["id"]
-		},
-		"posts": {
-			"type": "object",
-			"additionalProperties": false,
-			"title": "Post",
-			"properties": {
-				"id": {
-					"type": "number"
-				},
-				"title": {
-					"type": "string",
-					"payload": {
-						"name": "title",
-						"type": "text",
-						"label": "Title"
-					}
-				},
-				"excerpt": {
-					"type": ["string", "null"],
-					"payload": {
-						"name": "excerpt",
-						"type": "textarea",
-						"label": "Excerpt"
-					}
-				},
-				"content": {
-					"type": "string",
-					"goJSONSchema": {
-						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-						"nillable": false,
-						"type": "payload.RichText"
-					},
-					"payload": {
-						"name": "content",
-						"type": "richText",
-						"label": "Content"
-					}
-				},
-				"thumbnail": {
-					"goJSONSchema": {
-						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-						"nillable": false,
-						"type": "payload.Media"
-					},
-					"payload": {
-						"name": "thumbnail",
-						"type": "upload",
-						"label": "Thumbnail"
-					}
-				},
-				"meta": {
-					"goJSONSchema": {
-						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-						"nillable": true,
-						"type": "payload.SettingsMeta"
-					},
-					"payload": {
-						"name": "meta",
-						"type": "group",
-						"label": "SEO"
-					}
-				},
-				"publishedAt": {
-					"type": ["string", "null"],
-					"payload": {
-						"name": "publishedAt",
-						"type": "date",
-						"label": "Published At"
-					}
-				},
-				"relatedPosts": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/posts"
-					},
-					"payload": {
-						"name": "relatedPosts",
-						"type": "relationship",
-						"label": "Related Posts",
-						"hasMany": true,
-						"relationTo": "posts"
-					}
-				},
-				"tags": {
-					"type": ["array", "null"],
-					"items": {
-						"type": "object",
-						"additionalProperties": false,
-						"properties": {
-							"tag": {
-								"type": ["string", "null"],
-								"payload": {
-									"name": "tag",
-									"type": "text",
-									"label": "Tag"
-								}
-							},
-							"id": {
-								"type": ["string", "null"]
-							}
-						},
-						"required": []
-					},
-					"payload": {
-						"name": "tags",
-						"type": "array",
-						"label": "Tags"
-					}
-				},
-				"updatedAt": {
-					"type": "string"
-				},
-				"createdAt": {
-					"type": "string"
-				},
-				"_status": {
-					"type": ["string", "null"],
-					"enum": ["draft", "published"]
-				}
-			},
-			"required": ["id", "title", "updatedAt", "createdAt"]
-		},
-		"pages": {
-			"type": "object",
-			"additionalProperties": false,
-			"title": "Page",
-			"properties": {
-				"id": {
-					"type": "number"
-				},
-				"layout": {
-					"goJSONSchema": {
-						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-						"nillable": false,
-						"type": "payload.Blocks"
-					},
-					"payload": {
-						"name": "layout",
-						"type": "blocks",
-						"label": "Layout"
-					}
-				},
-				"isHome": {
-					"type": ["boolean", "null"],
-					"payload": {
-						"name": "isHome",
-						"type": "checkbox",
-						"label": "Is Home"
-					}
-				},
-				"updatedAt": {
-					"type": "string"
-				},
-				"createdAt": {
-					"type": "string"
-				},
-				"_status": {
-					"type": ["string", "null"],
-					"enum": ["draft", "published"]
-				}
-			},
-			"required": ["id", "layout", "updatedAt", "createdAt"]
-		},
-		"clients": {
-			"type": "object",
-			"additionalProperties": false,
-			"title": "Client",
-			"properties": {
-				"id": {
-					"type": "number"
-				},
-				"name": {
-					"type": "string",
-					"payload": {
-						"name": "name",
-						"type": "text",
-						"label": "Name"
-					}
-				},
-				"url": {
-					"type": "string",
-					"payload": {
-						"name": "url",
-						"type": "text",
-						"label": "Website"
-					}
-				},
-				"logo": {
-					"goJSONSchema": {
-						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-						"nillable": true,
-						"type": "payload.Media"
-					},
-					"payload": {
-						"name": "logo",
-						"type": "upload",
-						"label": "Logo"
-					}
-				},
-				"updatedAt": {
-					"type": "string"
-				},
-				"createdAt": {
-					"type": "string"
-				}
-			},
-			"required": ["id", "name", "url", "logo", "updatedAt", "createdAt"]
-		},
-		"reviews": {
-			"type": "object",
-			"additionalProperties": false,
-			"title": "Review",
-			"properties": {
-				"id": {
-					"type": "number"
-				},
-				"content": {
-					"type": "string",
-					"payload": {
-						"name": "content",
-						"type": "textarea",
-						"label": "Content"
-					}
-				},
-				"author": {
-					"type": "object",
-					"additionalProperties": false,
-					"properties": {
-						"firstName": {
-							"type": "string",
-							"payload": {
-								"name": "firstName",
-								"type": "text",
-								"label": "First Name"
-							}
-						},
-						"lastName": {
-							"type": "string",
-							"payload": {
-								"name": "lastName",
-								"type": "text",
-								"label": "Last Name"
-							}
-						},
-						"description": {
-							"type": "string",
-							"payload": {
-								"name": "description",
-								"type": "text",
-								"label": "Description"
-							}
-						}
-					},
-					"required": ["firstName", "lastName", "description"],
-					"payload": {
-						"name": "author",
-						"type": "group",
-						"label": "Author"
-					}
-				},
-				"updatedAt": {
-					"type": "string"
-				},
-				"createdAt": {
-					"type": "string"
-				}
-			},
-			"required": ["id", "content", "author", "updatedAt", "createdAt"]
-		},
-		"portfolio": {
-			"type": "object",
-			"additionalProperties": false,
-			"title": "Portfolio",
-			"properties": {
-				"id": {
-					"type": "number"
-				},
-				"title": {
-					"type": "string",
-					"payload": {
-						"name": "title",
-						"type": "text",
-						"label": "Title"
-					}
-				},
-				"url": {
-					"type": "string",
-					"payload": {
-						"name": "url",
-						"type": "text",
-						"label": "Link"
-					}
-				},
-				"date": {
-					"type": "string",
-					"payload": {
-						"name": "date",
-						"type": "date",
-						"label": "Date"
-					}
-				},
-				"company": {
-					"payload": {
-						"name": "company",
-						"type": "relationship",
-						"label": "Company",
-						"relationTo": "clients"
-					},
-					"$ref": "#/definitions/clients"
-				},
-				"category": {
-					"payload": {
-						"name": "category",
-						"type": "relationship",
-						"label": "Category",
-						"hasMany": false,
-						"relationTo": "portfolio-categories"
-					},
-					"$ref": "#/definitions/portfolio-categories"
-				},
-				"image": {
-					"goJSONSchema": {
-						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-						"nillable": true,
-						"type": "payload.Media"
-					},
-					"payload": {
-						"name": "image",
-						"type": "upload",
-						"label": "Image"
-					}
-				},
-				"updatedAt": {
-					"type": "string"
-				},
-				"createdAt": {
-					"type": "string"
-				}
-			},
-			"required": [
-				"id",
-				"title",
-				"url",
-				"date",
-				"company",
-				"category",
-				"image",
-				"updatedAt",
-				"createdAt"
-			]
-		},
-		"portfolio-categories": {
-			"type": "object",
-			"additionalProperties": false,
-			"title": "PortfolioCategory",
-			"properties": {
-				"id": {
-					"type": "number"
-				},
-				"title": {
-					"type": "string",
-					"payload": {
-						"name": "title",
-						"type": "text",
-						"label": "Title"
-					}
-				},
-				"updatedAt": {
-					"type": "string"
-				},
-				"createdAt": {
-					"type": "string"
-				}
-			},
-			"required": ["id", "title", "updatedAt", "createdAt"]
-		},
-		"users": {
-			"type": "object",
-			"additionalProperties": false,
-			"title": "User",
-			"properties": {
-				"id": {
-					"type": "number"
-				},
-				"name": {
-					"type": "string",
-					"payload": {
-						"name": "name",
-						"type": "text",
-						"label": "Name"
-					}
-				},
-				"updatedAt": {
-					"type": "string"
-				},
-				"createdAt": {
-					"type": "string"
-				},
-				"enableAPIKey": {
-					"type": ["boolean", "null"]
-				},
-				"apiKey": {
-					"type": ["string", "null"]
-				},
-				"apiKeyIndex": {
-					"type": ["string", "null"]
-				},
-				"email": {
-					"type": "string"
-				},
-				"resetPasswordToken": {
-					"type": ["string", "null"]
-				},
-				"resetPasswordExpiration": {
-					"type": ["string", "null"]
-				},
-				"salt": {
-					"type": ["string", "null"]
-				},
-				"hash": {
-					"type": ["string", "null"]
-				},
-				"loginAttempts": {
-					"type": ["number", "null"]
-				},
-				"lockUntil": {
-					"type": ["string", "null"]
-				},
-				"password": {
-					"type": ["string", "null"]
-				}
-			},
-			"required": ["id", "name", "updatedAt", "createdAt", "email"]
-		},
-		"forms": {
-			"type": "object",
-			"goJSONSchema": {
-				"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-				"nillable": false,
-				"type": "payload.Form"
-			},
-			"fields": []
-		},
-		"form-submissions": {
-			"type": "object",
-			"goJSONSchema": {
-				"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-				"nillable": false,
-				"type": "payload.FormSubmission"
-			},
-			"fields": []
-		},
-		"payload-preferences": {
-			"type": "object",
-			"additionalProperties": false,
-			"title": "PayloadPreference",
-			"properties": {
-				"id": {
-					"type": "number"
-				},
-				"user": {
-					"oneOf": [
-						{
-							"type": "object",
-							"additionalProperties": false,
-							"properties": {
-								"relationTo": {
-									"const": "users"
-								},
-								"value": {
-									"oneOf": [
-										{
-											"type": "number"
-										},
-										{
-											"$ref": "#/definitions/users"
-										}
-									]
-								}
-							},
-							"required": ["value", "relationTo"]
-						}
-					]
-				},
-				"key": {
-					"type": ["string", "null"]
-				},
-				"value": {
-					"type": ["object", "array", "string", "number", "boolean", "null"]
-				},
-				"updatedAt": {
-					"type": "string"
-				},
-				"createdAt": {
-					"type": "string"
-				}
-			},
-			"required": ["id", "user", "updatedAt", "createdAt"]
-		},
-		"payload-migrations": {
-			"type": "object",
-			"additionalProperties": false,
-			"title": "PayloadMigration",
-			"properties": {
-				"id": {
-					"type": "number"
-				},
-				"name": {
-					"type": ["string", "null"]
-				},
-				"batch": {
-					"type": ["number", "null"]
-				},
-				"updatedAt": {
-					"type": "string"
-				},
-				"createdAt": {
-					"type": "string"
-				}
-			},
-			"required": ["id", "updatedAt", "createdAt"]
-		},
-		"NavigationHeaderLinks": {
-			"type": ["array", "null"],
-			"items": {
-				"type": "object",
-				"additionalProperties": false,
-				"properties": {
-					"title": {
-						"type": "string",
-						"payload": {
-							"name": "title",
-							"type": "text",
-							"label": "Title"
-						}
-					},
-					"url": {
-						"type": "string",
-						"payload": {
-							"name": "url",
-							"type": "text",
-							"label": "URL"
-						}
-					},
-					"id": {
-						"type": ["string", "null"]
-					}
-				},
-				"required": ["title", "url"]
-			}
-		},
-		"BlockContentDefault": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"style": {
-					"type": "string",
-					"enum": ["centered", "spread"],
-					"payload": {
-						"name": "style",
-						"type": "select",
-						"label": "Style"
-					}
-				},
-				"centreAlign": {
-					"type": ["boolean", "null"],
-					"payload": {
-						"name": "centreAlign",
-						"type": "checkbox",
-						"label": "Centre Align"
-					}
-				},
-				"content": {
-					"type": "string",
-					"goJSONSchema": {
-						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-						"nillable": false,
-						"type": "payload.RichText"
-					},
-					"payload": {
-						"name": "content",
-						"type": "richText",
-						"label": "Content"
-					}
-				},
-				"contentHtml": {
-					"type": ["string", "null"],
-					"payload": {
-						"name": "contentHtml",
-						"type": "code",
-						"label": "Content Html"
-					}
-				},
-				"id": {
-					"type": ["string", "null"]
-				},
-				"blockName": {
-					"type": ["string", "null"]
-				},
-				"blockType": {
-					"type": "string"
-				}
-			},
-			"required": ["blockType", "style", "content"]
-		},
-		"BlockContent": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"content": {
-					"type": "string",
-					"goJSONSchema": {
-						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-						"nillable": false,
-						"type": "payload.RichText"
-					},
-					"payload": {
-						"name": "content",
-						"type": "richText",
-						"label": "Content"
-					}
-				},
-				"contentHtml": {
-					"type": ["string", "null"],
-					"payload": {
-						"name": "contentHtml",
-						"type": "code",
-						"label": "Content Html"
-					}
-				},
-				"id": {
-					"type": ["string", "null"]
-				},
-				"blockName": {
-					"type": ["string", "null"]
-				},
-				"blockType": {
-					"type": "string"
-				}
-			},
-			"required": ["blockType", "content"]
-		},
-		"BlockFAQs": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"faqs": {
-					"type": ["array", "null"],
-					"items": {
-						"type": "object",
-						"additionalProperties": false,
-						"properties": {
-							"question": {
-								"type": "string",
-								"payload": {
-									"name": "question",
-									"type": "text",
-									"label": "Title"
-								}
-							},
-							"answer": {
-								"type": "string",
-								"payload": {
-									"name": "answer",
-									"type": "textarea",
-									"label": "Answer"
-								}
-							},
-							"id": {
-								"type": ["string", "null"]
-							}
-						},
-						"required": ["question", "answer"]
-					},
-					"payload": {
-						"name": "faqs",
-						"type": "array",
-						"label": "FAQs"
-					}
-				},
-				"id": {
-					"type": ["string", "null"]
-				},
-				"blockName": {
-					"type": ["string", "null"]
-				},
-				"blockType": {
-					"type": "string"
-				}
-			},
-			"required": ["blockType"]
-		},
-		"BlockContentWithImage": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"textLayout": {
-					"goJSONSchema": {
-						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-						"nillable": false,
-						"type": "payload.Blocks"
-					},
-					"payload": {
-						"name": "textLayout",
-						"type": "blocks",
-						"label": "Text Layout"
-					}
-				},
-				"imagePosition": {
-					"type": "string",
-					"payload": {
-						"name": "imagePosition",
-						"type": "select",
-						"label": "Image Position"
-					}
-				},
-				"sticky": {
-					"type": ["boolean", "null"],
-					"payload": {
-						"name": "sticky",
-						"type": "checkbox",
-						"label": "Sticky Image"
-					}
-				},
-				"image": {
-					"goJSONSchema": {
-						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-						"nillable": true,
-						"type": "payload.Media"
-					},
-					"payload": {
-						"name": "image",
-						"type": "upload",
-						"label": "Image"
-					}
-				},
-				"id": {
-					"type": ["string", "null"]
-				},
-				"blockName": {
-					"type": ["string", "null"]
-				},
-				"blockType": {
-					"type": "string"
-				}
-			},
-			"required": ["blockType", "textLayout", "imagePosition", "image"]
-		},
-		"BlockLogs": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"title": {
-					"type": "string",
-					"payload": {
-						"name": "title",
-						"type": "text",
-						"label": "Title"
-					}
-				},
-				"greyscale": {
-					"type": ["boolean", "null"],
-					"payload": {
-						"name": "greyscale",
-						"type": "checkbox",
-						"label": "Greyscale"
-					}
-				},
-				"logos": {
-					"type": ["array", "null"],
-					"items": {
-						"type": "object",
-						"additionalProperties": false,
-						"properties": {
-							"logo": {
-								"goJSONSchema": {
-									"imports": [
-										"github.com/ainsleydev/webkit/pkg/adapters/payload"
-									],
-									"nillable": true,
-									"type": "payload.Media"
-								},
-								"payload": {
-									"name": "logo",
-									"type": "upload",
-									"label": "Logo"
-								}
-							},
-							"id": {
-								"type": ["string", "null"]
-							}
-						},
-						"required": ["logo"]
-					},
-					"payload": {
-						"name": "logos",
-						"type": "array",
-						"label": "Logos"
-					}
-				},
-				"id": {
-					"type": ["string", "null"]
-				},
-				"blockName": {
-					"type": ["string", "null"]
-				},
-				"blockType": {
-					"type": "string"
-				}
-			},
-			"required": ["blockType", "title"]
-		},
-		"BlockReviews": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"title": {
-					"type": "string",
-					"payload": {
-						"name": "title",
-						"type": "text",
-						"label": "Title"
-					}
-				},
-				"content": {
-					"type": ["string", "null"],
-					"payload": {
-						"name": "content",
-						"type": "textarea",
-						"label": "Content"
-					}
-				},
-				"items": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/reviews"
-					},
-					"payload": {
-						"name": "items",
-						"type": "relationship",
-						"label": "Reviews",
-						"hasMany": true,
-						"relationTo": "reviews"
-					}
-				},
-				"id": {
-					"type": ["string", "null"]
-				},
-				"blockName": {
-					"type": ["string", "null"]
-				},
-				"blockType": {
-					"type": "string"
-				}
-			},
-			"required": ["blockType", "title"]
-		},
-		"BlockPortfolio": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"title": {
-					"type": "string",
-					"payload": {
-						"name": "title",
-						"type": "text",
-						"label": "Title"
-					}
-				},
-				"content": {
-					"type": ["string", "null"],
-					"payload": {
-						"name": "content",
-						"type": "textarea",
-						"label": "Content"
-					}
-				},
-				"items": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/portfolio"
-					},
-					"payload": {
-						"name": "items",
-						"type": "relationship",
-						"label": "Portfolio",
-						"hasMany": true,
-						"relationTo": "portfolio"
-					}
-				},
-				"id": {
-					"type": ["string", "null"]
-				},
-				"blockName": {
-					"type": ["string", "null"]
-				},
-				"blockType": {
-					"type": "string"
-				}
-			},
-			"required": ["blockType", "title"]
-		},
-		"BlockContact": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"title": {
-					"type": "string",
-					"payload": {
-						"name": "title",
-						"type": "text",
-						"label": "Title"
-					}
-				},
-				"content": {
-					"type": ["string", "null"],
-					"payload": {
-						"name": "content",
-						"type": "textarea",
-						"label": "Content"
-					}
-				},
-				"includeSocial": {
-					"type": ["boolean", "null"],
-					"payload": {
-						"name": "includeSocial",
-						"type": "checkbox",
-						"label": "Include Social Links?"
-					}
-				},
-				"form": {
-					"goJSONSchema": {
-						"imports": ["github.com/ainsleydev/webkit/pkg/adapters/payload"],
-						"nillable": false,
-						"type": "payload.Form"
-					},
-					"payload": {
-						"name": "form",
-						"type": "relationship",
-						"label": "Form",
-						"hasMany": false,
-						"relationTo": "forms"
-					}
-				},
-				"id": {
-					"type": ["string", "null"]
-				},
-				"blockName": {
-					"type": ["string", "null"]
-				},
-				"blockType": {
-					"type": "string"
-				}
-			},
-			"required": ["blockType", "title"]
-		},
-		"auth": {
-			"users": {
-				"type": "object",
-				"additionalProperties": false,
-				"properties": {
-					"forgotPassword": {
-						"additionalProperties": false,
-						"properties": {
-							"email": {
-								"type": "string"
-							}
-						},
-						"required": ["email"]
-					},
-					"login": {
-						"additionalProperties": false,
-						"properties": {
-							"password": {
-								"type": "string"
-							},
-							"email": {
-								"type": "string"
-							}
-						},
-						"required": ["password", "email"]
-					},
-					"registerFirstUser": {
-						"additionalProperties": false,
-						"properties": {
-							"email": {
-								"type": "string"
-							},
-							"password": {
-								"type": "string"
-							}
-						},
-						"required": ["email", "password"]
-					}
-				},
-				"required": ["forgotPassword", "login", "registerFirstUser"],
-				"title": "UserAuthOperations"
-			}
-		}
-	},
-	"type": "object",
-	"properties": {
-		"collections": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"posts": {
-					"$ref": "#/definitions/posts"
-				},
-				"pages": {
-					"$ref": "#/definitions/pages"
-				},
-				"clients": {
-					"$ref": "#/definitions/clients"
-				},
-				"reviews": {
-					"$ref": "#/definitions/reviews"
-				},
-				"portfolio": {
-					"$ref": "#/definitions/portfolio"
-				},
-				"portfolio-categories": {
-					"$ref": "#/definitions/portfolio-categories"
-				},
-				"users": {
-					"$ref": "#/definitions/users"
-				},
-				"forms": {
-					"$ref": "#/definitions/forms"
-				},
-				"form-submissions": {
-					"$ref": "#/definitions/form-submissions"
-				},
-				"payload-preferences": {
-					"$ref": "#/definitions/payload-preferences"
-				},
-				"payload-migrations": {
-					"$ref": "#/definitions/payload-migrations"
-				}
-			},
-			"required": [
-				"posts",
-				"pages",
-				"clients",
-				"reviews",
-				"portfolio",
-				"portfolio-categories",
-				"media",
-				"users",
-				"redirects",
-				"forms",
-				"form-submissions",
-				"payload-preferences",
-				"payload-migrations"
-			]
-		},
-		"globals": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"settings": {
-					"$ref": "#/definitions/settings"
-				},
-				"navigation": {
-					"$ref": "#/definitions/navigation"
-				}
-			},
-			"required": ["settings", "navigation"]
-		},
-		"locale": {
-			"type": "null"
-		},
-		"user": {
-			"oneOf": [
-				{
-					"allOf": [
-						{
-							"$ref": "#/definitions/users"
-						},
-						{
-							"type": "object",
-							"additionalProperties": false,
-							"properties": {
-								"collection": {
-									"type": "string",
-									"enum": ["users"]
-								}
-							},
-							"required": ["collection"]
-						}
-					]
-				}
-			]
-		}
-	},
-	"required": ["user", "locale", "collections", "globals", "auth"],
-	"title": "Config"
+    "additionalProperties": false,
+    "definitions": {
+        "settings": {
+            "type": "object",
+            "fields": [],
+            "goJSONSchema": {
+                "imports": [
+                    "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                ],
+                "nillable": false,
+                "type": "payload.Settings"
+            }
+        },
+        "navigation": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "Navigation",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "header": {
+                    "$ref": "#/definitions/NavigationHeaderLinks",
+                    "payload": {
+                        "name": "header",
+                        "type": "array",
+                        "label": "Items"
+                    }
+                },
+                "updatedAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "createdAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ]
+        },
+        "posts": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "Post",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "title": {
+                    "type": "string",
+                    "payload": {
+                        "name": "title",
+                        "type": "text",
+                        "label": "Title"
+                    }
+                },
+                "excerpt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "payload": {
+                        "name": "excerpt",
+                        "type": "textarea",
+                        "label": "Excerpt"
+                    }
+                },
+                "content": {
+                    "type": "string",
+                    "goJSONSchema": {
+                        "imports": [
+                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                        ],
+                        "nillable": false,
+                        "type": "payload.RichText"
+                    },
+                    "payload": {
+                        "name": "content",
+                        "type": "richText",
+                        "label": "Content"
+                    }
+                },
+                "thumbnail": {
+                    "goJSONSchema": {
+                        "imports": [
+                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                        ],
+                        "nillable": false,
+                        "type": "payload.Media"
+                    },
+                    "payload": {
+                        "name": "thumbnail",
+                        "type": "upload",
+                        "label": "Thumbnail"
+                    }
+                },
+                "meta": {
+                    "goJSONSchema": {
+                        "imports": [
+                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                        ],
+                        "nillable": true,
+                        "type": "payload.SettingsMeta"
+                    },
+                    "payload": {
+                        "name": "meta",
+                        "type": "group",
+                        "label": "SEO"
+                    }
+                },
+                "publishedAt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "payload": {
+                        "name": "publishedAt",
+                        "type": "date",
+                        "label": "Published At"
+                    }
+                },
+                "relatedPosts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/posts"
+                    },
+                    "payload": {
+                        "name": "relatedPosts",
+                        "type": "relationship",
+                        "label": "Related Posts",
+                        "hasMany": true,
+                        "relationTo": "posts"
+                    }
+                },
+                "tags": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "tag": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "payload": {
+                                    "name": "tag",
+                                    "type": "text",
+                                    "label": "Tag"
+                                }
+                            },
+                            "id": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "required": []
+                    },
+                    "payload": {
+                        "name": "tags",
+                        "type": "array",
+                        "label": "Tags"
+                    }
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "_status": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "draft",
+                        "published"
+                    ]
+                }
+            },
+            "required": [
+                "id",
+                "title",
+                "updatedAt",
+                "createdAt"
+            ]
+        },
+        "pages": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "Page",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "layout": {
+                    "goJSONSchema": {
+                        "imports": [
+                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                        ],
+                        "nillable": false,
+                        "type": "payload.Blocks"
+                    },
+                    "payload": {
+                        "name": "layout",
+                        "type": "blocks",
+                        "label": "Layout"
+                    }
+                },
+                "isHome": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "payload": {
+                        "name": "isHome",
+                        "type": "checkbox",
+                        "label": "Is Home"
+                    }
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "_status": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "draft",
+                        "published"
+                    ]
+                }
+            },
+            "required": [
+                "id",
+                "layout",
+                "updatedAt",
+                "createdAt"
+            ]
+        },
+        "clients": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "Client",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string",
+                    "payload": {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Name"
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "payload": {
+                        "name": "url",
+                        "type": "text",
+                        "label": "Website"
+                    }
+                },
+                "logo": {
+                    "goJSONSchema": {
+                        "imports": [
+                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                        ],
+                        "nillable": true,
+                        "type": "payload.Media"
+                    },
+                    "payload": {
+                        "name": "logo",
+                        "type": "upload",
+                        "label": "Logo"
+                    }
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "name",
+                "url",
+                "logo",
+                "updatedAt",
+                "createdAt"
+            ]
+        },
+        "reviews": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "Review",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "content": {
+                    "type": "string",
+                    "payload": {
+                        "name": "content",
+                        "type": "textarea",
+                        "label": "Content"
+                    }
+                },
+                "author": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "firstName": {
+                            "type": "string",
+                            "payload": {
+                                "name": "firstName",
+                                "type": "text",
+                                "label": "First Name"
+                            }
+                        },
+                        "lastName": {
+                            "type": "string",
+                            "payload": {
+                                "name": "lastName",
+                                "type": "text",
+                                "label": "Last Name"
+                            }
+                        },
+                        "description": {
+                            "type": "string",
+                            "payload": {
+                                "name": "description",
+                                "type": "text",
+                                "label": "Description"
+                            }
+                        }
+                    },
+                    "required": [
+                        "firstName",
+                        "lastName",
+                        "description"
+                    ],
+                    "payload": {
+                        "name": "author",
+                        "type": "group",
+                        "label": "Author"
+                    }
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "content",
+                "author",
+                "updatedAt",
+                "createdAt"
+            ]
+        },
+        "portfolio": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "Portfolio",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "title": {
+                    "type": "string",
+                    "payload": {
+                        "name": "title",
+                        "type": "text",
+                        "label": "Title"
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "payload": {
+                        "name": "url",
+                        "type": "text",
+                        "label": "Link"
+                    }
+                },
+                "date": {
+                    "type": "string",
+                    "payload": {
+                        "name": "date",
+                        "type": "date",
+                        "label": "Date"
+                    }
+                },
+                "company": {
+                    "payload": {
+                        "name": "company",
+                        "type": "relationship",
+                        "label": "Company",
+                        "relationTo": "clients"
+                    },
+                    "$ref": "#/definitions/clients"
+                },
+                "category": {
+                    "payload": {
+                        "name": "category",
+                        "type": "relationship",
+                        "label": "Category",
+                        "hasMany": false,
+                        "relationTo": "portfolio-categories"
+                    },
+                    "$ref": "#/definitions/portfolio-categories"
+                },
+                "image": {
+                    "goJSONSchema": {
+                        "imports": [
+                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                        ],
+                        "nillable": true,
+                        "type": "payload.Media"
+                    },
+                    "payload": {
+                        "name": "image",
+                        "type": "upload",
+                        "label": "Image"
+                    }
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "title",
+                "url",
+                "date",
+                "company",
+                "category",
+                "image",
+                "updatedAt",
+                "createdAt"
+            ]
+        },
+        "portfolio-categories": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "PortfolioCategory",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "title": {
+                    "type": "string",
+                    "payload": {
+                        "name": "title",
+                        "type": "text",
+                        "label": "Title"
+                    }
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "title",
+                "updatedAt",
+                "createdAt"
+            ]
+        },
+        "users": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "User",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string",
+                    "payload": {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Name"
+                    }
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "enableAPIKey": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "apiKey": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "apiKeyIndex": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "email": {
+                    "type": "string"
+                },
+                "resetPasswordToken": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "resetPasswordExpiration": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "salt": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hash": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "loginAttempts": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "lockUntil": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "password": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id",
+                "name",
+                "updatedAt",
+                "createdAt",
+                "email"
+            ]
+        },
+        "forms": {
+            "type": "object",
+            "goJSONSchema": {
+                "imports": [
+                    "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                ],
+                "nillable": false,
+                "type": "payload.Form"
+            },
+            "fields": []
+        },
+        "form-submissions": {
+            "type": "object",
+            "goJSONSchema": {
+                "imports": [
+                    "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                ],
+                "nillable": false,
+                "type": "payload.FormSubmission"
+            },
+            "fields": []
+        },
+        "payload-preferences": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "PayloadPreference",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "user": {
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "relationTo": {
+                                    "const": "users"
+                                },
+                                "value": {
+                                    "oneOf": [
+                                        {
+                                            "type": "number"
+                                        },
+                                        {
+                                            "$ref": "#/definitions/users"
+                                        }
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "value",
+                                "relationTo"
+                            ]
+                        }
+                    ]
+                },
+                "key": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "type": [
+                        "object",
+                        "array",
+                        "string",
+                        "number",
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "user",
+                "updatedAt",
+                "createdAt"
+            ]
+        },
+        "payload-migrations": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "PayloadMigration",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "batch": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "updatedAt",
+                "createdAt"
+            ]
+        },
+        "NavigationHeaderLinks": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "payload": {
+                            "name": "title",
+                            "type": "text",
+                            "label": "Title"
+                        }
+                    },
+                    "url": {
+                        "type": "string",
+                        "payload": {
+                            "name": "url",
+                            "type": "text",
+                            "label": "URL"
+                        }
+                    },
+                    "id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "required": [
+                    "title",
+                    "url"
+                ]
+            }
+        },
+        "BlockContentDefault": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "style": {
+                    "type": "string",
+                    "enum": [
+                        "centered",
+                        "spread"
+                    ],
+                    "payload": {
+                        "name": "style",
+                        "type": "select",
+                        "label": "Style"
+                    }
+                },
+                "centreAlign": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "payload": {
+                        "name": "centreAlign",
+                        "type": "checkbox",
+                        "label": "Centre Align"
+                    }
+                },
+                "content": {
+                    "type": "string",
+                    "goJSONSchema": {
+                        "imports": [
+                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                        ],
+                        "nillable": false,
+                        "type": "payload.RichText"
+                    },
+                    "payload": {
+                        "name": "content",
+                        "type": "richText",
+                        "label": "Content"
+                    }
+                },
+                "contentHtml": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "payload": {
+                        "name": "contentHtml",
+                        "type": "code",
+                        "label": "Content Html"
+                    }
+                },
+                "id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "blockType",
+                "style",
+                "content"
+            ]
+        },
+        "BlockContent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "content": {
+                    "type": "string",
+                    "goJSONSchema": {
+                        "imports": [
+                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                        ],
+                        "nillable": false,
+                        "type": "payload.RichText"
+                    },
+                    "payload": {
+                        "name": "content",
+                        "type": "richText",
+                        "label": "Content"
+                    }
+                },
+                "contentHtml": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "payload": {
+                        "name": "contentHtml",
+                        "type": "code",
+                        "label": "Content Html"
+                    }
+                },
+                "id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "blockType",
+                "content"
+            ]
+        },
+        "BlockFAQs": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "faqs": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "question": {
+                                "type": "string",
+                                "payload": {
+                                    "name": "question",
+                                    "type": "text",
+                                    "label": "Title"
+                                }
+                            },
+                            "answer": {
+                                "type": "string",
+                                "payload": {
+                                    "name": "answer",
+                                    "type": "textarea",
+                                    "label": "Answer"
+                                }
+                            },
+                            "id": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "question",
+                            "answer"
+                        ]
+                    },
+                    "payload": {
+                        "name": "faqs",
+                        "type": "array",
+                        "label": "FAQs"
+                    }
+                },
+                "id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "blockType"
+            ]
+        },
+        "BlockContentWithImage": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "textLayout": {
+                    "goJSONSchema": {
+                        "imports": [
+                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                        ],
+                        "nillable": false,
+                        "type": "payload.Blocks"
+                    },
+                    "payload": {
+                        "name": "textLayout",
+                        "type": "blocks",
+                        "label": "Text Layout"
+                    }
+                },
+                "imagePosition": {
+                    "type": "string",
+                    "payload": {
+                        "name": "imagePosition",
+                        "type": "select",
+                        "label": "Image Position"
+                    }
+                },
+                "sticky": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "payload": {
+                        "name": "sticky",
+                        "type": "checkbox",
+                        "label": "Sticky Image"
+                    }
+                },
+                "image": {
+                    "goJSONSchema": {
+                        "imports": [
+                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                        ],
+                        "nillable": true,
+                        "type": "payload.Media"
+                    },
+                    "payload": {
+                        "name": "image",
+                        "type": "upload",
+                        "label": "Image"
+                    }
+                },
+                "id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "blockType",
+                "textLayout",
+                "imagePosition",
+                "image"
+            ]
+        },
+        "BlockLogs": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "payload": {
+                        "name": "title",
+                        "type": "text",
+                        "label": "Title"
+                    }
+                },
+                "greyscale": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "payload": {
+                        "name": "greyscale",
+                        "type": "checkbox",
+                        "label": "Greyscale"
+                    }
+                },
+                "logos": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "link": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "payload": {
+                                    "name": "link",
+                                    "type": "text",
+                                    "label": "Link"
+                                }
+                            },
+                            "logo": {
+                                "goJSONSchema": {
+                                    "imports": [
+                                        "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                                    ],
+                                    "nillable": true,
+                                    "type": "payload.Media"
+                                },
+                                "payload": {
+                                    "name": "logo",
+                                    "type": "upload",
+                                    "label": "Logo"
+                                }
+                            },
+                            "id": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "logo"
+                        ]
+                    },
+                    "payload": {
+                        "name": "logos",
+                        "type": "array",
+                        "label": "Logos"
+                    }
+                },
+                "id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "blockType",
+                "title"
+            ]
+        },
+        "BlockReviews": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "payload": {
+                        "name": "title",
+                        "type": "text",
+                        "label": "Title"
+                    }
+                },
+                "content": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "payload": {
+                        "name": "content",
+                        "type": "textarea",
+                        "label": "Content"
+                    }
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/reviews"
+                    },
+                    "payload": {
+                        "name": "items",
+                        "type": "relationship",
+                        "label": "Reviews",
+                        "hasMany": true,
+                        "relationTo": "reviews"
+                    }
+                },
+                "id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "blockType",
+                "title"
+            ]
+        },
+        "BlockPortfolio": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "payload": {
+                        "name": "title",
+                        "type": "text",
+                        "label": "Title"
+                    }
+                },
+                "content": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "payload": {
+                        "name": "content",
+                        "type": "textarea",
+                        "label": "Content"
+                    }
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/portfolio"
+                    },
+                    "payload": {
+                        "name": "items",
+                        "type": "relationship",
+                        "label": "Portfolio",
+                        "hasMany": true,
+                        "relationTo": "portfolio"
+                    }
+                },
+                "id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "blockType",
+                "title"
+            ]
+        },
+        "BlockContact": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "payload": {
+                        "name": "title",
+                        "type": "text",
+                        "label": "Title"
+                    }
+                },
+                "content": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "payload": {
+                        "name": "content",
+                        "type": "textarea",
+                        "label": "Content"
+                    }
+                },
+                "includeSocial": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "payload": {
+                        "name": "includeSocial",
+                        "type": "checkbox",
+                        "label": "Include Social Links?"
+                    }
+                },
+                "form": {
+                    "goJSONSchema": {
+                        "imports": [
+                            "github.com/ainsleydev/webkit/pkg/adapters/payload"
+                        ],
+                        "nillable": false,
+                        "type": "payload.Form"
+                    },
+                    "payload": {
+                        "name": "form",
+                        "type": "relationship",
+                        "label": "Form",
+                        "hasMany": false,
+                        "relationTo": "forms"
+                    }
+                },
+                "id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "blockType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "blockType",
+                "title"
+            ]
+        },
+        "auth": {
+            "users": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "forgotPassword": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "required": false
+                            }
+                        },
+                        "required": [
+                            "email"
+                        ]
+                    },
+                    "login": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "required": false
+                            },
+                            "password": {
+                                "type": "string",
+                                "required": false
+                            }
+                        },
+                        "required": [
+                            "email",
+                            "password"
+                        ]
+                    },
+                    "registerFirstUser": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "required": false
+                            },
+                            "password": {
+                                "type": "string",
+                                "required": false
+                            }
+                        },
+                        "required": [
+                            "email",
+                            "password"
+                        ]
+                    },
+                    "unlock": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "required": false
+                            }
+                        },
+                        "required": [
+                            "email"
+                        ]
+                    }
+                },
+                "required": [
+                    "forgotPassword",
+                    "login",
+                    "registerFirstUser",
+                    "unlock"
+                ],
+                "title": "UserAuthOperations"
+            }
+        }
+    },
+    "type": "object",
+    "properties": {
+        "collections": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "posts": {
+                    "$ref": "#/definitions/posts"
+                },
+                "pages": {
+                    "$ref": "#/definitions/pages"
+                },
+                "clients": {
+                    "$ref": "#/definitions/clients"
+                },
+                "reviews": {
+                    "$ref": "#/definitions/reviews"
+                },
+                "portfolio": {
+                    "$ref": "#/definitions/portfolio"
+                },
+                "portfolio-categories": {
+                    "$ref": "#/definitions/portfolio-categories"
+                },
+                "users": {
+                    "$ref": "#/definitions/users"
+                },
+                "forms": {
+                    "$ref": "#/definitions/forms"
+                },
+                "form-submissions": {
+                    "$ref": "#/definitions/form-submissions"
+                },
+                "payload-preferences": {
+                    "$ref": "#/definitions/payload-preferences"
+                },
+                "payload-migrations": {
+                    "$ref": "#/definitions/payload-migrations"
+                }
+            },
+            "required": [
+                "posts",
+                "pages",
+                "clients",
+                "reviews",
+                "portfolio",
+                "portfolio-categories",
+                "media",
+                "users",
+                "redirects",
+                "forms",
+                "form-submissions",
+                "payload-preferences",
+                "payload-migrations"
+            ]
+        },
+        "db": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "defaultIDType": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "defaultIDType"
+            ]
+        },
+        "globals": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "settings": {
+                    "$ref": "#/definitions/settings"
+                },
+                "navigation": {
+                    "$ref": "#/definitions/navigation"
+                }
+            },
+            "required": [
+                "settings",
+                "navigation"
+            ]
+        },
+        "locale": {
+            "type": "null"
+        },
+        "user": {
+            "oneOf": [
+                {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/users"
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "collection": {
+                                    "type": "string",
+                                    "enum": [
+                                        "users"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "collection"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "required": [
+        "user",
+        "locale",
+        "collections",
+        "globals",
+        "auth",
+        "db"
+    ],
+    "title": "Config"
 }

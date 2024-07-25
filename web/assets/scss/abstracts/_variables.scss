@@ -64,10 +64,11 @@ $text-fluid-end-size: 1600px;
 	// Spacing
 	// ==========================================================================
 
-	--spacing-default: 2.2rem;
-	--spacing-tiny: 0.6rem;
-	--spacing-small: 1rem;
-	--spacing-large: 3rem;
+	--spacing-xs: 0.5rem;
+	--spacing-s: 1rem;
+	--spacing-m: 1.8rem;
+	--spacing-l: 3rem;
+	--spacing-xl: 5rem;
 
 	// Section
 	// ==========================================================================
@@ -119,4 +120,9 @@ $display-properties: (none, inline, inline-block, block, flex, inline-flex);
 
 $spacing-properties: (
 	0: 0,
+	xs: var(--spacing-xs),
+	s: var(--spacing-s),
+	m: var(--spacing-m),
+	l: var(--spacing-l),
+	xl: var(--spacing-xl),
 );

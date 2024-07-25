@@ -5,6 +5,10 @@ import (
 	"github.com/ainsleydev/sclark.uk/views/blocks"
 	"github.com/ainsleydev/sclark.uk/views/components"
 	"github.com/ainsleydev/sclark.uk/views/layouts"
+	"github.com/ainsleydev/sclark.uk/types"
+
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+	"github.com/ainsleydev/webkit/pkg/util/ptr"
 )
 
 templ Home() {
@@ -40,5 +44,15 @@ templ Home() {
 		<!-- =====================
 			Logos
 			===================== -->
+		@blocks.Logos(types.BlockLogs{
+			Title: "Trusted by Leading Professionals",
+			Logos: []types.BlockLogsLogosElem{
+				{Logo: payload.Media{URL: "/assets/images/logos/ice.svg"}},
+				{Logo: payload.Media{URL: "/assets/images/logos/ainsley-dev.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
+				{Logo: payload.Media{URL: "/assets/images/logos/decs-pets.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
+				{Logo: payload.Media{URL: "/assets/images/logos/schools-and-agents.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
+				{Logo: payload.Media{URL: "/assets/images/logos/jennifer-cooper.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
+			},
+		}, blocks.LogosOptions{IsHero: false})
 	}
 }

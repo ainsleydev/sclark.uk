@@ -5,6 +5,7 @@
  * @author URL:   https://ainsley.dev
  * @author Email: hello@ainsley.dev
  */
+
 require('./modernizr');
 import { Collapse } from '../../views/components/collapse';
 
@@ -28,7 +29,6 @@ html.classList.add('js');
 /*
  * Scroll
  * Adds header & nav classes after a certain scroll amount determined by scrollPos.
- *
  */
 const scrollPos = 100;
 

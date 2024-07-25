@@ -12,53 +12,55 @@ templ Contact(props types.BlockContact) {
 		<div class="container">
 			<div class="row justify-content-tab-center justify-content-desk-between">
 				<!-- Content -->
-				<div class="col-12 col-tab-10 col-desk-5">
-					@components.Group("group-large") {
+				<div class="col-12 col-tab-10 col-desk-6 col-desk-large-5">
+					@components.Group("mb-m mb-desk-l") {
 						<!-- Title -->
 						if props.Title != "" {
 							<h2>{ props.Title } </h2>
 						}
 						<!-- Content -->
 						if props.Content != nil {
-							<p>{ *props.Content }</p>
+							<p class="mb-0">{ *props.Content }</p>
 						}
 					}
 					if settings != nil && settings.Contact != nil {
-						<!-- Telephone -->
-						@components.Group() {
-							if settings.Contact.Telephone != nil {
-								<div class="contact-item">
-									<h6>Email</h6>
-									<a href={ templ.SafeURL("mailto:" + *settings.Contact.Email) }>
-										{ *settings.Contact.Email }
-									</a>
-								</div>
+						<div class="contact-social mb-m mb-desk-0">
+						 	<!-- Telephone -->
+							@components.Group() {
+								if settings.Contact.Telephone != nil {
+									<div class="contact-item">
+										<h6>Email</h6>
+										<a href={ templ.SafeURL("mailto:" + *settings.Contact.Email) }>
+											{ *settings.Contact.Email }
+										</a>
+									</div>
+								}
 							}
-						}
-						<!-- Email -->
-						@components.Group() {
-							if settings.Contact.Email != nil {
-								<div class="contact-item">
-									<h6>Telephone</h6>
-									<a href={ templ.SafeURL("tel:" + *settings.Contact.Telephone) }>
-										{ *settings.Contact.Telephone }
-									</a>
-								</div>
+							<!-- Email -->
+							@components.Group() {
+								if settings.Contact.Email != nil {
+									<div class="contact-item">
+										<h6>Telephone</h6>
+										<a href={ templ.SafeURL("tel:" + *settings.Contact.Telephone) }>
+											{ *settings.Contact.Telephone }
+										</a>
+									</div>
+								}
 							}
-						}
-						<!-- Social -->
-						if props.IncludeSocial != nil && *props.IncludeSocial == true {
-							@components.Group("mb-0") {
-								<div class="contact-item">
-									<h6>Connect</h6>
-									@components.Social(components.SocialProps{})
-								</div>
+							<!-- Social -->
+							if props.IncludeSocial != nil && *props.IncludeSocial == true {
+								@components.Group("mb-0") {
+									<div class="contact-item">
+										<h6>Connect</h6>
+										@components.Social(components.SocialProps{})
+									</div>
+								}
 							}
-						}
+						</div>
 					}
 				</div><!-- /Col -->
 				<!-- Form -->
-				<div class="col-12 col-tab-10 col-desk-5">
+				<div class="col-12 col-tab-10 col-desk-6 col-desk-large-5">
 					<form class="form">
 						@components.Group() {
 							<h4>Get in touch</h4>

@@ -3,6 +3,10 @@ package blocks
 import (
 	"github.com/ainsleydev/sclark.uk/views/components"
 	"github.com/ainsleydev/sclark.uk/views/svgs"
+	"github.com/ainsleydev/sclark.uk/types"
+
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+	"github.com/ainsleydev/webkit/pkg/util/ptr"
 )
 
 type HeroProps struct {
@@ -52,16 +56,16 @@ templ Hero() {
 			<div class="row justify-content-center hero-logos">
 				<div class="col-12 col-tab-10 col-desk-12">
 					<!-- Logos -->
-					@Logos(LogosProps{
+					@Logos(types.BlockLogs{
 						Title: "Trusted by Leading Professionals",
-						Items: []LogosItem{
-							{Title: "ICE", Src: "/assets/images/logos/ice.svg"},
-							{Title: "ainsley.dev", Src: "/assets/images/logos/ainsley-dev.svg", URL: "https://ainsley.dev"},
-							{Title: "Dec's Pets", Src: "/assets/images/logos/decs-pets.svg", URL: "https://ainsley.dev"},
-							{Title: "Dec's Pets", Src: "/assets/images/logos/schools-and-agents.svg", URL: "https://ainsley.dev"},
-							{Title: "Dec's Pets", Src: "/assets/images/logos/jennifer-cooper.svg", URL: "https://ainsley.dev"},
+						Logos: []types.BlockLogsLogosElem{
+							{Logo: payload.Media{URL: "/assets/images/logos/ice.svg"}},
+							{Logo: payload.Media{URL: "/assets/images/logos/ainsley-dev.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
+							{Logo: payload.Media{URL: "/assets/images/logos/decs-pets.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
+							{Logo: payload.Media{URL: "/assets/images/logos/schools-and-agents.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
+							{Logo: payload.Media{URL: "/assets/images/logos/jennifer-cooper.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
 						},
-					})
+					}, LogosOptions{IsHero: true})
 				</div><!-- /Col -->
 			</div><!-- /Row -->
 		</div><!-- /Container -->

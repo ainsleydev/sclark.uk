@@ -146,6 +146,9 @@ type BlockLogsLogosElem struct {
 	// Id corresponds to the JSON schema field "id".
 	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
 
+	// Link corresponds to the JSON schema field "link".
+	Link *string `json:"link,omitempty" yaml:"link,omitempty" mapstructure:"link,omitempty"`
+
 	// Logo corresponds to the JSON schema field "logo".
 	Logo payload.Media `json:"logo" yaml:"logo" mapstructure:"logo"`
 }
@@ -214,6 +217,9 @@ type Config struct {
 	// Collections corresponds to the JSON schema field "collections".
 	Collections ConfigCollections `json:"collections" yaml:"collections" mapstructure:"collections"`
 
+	// Db corresponds to the JSON schema field "db".
+	Db ConfigDb `json:"db" yaml:"db" mapstructure:"db"`
+
 	// Globals corresponds to the JSON schema field "globals".
 	Globals ConfigGlobals `json:"globals" yaml:"globals" mapstructure:"globals"`
 
@@ -258,6 +264,11 @@ type ConfigCollections struct {
 
 	// Users corresponds to the JSON schema field "users".
 	Users Users `json:"users" yaml:"users" mapstructure:"users"`
+}
+
+type ConfigDb struct {
+	// DefaultIDType corresponds to the JSON schema field "defaultIDType".
+	DefaultIDType float64 `json:"defaultIDType" yaml:"defaultIDType" mapstructure:"defaultIDType"`
 }
 
 type ConfigGlobals struct {
