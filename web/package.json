@@ -19,7 +19,7 @@
 		"docker": "pnpm docker:build && pnpm docker:run",
 		"docker:build": "docker build -t ainsley.dev/web .",
 		"docker:run": "docker run -it --init --env-file .env -e APP_ENV=production -p 3000:3000 --rm -ti ainsley.dev/web",
-		"docker:clean": "docker rm ainsley.dev/web",
+		"docker:clean": "docker rmi ainsley.dev/web && docker image prune",
 		"gen": "pnpm generate:templ && pnpm generate:types && pnpm generate:modernizr",
 		"generate:templ": "TEMPL_EXPERIMENT=rawgo go generate ./...",
 		"generate:types": "go-jsonschema -p types --only-models --struct-name-from-title --capitalization strings --verbose ../cms/src/types/payload.json > ./types/cms.go",
