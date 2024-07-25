@@ -1,5 +1,5 @@
-import type { Block } from 'payload';
 import { validateURL } from '@ainsleydev/payload-helper/src/util/validation';
+import type { Block } from 'payload';
 
 export const Logos: Block = {
 	slug: 'logos-block',

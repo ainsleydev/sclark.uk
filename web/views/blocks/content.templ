@@ -2,15 +2,27 @@ package blocks
 
 import (
 	"github.com/ainsleydev/sclark.uk/types"
+	"github.com/ainsleydev/sclark.uk/views/components"
+
+	"github.com/ainsleydev/webkit/pkg/util/ptr"
 )
+
+func getContentGroupProps(props types.BlockContentDefault) string {
+	if ptr.Bool(props.CentreAlign) {
+		return "group-centre"
+	}
+	return ""
+}
 
 templ Content(props types.BlockContentDefault) {
 	if props.ContentHtml != nil {
-		<section class="section section-padding">
+		<section class="section">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-12 col-tab-10 col-desk-8">
-						@templ.Raw(*props.ContentHtml)
+						@components.Group(getContentGroupProps(props), "mb-0") {
+							@templ.Raw(*props.ContentHtml)
+						}
 					</div><!-- /Col -->
 				</div><!-- /Row -->
 			</div><!-- /Container -->

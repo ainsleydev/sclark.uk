@@ -17,42 +17,66 @@ templ Home() {
 			Hero
 			===================== -->
 		@blocks.Hero()
-		<!-- =====================
-			English Lessons
-			===================== -->
-		@components.Gradient(components.GradientColourBlue)
-		@blocks.Content(content.EnglishLessonsIntro)
-		@blocks.ContentWithImage(content.EnglishLessons)
-		<!-- =====================
-			Content Writing
-			===================== -->
-		@components.Gradient(components.GradientColourPink)
-		@blocks.Content(content.EnglishLessonsIntro)
-		@blocks.ContentWithImage(content.ContentWriting)
-		<!-- =====================
-			Reviews
-			===================== -->
-		@blocks.Reviews(content.Reviews)
-		<!-- =====================
-			Reviews
-			===================== -->
-		@blocks.Portfolio(content.Portfolio)
-		<!-- =====================
-			Contact
-			===================== -->
-		@blocks.Contact(content.ContactForm)
-		<!-- =====================
-			Logos
-			===================== -->
-		@blocks.Logos(types.BlockLogs{
-			Title: "Trusted by Leading Professionals",
-			Logos: []types.BlockLogsLogosElem{
-				{Logo: payload.Media{URL: "/assets/images/logos/ice.svg"}},
-				{Logo: payload.Media{URL: "/assets/images/logos/ainsley-dev.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
-				{Logo: payload.Media{URL: "/assets/images/logos/decs-pets.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
-				{Logo: payload.Media{URL: "/assets/images/logos/schools-and-agents.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
-				{Logo: payload.Media{URL: "/assets/images/logos/jennifer-cooper.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
-			},
-		}, blocks.LogosOptions{IsHero: false})
+		<div class="blocks">
+			<!-- =====================
+				English Lessons
+				===================== -->
+			<div class="blocks-item blocks-item-gradient">
+				@components.Gradient(components.GradientColourBlue)
+			</div>
+			<div class="blocks-item blocks-item-content">
+				@blocks.Content(content.EnglishLessonsIntro)
+			</div>
+			<div class="blocks-item blocks-item-content-with-image">
+				@blocks.ContentWithImage(content.EnglishLessons)
+			</div>
+			<!-- =====================
+				Content Writing
+				===================== -->
+			<div class="blocks-item blocks-item-gradient">
+				@components.Gradient(components.GradientColourPink)
+			</div>
+			<div class="blocks-item blocks-item-content">
+				@blocks.Content(content.EnglishLessonsIntro)
+			</div>
+			<div class="blocks-item blocks-item-content-with-image">
+				@blocks.ContentWithImage(content.ContentWriting)
+			</div>
+			<!-- =====================
+				Reviews
+				===================== -->
+			<div class="blocks-item blocks-item-reviews">
+				@blocks.Reviews(content.Reviews)
+			</div>
+
+			<!-- =====================
+				Portfolio
+				===================== -->
+			<div class="blocks-item blocks-item-portfolio">
+				@blocks.Portfolio(content.Portfolio)
+			</div>
+			<!-- =====================
+				Contact
+				===================== -->
+			<div class="blocks-item blocks-item-contact">
+				@blocks.Contact(content.ContactForm)
+			</div>
+			<!-- =====================
+				Logos
+				===================== -->
+			<div class="blocks-item blocks-item-logos">
+				@blocks.Logos(types.BlockLogs{
+					Title: "Trusted by Leading Professionals",
+					Logos: []types.BlockLogsLogosElem{
+						{Logo: payload.Media{URL: "/assets/images/logos/ice.svg"}},
+						{Logo: payload.Media{URL: "/assets/images/logos/ainsley-dev.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
+						{Logo: payload.Media{URL: "/assets/images/logos/decs-pets.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
+						{Logo: payload.Media{URL: "/assets/images/logos/schools-and-agents.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
+						{Logo: payload.Media{URL: "/assets/images/logos/jennifer-cooper.svg"}, Link: ptr.StringPtr("https://ainsley.dev")},
+					},
+				}, blocks.LogosOptions{IsHero: false})
+			</div>
+		</div>
+
 	}
 }

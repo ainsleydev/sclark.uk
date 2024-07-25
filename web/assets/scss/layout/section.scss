@@ -4,10 +4,14 @@
 
 .section {
 	position: relative;
-	padding-bottom: var(--section-margin);
+
 
 	// Mods
 	// ==========================================================================
+
+	&-padding {
+		padding-bottom: var(--section-margin);
+	}
 
 	&-padding-top {
 		padding-top: var(--section-margin);

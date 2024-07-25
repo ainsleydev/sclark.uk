@@ -1,0 +1,44 @@
+// -----------------------------------------------------------------------------
+// blocks.scss
+// -----------------------------------------------------------------------------
+
+.blocks {
+	$self: &;
+
+	// Item
+	// ==========================================================================
+
+	&-item {
+		position: relative;
+		padding-bottom: var(--section-margin);
+
+		&-content + &-content-with-image {
+			margin-top: calc(var(--section-margin) * -1);
+			padding-top: var(--spacing-l);
+		}
+
+		&-gradient {
+			padding-bottom: 0;
+		}
+
+		&-logos + .footer {
+
+			@at-root #{$self}-item-logos {
+				padding-bottom: 0;
+			}
+		}
+	}
+
+	// Desktop
+	// ==========================================================================
+
+	@include media-desk {
+
+		&-item {
+
+			&-content + &-content-with-image {
+				padding-top: var(--section-margin-small);
+			}
+		}
+	}
+}
