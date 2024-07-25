@@ -8,6 +8,7 @@
 
 require('./modernizr');
 import Glider from 'glider-js';
+import { inView, animate } from "motion"
 import { Collapse } from '../../views/components/collapse';
 
 const html = document.querySelector('html');
@@ -92,3 +93,10 @@ const initGlider = () => {
 
 window.addEventListener('load', initGlider);
 window.addEventListener('resize', initGlider);
+
+/**
+ * AOS
+ */
+inView("#carousel li", (info) => {
+	animate(info.target, { opacity: 1 })
+})

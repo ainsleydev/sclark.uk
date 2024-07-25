@@ -1,6 +1,10 @@
 package blocks
 
-import "github.com/ainsleydev/sclark.uk/types"
+import (
+	"strconv"
+	"github.com/ainsleydev/sclark.uk/types"
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+)
 
 type LogosOptions struct {
 	IsHero bool
@@ -30,22 +34,38 @@ templ Logos(props types.BlockLogs, opts LogosOptions) {
 	}
 }
 
+templ logoImage(img payload.Media, isHero bool) {
+	<img loading={ logosLoadingAttr(isHero) } src={ img.URL }
+		alt={ img.Alt() }
+		if img.Width != nil {
+			width={ strconv.FormatFloat(*img.Width, 'f', 6, 64) }
+		}
+		if img.Height != nil {
+			height={ strconv.FormatFloat(*img.Height, 'f', 6, 64) }
+		}
+	/>
+}
+
 templ logosBlock(props types.BlockLogs, opts LogosOptions) {
 	if len(props.Logos) > 0 {
 		<figure class={ "logos", templ.KV("logos-greycale", opts.Greyscale) }>
 			if props.Title != "" {
 				<figcaption class="logos-title">
-					<h6>{ props.Title }</h6>
+					<span class="heading-6">
+						{ props.Title }
+					</span>
 				</figcaption>
 			}
 			for _, item := range props.Logos {
 				if item.Link != nil {
-					<a href={ templ.SafeURL(*item.Link) } class="logos-item logos-link" target="_blank">
-						<img loading={ logosLoadingAttr(opts.IsHero) } src={ item.Logo.URL } alt={ item.Logo.Alt() } />
+					<a href={ templ.SafeURL(*item.Link) } class="logos-item logos-link"
+						target="_blank"
+						aria-label={ item.Logo.Alt("S.Clark Client Logo") }>
+						@logoImage(item.Logo, opts.IsHero)
 					</a>
 				} else {
 					<figure class="logos-item">
-						<img loading={ logosLoadingAttr(opts.IsHero) } src={ item.Logo.URL } alt={ item.Logo.Alt() } />
+						@logoImage(item.Logo, opts.IsHero)
 					</figure>
 				}
 			}

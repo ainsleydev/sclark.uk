@@ -11,7 +11,7 @@ var PayloadSettings = &payload.Settings{
 		Email:     ptr.StringPtr("hello@sclark.uk"),
 		Telephone: ptr.StringPtr("+447415685531"),
 	},
-	Locale: "en_GB",
+	Locale: "en-GB",
 	Logo: &payload.Media{
 		URL: "/assets/images/logo.svg",
 	},

@@ -111,7 +111,7 @@ templ Footer() {
 					<!-- Nav -->
 					<div class="col-12 col-tab-10 col-desk-5 col-desk-large-4 offset-desk-1">
 						<h6>Navigate</h6>
-						<nav class="footer-nav">
+						<menu class="footer-nav">
 							for _, item := range getNavItems(ctx) {
 								<li class="footer-nav-item">
 									<a class="footer-nav-link" href={ templ.URL(item.URL) }>
@@ -119,7 +119,7 @@ templ Footer() {
 									</a>
 								</li>
 							}
-						</nav>
+						</menu>
 					</div><!-- /Col -->
 					<!-- Social -->
 					<div class="col-12 col-desk-4 footer-social">
