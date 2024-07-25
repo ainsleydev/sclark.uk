@@ -191,12 +191,18 @@ async function copyAndConvertImages(srcDir, destDir) {
 			const filePath = path.join(srcDir, file);
 			const destPathOriginal = path.join(destDir, file);
 
+			// Skip SVG files
 			if (path.extname(file).toLowerCase() === ".svg") {
 				continue;
 			}
 
-			if (fs.exists(destPathOriginal)) {
-				continue;
+			// Check if destPathOriginal exists and is a file
+			if (await fs.pathExists(destPathOriginal)) {
+				const destStat = await fs.stat(destPathOriginal);
+				if (destStat.isFile()) {
+					console.log(`${destPathOriginal} already exists as a file`);
+					continue;
+				}
 			}
 
 			const fileStat = await fs.stat(filePath);
