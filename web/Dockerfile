@@ -25,7 +25,7 @@ FROM alpine:latest AS runtime
 
 WORKDIR /root/
 COPY --from=builder /app/app .
-COPY --from=assets /app/dist ./dist
+COPY --from=assets /app/dist ./app/dist
 
 EXPOSE 3000
 CMD ["./app"]

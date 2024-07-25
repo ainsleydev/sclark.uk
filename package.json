@@ -36,7 +36,9 @@
 		"lint": "turbo lint",
 		"fix": "turbo lint",
 		"gen": "turbo run gen --filter=cms && turbo run gen --filter=web",
-		"test": "turbo run test --filter=web"
+		"test": "turbo run test --filter=web",
+		"infra:apply": "cd infra && terraform apply",
+		"infra:destroy": "cd infra && terraform destroy"
 	},
 	"packageManager": "pnpm@9.1.4",
 	"devDependencies": {

@@ -16,7 +16,11 @@
 		"check": "pnpm run format && pnpm run lint",
 		"format": "biome format --write ./src",
 		"lint": "biome lint --write --unsafe ./src",
-		"seed": "npx tsx src/seed/seed.ts"
+		"seed": "npx tsx src/seed/seed.ts",
+		"docker": "pnpm docker:build && pnpm docker:run",
+		"docker:build": "docker build -t ainsley.dev/cms .",
+		"docker:run": "docker run -it --init --env-file .env -e APP_ENV=production -p 3000:3000 --rm -ti ainsley.dev/cms",
+		"docker:clean": "docker rmi ainsley.dev/cms && docker image prune"
 	},
 	"dependencies": {
 		"@ainsleydev/payload-helper": "link:/Users/Ainsley/Desktop/ainsley.dev/WebKit/web-kit/packages/payload-helper",
