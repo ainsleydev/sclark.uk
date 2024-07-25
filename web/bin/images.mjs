@@ -1,6 +1,6 @@
-import path from "node:path";
-import fs from "fs-extra";
-import sharp from "sharp";
+import path from 'node:path';
+import fs from 'fs-extra';
+import sharp from 'sharp';
 
 /**
  * Image sizes and format options for resizing and converting images.
@@ -10,22 +10,22 @@ import sharp from "sharp";
 export const imageSizes = [
 	// Original Size (for WebP & Avif)
 	{
-		name: "webp",
+		name: 'webp',
 		width: undefined,
 		height: undefined,
 		formatOptions: {
-			format: "webp",
+			format: 'webp',
 			options: {
 				quality: 80,
 			},
 		},
 	},
 	{
-		name: "avif",
+		name: 'avif',
 		width: undefined,
 		height: undefined,
 		formatOptions: {
-			format: "avif",
+			format: 'avif',
 			options: {
 				quality: 80,
 			},
@@ -33,30 +33,30 @@ export const imageSizes = [
 	},
 	// Thumbnail Sizes
 	{
-		name: "thumbnail",
+		name: 'thumbnail',
 		width: 400,
 		height: 300,
-		position: "centre",
+		position: 'centre',
 	},
 	{
-		name: "thumbnail_webp",
+		name: 'thumbnail_webp',
 		width: 400,
 		height: 300,
-		position: "centre",
+		position: 'centre',
 		formatOptions: {
-			format: "webp",
+			format: 'webp',
 			options: {
 				quality: 80,
 			},
 		},
 	},
 	{
-		name: "thumbnail_avif",
+		name: 'thumbnail_avif',
 		width: 400,
 		height: 300,
-		position: "centre",
+		position: 'centre',
 		formatOptions: {
-			format: "avif",
+			format: 'avif',
 			options: {
 				quality: 80,
 			},
@@ -64,27 +64,27 @@ export const imageSizes = [
 	},
 	// Mobile Sizes
 	{
-		name: "mobile",
+		name: 'mobile',
 		width: 768,
 		height: undefined,
 	},
 	{
-		name: "mobile_webp",
+		name: 'mobile_webp',
 		width: 768,
 		height: undefined,
 		formatOptions: {
-			format: "webp",
+			format: 'webp',
 			options: {
 				quality: 80,
 			},
 		},
 	},
 	{
-		name: "mobile_avif",
+		name: 'mobile_avif',
 		width: 768,
 		height: undefined,
 		formatOptions: {
-			format: "avif",
+			format: 'avif',
 			options: {
 				quality: 80,
 			},
@@ -92,27 +92,27 @@ export const imageSizes = [
 	},
 	// Tablet Sizes
 	{
-		name: "tablet",
+		name: 'tablet',
 		width: 1024,
 		height: undefined,
 	},
 	{
-		name: "tablet_webp",
+		name: 'tablet_webp',
 		width: 1024,
 		height: undefined,
 		formatOptions: {
-			format: "webp",
+			format: 'webp',
 			options: {
 				quality: 80,
 			},
 		},
 	},
 	{
-		name: "tablet_avif",
+		name: 'tablet_avif',
 		width: 1024,
 		height: undefined,
 		formatOptions: {
-			format: "avif",
+			format: 'avif',
 			options: {
 				quality: 80,
 			},
@@ -131,15 +131,15 @@ export const imageSizes = [
 function generateFileName(filePath, sizeName, formatOptions) {
 	const originalName = path.parse(path.basename(filePath)).name;
 	const originalExtension = path.parse(filePath).ext;
-	const formattedSizeName = sizeName.replaceAll("_", "-");
+	const formattedSizeName = sizeName.replaceAll('_', '-');
 	const formatExtension = formatOptions ? `.${formatOptions.format}` : originalExtension;
 
-	if (formattedSizeName === "webp" || formattedSizeName === "avif") {
+	if (formattedSizeName === 'webp' || formattedSizeName === 'avif') {
 		return `${originalName}${formatExtension}`;
 	}
 
-	if (formattedSizeName.includes("avif") || formattedSizeName.includes("webp")) {
-		const size = formattedSizeName.replace("avif", "").replace("webp", "").replaceAll("-", "");
+	if (formattedSizeName.includes('avif') || formattedSizeName.includes('webp')) {
+		const size = formattedSizeName.replace('avif', '').replace('webp', '').replaceAll('-', '');
 		return `${originalName}-${size}${formatExtension}`;
 	}
 
@@ -192,7 +192,7 @@ async function copyAndConvertImages(srcDir, destDir) {
 			const destPathOriginal = path.join(destDir, file);
 
 			// Skip SVG files
-			if (path.extname(file).toLowerCase() === ".svg") {
+			if (path.extname(file).toLowerCase() === '.svg') {
 				continue;
 			}
 
@@ -213,7 +213,7 @@ async function copyAndConvertImages(srcDir, destDir) {
 				try {
 					await fs.copy(filePath, destPathOriginal);
 				} catch (err) {
-					console.log("hey", filePath, destPathOriginal, err);
+					console.log('hey', filePath, destPathOriginal, err);
 				}
 
 				// Process each size configuration
@@ -223,7 +223,7 @@ async function copyAndConvertImages(srcDir, destDir) {
 			}
 		}
 	} catch (error) {
-		console.error("Error copying and converting images:", error);
+		console.error('Error copying and converting images:', error);
 	}
 }
 
