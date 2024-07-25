@@ -21,11 +21,23 @@
 			padding-bottom: 0;
 		}
 
+		&-contact + &-logos {
+
+			@at-root #{$self}-item-contact {
+				padding-bottom: var(--spacing-xl);
+			}
+		}
+
 		&-logos + .footer {
 
 			@at-root #{$self}-item-logos {
 				padding-bottom: 0;
 			}
+		}
+
+		// Make sure thumbs up doesn't take over.
+		&-reviews + & {
+			z-index: 100;
 		}
 	}
 

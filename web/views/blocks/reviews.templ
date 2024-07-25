@@ -27,15 +27,17 @@ templ Reviews(props types.BlockReviews) {
 					}
 				</div><!-- /Col -->
 			</div><!-- /Row -->
-			<!-- Reviews -->
-			<div class="row justify-content-center justify-content-desk-end">
+		</div><!-- /Container -->
+		<!-- Items -->
+		<div class="container glider-container">
+			<div class="row glider justify-content-tab-center">
 				for _, review := range props.Items {
 					<div class="col-12 col-tab-10 col-desk-4 reviews-col">
 						@components.Review(review)
 					</div><!-- /Col -->
 				}
 			</div><!-- /Row -->
-		</div><!-- /Container -->
+		</div>
 		<!-- Thumbs Up -->
 		<figure class="reviews-thumbs-up">
 			<img loading="lazy" src="/assets/images/illustrations/thumbs-up.svg" alt="Thumbs Up Emoji">

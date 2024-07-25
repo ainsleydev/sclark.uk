@@ -32,7 +32,7 @@ templ Logos(props types.BlockLogs, opts LogosOptions) {
 
 templ logosBlock(props types.BlockLogs, opts LogosOptions) {
 	if len(props.Logos) > 0 {
-		<figure class={ "logos", templ.KV("logos-greycale", opts.Greyscale), templ.KV("logos-section", !opts.IsHero) }>
+		<figure class={ "logos", templ.KV("logos-greycale", opts.Greyscale) }>
 			if props.Title != "" {
 				<figcaption class="logos-title">
 					<h6>{ props.Title }</h6>

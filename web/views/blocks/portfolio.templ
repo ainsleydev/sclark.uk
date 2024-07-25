@@ -23,8 +23,10 @@ templ Portfolio(props types.BlockPortfolio) {
 					}
 				</div><!-- /Col -->
 			</div><!-- /Row -->
-			<!-- Items -->
-			<div class="row justify-content-tab-center justify-content-desk-start">
+		</div><!-- /Container -->
+		<!-- Items -->
+		<div class="container glider-container">
+			<div class="row glider justify-content-tab-center">
 				for _, item := range props.Items {
 					<div class="col-12 col-mob-6 col-tab-5 col-desk-6 portfolio-col">
 						@components.PortfolioItem(item)

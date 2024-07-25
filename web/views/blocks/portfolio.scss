@@ -9,11 +9,6 @@
 
 	&-col {
 		position: relative;
-		margin-bottom: calc(var(--grid-gap-width) * 2);
-
-		&:last-child {
-			margin-bottom: 0;
-		}
 	}
 
 	// Mobile Only
@@ -33,26 +28,13 @@
 		}
 	}
 
-
-	// Mobile Up
-	// ==========================================================================
-
-	@include media-mob {
-
-		&-col {
-
-			&:nth-last-child(2) {
-				margin-bottom: 0;
-			}
-		}
-	}
-
 	// Desktop
 	// ==========================================================================
 
-	@include media-desk {
+	@include media-tab {
 
 		&-col {
+			margin-bottom: calc(var(--grid-gap-width) * 2);
 
 			&:last-child,
 			&:nth-last-child(2) {

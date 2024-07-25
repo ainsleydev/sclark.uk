@@ -1,0 +1,46 @@
+// -----------------------------------------------------------------------------
+// glider.scss
+// -----------------------------------------------------------------------------
+
+.glider {
+
+	// Container
+	// ==========================================================================
+
+	&-container {
+		z-index: 10;
+	}
+
+	// Tablet Down
+	// ==========================================================================
+
+	@include media-tab-down {
+		margin-top: -2rem;
+		margin-bottom: -2rem;
+		padding: 2rem 0;
+
+		&-container {
+			padding-right: 0;
+			padding-left: 0;
+			overflow-x: clip;
+		}
+
+		&-track {
+			margin-right: var(--grid-container-padding);
+			margin-left: var(--grid-container-padding);
+		}
+	}
+
+	// Desktop
+	// ==========================================================================
+
+	@include media-tab {
+		overflow: visible;
+
+		&-track {
+			flex-wrap: wrap;
+			width: 100% !important;
+			justify-content: center;
+		}
+	}
+}

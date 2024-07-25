@@ -17,6 +17,7 @@
     Vendor
     ==================== */
 @import 'normalize.css/normalize.css';
+@import 'glider-js/glider.min.css';
 
 /* ====================
     Base
@@ -43,6 +44,7 @@
 /* ====================
     Layout
     ==================== */
+@import 'layout/glider';
 @import 'layout/section';
 
 /* ====================

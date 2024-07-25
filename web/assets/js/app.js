@@ -8,6 +8,7 @@
 
 require('./modernizr');
 import { Collapse } from '../../views/components/collapse';
+import Glider from 'glider-js';
 
 const html = document.querySelector('html');
 const header = document.querySelector('.header');
@@ -55,3 +56,39 @@ new Collapse({
 	inner: '.collapse-content',
 	activeClass: 'collapse-item-active',
 });
+
+/**
+ * Glider.js
+ */
+const initGlider = () => {
+	document.querySelectorAll('.glider').forEach((el) => {
+		new Glider(el, {
+			draggable: true,
+			slidesToShow: 1.2,
+			slidesToScroll: 1,
+			responsive: [
+				{
+					breakpoint: 568,
+					settings: {
+						slidesToShow: 1.4,
+					},
+				},
+				{
+					breakpoint: 768,
+					settings: {
+						slidesToShow: 'auto',
+					},
+				},
+			],
+		});
+	});
+
+	if (window.innerWidth > 768) {
+		document.querySelectorAll('.glider-slide').forEach((el) => {
+			el.style = '';
+		});
+	}
+};
+
+window.addEventListener('load', initGlider);
+window.addEventListener('resize', initGlider);
