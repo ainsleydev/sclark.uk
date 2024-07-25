@@ -85,6 +85,17 @@
 		}
 	}
 
+	@include media-tab-down {
+
+		&-nav {
+			margin-top: 1.4rem;
+		}
+
+		&-sub-inner {
+			flex-direction: column;
+		}
+	}
+
 	// Desktop
 	// =========================================================================
 

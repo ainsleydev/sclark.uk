@@ -59,7 +59,7 @@ h5,
 }
 
 @mixin h1 {
-	@include fluid-type($text-fluid-start-size, $text-fluid-end-size, 50px, 86px);
+	@include fluid-type($text-fluid-start-size, $text-fluid-end-size, 46px, 86px);
 	margin-bottom: 1.8rem;
 	line-height: 1.1;
 	letter-spacing: -0.2rem;
@@ -71,7 +71,7 @@ h1,
 }
 
 @mixin h2 {
-	@include fluid-type($text-fluid-start-size, $text-fluid-end-size, 34px, 50px);
+	@include fluid-type($text-fluid-start-size, $text-fluid-end-size, 32px, 50px);
 	margin-bottom: 1.3rem;
 	line-height: 1.15;
 	letter-spacing: -0.1rem;
@@ -126,7 +126,7 @@ h5,
 	letter-spacing: 2px;
 	font-weight: normal;
 	line-height: 1;
-	margin-bottom: 0.9rem;
+	margin-bottom: 1rem;
 }
 
 h6,

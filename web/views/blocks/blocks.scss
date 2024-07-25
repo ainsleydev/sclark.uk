@@ -14,7 +14,6 @@
 
 		&-content + &-content-with-image {
 			margin-top: calc(var(--section-margin) * -1);
-			padding-top: var(--spacing-l);
 		}
 
 		&-gradient {
@@ -38,6 +37,16 @@
 		// Make sure thumbs up doesn't take over.
 		&-reviews + & {
 			z-index: 100;
+		}
+	}
+
+	@include media-tab {
+
+		&-item {
+
+			&-content + &-content-with-image {
+				padding-top: var(--spacing-l);
+			}
 		}
 	}
 

@@ -7,8 +7,8 @@
  */
 
 require('./modernizr');
-import { Collapse } from '../../views/components/collapse';
 import Glider from 'glider-js';
+import { Collapse } from '../../views/components/collapse';
 
 const html = document.querySelector('html');
 const header = document.querySelector('.header');

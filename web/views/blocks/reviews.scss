@@ -92,6 +92,10 @@
 
 		&-thumbs-up {
 			transform: translateY(70%);
+
+			&:after {
+				display: none;
+			}
 		}
 	}
 }
