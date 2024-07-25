@@ -6,6 +6,7 @@ COPY go.mod go.sum ./
 RUN go mod download
 RUN go install github.com/a-h/templ/cmd/templ@latest
 COPY . .
+ENV TEMPL_EXPERIMENT=rawgo
 RUN go generate ./...
 RUN CGO_ENABLED=0 GOOS=linux go build -o app .
 
