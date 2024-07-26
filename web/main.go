@@ -66,6 +66,7 @@ func main() {
 	kit.Get("/ping/", webkit.PingHandler)
 	//kit.Get("/", handlers.HomeHandler(p.Client))
 	kit.Get("/", handlers.TempHandler())
+	kit.Post("/", handlers.Contact(p.Client))
 	kit.NotFound(handlers.PagesHandler(p.Client))
 	kit.Static("/assets/", "./dist")
 	kit.ErrorHandler = handlers.ErrorHandler()

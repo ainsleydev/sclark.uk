@@ -34,6 +34,10 @@
 			position: relative;
 			padding-top: clamp(40px, 15vw, 120px);
 		}
+
+		&-left {
+			max-width: 580px;
+		}
 	}
 
 	// Nav

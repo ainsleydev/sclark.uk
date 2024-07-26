@@ -12,9 +12,8 @@
 	top: 0;
 	left: 0;
 	width: 100vw;
-	@include full-height;
-	overflow-y: scroll;
-	overflow-x: clip;
+	height: 100dvh;
+	overflow: clip;
 	background-color: var(--colour-background);
 	z-index: calc(var(--header-z-index) + 10);
 

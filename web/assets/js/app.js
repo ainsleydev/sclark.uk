@@ -64,7 +64,7 @@ const initGlider = () => {
 	document.querySelectorAll('.glider').forEach((el) => {
 		new Glider(el, {
 			draggable: true,
-			slidesToShow: 1.3,
+			slidesToShow: 1.4,
 			slidesToScroll: 1,
 			responsive: [
 				{
