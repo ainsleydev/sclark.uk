@@ -26,11 +26,10 @@ func hasFormError(errors validation.Errors, name string) (bool, string) {
 }
 
 templ Form(props FormProps) {
-	<form class="form" hx-post="/contact/" hx-swap="outerHTML">
+	<form class="form" hx-post="/contact/" hx-swap="outerHTML" hx-indicator=".btn">
 		if props.Success {
-			<div class="alert alert-success">
-				<p>Thank you for getting in touch. We will get back to you shortly.</p>
-			</div>
+			<h4>Thanks for your message.</h4>
+			<p class="mb-0">We will get back to you shortly.</p>
 		} else {
 			@Group() {
 				<h4>Get in touch</h4>
@@ -42,7 +41,7 @@ templ Form(props FormProps) {
 					<label class="form-label" for={ field.ID }>
 						{ field.Label }
 						if ptr.Bool(field.Required) {
-							<span class="required">*</span>
+							<span class="form-input-required">*</span>
 						}
 					</label>
 					@field

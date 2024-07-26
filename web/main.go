@@ -22,7 +22,7 @@ type Env struct {
 	AppURL          string `env:"APP_URL"`
 	PayloadURL      string `env:"PAYLOAD_URL" envRequired:"true"`
 	PayloadAPIKey   string `env:"PAYLOAD_API_KEY" envRequired:"true"`
-	Web3FormsAPIKey string `env:"WEB3FORMS_URL" envRequired:"true"`
+	Web3FormsAPIKey string `env:"WEB3_FORMS_API_KEY" envRequired:"true"`
 }
 
 func main() {

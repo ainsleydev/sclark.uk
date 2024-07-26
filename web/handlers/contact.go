@@ -82,22 +82,30 @@ func Contact(_ *payloadcms.Client, web3FormsKey string) webkit.Handler {
 		web3Form := Web3FormsRequest{
 			ContactForm: form,
 			APIKey:      web3FormsKey,
-			Subject:     "test",
+			Subject:     "S.Clark - New contact form submission from: " + form.Name,
 		}
+
+		f := components.Form(components.FormProps{
+			Form:    &formHTML,
+			Errors:  nil,
+			Success: false,
+		})
 
 		buf, err := json.Marshal(web3Form)
 		if err != nil {
 			slog.Error("Failed to marshal Web3Forms request: %v", err)
-			return nil // TODO, fix
+			return c.Render(f)
 		}
 
 		post, err := http.Post("https://api.web3forms.com/submit", "application/json", bytes.NewBuffer(buf))
 		if err != nil {
-			return nil // TODO, fix
+			slog.Error("Failed to post contact form: " + err.Error())
+			return c.Render(f)
 		}
 
 		if !httputil.Is2xx(post.StatusCode) {
-			return nil // TODO, fix
+			slog.Error("Contact form came back with a bad status", "stats", post.StatusCode)
+			return c.Render(f)
 		}
 
 		return c.Render(components.Form(components.FormProps{

@@ -23,7 +23,7 @@
 		margin-bottom: 1.4rem;
 
 		&-error #{$self}-input {
-			border-color: #f86969;
+			border-color: var(--colour-error);
 		}
 	}
 
@@ -33,15 +33,22 @@
 	&-input {
 		border: 1px solid var(--colour-border);
 		border-radius: 6px;
-		padding: 0.7rem 0.9rem;
+		padding: 0.6rem 0.8rem;
+		font-size: 1rem;
 		outline: none;
 		color: var(--colour-copy);
-		font-size: var(--type-paragraph-size);
 		line-height: var(--type-paragraph-line-height);
 		letter-spacing: -0.005rem;
+		transition: box-shadow 100ms ease;
+
+		&-required {
+			display: inline-block;
+			transform: translateX(-3px);
+		}
+
 
 		&:focus {
-			border: 1px solid red;
+			box-shadow: var(--shadow-default);
 		}
 	}
 
@@ -59,6 +66,13 @@
 		font-size: 0.9rem;
 		font-weight: 500;
 		margin-bottom: -2px;
+	}
+
+	// Error
+	// =========================================================================
+
+	&-error {
+		color: var(--colour-error);
 	}
 
 	// Desktop
