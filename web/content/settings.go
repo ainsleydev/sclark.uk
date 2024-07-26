@@ -2,6 +2,7 @@ package content
 
 import (
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+	"github.com/ainsleydev/webkit/pkg/env"
 	"github.com/ainsleydev/webkit/pkg/util/ptr"
 )
 
@@ -20,6 +21,9 @@ var PayloadSettings = &payload.Settings{
 		Title:       ptr.StringPtr("S. Clark"),
 		Description: ptr.StringPtr("Can’t find the right words?"),
 		Private:     ptr.BoolPtr(false),
+		Image: &payload.Media{
+			URL: env.Get("APP_URL", "https://sclark.uk") + "/assets/images/opengraph.jpg",
+		},
 	},
 	Robots:   ptr.StringPtr("User-agent: *\nDisallow: /"),
 	SiteName: ptr.StringPtr("S. Clark"),
