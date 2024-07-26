@@ -17,11 +17,12 @@ import (
 //go:generate templ generate
 
 type Env struct {
-	AppEnv        string `env:"APP_ENV" envDefault:"development"`
-	AppPort       string `env:"APP_PORT"`
-	AppURL        string `env:"APP_URL"`
-	PayloadURL    string `env:"PAYLOAD_URL"`
-	PayloadAPIKey string `env:"PAYLOAD_API_KEY"`
+	AppEnv          string `env:"APP_ENV" envDefault:"development"`
+	AppPort         string `env:"APP_PORT" envDefault:"3000"`
+	AppURL          string `env:"APP_URL"`
+	PayloadURL      string `env:"PAYLOAD_URL" envRequired:"true"`
+	PayloadAPIKey   string `env:"PAYLOAD_API_KEY" envRequired:"true"`
+	Web3FormsAPIKey string `env:"WEB3FORMS_URL" envRequired:"true"`
 }
 
 func main() {
@@ -66,7 +67,7 @@ func main() {
 	kit.Get("/ping/", webkit.PingHandler)
 	//kit.Get("/", handlers.HomeHandler(p.Client))
 	kit.Get("/", handlers.TempHandler())
-	kit.Post("/contact/", handlers.Contact(p.Client))
+	kit.Post("/contact/", handlers.Contact(p.Client, config.Web3FormsAPIKey))
 	kit.NotFound(handlers.PagesHandler(p.Client))
 	kit.Static("/assets/", "./dist")
 	kit.ErrorHandler = handlers.ErrorHandler()

@@ -21,6 +21,24 @@ resource "digitalocean_app" "s-clark-web" {
 			instance_count     = 1
 			http_port          = 3000
 
+			github {
+				branch         = "main"
+				deploy_on_push = true
+				repo           = "ainsleydev/sclark.uk"
+			}
+
+			health_check {
+				http_path = "/"
+			}
+
+			log_destination {
+				name = "Better Stack"
+
+				logtail {
+					token = logtail_source.s-clark-logs.token
+				}
+			}
+
 			env {
 				key   = "APP_ENV"
 				value = "PRODUCTION"
@@ -52,22 +70,11 @@ resource "digitalocean_app" "s-clark-web" {
 				type  = "SECRET"
 			}
 
-			github {
-				branch         = "main"
-				deploy_on_push = true
-				repo           = "ainsleydev/sclark.uk"
-			}
-
-			health_check {
-				http_path = "/"
-			}
-
-			log_destination {
-				name = "Better Stack"
-
-				logtail {
-					token = logtail_source.s-clark-logs.token
-				}
+			env {
+				key   = "WEB3_FORMS_API_KEY"
+				value = var.web3_forms_api_key
+				scope = "RUN_AND_BUILD_TIME"
+				type  = "SECRET"
 			}
 		}
 	}

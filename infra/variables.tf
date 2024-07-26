@@ -13,3 +13,8 @@ variable better_stack_config {
 	})
 	description = "Configuration for the Better Stack provider"
 }
+
+variable "web3_forms_api_key" {
+	type = string
+	description = "The API key for Web3 Forms to send form data to from the frontend"
+}

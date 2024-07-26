@@ -3,6 +3,7 @@
 // -----------------------------------------------------------------------------
 
 .form {
+	$self: &;
 	position: relative;
 	width: 100%;
 	margin: 0 auto;
@@ -20,6 +21,10 @@
 		flex-direction: column;
 		gap: 4px;
 		margin-bottom: 1.4rem;
+
+		&-error #{$self}-input {
+			border-color: #f86969;
+		}
 	}
 
 	// Input

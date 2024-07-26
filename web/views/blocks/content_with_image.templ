@@ -32,7 +32,7 @@ templ ContentWithImage(props types.BlockContentWithImage) {
 		<div class="container content-with-image">
 			<div class="row justify-content-center justify-content-desk-between">
 				<!-- Image -->
-				<div class={ "col-12 col-tab-10 col-desk-6",
+				<div class={ "col-12 col-tab-10 col-desk-6 col-desk-large-5",
 					templ.KV("order-desk-last", props.ImagePosition == "right") }>
 					if props.Image.URL != "" {
 						<picture class={ "content-image",
