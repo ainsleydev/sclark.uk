@@ -67,10 +67,9 @@ func main() {
 	kit.Get("/ping/", webkit.PingHandler)
 	//kit.Get("/", handlers.HomeHandler(p.Client))
 	kit.Get("/", handlers.TempHandler())
+	kit.NotFound(handlers.NotFoundHandler())
 	kit.Post("/contact/", handlers.Contact(p.Client, config.Web3FormsAPIKey))
-	kit.NotFound(handlers.PagesHandler(p.Client))
 	kit.Static("/assets/", "./dist")
-	kit.ErrorHandler = handlers.ErrorHandler()
 
 	if err = kit.Start(":" + config.AppPort); err != nil {
 		slog.Error("Failed to start server: %v", err)

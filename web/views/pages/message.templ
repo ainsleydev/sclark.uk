@@ -1,0 +1,36 @@
+package pages
+
+import (
+	"github.com/ainsleydev/sclark.uk/views/layouts"
+	"github.com/ainsleydev/sclark.uk/views/components"
+)
+
+type MessagePageProps struct {
+	Title   string
+	Content string
+}
+
+templ Message(props MessagePageProps) {
+	@layouts.Base() {
+		<img loading="eager" class="hero-gradient" src="/assets/images/gradients/hero.svg" alt="Multi Coloured Gradient" />
+		<section class="hero">
+			<div class="container">
+				<div class="row justify-content-tab-center justify-content-desk-start">
+					<div class="col-12 col-tab-10 col-desk-6">
+						@components.Group("mb-l") {
+							<h1 class="mb-xs">{ props.Title }</h1>
+                        	<p class="lead mb-0">
+                        		{ props.Content }
+							</p>
+                        }
+						@components.Button(components.ButtonProps{
+							Text:   "Back Home",
+							Href:   "/",
+							Filled: true,
+						})
+					</div><!-- /Col -->
+				</div><!-- /Row -->
+			</div><!-- /Container -->
+		</section>
+	}
+}

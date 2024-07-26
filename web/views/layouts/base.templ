@@ -36,10 +36,12 @@ templ Base() {
 			@partials.Header()
 			<!-- Content -->
 			<div class="wrapper" id="home">
-				{ children... }
+				<div>
+					{ children... }
+				</div>
+				<!-- Footer -->
+				@partials.Footer()
 			</div>
-			<!-- Footer -->
-			@partials.Footer()
 			<!-- Google Transition Fix -->
 			<script> </script>
 		</body>

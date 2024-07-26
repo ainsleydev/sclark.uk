@@ -63,3 +63,38 @@ func TempHandler() webkit.Handler {
 		return c.Render(pages.Home())
 	}
 }
+
+func NotFoundHandler() webkit.Handler {
+	return func(c *webkit.Context) error {
+		c.Request = c.Request.WithContext(payload.WithSettings(c.Context(), content.PayloadSettings))
+		return c.Render(pages.Message(pages.MessagePageProps{
+			Title:   "404 Not Found",
+			Content: "Whoops, we couldn't find the page you were looking for.",
+		}))
+	}
+}
+
+func MaintenanceHandler() payload.MaintenanceRendererFunc {
+	return func(c *webkit.Context, m payload.Maintenance) error {
+		if m.Title == "" {
+			m.Title = "This site is currently down for maintenance."
+		}
+		if m.Content == "" {
+			m.Content = "We'll be back soon!"
+		}
+		return c.Render(pages.Message(pages.MessagePageProps{
+			Title:   m.Title,
+			Content: m.Content,
+		}))
+	}
+}
+
+// ErrorHandler returns a centralized error handler for the application.
+// This function is used to render error pages with the correct status code.
+// TODO: Perhaps we need to add other services to capture 500s like Sentry etc.
+//func ErrorHandler() webkit.Handler {
+//	return func(c *webkit.Context) error {
+//		slog.Error("Error: " + .Error())
+//		return nil
+//	}
+//}
