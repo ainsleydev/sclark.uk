@@ -2,11 +2,15 @@ package components
 
 import (
 	"fmt"
+	"strconv"
 	"github.com/ainsleydev/sclark.uk/types"
 )
 
-templ Review(props types.Reviews) {
-	<div class="review">
+templ Review(idx int, props types.Reviews) {
+	<div class="review"
+		data-aos="fade-up"
+		data-aos-delay={ strconv.Itoa(idx * 100) }
+	>
 		<!-- Content -->
 		<p class="review-content">
 			{ props.Content }

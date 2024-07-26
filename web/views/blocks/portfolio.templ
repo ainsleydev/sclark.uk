@@ -9,7 +9,7 @@ templ Portfolio(props types.BlockPortfolio) {
 	<section class="section portfolio">
 		<div class="container">
 			<!-- Intro -->
-			<div class="row justify-content-tab-center justify-content-desk-start">
+			<div class="row justify-content-tab-center justify-content-desk-start" data-aos="fade-up">
 				<div class="col-12 col-tab-10 col-desk-6 col-desk-large-5">
 					@components.Group("group-large") {
 						<!-- Title -->
@@ -27,9 +27,9 @@ templ Portfolio(props types.BlockPortfolio) {
 		<!-- Items -->
 		<div class="container glider-container">
 			<div class="row glider justify-content-tab-center">
-				for _, item := range props.Items {
+				for idx, item := range props.Items {
 					<div class="col-12 col-mob-6 col-tab-5 col-desk-6 portfolio-col">
-						@components.PortfolioItem(item)
+						@components.PortfolioItem(idx, item)
 					</div><!-- /Col -->
 				}
 			</div><!-- /Row -->

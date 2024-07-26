@@ -1,9 +1,15 @@
 package components
 
-import "github.com/ainsleydev/sclark.uk/types"
+import (
+	"strconv"
+	"github.com/ainsleydev/sclark.uk/types"
+)
 
-templ PortfolioItem(props types.Portfolio) {
-	<a href={ templ.SafeURL(props.Url) } class="portfolio-item" target="_blank">
+templ PortfolioItem(idx int, props types.Portfolio) {
+	<a href={ templ.SafeURL(props.Url) } class="portfolio-item" target="_blank"
+		data-aos="fade-up"
+		data-aos-delay={ strconv.Itoa(idx * 100) }
+	>
 		<!-- Image -->
 		if props.Image.URL != "" {
 			<picture class="portfolio-item-image">

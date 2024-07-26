@@ -6,6 +6,7 @@ import (
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 	"github.com/ainsleydev/sclark.uk/views/components"
 	"github.com/ainsleydev/webkit/pkg/util/ptr"
+	"github.com/ainsleydev/webkit/pkg/util/random"
 )
 
 func decodeRichText(block payload.Block) string {
@@ -27,13 +28,26 @@ func decodeFAQs(block payload.Block) types.BlockFAQs {
 	return b
 }
 
+// TODO: Maybe method reciever of Blocks struct?
+func getID(id *string) string {
+	if id != nil {
+		return *id
+	}
+	return random.Alpha(16)
+}
+
 templ ContentWithImage(props types.BlockContentWithImage) {
-	<section class="section">
+	{{ id := getID(props.Id) }}
+	<section class="section" id={ id }>
 		<div class="container content-with-image">
 			<div class="row justify-content-center justify-content-desk-between">
 				<!-- Image -->
 				<div class={ "col-12 col-tab-10 col-desk-6 col-desk-large-5",
-					templ.KV("order-desk-last", props.ImagePosition == "right") }>
+					templ.KV("order-desk-last", props.ImagePosition == "right") }
+					data-aos="fade-in"
+					data-aos-anchor={ "#" + id }
+					data-aos-offset="200"
+				>
 					if props.Image.URL != "" {
 						<picture class={ "content-image",
 						templ.KV("content-image-sticky", ptr.Bool(props.Sticky)) }>
@@ -42,7 +56,11 @@ templ ContentWithImage(props types.BlockContentWithImage) {
 					}
 				</div><!-- /Col -->
 				<!-- Content -->
-				<div class="col-12 col-tab-10 col-desk-5">
+				<div class="col-12 col-tab-10 col-desk-5"
+					data-aos="fade-up"
+					data-aos-anchor={ "#" + id }
+					data-aos-offset="200"
+				>
 					if len(props.TextLayout) > 0 {
 						for index, block := range props.TextLayout {
 							{{ margin := "" }}
@@ -63,7 +81,6 @@ templ ContentWithImage(props types.BlockContentWithImage) {
 						}
 					}
 				</div><!-- /Col -->
-
 			</div><!-- /Row -->
 		</div><!-- /Container -->
 	</section>
