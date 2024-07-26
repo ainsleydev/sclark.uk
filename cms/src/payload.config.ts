@@ -44,7 +44,7 @@ export default buildConfig({
 		Reviews,
 		Portfolio,
 		PortfolioCategories,
-		Media(lexicalEditor),
+		Media(),
 		Users,
 		Redirects(),
 	],

@@ -7,10 +7,12 @@ resource "digitalocean_app" "s-clark-web" {
 
 		domain {
 			name = "sclark.uk"
+			zone = "sclark.uk"
 		}
 
 		domain {
 			name = "www.sclark.uk"
+			zone = "www.sclark.uk"
 		}
 
 		service {

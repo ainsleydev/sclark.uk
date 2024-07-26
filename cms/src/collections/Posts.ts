@@ -17,11 +17,11 @@ export const Posts: CollectionConfig = {
 		defaultColumns: ['title'],
 	},
 	endpoints: [
-		{
-			path: '/posts/slug/:slug',
-			method: 'get',
-			handler: findBySlug('posts') as PayloadHandler,
-		},
+		// {
+		// 	path: '/posts/slug/:slug',
+		// 	method: 'get',
+		// 	handler: findBySlug('posts'),
+		// },
 	],
 	fields: [
 		{
