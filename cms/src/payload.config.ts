@@ -15,13 +15,13 @@ import { Reviews } from './collections/Reviews';
 import { Users } from './collections/Users';
 import { Footer } from './globals/Settings';
 
+import { payloadHelper } from '@ainsleydev/payload-helper/dist';
 import { Media } from '@ainsleydev/payload-helper/dist/collections/Media';
 import { Redirects } from '@ainsleydev/payload-helper/dist/collections/Redirects';
 import { SEOFields } from '@ainsleydev/payload-helper/dist/common/SEO';
 import { Navigation } from '@ainsleydev/payload-helper/dist/globals/Navigation';
 import { Settings } from '@ainsleydev/payload-helper/dist/globals/Settings';
 import env from '@ainsleydev/payload-helper/dist/util/env';
-import { payloadHelper } from '@ainsleydev/payload-helper/dist';
 
 import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage';
 import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';
