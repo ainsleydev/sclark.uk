@@ -200,7 +200,6 @@ async function copyAndConvertImages(srcDir, destDir) {
 			if (await fs.pathExists(destPathOriginal)) {
 				const destStat = await fs.stat(destPathOriginal);
 				if (destStat.isFile()) {
-					console.log(`${destPathOriginal} already exists as a file`);
 					continue;
 				}
 			}

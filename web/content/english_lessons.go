@@ -15,7 +15,7 @@ var EnglishLessonsIntro = types.BlockContentDefault{
 	BlockType:   "content-block",
 	Style:       types.BlockContentDefaultStyleCentered,
 	CentreAlign: ptr.BoolPtr(true),
-	ContentHtml: ptr.StringPtr("<h2>Online English Lessons</h2><p>Are you worried about making mistakes in English?<br/>tDo you know what to say in your head, but the words don’t come out\n\t\t\t\t\t\t<br/>\n\t\t\t\t\t\tCan you speak some English, but it’s difficult to talk about complex topics?<br/>Do you need to pass an English exam?</p>"),
+	ContentHtml: ptr.StringPtr("<h2>Online English Lessons</h2><p>Are you worried about making mistakes in English? Do you know what to say in your head, but the words don’t come out? Can you speak some English, but it’s difficult to talk about complex topics? Do you need to pass an English exam?</p>"),
 }
 
 var englishLessonHTML = "<h3>Learning a foreign language isn't easy</h3><p>Especially when it comes to speaking. It takes time, practice and confidence.  But you are not alone. A s an English language teacher with 20 years’ experience, I’ve helped adults from all over the world to feel more confident in their English skills – and I can help you too!</p><p>How? With professional teaching techniques, a deep knowledge of the English language, a lot of patience, and a friendly, positive attitude. I’ll help you feel so comfortable speaking English, that you’ll forget you were ever worried.</p><h3>But you can do it, in 3 easy steps</h3><ol class=\"list-number\"><li value=1>Discuss what you need in our free 20-minute call</li><li value=2>Do something else that’s fucking fantastic</li><li value=3>Book your first set of lessons</li></ol>"

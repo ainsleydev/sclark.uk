@@ -38,7 +38,7 @@
 	// =========================================================================
 
 	&-scrolled {
-		background-color: rgba(#fff, 0.3);
+		background-color: rgba(#fff, 0.5);
 		box-shadow: 0 3px 16px rgba(0, 0, 0, 10%), 0 3px 12px rgba(0, 0, 0, 14%);
 	}
 }
@@ -47,8 +47,11 @@
 	position: relative;
 	cursor: pointer;
 	display: flex;
-	justify-content: flex-end;
-	align-items: baseline;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+	width: 50px;
+	margin-right: -10px;
 	user-select: none;
 	visibility: visible;
 	z-index: calc(var(--header-z-index) + 20);
