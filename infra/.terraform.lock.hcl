@@ -1,6 +1,27 @@
 # This file is maintained automatically by "terraform init".
 # Manual edits may be lost in future updates.
 
+provider "registry.terraform.io/betterstackhq/logtail" {
+  version     = "0.2.0"
+  constraints = ">= 0.1.0"
+  hashes = [
+    "h1:A3XZqTrlktHvjqJyaE/5wMlN7yXpebZyJnwCQcNV4uM=",
+    "zh:1174579025f1a5547049ca91d29ee8c8e7dec59c7a37a868667d659ae637247b",
+    "zh:453e8b24dc7e28000c025897f9f247c7ad38fb6fb9bda76b8cccdadfc9924629",
+    "zh:46e652d96169285899c9163bb50b6a0505fed09ab1608988b10d9a74eca0137a",
+    "zh:4b86dd9723741647a19608871221d5d01c520caf82eb7c3be1cddafb4ecdf58b",
+    "zh:6b9b1dc872569f89d7bab2048b5933fca1a49aa643df29378450535b63b91132",
+    "zh:861723b2bbe934faf7fcd41fd0f685a06037fc4efbe0b54a6cbfde60ca846c5a",
+    "zh:8f4de9a22ed07cfb87f3587717f3b8d003cb8c397596425c3b4916168a1855e4",
+    "zh:8fb655f291f4b095733387f38e416c69f5cb10e82de039a95790e79201de6d7d",
+    "zh:c763971c7d07644977b1dee2f2be73124fd7aeeff0f6018afeff58d287ab22ef",
+    "zh:c7f14105daad579592ca213a71e262e175bde304f2e37db4534984428afeb234",
+    "zh:ca1588693a5e0aa11d4203b1b32ce798c2119ef1cbedfa25084f47043cd549d9",
+    "zh:dbdc9ba8b1bcde63dddba43ef67e9a36ffc51ef86134ce46730418d7af9b610d",
+    "zh:e73a737d07ac9bb998bde4602f549e47aa45356bb6085835002da6634c781a00",
+  ]
+}
+
 provider "registry.terraform.io/digitalocean/digitalocean" {
   version     = "2.39.2"
   constraints = "~> 2.0"

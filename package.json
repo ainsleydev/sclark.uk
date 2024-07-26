@@ -37,8 +37,8 @@
 		"fix": "turbo lint",
 		"gen": "turbo run gen --filter=cms && turbo run gen --filter=web",
 		"test": "turbo run test --filter=web",
-		"infra:apply": "cd infra && terraform apply",
-		"infra:destroy": "cd infra && terraform destroy"
+		"infra:apply": "cd infra && terraform apply -var-file=.tfvars",
+		"infra:destroy": "cd infra && terraform destroy -var-file=.tfvars"
 	},
 	"packageManager": "pnpm@9.1.4",
 	"devDependencies": {
