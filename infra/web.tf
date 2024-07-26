@@ -66,7 +66,7 @@ resource "digitalocean_app" "s-clark-web" {
 				name = "Better Stack"
 
 				logtail {
-					token = var.better_stack_config.api_key
+					token = logtail_source.s-clark-logs.token
 				}
 			}
 		}

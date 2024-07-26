@@ -20,6 +20,8 @@ github.com/ainsleydev/webkit v0.0.0-20240725184710-743b75a90cbd h1:HB9Cq4eVOtxM8
 github.com/ainsleydev/webkit v0.0.0-20240725184710-743b75a90cbd/go.mod h1:Y8r64cz0kDuTls/aGbMzlFBHIwH5/9ZzcIf/x+VfeGA=
 github.com/ainsleydev/webkit v0.0.0-20240725184940-80ccac364b82 h1:XIr2lDCL6tQWq5TJlthhalsRTkDyI/Wg5gCWtEqbg5M=
 github.com/ainsleydev/webkit v0.0.0-20240725184940-80ccac364b82/go.mod h1:Y8r64cz0kDuTls/aGbMzlFBHIwH5/9ZzcIf/x+VfeGA=
+github.com/ainsleydev/webkit v0.0.0-20240726071058-1e080eef0a4a h1:y5+rmsJQIyzSmKmWj01gFmzuaKay1NYKLgrvIU2vsAM=
+github.com/ainsleydev/webkit v0.0.0-20240726071058-1e080eef0a4a/go.mod h1:Y8r64cz0kDuTls/aGbMzlFBHIwH5/9ZzcIf/x+VfeGA=
 github.com/andybalholm/cascadia v1.3.2 h1:3Xi6Dw5lHF15JtdcmAHD3i1+T8plmv7BQ/nsViSLyss=
 github.com/andybalholm/cascadia v1.3.2/go.mod h1:7gtRlve5FxPPgIgX36uWBX58OdBsSS6lUvCFb+h7KvU=
 github.com/bsm/ginkgo/v2 v2.12.0 h1:Ny8MWAHyOepLGlLKYmXG4IEkioBysk6GpaRTLC8zwWs=
