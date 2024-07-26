@@ -7,8 +7,8 @@
  */
 
 require('./modernizr');
-import Glider from 'glider-js';
 import AOS from 'aos';
+import Glider from 'glider-js';
 import { Collapse } from '../../views/components/collapse';
 
 const html = document.querySelector('html');

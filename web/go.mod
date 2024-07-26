@@ -5,7 +5,9 @@ go 1.22.4
 require (
 	github.com/a-h/templ v0.2.747
 	github.com/ainsleyclark/go-payloadcms v0.0.1
-	github.com/ainsleydev/webkit v0.0.0-20240726071058-1e080eef0a4a
+	github.com/ainsleydev/webkit v0.0.0-20240726113725-d38843b7ea65
+	github.com/go-ozzo/ozzo-validation v3.6.0+incompatible
+	github.com/goccy/go-json v0.10.3
 )
 
 require (
@@ -17,9 +19,8 @@ require (
 	github.com/gabriel-vasile/mimetype v1.4.4 // indirect
 	github.com/getsentry/sentry-go v0.28.1 // indirect
 	github.com/go-chi/chi/v5 v5.1.0 // indirect
-	github.com/go-ozzo/ozzo-validation v3.6.0+incompatible // indirect
-	github.com/goccy/go-json v0.10.3 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/logrusorgru/aurora v2.0.3+incompatible // indirect
