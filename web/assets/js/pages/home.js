@@ -1,4 +1,4 @@
-import {animate, spring, stagger, timeline} from 'motion';
+import { animate, spring, stagger, timeline } from 'motion';
 
 /**
  * Obtain the elements by their id.
@@ -101,7 +101,7 @@ const scrabbleSequence = [
 		// },
 	],
 	[
-		".hero .logos-item",
+		'.hero .logos-item',
 		{ y: [-100, 0], opacity: [0, 1] },
 		{
 			duration: 1.8,
@@ -114,7 +114,7 @@ const scrabbleSequence = [
 		},
 	],
 	[
-		".hero .logos-title",
+		'.hero .logos-title',
 		{ opacity: [0, 1] },
 		{
 			duration: 1.8,
@@ -125,14 +125,14 @@ const scrabbleSequence = [
 
 const heroContentSequence = [
 	[
-		".hero p, .hero .btn, .hero h1, .header, .blocks-item-gradient",
+		'.hero p, .hero .btn, .hero h1, .header, .blocks-item-gradient',
 		{ opacity: [0, 1] },
 		{
 			duration: 1.8,
 			at: 0,
 		},
 	],
-]
+];
 
 export const homeSequence = () => {
 	timeline(scrabbleSequence).play();
