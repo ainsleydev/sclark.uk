@@ -9,6 +9,11 @@ resource "digitalocean_app" "cms" {
 			rule = "DEPLOYMENT_FAILED"
 		}
 
+		domain {
+			name = "cms.sclark.uk"
+			zone = "cms.sclark.uk"
+		}
+
 		service {
 			name               = "payload"
 			dockerfile_path    = "cms/Dockerfile"
