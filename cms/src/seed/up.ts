@@ -8,7 +8,7 @@ import {
 	reviews,
 } from '@/seed/content';
 import type { Media } from '@/types/payload';
-import env from '@ainsleydev/payload-helper/src/util/env';
+import env from '@ainsleydev/payload-helper/dist/util/env';
 import type { Payload, PayloadRequest } from 'payload';
 import { getFileByPath } from 'payload';
 

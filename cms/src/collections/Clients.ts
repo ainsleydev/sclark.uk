@@ -1,4 +1,4 @@
-import { validateURL } from '@ainsleydev/payload-helper/src/util/validation';
+import { validateURL } from '@ainsleydev/payload-helper/dist/util/validation';
 import type { CollectionConfig, UploadField } from 'payload';
 
 export const Clients: CollectionConfig = {

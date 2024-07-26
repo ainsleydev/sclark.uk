@@ -1,14 +1,14 @@
 # Bucket
 
-resource "digitalocean_spaces_bucket" "s-clark-store" {
+resource "digitalocean_spaces_bucket" "store" {
 	name   = "s-clark-store"
 	region = "ams3"
 	acl    = "public-read"
 }
 
 resource "digitalocean_spaces_bucket_cors_configuration" "s-clark-store-cors" {
-	bucket = digitalocean_spaces_bucket.s-clark-store.id
-	region = digitalocean_spaces_bucket.s-clark-store.region
+	bucket = digitalocean_spaces_bucket.store.id
+	region = digitalocean_spaces_bucket.store.region
 
 	cors_rule {
 		allowed_headers = ["*"]
@@ -19,7 +19,7 @@ resource "digitalocean_spaces_bucket_cors_configuration" "s-clark-store-cors" {
 }
 
 resource "digitalocean_cdn" "s-clark-cdn" {
-	origin = digitalocean_spaces_bucket.s-clark-store.bucket_domain_name
+	origin = digitalocean_spaces_bucket.store.bucket_domain_name
 }
 
 output "spaces_cdn" {

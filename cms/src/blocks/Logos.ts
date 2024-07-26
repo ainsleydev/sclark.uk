@@ -1,4 +1,5 @@
-import { validateURL } from '@ainsleydev/payload-helper/src/util/validation';
+// @ts-ignore
+import { validateURL } from '@ainsleydev/payload-helper/dist/util/validation';
 import type { Block } from 'payload';
 
 export const Logos: Block = {

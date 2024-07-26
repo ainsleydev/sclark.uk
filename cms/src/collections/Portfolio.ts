@@ -1,4 +1,5 @@
-import { validateURL } from '@ainsleydev/payload-helper/src/util/validation';
+// @ts-ignore
+import { validateURL } from '@ainsleydev/payload-helper/dist/util/validation';
 import type { CollectionConfig } from 'payload';
 
 export const Portfolio: CollectionConfig = {

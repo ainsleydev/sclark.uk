@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import env from '@ainsleydev/payload-helper/src/util/env';
+import env from '@ainsleydev/payload-helper/dist/util/env';
 import type { Payload, PayloadRequest } from 'payload';
 
 const filename = fileURLToPath(import.meta.url);
