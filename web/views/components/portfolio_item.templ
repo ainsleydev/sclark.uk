@@ -7,7 +7,7 @@ import (
 
 templ PortfolioItem(idx int, props types.Portfolio) {
 	<a href={ templ.SafeURL(props.Url) } class="portfolio-item" target="_blank"
-		data-aos="fade-up"
+		data-aos="fade"
 		data-aos-delay={ strconv.Itoa(idx * 100) }
 	>
 		<!-- Image -->

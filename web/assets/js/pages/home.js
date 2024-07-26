@@ -1,6 +1,7 @@
-import { spring, stagger, timeline } from 'motion';
+import {animate, spring, stagger, timeline} from 'motion';
 
 /**
+ * Obtain the elements by their id.
  *
  * @param ids {string[]}
  */
@@ -17,7 +18,7 @@ const mapLetters = (ids) => {
 const staggerAmount = 0.05;
 
 /**
- * TODO
+ * Common properties for all animations.
  *
  * @param at
  * @returns {[{y: number[], opacity: number[]},{duration: number, at: number, delay: OptionResolver<number>, easing: EasingGenerator}]}
@@ -37,7 +38,10 @@ const properties = (at = 0) => {
 	];
 };
 
-const sequence = [
+/**
+ * Main sequence of animations for the homepage.
+ */
+const scrabbleSequence = [
 	[mapLetters(['#scrabble-word-seo-letter-s', '#scrabble-word-seo-letter-e']), ...properties(0)],
 	[
 		mapLetters([
@@ -83,8 +87,54 @@ const sequence = [
 		]),
 		...properties(staggerAmount * 6),
 	],
+	[
+		// ".hero .logos-item",
+		// { y: [-100, 0], opacity: [0, 1] },
+		// {
+		// 	duration: 1.8,
+		// 	delay: stagger(staggerAmount),
+		// 	at: 0.8,
+		// 	easing: spring({
+		// 		stiffness: 70,
+		// 		damping: 10,
+		// 	}),
+		// },
+	],
+	[
+		".hero .logos-item",
+		{ y: [-100, 0], opacity: [0, 1] },
+		{
+			duration: 1.8,
+			delay: stagger(staggerAmount),
+			at: 0.8,
+			easing: spring({
+				stiffness: 70,
+				damping: 10,
+			}),
+		},
+	],
+	[
+		".hero .logos-title",
+		{ opacity: [0, 1] },
+		{
+			duration: 1.8,
+			at: 0.8,
+		},
+	],
 ];
 
+const heroContentSequence = [
+	[
+		".hero p, .hero .btn, .hero h1, .header, .blocks-item-gradient",
+		{ opacity: [0, 1] },
+		{
+			duration: 1.8,
+			at: 0,
+		},
+	],
+]
+
 export const homeSequence = () => {
-	timeline(sequence).play();
+	timeline(scrabbleSequence).play();
+	timeline(heroContentSequence).play();
 };
