@@ -63,31 +63,31 @@ resource "digitalocean_app" "s-clark-web" {
 			env {
 				key   = "APP_ENV"
 				value = "PRODUCTION"
-				scope = "RUN_TIME"
+				scope = "RUN_AND_BUILD_TIME"
 			}
 
 			env {
 				key   = "APP_PORT"
 				value = "3000"
-				scope = "RUN_TIME"
+				scope = "RUN_AND_BUILD_TIME"
 			}
 
 			env {
 				key   = "APP_URL"
 				value = "https://sclark.uk"
-				scope = "RUN_TIME"
+				scope = "RUN_AND_BUILD_TIME"
 			}
 
 			env {
 				key   = "PAYLOAD_URL"
 				value = "https://cms.sclark.uk"
-				scope = "RUN_TIME"
+				scope = "RUN_AND_BUILD_TIME"
 			}
 
 			env {
 				key   = "PAYLOAD_API_KEY"
 				value = "https://cms.sclark.uk"
-				scope = "RUN_TIME"
+				scope = "RUN_AND_BUILD_TIME"
 				type  = "SECRET"
 			}
 
