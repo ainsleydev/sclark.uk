@@ -17,7 +17,7 @@ resource "digitalocean_app" "s-clark-web" {
 			name               = "go"
 			dockerfile_path    = "web/Dockerfile"
 			source_dir         = "web"
-			instance_size_slug = "basic-xxs"
+			instance_size_slug = "apps-s-1vcpu-0.5gb"
 			instance_count     = 1
 			http_port          = 3000
 
