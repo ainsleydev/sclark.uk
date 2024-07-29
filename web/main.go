@@ -53,7 +53,6 @@ func main() {
 		payload.WithWebkit(kit),
 		payload.WithMaintenanceHandler(handlers.MaintenanceHandler()),
 		payload.WithNavigation(),
-		payload.WithGlobalMiddleware[payload.Navigation]("navigation"),
 	)
 	if err != nil {
 		slog.Error("Failed to create payload client: %v", err)

@@ -73,7 +73,7 @@ resource "digitalocean_app" "web" {
 
 			env {
 				key   = "PAYLOAD_API_KEY"
-				value = "https://cms.sclark.uk"
+				value = "TODO"
 				scope = "RUN_AND_BUILD_TIME"
 				type  = "SECRET"
 			}

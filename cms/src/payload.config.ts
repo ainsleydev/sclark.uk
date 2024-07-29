@@ -2,7 +2,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { postgresAdapter } from '@payloadcms/db-postgres';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
-import { buildConfig, Payload } from 'payload';
+import { Payload, buildConfig } from 'payload';
 import type { Config, Field } from 'payload';
 import sharp from 'sharp';
 
@@ -15,7 +15,6 @@ import { Reviews } from './collections/Reviews';
 import { Users } from './collections/Users';
 import { Footer } from './globals/Settings';
 
-
 import { payloadHelper } from '@ainsleydev/payload-helper/dist';
 
 import { Media } from '@ainsleydev/payload-helper/dist/collections/Media';
@@ -24,13 +23,13 @@ import { SEOFields } from '@ainsleydev/payload-helper/dist/common/SEO';
 import { Navigation } from '@ainsleydev/payload-helper/dist/globals/Navigation';
 import env from '@ainsleydev/payload-helper/dist/util/env';
 
+import type { PayloadHelperPluginConfig } from '@ainsleydev/payload-helper';
+import { Settings } from '@ainsleydev/payload-helper/dist/globals/Settings';
 import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage';
 import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder';
 import { seoPlugin } from '@payloadcms/plugin-seo';
 import { fieldAffectsData, fieldIsBlockType } from 'payload/shared';
-import type { PayloadHelperPluginConfig } from '@ainsleydev/payload-helper';
-import {Settings} from "@ainsleydev/payload-helper/dist/globals/Settings";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);

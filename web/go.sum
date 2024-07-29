@@ -8,6 +8,8 @@ github.com/ainsleyclark/go-payloadcms v0.0.1 h1:e7DdFlR2nlQ0IXuTY+FIouIzOSkyCiia
 github.com/ainsleyclark/go-payloadcms v0.0.1/go.mod h1:ucGt5bv3ETvUAlkB4ra73ypgc5vWuc8QnPu+cGfa5vM=
 github.com/ainsleydev/webkit v0.0.0-20240726113725-d38843b7ea65 h1:yhHXLQPvkCcgd+nvRQzVemLppMIu+V7fuBLQ1cRNLzI=
 github.com/ainsleydev/webkit v0.0.0-20240726113725-d38843b7ea65/go.mod h1:Y8r64cz0kDuTls/aGbMzlFBHIwH5/9ZzcIf/x+VfeGA=
+github.com/ainsleydev/webkit v0.0.0-20240729162316-84709035ac47 h1:r+jD9bWJ9QO2o9E3m5PQDy4Jx7Emo+nt2COec1zbexw=
+github.com/ainsleydev/webkit v0.0.0-20240729162316-84709035ac47/go.mod h1:Y8r64cz0kDuTls/aGbMzlFBHIwH5/9ZzcIf/x+VfeGA=
 github.com/andybalholm/cascadia v1.3.2 h1:3Xi6Dw5lHF15JtdcmAHD3i1+T8plmv7BQ/nsViSLyss=
 github.com/andybalholm/cascadia v1.3.2/go.mod h1:7gtRlve5FxPPgIgX36uWBX58OdBsSS6lUvCFb+h7KvU=
 github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 h1:DklsrG3dyBCFEj5IhUbnKptjxatkF07cF2ak3yi77so=
