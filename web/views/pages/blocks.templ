@@ -1,0 +1,72 @@
+package pages
+
+import (
+	"io"
+	"context"
+	"log/slog"
+	"encoding/json"
+	"github.com/ainsleydev/sclark.uk/views/blocks"
+	"github.com/ainsleydev/sclark.uk/views/components"
+	"github.com/ainsleydev/sclark.uk/views/layouts"
+	"github.com/ainsleydev/sclark.uk/types"
+	"fmt"
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+	"strings"
+)
+
+func getBlock(block payload.Block) templ.Component {
+	switch block.BlockType {
+		case "content-block":
+			b := types.BlockContentDefault{}
+			if err := block.Decode(&b); err != nil {
+				slog.Error(err.Error())
+			}
+			return blocks.Content(b)
+		case "content-with-image-block":
+			b := types.BlockContentWithImage{}
+			if err := block.Decode(&b); err != nil {
+				slog.Error(err.Error())
+			}
+			return blocks.ContentWithImage(b)
+		case "gradient-block":
+			b := types.BlockGradient{}
+			if err := block.Decode(&block); err != nil {
+				slog.Error(err.Error())
+			}
+			colour := components.GradientColourPink
+			if b.Colour == "blue" {
+				colour = components.GradientColourBlue
+			}
+			return components.Gradient(colour)
+		case "portfolio-block":
+			b := types.BlockPortfolio{}
+			if err := block.Decode(&b); err != nil {
+				slog.Error(err.Error())
+			}
+			slog.Info(string(block.RawJSON))
+
+			json.Unmarshal(block.RawJSON, &b)
+
+			slog.Info(fmt.Sprintf("Portfolio block: %+v", b.Items))
+			return blocks.Portfolio(b)
+		}
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		_, err := io.WriteString(w, "Unknown block type: "+block.BlockType)
+		return err
+	})
+}
+
+templ Blocks(page types.Pages) {
+	@layouts.Base() {
+		@blocks.Hero()
+		<div class="blocks">
+			for _, block := range page.Layout {
+				<div class={ "blocks-item",
+					fmt.Sprintf("blocks-item-%s", strings.ReplaceAll(block.BlockType, "-block", "")) }
+				>
+					@getBlock(block)
+				</div>
+			}
+		</div>
+	}
+}

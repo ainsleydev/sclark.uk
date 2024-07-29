@@ -43,7 +43,7 @@ export const Logos: Block = {
 			hasMany: true,
 			admin: {
 				description: 'Add client logos that that will appear in the block',
-			}
-		}
+			},
+		},
 	],
 };

@@ -64,8 +64,7 @@ func main() {
 	kit.Plug(middleware.Minify)
 
 	kit.Get("/ping/", webkit.PingHandler)
-	//kit.Get("/", handlers.HomeHandler(p.Client))
-	kit.Get("/", handlers.TempHandler())
+	kit.Get("/", handlers.HomeHandler(p.Client))
 	kit.NotFound(handlers.NotFoundHandler())
 	kit.Post("/contact/", handlers.Contact(p.Client, config.Web3FormsAPIKey))
 	kit.Static("/assets/", "./dist")

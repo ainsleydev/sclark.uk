@@ -11,7 +11,7 @@ var ContactForm = types.BlockContact{
 	Title:         "Contact now",
 	Content:       ptr.StringPtr("Don’t just take my word for it – here’s what some of my clients have to say. Don’t just take my word for it – here’s what some of my clients have to say. Don’t just take my word for it – here’s what some of my clients have to say."),
 	IncludeSocial: ptr.BoolPtr(true),
-	Form: &payload.Form{
+	Form: payload.Form{
 		ID:    1,
 		Title: "Contact",
 		Fields: []payload.FormField{

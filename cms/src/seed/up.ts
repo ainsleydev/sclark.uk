@@ -3,9 +3,11 @@ import { fileURLToPath } from 'node:url';
 import {
 	type MediaSeed,
 	clients,
+	form,
+	home,
 	portfolioCategories,
 	portfolioItems,
-	reviews, form, home,
+	reviews,
 } from '@/seed/content';
 import type { Media } from '@/types/payload';
 import env from '@ainsleydev/payload-helper/dist/util/env';
@@ -69,7 +71,7 @@ export const up = async ({
 
 	// Create admin
 	payload.logger.info('Creating admin user...');
-	await payload.create({
+	const user = await payload.create({
 		collection: 'users',
 		data: {
 			email: 'hello@ainsley.dev',
@@ -79,6 +81,7 @@ export const up = async ({
 		},
 		req,
 	});
+	console.log(`User created: ${JSON.stringify(user)}`);
 
 	// Create Settings
 	payload.logger.info('Creating settings...');
@@ -87,7 +90,7 @@ export const up = async ({
 		alt: 'S.Clark Logo',
 	});
 	const ogImage = await uploadMedia(req, payload, {
-		path: '../../../web/assets/images/opengraph.svg',
+		path: '../../../web/assets/images/opengraph.jpg',
 		alt: 'S.Clark Logo',
 	});
 	await payload.updateGlobal({
@@ -211,6 +214,21 @@ export const up = async ({
 
 	// Create home
 	payload.logger.info('Creating home page...');
+
+	const mockupLaptop = await uploadMedia(req, payload, {
+		path: '../../../web/assets/images/mockups/laptop.png',
+		alt: 'Laptop Mockup',
+	});
+	// @ts-ignore
+	home.layout[2].image = mockupLaptop.id;
+
+	const mockupTablet = await uploadMedia(req, payload, {
+		path: '../../../web/assets/images/mockups/tablet.png',
+		alt: 'Tablet Mockup',
+	});
+	// @ts-ignore
+	home.layout[5].image = mockupTablet.id;
+
 	try {
 		await payload.create({
 			collection: 'pages',
@@ -218,7 +236,7 @@ export const up = async ({
 			req,
 		});
 	} catch (error) {
-		payload.logger.error(`Creating form: ${error}`);
+		payload.logger.error(`Creating homepage: ${error}`);
 		return;
 	}
 };

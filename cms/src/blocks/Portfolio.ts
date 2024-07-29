@@ -4,7 +4,7 @@ export const Portfolio: Block = {
 	slug: 'portfolio-block',
 	interfaceName: 'BlockPortfolio',
 	labels: {
-		singular: 'Portfolio Item',
+		singular: 'Portfolio',
 		plural: 'Portfolio',
 	},
 	fields: [

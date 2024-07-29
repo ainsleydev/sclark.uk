@@ -17,7 +17,7 @@ type BlockContact struct {
 	Content *string `json:"content,omitempty" yaml:"content,omitempty" mapstructure:"content,omitempty"`
 
 	// Form corresponds to the JSON schema field "form".
-	Form *payload.Form `json:"form,omitempty" yaml:"form,omitempty" mapstructure:"form,omitempty"`
+	Form payload.Form `json:"form" yaml:"form" mapstructure:"form"`
 
 	// Id corresponds to the JSON schema field "id".
 	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
@@ -122,6 +122,25 @@ type BlockFAQsFaqsElem struct {
 	Question string `json:"question" yaml:"question" mapstructure:"question"`
 }
 
+type BlockGradient struct {
+	// BlockName corresponds to the JSON schema field "blockName".
+	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
+
+	// BlockType corresponds to the JSON schema field "blockType".
+	BlockType string `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
+
+	// Colour corresponds to the JSON schema field "colour".
+	Colour BlockGradientColour `json:"colour" yaml:"colour" mapstructure:"colour"`
+
+	// Id corresponds to the JSON schema field "id".
+	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+}
+
+type BlockGradientColour string
+
+const BlockGradientColourBlue BlockGradientColour = "blue"
+const BlockGradientColourPink BlockGradientColour = "pink"
+
 type BlockLogs struct {
 	// BlockName corresponds to the JSON schema field "blockName".
 	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
@@ -129,28 +148,17 @@ type BlockLogs struct {
 	// BlockType corresponds to the JSON schema field "blockType".
 	BlockType string `json:"blockType" yaml:"blockType" mapstructure:"blockType"`
 
+	// Clients corresponds to the JSON schema field "clients".
+	Clients []Clients `json:"clients,omitempty" yaml:"clients,omitempty" mapstructure:"clients,omitempty"`
+
 	// Greyscale corresponds to the JSON schema field "greyscale".
 	Greyscale *bool `json:"greyscale,omitempty" yaml:"greyscale,omitempty" mapstructure:"greyscale,omitempty"`
 
 	// Id corresponds to the JSON schema field "id".
 	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
 
-	// Logos corresponds to the JSON schema field "logos".
-	Logos []BlockLogsLogosElem `json:"logos,omitempty" yaml:"logos,omitempty" mapstructure:"logos,omitempty"`
-
 	// Title corresponds to the JSON schema field "title".
 	Title string `json:"title" yaml:"title" mapstructure:"title"`
-}
-
-type BlockLogsLogosElem struct {
-	// Id corresponds to the JSON schema field "id".
-	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
-
-	// Link corresponds to the JSON schema field "link".
-	Link *string `json:"link,omitempty" yaml:"link,omitempty" mapstructure:"link,omitempty"`
-
-	// Logo corresponds to the JSON schema field "logo".
-	Logo payload.Media `json:"logo" yaml:"logo" mapstructure:"logo"`
 }
 
 type BlockPortfolio struct {
@@ -315,6 +323,9 @@ type Pages struct {
 	// CreatedAt corresponds to the JSON schema field "createdAt".
 	CreatedAt string `json:"createdAt" yaml:"createdAt" mapstructure:"createdAt"`
 
+	// Hero corresponds to the JSON schema field "hero".
+	Hero PagesHero `json:"hero" yaml:"hero" mapstructure:"hero"`
+
 	// Id corresponds to the JSON schema field "id".
 	Id float64 `json:"id" yaml:"id" mapstructure:"id"`
 
@@ -324,8 +335,22 @@ type Pages struct {
 	// Layout corresponds to the JSON schema field "layout".
 	Layout payload.Blocks `json:"layout" yaml:"layout" mapstructure:"layout"`
 
+	// Meta corresponds to the JSON schema field "meta".
+	Meta *payload.SettingsMeta `json:"meta,omitempty" yaml:"meta,omitempty" mapstructure:"meta,omitempty"`
+
 	// UpdatedAt corresponds to the JSON schema field "updatedAt".
 	UpdatedAt string `json:"updatedAt" yaml:"updatedAt" mapstructure:"updatedAt"`
+}
+
+type PagesHero struct {
+	// Clients corresponds to the JSON schema field "clients".
+	Clients []interface{} `json:"clients,omitempty" yaml:"clients,omitempty" mapstructure:"clients,omitempty"`
+
+	// Lead corresponds to the JSON schema field "lead".
+	Lead string `json:"lead" yaml:"lead" mapstructure:"lead"`
+
+	// Title corresponds to the JSON schema field "title".
+	Title string `json:"title" yaml:"title" mapstructure:"title"`
 }
 
 type PagesStatus string

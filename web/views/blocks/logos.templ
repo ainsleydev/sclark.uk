@@ -51,7 +51,7 @@ templ logoImage(idx int, img payload.Media, isHero bool) {
 }
 
 templ logosBlock(props types.BlockLogs, opts LogosOptions) {
-	if len(props.Logos) > 0 {
+	if len(props.Clients) > 0 {
 		<figure class={ "logos", templ.KV("logos-greycale", opts.Greyscale), templ.KV("logos-hero", opts.IsHero) }>
 			if props.Title != "" {
 				<figcaption class="logos-title"
@@ -63,9 +63,10 @@ templ logosBlock(props types.BlockLogs, opts LogosOptions) {
 					</span>
 				</figcaption>
 			}
-			for idx, item := range props.Logos {
-				if item.Link != nil {
-					<a href={ templ.SafeURL(*item.Link) } class="logos-item logos-link"
+
+			for idx, item := range props.Clients {
+				if item.Url != "" {
+					<a href={ templ.SafeURL(item.Url) } class="logos-item logos-link"
 						target="_blank"
 						aria-label={ item.Logo.Alt("S.Clark Client Logo") }>
 						@logoImage(idx, item.Logo, opts.IsHero)
@@ -76,6 +77,7 @@ templ logosBlock(props types.BlockLogs, opts LogosOptions) {
 					</figure>
 				}
 			}
+			*/
 		</figure>
 	}
 }

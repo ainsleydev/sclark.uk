@@ -1,6 +1,6 @@
 import type { BlockContentWithImage, BlockFAQs } from '@/types/payload';
-import type { RequiredDataFromCollectionSlug } from 'payload';
 import { htmlToLexical } from '@ainsleydev/payload-helper/dist/util/lexical';
+import type { RequiredDataFromCollectionSlug } from 'payload';
 
 export interface MediaSeed {
 	path: string;
@@ -288,6 +288,7 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
 		{
 			blockType: 'content-block',
 			style: 'centered',
+			centre: true,
 			// @ts-ignore
 			content: htmlToLexical(
 				'<h2>Online English Lessons</h2><p>Are you worried about making mistakes in English? Do you know what to say in your head, but the words don’t come out? Can you speak some English, but it’s difficult to talk about complex topics? Do you need to pass an English exam?</p>',
@@ -295,7 +296,6 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
 		},
 		{
 			blockType: 'content-with-image-block',
-			image: 1,
 			imagePosition: 'left',
 			textLayout: [
 				{
@@ -362,6 +362,6 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
 			title: 'Trusted by leading professionals',
 			greyscale: true,
 			clients: [8, 1, 2, 3, 6],
-		}
+		},
 	],
 };

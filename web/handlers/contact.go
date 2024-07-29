@@ -55,7 +55,7 @@ func Contact(_ *payloadcms.Client, web3FormsKey string) webkit.Handler {
 			Message: c.Request.FormValue("message"),
 		}
 
-		formHTML := *content.ContactForm.Form
+		formHTML := content.ContactForm.Form
 		for idx, field := range formHTML.Fields {
 			if field.Name == "name" {
 				formHTML.Fields[idx].Value = form.Name
@@ -74,7 +74,7 @@ func Contact(_ *payloadcms.Client, web3FormsKey string) webkit.Handler {
 				slog.Error("Failed to validate contact form: %v", err)
 			}
 			return c.Render(components.Form(components.FormProps{
-				Form:   &formHTML,
+				Form:   formHTML,
 				Errors: e,
 			}))
 		}
@@ -86,7 +86,7 @@ func Contact(_ *payloadcms.Client, web3FormsKey string) webkit.Handler {
 		}
 
 		f := components.Form(components.FormProps{
-			Form:    &formHTML,
+			Form:    formHTML,
 			Errors:  nil,
 			Success: false,
 		})
@@ -109,7 +109,7 @@ func Contact(_ *payloadcms.Client, web3FormsKey string) webkit.Handler {
 		}
 
 		return c.Render(components.Form(components.FormProps{
-			Form:    &formHTML,
+			Form:    formHTML,
 			Success: true,
 		}))
 	}

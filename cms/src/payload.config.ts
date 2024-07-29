@@ -75,7 +75,7 @@ export default buildConfig({
 	sharp,
 	plugins: [
 		seoPlugin({
-			collections: ['posts'],
+			collections: ['posts', 'pages'],
 			globals: ['settings'],
 			fields: SEOFields as Field[],
 			tabbedUI: true,

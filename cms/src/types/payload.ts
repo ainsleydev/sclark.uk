@@ -261,6 +261,22 @@ export interface Page {
     | BlockPortfolio
     | BlockContact
   )[];
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: number | Media | null;
+    private?: boolean | null;
+    canonicalURL?: string | null;
+    structuredData?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+  };
   isHome?: boolean | null;
   updatedAt: string;
   createdAt: string;

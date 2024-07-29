@@ -28,11 +28,7 @@ func decodeFAQs(block payload.Block) types.BlockFAQs {
 	return b
 }
 
-// TODO: Maybe method reciever of Blocks struct?
 func getID(id *string) string {
-	if id != nil {
-		return *id
-	}
 	return random.Alpha(16)
 }
 
