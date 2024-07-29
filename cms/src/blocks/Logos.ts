@@ -36,31 +36,14 @@ export const Logos: Block = {
 			],
 		},
 		{
-			name: 'logos',
-			label: 'Logos',
-			type: 'array',
-			fields: [
-				{
-					name: 'link',
-					label: 'Link',
-					type: 'text',
-					validate: validateURL,
-					admin: {
-						width: '50%',
-						description: 'Add a link to the logo.',
-					},
-				},
-				{
-					name: 'logo',
-					label: 'Logo',
-					type: 'upload',
-					relationTo: 'media',
-					required: true,
-					filterOptions: {
-						mimeType: { contains: 'image' },
-					},
-				},
-			],
-		},
+			name: 'clients',
+			label: 'Clients',
+			type: 'relationship',
+			relationTo: 'clients',
+			hasMany: true,
+			admin: {
+				description: 'Add client logos that that will appear in the block',
+			}
+		}
 	],
 };

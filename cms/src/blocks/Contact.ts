@@ -39,6 +39,7 @@ export const Contact: Block = {
 			name: 'form',
 			label: 'Form',
 			relationTo: 'forms',
+			required: true,
 			hasMany: false,
 			admin: {
 				allowCreate: false,

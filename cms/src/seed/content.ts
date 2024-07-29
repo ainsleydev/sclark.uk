@@ -1,5 +1,6 @@
 import type { BlockContentWithImage, BlockFAQs } from '@/types/payload';
 import type { RequiredDataFromCollectionSlug } from 'payload';
+import { htmlToLexical } from '@ainsleydev/payload-helper/dist/util/lexical';
 
 export interface MediaSeed {
 	path: string;
@@ -17,7 +18,7 @@ export const clients: (Omit<RequiredDataFromCollectionSlug<'clients'>, 'id' | 'l
 		url: 'https://ainsley.dev',
 		image: {
 			path: '../../../web/assets/exports/logos/coloured/ainsley-dev.svg',
-			alt: 'ainsley.dev logo',
+			alt: 'ainsley.dev Logo',
 		},
 	},
 	{
@@ -26,7 +27,7 @@ export const clients: (Omit<RequiredDataFromCollectionSlug<'clients'>, 'id' | 'l
 		url: 'https://decspets.ie',
 		image: {
 			path: '../../../web/assets/exports/logos/coloured/decs-pets.svg',
-			alt: "Dec's Pets logo",
+			alt: "Dec's Pets Logo",
 		},
 	},
 	{
@@ -35,7 +36,7 @@ export const clients: (Omit<RequiredDataFromCollectionSlug<'clients'>, 'id' | 'l
 		url: 'https://schoolsandagents.com/',
 		image: {
 			path: '../../../web/assets/exports/logos/coloured/schools-and-agents.svg',
-			alt: 'Schools and Agents logo',
+			alt: 'Schools and Agents Logo',
 		},
 	},
 	{
@@ -44,7 +45,7 @@ export const clients: (Omit<RequiredDataFromCollectionSlug<'clients'>, 'id' | 'l
 		url: 'https://www.bailogik.com/',
 		image: {
 			path: '../../../web/assets/exports/logos/coloured/bailogik.svg',
-			alt: 'Bailogik logo',
+			alt: 'Bailogik Logo',
 		},
 	},
 	{
@@ -53,13 +54,41 @@ export const clients: (Omit<RequiredDataFromCollectionSlug<'clients'>, 'id' | 'l
 		url: 'https://britcent.uk/',
 		image: {
 			path: '../../../web/assets/exports/logos/coloured/britcent.svg',
-			alt: 'Britcent logo',
+			alt: 'Britcent Logo',
+		},
+	},
+	{
+		id: 6,
+		name: 'Jennifer Cooper',
+		url: 'https://jennifercoopertimesaver.co.uk/',
+		image: {
+			path: '../../../web/assets/exports/logos/coloured/jennifer-cooper.svg',
+			alt: 'Jennifer Cooper Logo',
+		},
+	},
+	{
+		id: 7,
+		name: 'Islington Centre for English',
+		url: 'https://letslearnenglish.org/',
+		image: {
+			path: '../../../web/assets/exports/logos/coloured/ice.svg',
+			alt: 'Islington Centre for English Logo',
+		},
+	},
+	{
+		id: 8,
+		name: 'Finesse Group',
+		url: 'https://byfinessegroup.com/',
+		image: {
+			path: '../../../web/assets/exports/logos/coloured/finesse-group.svg',
+			alt: 'Finesse Group Logo',
 		},
 	},
 ];
 
 export const reviews: RequiredDataFromCollectionSlug<'reviews'>[] = [
 	{
+		id: 1,
 		content:
 			'She tailors our weekly sessions to address my speaking challenges, including habitual errors and pronunciation, and uses her extensive teaching experience to understand common learner issues.',
 		author: {
@@ -69,6 +98,7 @@ export const reviews: RequiredDataFromCollectionSlug<'reviews'>[] = [
 		},
 	},
 	{
+		id: 2,
 		content:
 			'As an English teacher at Islington Centre for English, Stephanie was a huge asset; organised, professional, very popular with students and staff and a joy to work with.',
 		author: {
@@ -78,6 +108,7 @@ export const reviews: RequiredDataFromCollectionSlug<'reviews'>[] = [
 		},
 	},
 	{
+		id: 3,
 		content:
 			'As an English language teacher, Stephanie reported directly to me and in all our years of working together I never had a single complaint from a student she taught.',
 		author: {
@@ -215,32 +246,122 @@ const faqs: BlockFAQs = {
 	],
 };
 
-export const home: RequiredDataFromCollectionSlug<'pages'> = {
-	isHome: true,
-	_status: 'published',
-	layout: [
-		// {
-		// 	blockType: 'content-block',
-		// 	style: 'centered',
-		// 	content: $generateNodesFromDOM(null, '<h1>Test</h1>' | null),
-		// },
+export const form: RequiredDataFromCollectionSlug<'forms'> = {
+	id: 0,
+	title: 'Contact',
+	heading: 'Get in touch',
+	fields: [
 		{
-			blockType: 'content-with-image-block',
-			image: 1,
-			imagePosition: 'left',
-			textLayout: [faqs],
+			blockType: 'text',
+			name: 'name',
+			label: 'Name',
+			required: true,
+		},
+		{
+			blockType: 'email',
+			name: 'email',
+			label: 'Email',
+			required: true,
+		},
+		{
+			blockType: 'textarea',
+			name: 'message',
+			label: 'Message',
+			required: true,
 		},
 	],
 };
 
-export const contentWritingServicesBlock: Omit<BlockContentWithImage, 'image'> & {
-	image: MediaSeed;
-} = {
-	blockType: 'content-with-image-block',
-	image: {
-		path: 'TODO',
-		alt: 'TODO',
+export const home: RequiredDataFromCollectionSlug<'pages'> = {
+	isHome: true,
+	_status: 'published',
+	hero: {
+		title: 'Can’t find the right words?',
+		lead: 'Combining a love for the English language and written word, S Clark provides two distinct professional services – one-to-one English language teaching for non-native speakers and content writing and editing for businesses',
+		clients: [8, 1, 2, 3, 6],
 	},
-	imagePosition: 'left',
-	textLayout: [],
+	layout: [
+		{
+			blockType: 'gradient-block',
+			colour: 'pink',
+		},
+		{
+			blockType: 'content-block',
+			style: 'centered',
+			// @ts-ignore
+			content: htmlToLexical(
+				'<h2>Online English Lessons</h2><p>Are you worried about making mistakes in English? Do you know what to say in your head, but the words don’t come out? Can you speak some English, but it’s difficult to talk about complex topics? Do you need to pass an English exam?</p>',
+			),
+		},
+		{
+			blockType: 'content-with-image-block',
+			image: 1,
+			imagePosition: 'left',
+			textLayout: [
+				{
+					blockType: 'content-block',
+					// @ts-ignore
+					content: htmlToLexical(
+						'<h3>Learning a foreign language isn\'t easy</h3><p>Especially when it comes to speaking. It takes time, practice and confidence.  But you are not alone. A s an English language teacher with 20 years’ experience, I’ve helped adults from all over the world to feel more confident in their English skills – and I can help you too!</p><p>How? With professional teaching techniques, a deep knowledge of the English language, a lot of patience, and a friendly, positive attitude. I’ll help you feel so comfortable speaking English, that you’ll forget you were ever worried.</p><h3>But you can do it, in 3 easy steps</h3><ol class="list-number"><li value=1>Discuss what you need in our free 20-minute call</li><li value=2>Do something else that’s fucking fantastic</li><li value=3>Book your first set of lessons</li></ol>',
+					),
+				},
+				faqs,
+			],
+		},
+		{
+			blockType: 'gradient-block',
+			colour: 'blue',
+		},
+		{
+			blockType: 'content-block',
+			style: 'centered',
+			// @ts-ignore
+			content: htmlToLexical(
+				'<h2>Content Writing</h2><p>Are you worried about making mistakes in English? Do you know what to say in your head, but the words don’t come out? Can you speak some English, but it’s difficult to talk about complex topics? Do you need to pass an English exam?</p>',
+			),
+		},
+		{
+			blockType: 'content-with-image-block',
+			image: 1,
+			imagePosition: 'left',
+			textLayout: [
+				{
+					blockType: 'content-block',
+					// @ts-ignore
+					content: htmlToLexical(
+						'<h3>Learning a foreign language isn\'t easy</h3><p>Especially when it comes to speaking. It takes time, practice and confidence.  But you are not alone. A s an English language teacher with 20 years’ experience, I’ve helped adults from all over the world to feel more confident in their English skills – and I can help you too!</p><p>How? With professional teaching techniques, a deep knowledge of the English language, a lot of patience, and a friendly, positive attitude. I’ll help you feel so comfortable speaking English, that you’ll forget you were ever worried.</p><h3>But you can do it, in 3 easy steps</h3><ol class="list-number"><li value=1>Discuss what you need in our free 20-minute call</li><li value=2>Do something else that’s fucking fantastic</li><li value=3>Book your first set of lessons</li></ol>',
+					),
+				},
+				faqs,
+			],
+		},
+		{
+			blockType: 'reviews-block',
+			title: 'Testimonials',
+			content:
+				'Don’t just take my word for it – here’s what some of my clients have to say.Don’t just take my word for it – here’s what some of my clients have to say. Don’t just take my word for it – here’s what some of my clients have to say.',
+			items: [1, 2, 3],
+		},
+		{
+			blockType: 'portfolio-block',
+			title: 'Portfolio',
+			content:
+				"I'm baby fam drinking vinegar tumeric semiotics vaporware shabby chic tonx edison bulb twee kogi. Church-key kogi DSA unicorn ugh adaptogen locavore poutine lumbersexual YOLO pickled. Forage chia thundercats chartreuse bespoke typewriter.",
+			items: [1, 2, 3, 4, 5, 6],
+		},
+		{
+			blockType: 'contact-block',
+			title: 'Contact now',
+			content:
+				'Don’t just take my word for it – here’s what some of my clients have to say.Don’t just take my word for it – here’s what some of my clients have to say. Don’t just take my word for it – here’s what some of my clients have to say.',
+			includeSocial: true,
+			form: 1,
+		},
+		{
+			blockType: 'logos-block',
+			title: 'Trusted by leading professionals',
+			greyscale: true,
+			clients: [8, 1, 2, 3, 6],
+		}
+	],
 };

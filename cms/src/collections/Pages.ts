@@ -5,9 +5,9 @@ import { Logos } from '@/blocks/Logos';
 import { Portfolio } from '@/blocks/Portfolio';
 // import {findBySlug} from 'adev-payload/src/endpoints/slug';
 import { Reviews } from '@/blocks/Reviews';
-// import {Hero} from '../fields/Hero';
 import { SlugField } from '@nouance/payload-better-fields-plugin';
 import type { CollectionConfig } from 'payload';
+import {Gradient} from "@/blocks/Gradient";
 
 export const Pages: CollectionConfig = {
 	slug: 'pages',
@@ -56,18 +56,49 @@ export const Pages: CollectionConfig = {
 		{
 			type: 'tabs',
 			tabs: [
-				// {
-				// 	label: 'Hero',
-				// 	fields: [
-				// 		{
-				// 			name: 'title',
-				// 			label: 'Title',
-				// 			type: 'text',
-				// 			required: true,
-				// 		},
-				// 		Hero,
-				// 	],
-				// },
+				{
+					label: 'Hero',
+					fields: [
+						{
+							name: "hero",
+							type: "group",
+							label: 'Hero',
+							admin: {
+								hideGutter: true,
+							},
+							fields: [
+								{
+									name: 'title',
+									label: 'Title',
+									type: 'text',
+									required: true,
+									admin: {
+										description: 'The main title of the page.',
+									}
+								},
+								{
+									name: 'lead',
+									label: 'Lead',
+									type: 'textarea',
+									required: true,
+									admin: {
+										description: 'A short description that appears below the title.',
+									}
+								},
+								{
+									name: 'clients',
+									label: 'Clients',
+									type: 'relationship',
+									relationTo: 'clients',
+									hasMany: true,
+									admin: {
+										description: 'Add optional client logos that appear in the hero section beneath the title and lead.',
+									}
+								}
+							]
+						}
+					],
+				},
 				{
 					label: 'Content',
 					fields: [
@@ -75,7 +106,7 @@ export const Pages: CollectionConfig = {
 							name: 'layout',
 							type: 'blocks',
 							required: true,
-							blocks: [Content, ContentWithImage, Logos, Reviews, Portfolio, Contact],
+							blocks: [Content, ContentWithImage, Gradient, Logos, Reviews, Portfolio, Contact],
 						},
 					],
 				},

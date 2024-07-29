@@ -5,7 +5,7 @@ import {
 	clients,
 	portfolioCategories,
 	portfolioItems,
-	reviews,
+	reviews, form, home,
 } from '@/seed/content';
 import type { Media } from '@/types/payload';
 import env from '@ainsleydev/payload-helper/dist/util/env';
@@ -83,7 +83,11 @@ export const up = async ({
 	// Create Settings
 	payload.logger.info('Creating settings...');
 	const logo = await uploadMedia(req, payload, {
-		path: '../../../web/assets/exports/logo.svg',
+		path: '../../../web/assets/images/logo.svg',
+		alt: 'S.Clark Logo',
+	});
+	const ogImage = await uploadMedia(req, payload, {
+		path: '../../../web/assets/images/opengraph.svg',
 		alt: 'S.Clark Logo',
 	});
 	await payload.updateGlobal({
@@ -104,6 +108,7 @@ export const up = async ({
 				title: 'S. Clark',
 				description: 'Can’t find the right words?',
 				private: false,
+				image: ogImage.id,
 			},
 			robots: 'User-agent: *\nDisallow: /',
 			siteName: 'S. Clark',
@@ -188,6 +193,32 @@ export const up = async ({
 		}
 	} catch (error) {
 		payload.logger.error(`Creating portfolio categories: ${error}`);
+		return;
+	}
+
+	// Create Form
+	payload.logger.info('Creating form...');
+	try {
+		await payload.create({
+			collection: 'forms',
+			data: form,
+			req,
+		});
+	} catch (error) {
+		payload.logger.error(`Creating form: ${error}`);
+		return;
+	}
+
+	// Create home
+	payload.logger.info('Creating home page...');
+	try {
+		await payload.create({
+			collection: 'pages',
+			data: home,
+			req,
+		});
+	} catch (error) {
+		payload.logger.error(`Creating form: ${error}`);
 		return;
 	}
 };

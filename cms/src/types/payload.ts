@@ -247,11 +247,36 @@ export interface Media {
  */
 export interface Page {
   id: number;
-  layout: (BlockContentDefault | BlockContentWithImage | BlockLogs | BlockReviews | BlockPortfolio | BlockContact)[];
+  hero: {
+    title: string;
+    lead: string;
+    clients?: (number | Client)[] | null;
+  };
+  layout: (
+    | BlockContentDefault
+    | BlockContentWithImage
+    | BlockGradient
+    | BlockLogs
+    | BlockReviews
+    | BlockPortfolio
+    | BlockContact
+  )[];
   isHome?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "clients".
+ */
+export interface Client {
+  id: number;
+  name: string;
+  url: string;
+  logo: number | Media;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -336,18 +361,22 @@ export interface BlockFAQs {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockGradient".
+ */
+export interface BlockGradient {
+  colour: 'pink' | 'blue';
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'gradient-block';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BlockLogs".
  */
 export interface BlockLogs {
   title: string;
   greyscale?: boolean | null;
-  logos?:
-    | {
-        link?: string | null;
-        logo: number | Media;
-        id?: string | null;
-      }[]
-    | null;
+  clients?: (number | Client)[] | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'logos-block';
@@ -408,18 +437,6 @@ export interface Portfolio {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "clients".
- */
-export interface Client {
-  id: number;
-  name: string;
-  url: string;
-  logo: number | Media;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolio-categories".
  */
 export interface PortfolioCategory {
@@ -436,7 +453,7 @@ export interface BlockContact {
   title: string;
   content?: string | null;
   includeSocial?: boolean | null;
-  form?: (number | null) | Form;
+  form: number | Form;
   id?: string | null;
   blockName?: string | null;
   blockType: 'contact-block';

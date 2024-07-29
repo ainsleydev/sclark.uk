@@ -50,6 +50,7 @@ export default buildConfig({
 		Redirects(),
 	],
 	globals: [
+		// @ts-ignore
 		Settings([Footer]),
 		Navigation({
 			includeFooter: false,
