@@ -17,6 +17,7 @@
 		"format": "biome format --write ./src",
 		"lint": "biome lint --write --unsafe ./src",
 		"seed": "npx tsx src/seed/seed.ts",
+		"scratch": "npx tsx src/scratch.ts",
 		"docker": "pnpm docker:build && pnpm docker:run",
 		"docker:build": "docker build -t ainsley.dev/cms .",
 		"docker:run": "docker run -it --init --env-file .env -e PORT=3000 -p 3000:3000 --rm -ti ainsley.dev/cms",

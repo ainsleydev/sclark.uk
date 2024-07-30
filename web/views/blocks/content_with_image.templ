@@ -69,7 +69,7 @@ templ ContentWithImage(props types.BlockContentWithImage) {
 										<div class="richtext">
 											@templ.Raw(decodeRichText(block))
 										</div>
-									case "faqs":
+									case "faqs-block":
 										<h3>FAQS</h3>
 										@components.Collapse(FAQsToCollapse(decodeFAQs(block)))
 								}
