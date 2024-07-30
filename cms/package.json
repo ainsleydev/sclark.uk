@@ -26,17 +26,17 @@
 	"dependencies": {
 		"@ainsleydev/payload-helper": "link:/Users/Ainsley/Desktop/ainsley.dev/WebKit/web-kit/packages/payload-helper",
 		"@nouance/payload-better-fields-plugin": "^1.4.1",
-		"@payloadcms/db-postgres": "3.0.0-beta.67",
-		"@payloadcms/next": "3.0.0-beta.67",
-		"@payloadcms/plugin-cloud": "3.0.0-beta.67",
-		"@payloadcms/plugin-cloud-storage": "3.0.0-beta.67",
-		"@payloadcms/plugin-form-builder": "3.0.0-beta.67",
-		"@payloadcms/plugin-seo": "3.0.0-beta.67",
-		"@payloadcms/richtext-lexical": "3.0.0-beta.67",
+		"@payloadcms/db-postgres": "3.0.0-beta.71",
+		"@payloadcms/next": "3.0.0-beta.71",
+		"@payloadcms/plugin-cloud": "3.0.0-beta.71",
+		"@payloadcms/plugin-cloud-storage": "3.0.0-beta.71",
+		"@payloadcms/plugin-form-builder": "3.0.0-beta.71",
+		"@payloadcms/plugin-seo": "3.0.0-beta.71",
+		"@payloadcms/richtext-lexical": "3.0.0-beta.71",
 		"cross-env": "^7.0.3",
 		"graphql": "^16.9.0",
 		"next": "15.0.0-canary.53",
-		"payload": "3.0.0-beta.67",
+		"payload": "3.0.0-beta.71",
 		"react": "19.0.0-rc-fb9a90fa48-20240614",
 		"react-dom": "19.0.0-rc-fb9a90fa48-20240614",
 		"sharp": "0.32.6"
@@ -51,7 +51,7 @@
 		"typescript": "5.5.3"
 	},
 	"engines": {
-		"node": "^18.20.2 || >=20.9.0"
+		"node": "^18.17.0 || >=20.9.0"
 	},
 	"pnpm": {
 		"overrides": {
