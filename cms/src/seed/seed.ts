@@ -1,6 +1,5 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { htmlToLexical, lexicalToHtml } from '@ainsleydev/payload-helper/dist/util/lexical';
 import dotenv from 'dotenv';
 import {
 	type PayloadRequest,
