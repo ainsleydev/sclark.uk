@@ -34,6 +34,7 @@ export const Pages: CollectionConfig = {
 					const data = await req.payload.find({
 						collection: 'pages',
 						limit: 1,
+						depth: 100,
 						where: {
 							isHome: {
 								equals: true,

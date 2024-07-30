@@ -141,7 +141,7 @@ type BlockGradientColour string
 const BlockGradientColourBlue BlockGradientColour = "blue"
 const BlockGradientColourPink BlockGradientColour = "pink"
 
-type BlockLogs struct {
+type BlockLogos struct {
 	// BlockName corresponds to the JSON schema field "blockName".
 	BlockName *string `json:"blockName,omitempty" yaml:"blockName,omitempty" mapstructure:"blockName,omitempty"`
 

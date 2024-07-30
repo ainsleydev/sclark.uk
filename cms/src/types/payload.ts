@@ -256,7 +256,7 @@ export interface Page {
     | BlockContentDefault
     | BlockContentWithImage
     | BlockGradient
-    | BlockLogs
+    | BlockLogos
     | BlockReviews
     | BlockPortfolio
     | BlockContact
@@ -387,9 +387,9 @@ export interface BlockGradient {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "BlockLogs".
+ * via the `definition` "BlockLogos".
  */
-export interface BlockLogs {
+export interface BlockLogos {
   title: string;
   greyscale?: boolean | null;
   clients?: (number | Client)[] | null;

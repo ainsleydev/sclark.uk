@@ -18,19 +18,19 @@ func logosLoadingAttr(isHero bool) string {
 	return "lazy"
 }
 
-templ Logos(props types.BlockLogs, opts LogosOptions) {
-	if !opts.IsHero {
+templ Logos(props types.BlockLogos, isHero bool) {
+	if !isHero {
 		<section class="logos-section">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						@logosBlock(props, opts)
+						@logosBlock(props, isHero)
 					</div><!-- /Col -->
 				</div><!-- /Row -->
 			</div><!-- /Container -->
 		</section>
 	} else {
-		@logosBlock(props, opts)
+		@logosBlock(props, isHero)
 	}
 }
 
@@ -50,12 +50,12 @@ templ logoImage(idx int, img payload.Media, isHero bool) {
 	/>
 }
 
-templ logosBlock(props types.BlockLogs, opts LogosOptions) {
+templ logosBlock(props types.BlockLogos, isHero bool) {
 	if len(props.Clients) > 0 {
-		<figure class={ "logos", templ.KV("logos-greycale", opts.Greyscale), templ.KV("logos-hero", opts.IsHero) }>
+		<figure class={ "logos", templ.KV("logos-greycale", props.Greyscale), templ.KV("logos-hero", isHero) }>
 			if props.Title != "" {
 				<figcaption class="logos-title"
-					if !opts.IsHero {
+					if !isHero {
 						data-aos="fade-up"
 					}>
 					<span class="heading-6">
@@ -63,21 +63,19 @@ templ logosBlock(props types.BlockLogs, opts LogosOptions) {
 					</span>
 				</figcaption>
 			}
-
 			for idx, item := range props.Clients {
 				if item.Url != "" {
 					<a href={ templ.SafeURL(item.Url) } class="logos-item logos-link"
 						target="_blank"
 						aria-label={ item.Logo.Alt("S.Clark Client Logo") }>
-						@logoImage(idx, item.Logo, opts.IsHero)
+						@logoImage(idx, item.Logo, isHero)
 					</a>
 				} else {
 					<figure class="logos-item">
-						@logoImage(idx, item.Logo, opts.IsHero)
+						@logoImage(idx, item.Logo, isHero)
 					</figure>
 				}
 			}
-			*/
 		</figure>
 	}
 }

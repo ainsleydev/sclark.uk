@@ -46,7 +46,7 @@ func HomeHandler(p *payloadcms.Client) webkit.Handler {
 		ctx := c.Context()
 
 		var page types.Pages
-		resp, err := p.Get(ctx, "/api/pages/home", &page)
+		resp, err := p.Get(ctx, "/api/pages/home?depth=100", &page)
 		if resp.StatusCode == http.StatusNotFound {
 			return webkit.NewError(http.StatusNotFound, "Home not found")
 		} else if err != nil {

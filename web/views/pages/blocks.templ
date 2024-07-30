@@ -4,7 +4,7 @@ import (
 	"io"
 	"context"
 	"log/slog"
-	"encoding/json"
+	//"encoding/json"
 	"github.com/ainsleydev/sclark.uk/views/blocks"
 	"github.com/ainsleydev/sclark.uk/views/components"
 	"github.com/ainsleydev/sclark.uk/views/layouts"
@@ -14,42 +14,60 @@ import (
 	"strings"
 )
 
-func getBlock(block payload.Block) templ.Component {
-	switch block.BlockType {
-		case "content-block":
-			b := types.BlockContentDefault{}
-			if err := block.Decode(&b); err != nil {
-				slog.Error(err.Error())
-			}
-			return blocks.Content(b)
-		case "content-with-image-block":
-			b := types.BlockContentWithImage{}
-			if err := block.Decode(&b); err != nil {
-				slog.Error(err.Error())
-			}
-			return blocks.ContentWithImage(b)
-		case "gradient-block":
-			b := types.BlockGradient{}
-			if err := block.Decode(&block); err != nil {
-				slog.Error(err.Error())
-			}
-			colour := components.GradientColourPink
-			if b.Colour == "blue" {
-				colour = components.GradientColourBlue
-			}
-			return components.Gradient(colour)
-		case "portfolio-block":
-			b := types.BlockPortfolio{}
-			if err := block.Decode(&b); err != nil {
-				slog.Error(err.Error())
-			}
-			slog.Info(string(block.RawJSON))
+type BlockHandlerFunc func(payload.Block) templ.Component
 
-			json.Unmarshal(block.RawJSON, &b)
-
-			slog.Info(fmt.Sprintf("Portfolio block: %+v", b.Items))
-			return blocks.Portfolio(b)
+var blockHandlers = map[string]BlockHandlerFunc{
+	"content-block": func(block payload.Block) templ.Component {
+		b := types.BlockContentDefault{}
+		mustDecodeBlock(block, &b, "content-block")
+		return blocks.Content(b)
+	},
+	"content-with-image-block": func(block payload.Block) templ.Component {
+		b := types.BlockContentWithImage{}
+		mustDecodeBlock(block, &b, "content-with-image-block")
+		return blocks.ContentWithImage(b)
+	},
+	"gradient-block": func(block payload.Block) templ.Component {
+		b := types.BlockGradient{}
+		mustDecodeBlock(block, &b, "gradient-block")
+		colour := components.GradientColourPink
+		if b.Colour == "blue" {
+			colour = components.GradientColourBlue
 		}
+		return components.Gradient(colour)
+	},
+	"logos-block": func(block payload.Block) templ.Component {
+		b := types.BlockLogos{}
+		mustDecodeBlock(block, &b, "logos-block")
+		return blocks.Logos(b, false)
+	},
+	"reviews-block": func(block payload.Block) templ.Component {
+		b := types.BlockReviews{}
+		mustDecodeBlock(block, &b, "reviews-block")
+		return blocks.Reviews(b)
+	},
+	"portfolio-block": func(block payload.Block) templ.Component {
+		b := types.BlockPortfolio{}
+		mustDecodeBlock(block, &b, "portfolio-block")
+		return blocks.Portfolio(b)
+	},
+	"contact-block": func(block payload.Block) templ.Component {
+		b := types.BlockContact{}
+		mustDecodeBlock(block, &b, "contact-block")
+		return blocks.Contact(b)
+	},
+}
+
+func mustDecodeBlock(block payload.Block, v any, name string) {
+	if err := block.Decode(v); err != nil {
+		slog.Error("Decoding Block: " + err.Error(), "block", name)
+	}
+}
+
+func getBlock(block payload.Block) templ.Component {
+	if handler, found := blockHandlers[block.BlockType]; found {
+		return handler(block)
+	}
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 		_, err := io.WriteString(w, "Unknown block type: "+block.BlockType)
 		return err
@@ -63,6 +81,7 @@ templ Blocks(page types.Pages) {
 			for _, block := range page.Layout {
 				<div class={ "blocks-item",
 					fmt.Sprintf("blocks-item-%s", strings.ReplaceAll(block.BlockType, "-block", "")) }
+					id={ fmt.Sprintf("block-%v", block.ID) }
 				>
 					@getBlock(block)
 				</div>

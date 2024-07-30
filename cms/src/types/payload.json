@@ -1119,7 +1119,7 @@
                 "colour"
             ]
         },
-        "BlockLogs": {
+        "BlockLogos": {
             "type": "object",
             "additionalProperties": false,
             "properties": {

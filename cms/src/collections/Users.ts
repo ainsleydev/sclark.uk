@@ -7,7 +7,7 @@ export const Users: CollectionConfig = {
 		defaultColumns: ['id', 'name', 'email', 'createdAt'],
 	},
 	auth: {
-		maxLoginAttempts: 5,
+		// maxLoginAttempts: 5,
 		lockTime: 600 * 1000,
 		useAPIKey: true,
 	},

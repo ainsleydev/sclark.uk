@@ -4,7 +4,7 @@ import type { Block } from 'payload';
 
 export const Logos: Block = {
 	slug: 'logos-block',
-	interfaceName: 'BlockLogs',
+	interfaceName: 'BlockLogos',
 	labels: {
 		singular: 'Logo',
 		plural: 'Logos',
