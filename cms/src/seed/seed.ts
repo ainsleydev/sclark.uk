@@ -1,10 +1,10 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { clients, form, home, portfolioCategories, portfolioItems, reviews } from '@/seed/content';
+import { type DBAdapter, type Seeder, seed } from '@ainsleydev/payload-helper/dist/seed/seed';
+import { uploadMedia } from '@ainsleydev/payload-helper/dist/seed/up';
 import env from '@ainsleydev/payload-helper/dist/util/env';
 import type { Payload, PayloadRequest } from 'payload';
-import {seed, type Seeder} from '@ainsleydev/payload-helper/dist/seed/seed';
-import { uploadMedia } from '@ainsleydev/payload-helper/dist/seed/up';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -186,15 +186,11 @@ const fn: Seeder = async ({
 		payload.logger.error(`Creating homepage: ${error}`);
 		return;
 	}
-}
+};
 
 seed({
 	envPath: path.resolve(dirname, '../.env'),
 	configPath: path.resolve(dirname, '../payload.config.js'),
+	dbAdapter: DBAdapter.Postgres,
 	seeder: fn,
-})
-	.then(() => process.exit(0))
-	.catch((e) => {
-		console.error(e);
-		process.exit(1);
-	});
+});
