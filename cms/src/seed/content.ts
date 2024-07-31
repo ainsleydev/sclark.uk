@@ -1,12 +1,7 @@
-import type { BlockContentWithImage, BlockFAQs } from '@/types/payload';
+import type { BlockFAQs } from '@/types/payload';
 import { htmlToLexical } from '@ainsleydev/payload-helper/dist/util/lexical';
 import type { RequiredDataFromCollectionSlug } from 'payload';
-
-export interface MediaSeed {
-	path: string;
-	alt: string;
-	caption?: string;
-}
+import type { MediaSeed } from '@ainsleydev/payload-helper/dist/seed/types';
 
 export const clients: (Omit<RequiredDataFromCollectionSlug<'clients'>, 'id' | 'logo'> & {
 	id: number;

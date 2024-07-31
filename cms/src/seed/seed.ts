@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { clients, form, home, portfolioCategories, portfolioItems, reviews } from '@/seed/content';
-import { type DBAdapter, type Seeder, seed } from '@ainsleydev/payload-helper/dist/seed/seed';
+import { DBAdapter, type Seeder, seed } from '@ainsleydev/payload-helper/dist/seed/seed';
 import { uploadMedia } from '@ainsleydev/payload-helper/dist/seed/up';
 import env from '@ainsleydev/payload-helper/dist/util/env';
 import type { Payload, PayloadRequest } from 'payload';
@@ -28,15 +28,15 @@ const fn: Seeder = async ({
 		},
 		req,
 	});
-	console.log(`User created: ${JSON.stringify(user)}`);
+	payload.logger.debug(`User created: ${JSON.stringify(user)}`);
 
 	// Create Settings
 	payload.logger.info('Creating settings...');
-	const logo = await uploadMedia(req, payload, {
+	const logo = await uploadMedia(req, payload, dirname,{
 		path: '../../../web/assets/images/logo.svg',
 		alt: 'S.Clark Logo',
 	});
-	const ogImage = await uploadMedia(req, payload, {
+	const ogImage = await uploadMedia(req, payload, dirname, {
 		path: '../../../web/assets/images/opengraph.jpg',
 		alt: 'S.Clark Logo',
 	});
@@ -82,7 +82,7 @@ const fn: Seeder = async ({
 	payload.logger.info('Creating clients...');
 	try {
 		for (const client of clients) {
-			const media = await uploadMedia(req, payload, client.image);
+			const media = await uploadMedia(req, payload, dirname, client.image);
 			await payload.create({
 				collection: 'clients',
 				data: {
@@ -131,7 +131,7 @@ const fn: Seeder = async ({
 	payload.logger.info('Creating portfolio...');
 	try {
 		for (const item of portfolioItems) {
-			const media = await uploadMedia(req, payload, item.image);
+			const media = await uploadMedia(req, payload, dirname, item.image);
 			await payload.create({
 				collection: 'portfolio',
 				data: {
@@ -162,14 +162,14 @@ const fn: Seeder = async ({
 	// Create home
 	payload.logger.info('Creating home page...');
 
-	const mockupLaptop = await uploadMedia(req, payload, {
+	const mockupLaptop = await uploadMedia(req, payload, dirname,{
 		path: '../../../web/assets/images/mockups/laptop.png',
 		alt: 'Laptop Mockup',
 	});
 	// @ts-ignore
 	home.layout[2].image = mockupLaptop.id;
 
-	const mockupTablet = await uploadMedia(req, payload, {
+	const mockupTablet = await uploadMedia(req, payload, dirname, {
 		path: '../../../web/assets/images/mockups/tablet.png',
 		alt: 'Tablet Mockup',
 	});
