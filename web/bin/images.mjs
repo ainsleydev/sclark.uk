@@ -118,6 +118,34 @@ export const imageSizes = [
 			},
 		},
 	},
+	// Desktop Sizes
+	{
+		name: 'desktop',
+		width: 1440,
+		height: undefined,
+	},
+	{
+		name: 'desktop_webp',
+		width: 1440,
+		height: undefined,
+		formatOptions: {
+			format: 'webp',
+			options: {
+				quality: 80,
+			},
+		},
+	},
+	{
+		name: 'desktop_webp',
+		width: 1440,
+		height: undefined,
+		formatOptions: {
+			format: 'avif',
+			options: {
+				quality: 80,
+			},
+		},
+	},
 ];
 
 /**
@@ -126,9 +154,10 @@ export const imageSizes = [
  * @param {string} filePath - The path to the original image file.
  * @param {string} sizeName - The name of the size configuration.
  * @param {object} formatOptions - The format options object specifying the desired image format and options.
+ * @param {object} meta - Sharp metadata.
  * @returns {string} - The generated filename.
  */
-function generateFileName(filePath, sizeName, formatOptions) {
+function generateFileName(filePath, sizeName, formatOptions, meta) {
 	const originalName = path.parse(path.basename(filePath)).name;
 	const originalExtension = path.parse(filePath).ext;
 	const formattedSizeName = sizeName.replaceAll('_', '-');
@@ -140,10 +169,10 @@ function generateFileName(filePath, sizeName, formatOptions) {
 
 	if (formattedSizeName.includes('avif') || formattedSizeName.includes('webp')) {
 		const size = formattedSizeName.replace('avif', '').replace('webp', '').replaceAll('-', '');
-		return `${originalName}-${size}${formatExtension}`;
+		return `${originalName}-${size}-${meta.width}x${meta.height}${formatExtension}`;
 	}
 
-	return `${originalName}-${formattedSizeName}${formatExtension}`;
+	return `${originalName}-${formattedSizeName}-${meta.width}x${meta.height}${formatExtension}`;
 }
 
 /**
@@ -169,8 +198,13 @@ async function processImage(filePath, destDir, size) {
 		image = image.toFormat(format, options);
 	}
 
+	// Get the metadata of the processed image
+	const metadata = await image.metadata();
+
 	// Save the processed image to destination directory
-	await image.toFile(path.join(destDir, generateFileName(filePath, name, formatOptions)));
+	await image.toFile(
+		path.join(destDir, generateFileName(filePath, name, formatOptions, metadata)),
+	);
 }
 
 /**
@@ -212,7 +246,7 @@ async function copyAndConvertImages(srcDir, destDir) {
 				try {
 					await fs.copy(filePath, destPathOriginal);
 				} catch (err) {
-					console.log('hey', filePath, destPathOriginal, err);
+					console.log(`Copying file: ${err}`);
 				}
 
 				// Process each size configuration

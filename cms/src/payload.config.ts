@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { postgresAdapter } from '@payloadcms/db-postgres';
+import { sqliteAdapter } from '@payloadcms/db-sqlite';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { Payload, buildConfig } from 'payload';
 import type { Config, Field } from 'payload';
@@ -69,7 +69,7 @@ export default buildConfig({
 		client: {
 			url: env('DATABASE_URL', ''),
 			authToken: env('DATABASE_TOKEN', ''),
-		}
+		},
 	}),
 	sharp,
 	plugins: [
