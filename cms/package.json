@@ -23,8 +23,9 @@
 		"docker:clean": "docker rmi ainsley.dev/cms && docker image prune"
 	},
 	"dependencies": {
-		"@ainsleydev/payload-helper": "link:/Users/Ainsley/Desktop/ainsley.dev/WebKit/web-kit/packages/payload-helper",
+		"@ainsleydev/payload-helper": "0.0.5",
 		"@nouance/payload-better-fields-plugin": "^1.4.1",
+		"@payloadcms/db-sqlite": "3.0.0-beta.72",
 		"@payloadcms/db-postgres": "3.0.0-beta.67",
 		"@payloadcms/next": "3.0.0-beta.67",
 		"@payloadcms/plugin-cloud": "3.0.0-beta.67",
