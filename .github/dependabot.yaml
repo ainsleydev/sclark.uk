@@ -8,3 +8,11 @@ updates:
             dependencies:
                 patterns:
                     - "*"
+    -   package-ecosystem: npm
+        directory: /cms
+        schedule:
+            interval: monthly
+        groups:
+            payload-helper:
+                patterns:
+                    - "@ainsleydev/payload-helper"
