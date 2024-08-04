@@ -29,6 +29,7 @@ jobs:
             -   name: Test
                 run: |
                     cd web
+                    go get ./...
                     go test ./...
 
             # Step 4 - Upload to Codecov
