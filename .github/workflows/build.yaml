@@ -36,8 +36,7 @@ jobs:
             -   name: Build
                 run: |
                     cd web
-                    go build main.go
-                    node esbuild.mjs
+                    pnpm build ci
 
     build-cms:
         name: Build CMS

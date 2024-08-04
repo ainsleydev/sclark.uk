@@ -9,6 +9,7 @@
 		"build": "pnpm build:go && pnpm build:assets",
 		"build:go": "go build main.go",
 		"build:assets": "node esbuild.mjs",
+		"build:ci": "pnpm build:go & node esbuild.mjs --exclude-images",
 		"check": "pnpm format && pnpm lint && pnpm test",
 		"format": "pnpm format:go && pnpm format:assets",
 		"format:go": "go fmt ./... && templ fmt .",
