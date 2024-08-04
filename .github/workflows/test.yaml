@@ -23,17 +23,17 @@ jobs:
                 with:
                     go-version: ${{ matrix.go-version }}
 
-            -   name: Install dependencies
+            -   name: Install Dependencies
                 run: |
                     go install github.com/a-h/templ/cmd/templ@latest
                     cd web
                     TEMPL_EXPERIMENT=rawgo go generate ./...
+                    go mod tidy
 
             -   name: Test
                 run: |
                     cd web
-                    go mod tidy
-                    go test ./...
+                    go test ./... -race $$(go list ./... | temp) -coverprofile=../../coverage.out -covermode=atomic
 
             -   name: Diff
                 run: git diff
