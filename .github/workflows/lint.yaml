@@ -23,10 +23,10 @@ jobs:
                 with:
                     go-version: ${{ matrix.go-version }}
 
-            - name: Setup Biome
-              uses: biomejs/setup-biome@v2
-              with:
-                  version: latest
+            -   name: Setup Biome
+                uses: biomejs/setup-biome@v2
+                with:
+                    version: latest
 
             -   name: Install Dependencies
                 run: |
@@ -38,7 +38,7 @@ jobs:
             -   name: Lint Go
                 uses: golangci/golangci-lint-action@v6
                 with:
-                    version: ${{ matrix.go-version }}
+                    version: latest
                     skip-cache: true
                     args: --verbose
                     working-directory: web
