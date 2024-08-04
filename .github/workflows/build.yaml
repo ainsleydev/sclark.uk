@@ -1,0 +1,61 @@
+name: Build
+
+on:
+    workflow_dispatch:
+    pull_request:
+        branches: [ main ]
+
+jobs:
+    build-web:
+        name: Build Web
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
+
+            -   name: Install Go
+                uses: actions/setup-go@v5
+                with:
+                    go-version: ${{ matrix.go-version }}
+
+            -   name: Install pnpm
+                uses: pnpm/action-setup@v4
+                with:
+                    version: 9.1.4
+
+            -   name: Install Dependencies
+                run: |
+                    go install github.com/a-h/templ/cmd/templ@latest
+                    cd web
+                    TEMPL_EXPERIMENT=rawgo go generate ./...
+                    go mod tidy
+                    pnpm install
+
+            -   name: Build
+                run: |
+                    cd web
+                    pnpm build:ci
+
+    build-cms:
+        name: Build CMS
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
+
+            -   name: Install pnpm
+                uses: pnpm/action-setup@v4
+                with:
+                    version: 9.1.4
+
+            -   name: Install Dependencies
+                run: pnpm install
+
+            -   name: Build
+                run: |
+                    cd cms
+                    pnpm build

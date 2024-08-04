@@ -6,7 +6,6 @@ import (
 
 	"github.com/ainsleyclark/go-payloadcms"
 
-	"github.com/ainsleydev/sclark.uk/content"
 	"github.com/ainsleydev/sclark.uk/types"
 	"github.com/ainsleydev/sclark.uk/views/pages"
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
@@ -54,7 +53,7 @@ func HomeHandler(p *payloadcms.Client) webkit.Handler {
 			return webkit.NewError(http.StatusInternalServerError, "Failed to find page")
 		}
 
-		//p, _ := json.MarshalIndent(page, "", "  ")
+		// p, _ := json.MarshalIndent(page, "", "  ")
 
 		c.Set(payload.ContextKeyPageMeta, page.Meta)
 
@@ -64,7 +63,6 @@ func HomeHandler(p *payloadcms.Client) webkit.Handler {
 
 func NotFoundHandler() webkit.Handler {
 	return func(c *webkit.Context) error {
-		c.Request = c.Request.WithContext(payload.WithSettings(c.Context(), content.PayloadSettings))
 		return c.Render(pages.Message(pages.MessagePageProps{
 			Title:   "404 Not Found",
 			Content: "Whoops, we couldn't find the page you were looking for.",

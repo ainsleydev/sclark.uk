@@ -6,7 +6,7 @@
  * @author Email: hello@ainsley.dev
  */
 
-require('./modernizr');
+// require('./modernizr');
 import AOS from 'aos';
 import Glider from 'glider-js';
 import { Collapse } from '../../views/components/collapse';

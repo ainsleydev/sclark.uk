@@ -25,10 +25,10 @@ export class Collapse {
 	 */
 	defaultOptions = {
 		accordion: false,
-		container: ".collapse",
-		item: ".collapse-item",
-		inner: ".collapse-content",
-		activeClass: "collapse-item-active",
+		container: '.collapse',
+		item: '.collapse-item',
+		inner: '.collapse-content',
+		activeClass: 'collapse-item-active',
 	};
 
 	/**
@@ -62,7 +62,7 @@ export class Collapse {
 	attachClickHandler(container) {
 		const headers = container.querySelectorAll(this.options.item);
 		headers.forEach((header) => {
-			header.addEventListener("click", (e) => {
+			header.addEventListener('click', (e) => {
 				e.preventDefault();
 				this.options.accordion
 					? this.accordion(headers, header)

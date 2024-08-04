@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"type": "module",
 	"scripts": {
-		"build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+		"build": "pnpm clean && cross-env NODE_OPTIONS=--no-deprecation next build",
 		"dev": "pnpm db & cross-env NODE_OPTIONS=--no-deprecation next dev -p 4000",
 		"devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev -p 4000",
 		"gen": "pnpm run generate:schema && pnpm run generate:types",
@@ -14,6 +14,7 @@
 		"payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
 		"start": "cross-env NODE_OPTIONS=--no-deprecation next start",
 		"db": "turso dev --db-file ./db/local.db",
+		"clean": "rimraf {dist,.next}",
 		"check": "pnpm run format && pnpm run lint",
 		"format": "biome format --write ./src",
 		"lint": "biome lint --write --unsafe ./src",
@@ -27,7 +28,6 @@
 	"dependencies": {
 		"@ainsleydev/payload-helper": "0.0.6",
 		"@nouance/payload-better-fields-plugin": "^1.4.1",
-		"payload": "3.0.0-beta.72",
 		"@payloadcms/db-sqlite": "3.0.0-beta.72",
 		"@payloadcms/next": "3.0.0-beta.72",
 		"@payloadcms/plugin-cloud": "3.0.0-beta.72",
@@ -37,9 +37,11 @@
 		"@payloadcms/richtext-lexical": "3.0.0-beta.72",
 		"cross-env": "^7.0.3",
 		"graphql": "^16.9.0",
-		"next": "15.0.0-canary.77",
-		"react": "19.0.0-rc-fb9a90fa48-20240614",
-		"react-dom": "19.0.0-rc-fb9a90fa48-20240614",
+		"next": "15.0.0-canary.53",
+		"payload": "3.0.0-beta.72",
+		"react": "^19.0.0-rc-6230622a1a-20240610",
+		"react-dom": "^19.0.0-rc-6230622a1a-20240610",
+		"rimraf": "^6.0.1",
 		"sharp": "0.32.6"
 	},
 	"devDependencies": {

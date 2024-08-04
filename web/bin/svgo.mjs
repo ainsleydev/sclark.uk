@@ -1,6 +1,6 @@
-import { promises as fs } from "node:fs";
-import { resolve } from "node:path";
-import { optimize } from "svgo";
+import { promises as fs } from 'node:fs';
+import { resolve } from 'node:path';
+import { optimize } from 'svgo';
 
 /**
  * Recursively get all SVG files from a directory.
@@ -24,7 +24,7 @@ async function getFilesRecursive(dir) {
 	}
 
 	await scan(dir);
-	return files.filter((file) => file.endsWith(".svg"));
+	return files.filter((file) => file.endsWith('.svg'));
 }
 
 /**
@@ -32,7 +32,7 @@ async function getFilesRecursive(dir) {
  */
 export function svgoPlugin() {
 	return {
-		name: "svgo",
+		name: 'svgo',
 		setup(build) {
 			build.onEnd(async () => {
 				try {
@@ -40,12 +40,12 @@ export function svgoPlugin() {
 					const files = await getFilesRecursive(outDir);
 
 					for (const file of files) {
-						const data = await fs.readFile(file, "utf8");
+						const data = await fs.readFile(file, 'utf8');
 						const result = optimize(data, { path: file });
-						await fs.writeFile(file, result.data, { flag: "w" });
+						await fs.writeFile(file, result.data, { flag: 'w' });
 					}
 				} catch (err) {
-					console.error("SVGO Plugin Error:", err);
+					console.error('SVGO Plugin Error:', err);
 				}
 			});
 		},

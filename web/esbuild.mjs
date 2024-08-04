@@ -17,6 +17,7 @@ import copyAndConvertImages from './bin/images.mjs';
 import { svgoPlugin } from './bin/svgo.mjs';
 
 const isProd = !process.argv.includes('--watch');
+const excludeImages = process.argv.includes('--exclude-images');
 
 /**
  * ESBuild options for building the project.
@@ -67,7 +68,9 @@ const options = {
 (async () => {
 	// Check for watch flag in arguments
 	if (isProd) {
-		await copyAndConvertImages('assets/images', 'dist/images');
+		if (!excludeImages) {
+			await copyAndConvertImages('assets/images', 'dist/images');
+		}
 		await esbuild.build(options);
 	} else {
 		// Create esbuild context
