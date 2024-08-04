@@ -7,6 +7,7 @@ import (
 	"github.com/ainsleydev/sclark.uk/views/components"
 	"github.com/ainsleydev/webkit/pkg/util/ptr"
 	"github.com/ainsleydev/webkit/pkg/util/random"
+	"github.com/ainsleydev/webkit/pkg/markup"
 )
 
 func decodeRichText(block payload.Block) string {
@@ -45,10 +46,13 @@ templ ContentWithImage(props types.BlockContentWithImage) {
 					data-aos-offset="200"
 				>
 					if props.Image.URL != "" {
-						<picture class={ "content-image",
-						templ.KV("content-image-sticky", ptr.Bool(props.Sticky)) }>
-							<img loading="lazy" src={ props.Image.URL } alt={ props.Image.Alt() } >
-						</picture>
+						{{ sticky := "" }}
+						{{ if ptr.Bool(props.Sticky) == true { sticky = "content-image-sticky" } }}
+
+						@markup.Picture(&props.Image,
+							markup.PictureWithClasses("content-image", sticky),
+							markup.PictureWithLazyLoading(),
+						)
 					}
 				</div><!-- /Col -->
 				<!-- Content -->

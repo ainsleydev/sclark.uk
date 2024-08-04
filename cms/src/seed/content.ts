@@ -292,6 +292,7 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
 		{
 			blockType: 'content-with-image-block',
 			imagePosition: 'left',
+			sticky: true,
 			textLayout: [
 				{
 					blockType: 'content-block',
@@ -319,6 +320,7 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
 			blockType: 'content-with-image-block',
 			image: 1,
 			imagePosition: 'left',
+			sticky: true,
 			textLayout: [
 				{
 					blockType: 'content-block',

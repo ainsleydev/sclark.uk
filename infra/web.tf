@@ -1,6 +1,8 @@
 # Go Web App
 
 resource "digitalocean_app" "web" {
+	depends_on = [null_resource.turso_token]
+
 	spec {
 		name   = "${var.project_name}-web"
 		region = "lon"
@@ -34,8 +36,8 @@ resource "digitalocean_app" "web" {
 			}
 
 			health_check {
-				http_path = "/"
-				failure_threshold = 20
+				http_path             = "/"
+				failure_threshold     = 20
 				initial_delay_seconds = 90
 			}
 

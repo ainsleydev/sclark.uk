@@ -14,8 +14,8 @@ import (
 )
 
 // PagesHandler is the handler for rendering pages.
-func PagesHandler(p *payloadcms.Client) webkit.Handler {
-	return func(c *webkit.Context) error {
+func PagesHandler(_ *payloadcms.Client) webkit.Handler {
+	return func(_ *webkit.Context) error {
 		//ctx := c.Context()
 		//path := strings.TrimPrefix(strings.TrimSuffix(c.Request.URL.Path, "/"), "/")
 		//

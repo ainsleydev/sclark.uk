@@ -18,13 +18,14 @@
 		"format": "biome format --write ./src",
 		"lint": "biome lint --write --unsafe ./src",
 		"seed": "npx tsx src/seed/seed.ts",
+		"scratch": "npx tsx src/scratch.ts",
 		"docker": "pnpm docker:build && pnpm docker:run",
 		"docker:build": "docker build -t ainsley.dev/cms .",
 		"docker:run": "docker run -it --init --env-file .env -e PORT=3000 -p 3000:3000 --rm -ti ainsley.dev/cms",
 		"docker:clean": "docker rmi ainsley.dev/cms && docker image prune"
 	},
 	"dependencies": {
-		"@ainsleydev/payload-helper": "link:/Users/Ainsley/Desktop/ainsley.dev/WebKit/web-kit/packages/payload-helper",
+		"@ainsleydev/payload-helper": "0.0.6",
 		"@nouance/payload-better-fields-plugin": "^1.4.1",
 		"payload": "3.0.0-beta.72",
 		"@payloadcms/db-sqlite": "3.0.0-beta.72",
@@ -36,9 +37,9 @@
 		"@payloadcms/richtext-lexical": "3.0.0-beta.72",
 		"cross-env": "^7.0.3",
 		"graphql": "^16.9.0",
-		"next": "15.0.0-canary.53",
-		"react": "^19.0.0-rc-6230622a1a-20240610",
-		"react-dom": "^19.0.0-rc-6230622a1a-20240610",
+		"next": "15.0.0-canary.77",
+		"react": "19.0.0-rc-fb9a90fa48-20240614",
+		"react-dom": "19.0.0-rc-fb9a90fa48-20240614",
 		"sharp": "0.32.6"
 	},
 	"devDependencies": {

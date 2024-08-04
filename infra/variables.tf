@@ -24,8 +24,9 @@ variable "repo_name" {
 
 variable "turso_config" {
 	type = object({
-		url     = string
-		token   = string
+		db_name = string
+# 		url     = string
+# 		token   = string
 		api_key = string
 	})
 	description = "Configuration for the database"

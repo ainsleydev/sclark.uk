@@ -6,6 +6,7 @@
 	"license": "BSD-3-Clause",
 	"main": "index.js",
 	"homepage": "https://sclark.uk",
+	"packageManager": "pnpm@9.1.4",
 	"author": {
 		"name": "ainsley.dev LTD",
 		"email": "hello@ainsley.dev",
@@ -38,18 +39,24 @@
 		"gen": "turbo run gen --filter=cms && turbo run gen --filter=web",
 		"test": "turbo run test --filter=web",
 		"infra:apply": "cd infra && terraform apply -var-file=.tfvars",
-		"infra:destroy": "cd infra && terraform destroy -var-file=.tfvars"
+		"infra:destroy": "cd infra && terraform destroy -var-file=.tfvars",
+		"prepare": "husky install"
 	},
-	"packageManager": "pnpm@9.1.4",
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",
-		"cz-conventional-changelog": "^3.3.0",
-		"lefthook": "^1.7.2",
-		"turbo": "^2.0.9"
+		"lint-staged": "^15.2.8",
+		"turbo": "^2.0.9",
+		"husky": "^9.1.4"
 	},
-	"config": {
-		"commitizen": {
-			"path": "./node_modules/cz-conventional-changelog"
-		}
+	"lint-staged": {
+		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+			"biome format --write --no-errors-on-unmatched"
+		],
+		"*.go": ["gofmt -w"],
+		"*.templ": ["templ fmt"]
+	},
+	"engines": {
+		"node": ">=18",
+		"pnpm": ">=9"
 	}
 }
