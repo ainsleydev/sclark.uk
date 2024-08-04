@@ -28,14 +28,19 @@ jobs:
               with:
                   version: latest
 
+            -   name: Install Dependencies
+                run: |
+                    go install github.com/a-h/templ/cmd/templ@latest
+                    cd web
+                    TEMPL_EXPERIMENT=rawgo go generate ./...
+                    go mod tidy
+
             -   name: Lint Go
                 uses: golangci/golangci-lint-action@v6
                 with:
-                    version: latest
-                    skip-go-installation: true
+                    version: ${{ matrix.go-version }}
                     skip-cache: true
                     args: --verbose
-                    timeout: 5m
                     working-directory: web
 
             -   name: Run Biome
