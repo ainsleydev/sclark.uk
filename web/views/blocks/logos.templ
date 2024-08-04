@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"github.com/ainsleydev/sclark.uk/types"
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+	"github.com/ainsleydev/webkit/pkg/markup"
 )
 
 type LogosOptions struct {
@@ -34,20 +35,20 @@ templ Logos(props types.BlockLogos, isHero bool) {
 	}
 }
 
+func getLogoAttributes(idx int, isHero bool) []markup.ImageOptions {
+	opts := []markup.ImageOptions{}
+	if isHero {
+		opts = append(opts, markup.ImageWithEagerLoading())
+		return opts
+	}
+	opts = append(opts, markup.ImageWithLazyLoading())
+	opts = append(opts, markup.ImageWithAttribute("data-aos", "fade"))
+	opts = append(opts, markup.ImageWithAttribute("data-aos-delay", strconv.Itoa(idx * 50)))
+	return opts
+}
+
 templ logoImage(idx int, img payload.Media, isHero bool) {
-	<img loading={ logosLoadingAttr(isHero) } src={ img.URL }
-		alt={ img.Alt() }
-		if img.Width != nil {
-			width={ strconv.FormatFloat(*img.Width, 'f', 6, 64) }
-		}
-		if img.Height != nil {
-			height={ strconv.FormatFloat(*img.Height, 'f', 6, 64) }
-		}
-		if !isHero {
-			data-aos="fade"
-			data-aos-delay={ strconv.Itoa(idx * 50) }
-		}
-	/>
+	@markup.Image(&img, getLogoAttributes(idx, isHero)...)
 }
 
 templ logosBlock(props types.BlockLogos, isHero bool) {

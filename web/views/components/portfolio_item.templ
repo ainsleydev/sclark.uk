@@ -3,6 +3,7 @@ package components
 import (
 	"strconv"
 	"github.com/ainsleydev/sclark.uk/types"
+	"github.com/ainsleydev/webkit/pkg/markup"
 )
 
 templ PortfolioItem(idx int, props types.Portfolio) {
@@ -12,9 +13,10 @@ templ PortfolioItem(idx int, props types.Portfolio) {
 	>
 		<!-- Image -->
 		if props.Image.URL != "" {
-			<picture class="portfolio-item-image">
-				<img loading="lazy" src={ props.Image.URL } alt={ props.Image.Alt() } >
-			</picture>
+			@markup.Picture(&props.Image,
+				markup.PictureWithClasses("portfolio-item-image"),
+				markup.PictureWithLazyLoading(),
+			)
 		}
 		<!-- Content -->
 		<div class="portfolio-item-content">

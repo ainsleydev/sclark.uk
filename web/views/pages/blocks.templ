@@ -81,7 +81,7 @@ templ Blocks(page types.Pages) {
 			for _, block := range page.Layout {
 				<div class={ "blocks-item",
 					fmt.Sprintf("blocks-item-%s", strings.ReplaceAll(block.BlockType, "-block", "")) }
-					id={ fmt.Sprintf("block-%v", block.ID) }
+					data-payload-block-id={ fmt.Sprintf("block-%v", block.ID) }
 				>
 					@getBlock(block)
 				</div>
