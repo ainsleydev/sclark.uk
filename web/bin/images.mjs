@@ -199,11 +199,11 @@ async function processImage(filePath, destDir, size) {
 	}
 
 	// Get the metadata of the processed image
-	const metadata = await image.metadata();
+	const { info } = await image.toBuffer({ resolveWithObject: true });
 
 	// Save the processed image to destination directory
 	await image.toFile(
-		path.join(destDir, generateFileName(filePath, name, formatOptions, metadata)),
+		path.join(destDir, generateFileName(filePath, name, formatOptions, info)),
 	);
 }
 
