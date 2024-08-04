@@ -43,8 +43,11 @@ jobs:
                     args: --verbose
                     working-directory: web
 
-            -   name: Run Biome
-                run: biome ci .
+            -   name: Biome - Web
+                run: cd web && biome ci .
+
+            -   name: Biome - Web
+                run: cd cms && biome ci .
 
             -   name: Diff
                 run: git diff
