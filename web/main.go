@@ -55,7 +55,7 @@ func main() {
 		payload.WithNavigation(),
 	)
 	if err != nil {
-		slog.Error("Failed to create payload client: %v", err)
+		slog.Error("Failed to create payload client: " + err.Error())
 		os.Exit(1)
 	}
 
@@ -70,6 +70,6 @@ func main() {
 	kit.Static("/assets/", "./dist")
 
 	if err = kit.Start(":" + config.AppPort); err != nil {
-		slog.Error("Failed to start server: %v", err)
+		slog.Error("Failed to start server: " + err.Error())
 	}
 }

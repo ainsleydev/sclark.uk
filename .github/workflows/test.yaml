@@ -27,7 +27,9 @@ jobs:
 
             # Step 3 - Test
             -   name: Test
-                run: go test ./...
+                run: |
+                    cd web
+                    go test ./...
 
             # Step 4 - Upload to Codecov
 #            -   name: Upload coverage to Codecov
