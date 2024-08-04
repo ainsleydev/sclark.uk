@@ -3,7 +3,7 @@
 	"extends": ["../biome.json"],
 	"files": {
 		"include": ["src/**"],
-		"ignore": [".next/**", "src/types/payload.ts"]
+		"ignore": [".next/**"]
 	},
 	"linter": {
 		"enabled": true,
