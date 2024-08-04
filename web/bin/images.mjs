@@ -202,9 +202,7 @@ async function processImage(filePath, destDir, size) {
 	const { info } = await image.toBuffer({ resolveWithObject: true });
 
 	// Save the processed image to destination directory
-	await image.toFile(
-		path.join(destDir, generateFileName(filePath, name, formatOptions, info)),
-	);
+	await image.toFile(path.join(destDir, generateFileName(filePath, name, formatOptions, info)));
 }
 
 /**
