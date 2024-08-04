@@ -1,7 +1,7 @@
 import type { BlockFAQs } from '@/types/payload';
+import type { MediaSeed } from '@ainsleydev/payload-helper/dist/seed/types';
 import { htmlToLexical } from '@ainsleydev/payload-helper/dist/util/lexical';
 import type { RequiredDataFromCollectionSlug } from 'payload';
-import type { MediaSeed } from '@ainsleydev/payload-helper/dist/seed/types';
 
 export const clients: (Omit<RequiredDataFromCollectionSlug<'clients'>, 'id' | 'logo'> & {
 	id: number;

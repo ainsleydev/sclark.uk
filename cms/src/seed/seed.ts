@@ -32,7 +32,7 @@ const fn: Seeder = async ({
 
 	// Create Settings
 	payload.logger.info('Creating settings...');
-	const logo = await uploadMedia(req, payload, dirname,{
+	const logo = await uploadMedia(req, payload, dirname, {
 		path: '../../../web/assets/images/logo.svg',
 		alt: 'S.Clark Logo',
 	});
@@ -162,7 +162,7 @@ const fn: Seeder = async ({
 	// Create home
 	payload.logger.info('Creating home page...');
 
-	const mockupLaptop = await uploadMedia(req, payload, dirname,{
+	const mockupLaptop = await uploadMedia(req, payload, dirname, {
 		path: '../../../web/assets/images/mockups/laptop.png',
 		alt: 'Laptop Mockup',
 	});
