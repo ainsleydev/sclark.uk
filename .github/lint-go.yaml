@@ -15,7 +15,7 @@ jobs:
         steps:
             # Step 1 - Checks-out your repository under $GITHUB_WORKSPACE
             -   name: Checkout
-                uses: actions/checkout@v3
+                uses: actions/checkout@v4
                 with:
                     fetch-depth: 0
 
@@ -35,6 +35,6 @@ jobs:
                     args: --verbose
                     timeout: 5m
 
-            # Step 3 - Run git diff
+            # Step 4 - Run git diff
             -   name: Diff
                 run: git diff

@@ -1,0 +1,26 @@
+name: Lint - Biome
+
+on:
+    workflow_dispatch:
+    pull_request:
+        branches: [ main ]
+
+jobs:
+    quality:
+        runs-on: ubuntu-latest
+        steps:
+            # Step 1 - Checks-out your repository under $GITHUB_WORKSPACE
+            -   name: Checkout
+                uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
+
+            # Step 2 - Install Biome on the runner
+            - name: Setup Biome
+              uses: biomejs/setup-biome@v2
+              with:
+                  version: latest
+
+            # Step 3 - Run CI step
+            - name: Run Biome
+              run: biome ci .
