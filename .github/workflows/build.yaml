@@ -36,7 +36,7 @@ jobs:
             -   name: Build
                 run: |
                     cd web
-                    pnpm build ci
+                    pnpm build:ci
 
     build-cms:
         name: Build CMS
