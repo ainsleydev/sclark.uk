@@ -13,38 +13,33 @@ jobs:
             matrix:
                 go-version: [ 1.22.x ]
         steps:
-            # Step 1 - Checks-out your repository under $GITHUB_WORKSPACE
             -   name: Checkout
                 uses: actions/checkout@v4
                 with:
                     fetch-depth: 0
 
-            # Step 2 - Install Go & Node on the runner
             -   name: Install Go
                 uses: actions/setup-go@v5
                 with:
                     go-version: ${{ matrix.go-version }}
 
-            # Step 3 - Install Biome on the runner
             - name: Setup Biome
               uses: biomejs/setup-biome@v2
               with:
                   version: latest
 
-            # Step 4 - Lint Go
             -   name: Lint Go
                 uses: golangci/golangci-lint-action@v6
                 with:
                     version: latest
                     skip-go-installation: true
-                    skip-pkg-cache: true
+                    skip-cache: true
                     args: --verbose
                     timeout: 5m
+                    working-directory: web
 
-            # Step 5 - Lint Biome
             -   name: Run Biome
                 run: biome ci .
 
-            # Step 6 - Run git diff
             -   name: Diff
                 run: git diff
