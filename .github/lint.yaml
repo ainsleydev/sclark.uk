@@ -1,4 +1,4 @@
-name: Lint Go
+name: Lint
 
 on:
     workflow_dispatch:
@@ -7,7 +7,7 @@ on:
 
 jobs:
     lint:
-        name: Lint Go
+        name: Lint
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -19,14 +19,20 @@ jobs:
                 with:
                     fetch-depth: 0
 
-            # Step 2 - Install Go on the runner
+            # Step 2 - Install Go & Node on the runner
             -   name: Install Go
-                uses: actions/setup-go@v3
+                uses: actions/setup-go@v5
                 with:
                     go-version: ${{ matrix.go-version }}
 
-            # Step 3 - Lint
-            -   name: Lint
+            # Step 3 - Install Biome on the runner
+            - name: Setup Biome
+              uses: biomejs/setup-biome@v2
+              with:
+                  version: latest
+
+            # Step 4 - Lint Go
+            -   name: Lint Go
                 uses: golangci/golangci-lint-action@v6
                 with:
                     version: latest
@@ -35,6 +41,10 @@ jobs:
                     args: --verbose
                     timeout: 5m
 
-            # Step 4 - Run git diff
+            # Step 5 - Lint Biome
+            -   name: Run Biome
+                run: biome ci .
+
+            # Step 6 - Run git diff
             -   name: Diff
                 run: git diff

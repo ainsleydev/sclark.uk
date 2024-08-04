@@ -27,7 +27,7 @@
 		"url": "https://github.com/ainsleydev/sclark.uk/issues"
 	},
 	"scripts": {
-		"setup": "cd cms && go install github.com/a-h/templ/cmd/templ@latest && go install github.com/cosmtrek/air@latest && go generate ./... && go install github.com/evilmartians/lefthook@latest",
+		"setup": "cd cms && go install github.com/a-h/templ/cmd/templ@latest && go install github.com/cosmtrek/air@latest && go generate ./...",
 		"dev": "turbo run dev",
 		"dev:cms": "turbo dev --filter=cms",
 		"dev:web": "turbo dev --filter=web",
