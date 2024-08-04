@@ -1,6 +1,8 @@
 # Payload CMS
 
 resource "digitalocean_app" "cms" {
+	depends_on = [null_resource.turso_token]
+
 	spec {
 		name   = "${var.project_name}-cms"
 		region = "lon"
@@ -58,7 +60,7 @@ resource "digitalocean_app" "cms" {
 			env {
 				key   = "DATABASE_URI"
 				scope = "RUN_TIME"
-				value = var.database_connection_string
+				value = data.local_file.token.content
 				type  = "SECRET"
 			}
 

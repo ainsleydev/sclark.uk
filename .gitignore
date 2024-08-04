@@ -69,6 +69,7 @@ override.tf.json
 *_override.tf.json
 .terraformrc
 terraform.rc
+db-token.txt
 
 # TurboRepo
 .turbo
