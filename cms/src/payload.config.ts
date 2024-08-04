@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { postgresAdapter } from '@payloadcms/db-postgres';
+import { sqliteAdapter } from '@payloadcms/db-sqlite';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { Payload, buildConfig } from 'payload';
 import type { Config, Field } from 'payload';
@@ -65,11 +65,10 @@ export default buildConfig({
 		},
 	}),
 	secret: env('PAYLOAD_SECRET', ''),
-	db: postgresAdapter({
-		pool: {
-			connectionString: env('DATABASE_URI', 'default')
-				.toString()
-				.replace('sslmode=require', 'sslmode=no-verify'),
+	db: sqliteAdapter({
+		client: {
+			url: env('DATABASE_URL', ''),
+			authToken: env('DATABASE_TOKEN', ''),
 		},
 	}),
 	sharp,

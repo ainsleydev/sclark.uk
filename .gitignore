@@ -50,6 +50,8 @@ Thumbs.db
 # Credentials
 .env
 .env.local
+.env.prod
+.env.production
 /.env
 
 # Coverage
@@ -77,5 +79,9 @@ terraform.rc
 # Other
 web/tmp
 
-# Payload CMS
-web/media/**
+# Payload
+cms/media
+cms/db
+*.tsbuildinfo
+next-env.d.ts
+
