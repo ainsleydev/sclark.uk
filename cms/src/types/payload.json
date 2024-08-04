@@ -100,8 +100,7 @@
 					"type": ["string", "null"],
 					"payload": {
 						"name": "publishedAt",
-						"type": "date",
-						"label": "Published At"
+						"type": "date"
 					}
 				},
 				"relatedPosts": {
@@ -112,7 +111,6 @@
 					"payload": {
 						"name": "relatedPosts",
 						"type": "relationship",
-						"label": "Related Posts",
 						"hasMany": true,
 						"relationTo": "posts"
 					}
@@ -127,8 +125,7 @@
 								"type": ["string", "null"],
 								"payload": {
 									"name": "tag",
-									"type": "text",
-									"label": "Tag"
+									"type": "text"
 								}
 							},
 							"id": {
@@ -220,8 +217,7 @@
 					},
 					"payload": {
 						"name": "layout",
-						"type": "blocks",
-						"label": "Layout"
+						"type": "blocks"
 					}
 				},
 				"meta": {
@@ -289,8 +285,7 @@
 					},
 					"payload": {
 						"name": "logo",
-						"type": "upload",
-						"label": "Logo"
+						"type": "upload"
 					}
 				},
 				"updatedAt": {
@@ -350,8 +345,7 @@
 					"required": ["firstName", "lastName", "description"],
 					"payload": {
 						"name": "author",
-						"type": "group",
-						"label": "Author"
+						"type": "group"
 					}
 				},
 				"updatedAt": {
@@ -482,8 +476,7 @@
 					"type": "string",
 					"payload": {
 						"name": "name",
-						"type": "text",
-						"label": "Name"
+						"type": "text"
 					}
 				},
 				"updatedAt": {
@@ -683,8 +676,7 @@
 					"type": ["string", "null"],
 					"payload": {
 						"name": "contentHtml",
-						"type": "code",
-						"label": "Content Html"
+						"type": "code"
 					}
 				},
 				"id": {
@@ -720,8 +712,7 @@
 					"type": ["string", "null"],
 					"payload": {
 						"name": "contentHtml",
-						"type": "code",
-						"label": "Content Html"
+						"type": "code"
 					}
 				},
 				"id": {
@@ -798,8 +789,7 @@
 					},
 					"payload": {
 						"name": "textLayout",
-						"type": "blocks",
-						"label": "Text Layout"
+						"type": "blocks"
 					}
 				},
 				"imagePosition": {
