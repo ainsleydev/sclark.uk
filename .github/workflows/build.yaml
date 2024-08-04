@@ -20,12 +20,18 @@ jobs:
                 with:
                     go-version: ${{ matrix.go-version }}
 
+            -   name: Install pnpm
+                uses: pnpm/action-setup@v4
+                with:
+                    version: 9.1.4
+
             -   name: Install Dependencies
                 run: |
                     go install github.com/a-h/templ/cmd/templ@latest
                     cd web
                     TEMPL_EXPERIMENT=rawgo go generate ./...
                     go mod tidy
+                    pnpm install
 
             -   name: Build
                 run: |
@@ -53,5 +59,4 @@ jobs:
             -   name: Build
                 run: |
                     cd cms
-                    pnpm install
                     pnpm build

@@ -1,0 +1,10 @@
+version: 2
+updates:
+    -   package-ecosystem: gomod
+        directory: /web
+        schedule:
+            interval: monthly
+        groups:
+            dependencies:
+                patterns:
+                    - "*"
