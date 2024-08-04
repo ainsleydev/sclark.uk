@@ -6,34 +6,16 @@ on:
         branches: [ main ]
 
 jobs:
-    setup:
-        name: Setup Environment
+    build-web:
+        name: Build Web
+        needs: setup
         runs-on: ubuntu-latest
-        outputs:
-            web-build-folder: ${{ steps.set-output-web.outputs.build-folder }}
-            cms-build-folder: ${{ steps.set-output-cms.outputs.build-folder }}
-        strategy:
-            matrix:
-                go-version: [ 1.22.4 ]
         steps:
             -   name: Checkout
                 uses: actions/checkout@v4
                 with:
                     fetch-depth: 0
 
-            -   name: Install pnpm
-                uses: pnpm/action-setup@v4
-                with:
-                    version: 9.1.4
-
-            -   name: Install
-                run: pnpm install
-
-    build-web:
-        name: Build Web
-        needs: setup
-        runs-on: ubuntu-latest
-        steps:
             -   name: Install Go
                 uses: actions/setup-go@v5
                 with:
@@ -57,20 +39,21 @@ jobs:
         needs: setup
         runs-on: ubuntu-latest
         steps:
-            -   name: Build
-                run: |
-                    cd cms
-                    pnpm install
-                    pnpm build
-    diff:
-        name: Run git diff
-        needs: [ build-web, build-cms ]
-        runs-on: ubuntu-latest
-        steps:
             -   name: Checkout
                 uses: actions/checkout@v4
                 with:
                     fetch-depth: 0
 
-            -   name: Diff
-                run: git diff
+            -   name: Install pnpm
+                uses: pnpm/action-setup@v4
+                with:
+                    version: 9.1.4
+
+            -   name: Install Dependencies
+                run: pnpm install
+
+            -   name: Build
+                run: |
+                    cd cms
+                    pnpm install
+                    pnpm build
