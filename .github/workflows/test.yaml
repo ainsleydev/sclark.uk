@@ -13,13 +13,11 @@ jobs:
             matrix:
                 go-version: [ 1.22.x ]
         steps:
-            # Step 1 - Checks-out your repository under $GITHUB_WORKSPACE
             -   name: Checkout
                 uses: actions/checkout@v4
                 with:
                     fetch-depth: 0
 
-            # Step 2 - Install Go on the runner
             -   name: Install Go
                 uses: actions/setup-go@v5
                 with:
@@ -31,21 +29,11 @@ jobs:
                     cd web
                     TEMPL_EXPERIMENT=rawgo go generate ./...
 
-            # Step 3 - Test
             -   name: Test
                 run: |
                     cd web
                     go mod tidy
                     go test ./...
 
-            # Step 4 - Upload to Codecov
-#            -   name: Upload coverage to Codecov
-#                uses: codecov/codecov-action@v4.0.1
-#                with:
-#                    token: ${{ secrets.CODECOV_TOKEN }}
-#                    files: ./coverage.out
-#                    verbose: true
-
-            # Step 5 - Run git diff
             -   name: Diff
                 run: git diff

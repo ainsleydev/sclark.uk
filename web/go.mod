@@ -5,7 +5,7 @@ go 1.22.4
 require (
 	github.com/a-h/templ v0.2.747
 	github.com/ainsleyclark/go-payloadcms v0.0.1
-	github.com/ainsleydev/webkit v0.0.0-20240729162316-84709035ac47
+	github.com/ainsleydev/webkit v0.0.0-20240804120834-58fb0f7780af
 	github.com/go-ozzo/ozzo-validation v3.6.0+incompatible
 	github.com/goccy/go-json v0.10.3
 )
@@ -16,7 +16,7 @@ require (
 	github.com/caarlos0/env/v7 v7.1.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
-	github.com/gabriel-vasile/mimetype v1.4.4 // indirect
+	github.com/gabriel-vasile/mimetype v1.4.5 // indirect
 	github.com/getsentry/sentry-go v0.28.1 // indirect
 	github.com/go-chi/chi/v5 v5.1.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
@@ -31,7 +31,7 @@ require (
 	github.com/tdewolff/minify/v2 v2.20.35 // indirect
 	github.com/tdewolff/parse/v2 v2.7.15 // indirect
 	go.uber.org/mock v0.4.0 // indirect
-	golang.org/x/net v0.26.0 // indirect
+	golang.org/x/net v0.27.0 // indirect
 	golang.org/x/sys v0.22.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
 )
