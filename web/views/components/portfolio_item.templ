@@ -2,9 +2,21 @@ package components
 
 import (
 	"strconv"
+	"time"
+	"log/slog"
 	"github.com/ainsleydev/sclark.uk/types"
 	"github.com/ainsleydev/webkit/pkg/markup"
 )
+
+func parseDate(in string) string {
+	layout := "2006-01-02T15:04:05.000Z"
+	t, err := time.Parse(layout, in)
+	if err != nil {
+		slog.Error("Error parsing time:", err)
+		return ""
+	}
+	return t.Format("02/01/2006")
+}
 
 templ PortfolioItem(idx int, props types.Portfolio) {
 	<a href={ templ.SafeURL(props.Url) } class="portfolio-item" target="_blank"
@@ -30,7 +42,7 @@ templ PortfolioItem(idx int, props types.Portfolio) {
 					}
 					if props.Date != "" {
 						<small>
-							{ props.Date }
+							{ parseDate(props.Date) }
 						</small>
 					}
 				</div>

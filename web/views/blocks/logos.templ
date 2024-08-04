@@ -5,6 +5,7 @@ import (
 	"github.com/ainsleydev/sclark.uk/types"
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 	"github.com/ainsleydev/webkit/pkg/markup"
+	"github.com/ainsleydev/webkit/pkg/util/ptr"
 )
 
 type LogosOptions struct {
@@ -53,7 +54,7 @@ templ logoImage(idx int, img payload.Media, isHero bool) {
 
 templ logosBlock(props types.BlockLogos, isHero bool) {
 	if len(props.Clients) > 0 {
-		<figure class={ "logos", templ.KV("logos-greycale", props.Greyscale), templ.KV("logos-hero", isHero) }>
+		<figure class={ "logos", templ.KV("logos-greyscale", ptr.Bool(props.Greyscale)), templ.KV("logos-hero", isHero) }>
 			if props.Title != "" {
 				<figcaption class="logos-title"
 					if !isHero {
