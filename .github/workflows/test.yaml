@@ -33,7 +33,7 @@ jobs:
             -   name: Test
                 run: |
                     cd web
-                    go test ./... -race $$(go list ./... | temp) -coverprofile=../../coverage.out -covermode=atomic
+                    go test ./... -race -coverprofile=../../coverage.out -covermode=atomic
 
             -   name: Diff
                 run: git diff

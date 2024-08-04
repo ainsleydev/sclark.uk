@@ -34,8 +34,7 @@
 			"**/*.gohtml",
 			"**/*.tmpl",
 			"**/.next",
-			"**/plugins/**",
-			"modernizr.js"
+			"**/plugins/**"
 		]
 	},
 	"organizeImports": {
