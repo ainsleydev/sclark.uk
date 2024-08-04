@@ -25,11 +25,17 @@ jobs:
                 with:
                     go-version: ${{ matrix.go-version }}
 
+            -   name: Install dependencies
+                run: |
+                    go install github.com/a-h/templ/cmd/templ@latest
+                    cd web
+                    TEMPL_EXPERIMENT=rawgo go generate ./...
+
             # Step 3 - Test
             -   name: Test
                 run: |
                     cd web
-                    go get ./...
+                    go mod tidy
                     go test ./...
 
             # Step 4 - Upload to Codecov
