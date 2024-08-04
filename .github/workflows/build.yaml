@@ -8,7 +8,6 @@ on:
 jobs:
     build-web:
         name: Build Web
-        needs: setup
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout
@@ -36,7 +35,6 @@ jobs:
 
     build-cms:
         name: Build CMS
-        needs: setup
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout
