@@ -164,14 +164,14 @@ export default buildConfig({
 			collections: {
 				media: {
 					adapter: s3Adapter({
-						bucket: env('DO_SPACES_BUCKET', ''),
+						bucket: env('SPACES_BUCKET', ''),
 						acl: 'public-read',
 						config: {
 							region: 'ams3',
 							endpoint: 'https://ams3.digitaloceanspaces.com',
 							credentials: {
-								accessKeyId: env('DO_SPACES_ACCESS_KEY', ''),
-								secretAccessKey: env('DO_SPACES_SECRET_KEY', ''),
+								accessKeyId: env('SPACES_ACCESS_KEY', ''),
+								secretAccessKey: env('SPACES_SECRET_KEY', ''),
 							},
 						},
 					}),

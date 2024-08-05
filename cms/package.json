@@ -28,7 +28,7 @@
 		"docker:clean": "docker rmi ainsley.dev/cms && docker image prune"
 	},
 	"dependencies": {
-		"@ainsleydev/payload-helper": "0.0.6",
+		"@ainsleydev/payload-helper": "0.0.10",
 		"@libsql/client": "^0.8.1",
 		"@nouance/payload-better-fields-plugin": "^1.4.1",
 		"@payloadcms/db-sqlite": "3.0.0-beta.73",

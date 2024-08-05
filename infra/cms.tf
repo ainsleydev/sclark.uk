@@ -70,6 +70,26 @@ resource "digitalocean_app" "cms" {
 				value = var.payload_secret
 				type  = "SECRET"
 			}
+
+			env {
+				key   = "SPACES_BUCKET"
+				scope = "RUN_TIME"
+				value = digitalocean_spaces_bucket.store.name
+			}
+
+			env {
+				key   = "SPACES_ACCESS_KEY"
+				scope = "RUN_TIME"
+				value = var.digital_ocean_config.spaces_access_key
+				type  = "SECRET"
+			}
+
+			env {
+				key   = "SPACES_SECRET_KEY"
+				scope = "RUN_TIME"
+				value = var.digital_ocean_config.spaces_secret_key
+				type  = "SECRET"
+			}
 		}
 	}
 }
