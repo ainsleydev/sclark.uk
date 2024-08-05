@@ -5,7 +5,7 @@ go 1.22.4
 require (
 	github.com/a-h/templ v0.2.747
 	github.com/ainsleyclark/go-payloadcms v0.0.1
-	github.com/ainsleydev/webkit v0.0.0-20240804120834-58fb0f7780af
+	github.com/ainsleydev/webkit v0.0.0-20240805064837-c86d8833abe0
 	github.com/go-ozzo/ozzo-validation v3.6.0+incompatible
 	github.com/goccy/go-json v0.10.3
 )
@@ -26,9 +26,9 @@ require (
 	github.com/logrusorgru/aurora v2.0.3+incompatible // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/perimeterx/marshmallow v1.1.5 // indirect
-	github.com/redis/go-redis/v9 v9.5.3 // indirect
+	github.com/redis/go-redis/v9 v9.6.1 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
-	github.com/tdewolff/minify/v2 v2.20.35 // indirect
+	github.com/tdewolff/minify/v2 v2.20.37 // indirect
 	github.com/tdewolff/parse/v2 v2.7.15 // indirect
 	go.uber.org/mock v0.4.0 // indirect
 	golang.org/x/net v0.27.0 // indirect
