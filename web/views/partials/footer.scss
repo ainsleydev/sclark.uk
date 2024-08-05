@@ -5,11 +5,11 @@
 .footer {
 	background-color: var(--colour-foreground);
 
-
 	// Sub
 	// =========================================================================
 
 	&-sub {
+		position: relative;
 		padding: 2rem 0;
 		border-top: 1px solid var(--colour-grey-dark);
 
@@ -28,6 +28,7 @@
 	// =========================================================================
 
 	&-main {
+		position: relative;
 		overflow-x: clip;
 
 		&-container {
@@ -72,17 +73,20 @@
 	// =========================================================================
 
 	&-social {
-		position: absolute;
-		right: 0;
-		display: none;
+		//position: absolute;
+		//right: 0;
+		//display: none;
 	}
 
-	.test {
+	// Illustration
+	// =========================================================================
+
+	&-illustration {
 		position: relative;
-		width: 90vw;
-		//right: calc(var(--grid-container-padding) * -1);
-		right: -3vw;
+		width: auto;
+		right: 0;
 		max-width: 800px;
+		transform: translateY(10px);
 
 		svg {
 			width: 100%;
@@ -115,12 +119,10 @@
 			grid-column-gap: 1rem;
 		}
 
-		.test {
+		&-illustration {
 			position: absolute;
-
 			bottom: 0;
-			border-right: 1.8px solid var(--colour-grey-dark);
-			right: -10vw;
+			right: 0;
 		}
 	}
 }

@@ -5,9 +5,6 @@ import (
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 )
 
-type SocialProps struct {
-}
-
 type socialLink struct {
 	Name string
 	Icon string
@@ -28,7 +25,7 @@ func getSocialLinks(ctx context.Context) []socialLink {
 	}
 }
 
-templ Social(props SocialProps) {
+templ Social() {
 	<div class="social">
 		for _, link := range getSocialLinks(ctx) {
 			if link.URL != nil {

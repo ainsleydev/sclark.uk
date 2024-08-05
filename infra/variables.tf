@@ -22,6 +22,11 @@ variable "repo_name" {
 	description = "The name of the author and name of the repository"
 }
 
+variable "payload_secret" {
+	type = string
+	description = "Payload secret encryption string provided"
+}
+
 variable "turso_config" {
 	type = object({
 		db_name = string

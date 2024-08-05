@@ -88,17 +88,17 @@ const scrabbleSequence = [
 		...properties(staggerAmount * 6),
 	],
 	[
-		// ".hero .logos-item",
-		// { y: [-100, 0], opacity: [0, 1] },
-		// {
-		// 	duration: 1.8,
-		// 	delay: stagger(staggerAmount),
-		// 	at: 0.8,
-		// 	easing: spring({
-		// 		stiffness: 70,
-		// 		damping: 10,
-		// 	}),
-		// },
+		'#scrabble-icon-translate, #scrabble-icon-google, #scrabble-icon-globe',
+		{ y: [-100, 0], opacity: [0, 1] },
+		{
+			duration: 1.8,
+			delay: 0.5,
+			at: 0,
+			easing: spring({
+				stiffness: 70,
+				damping: 10,
+			}),
+		},
 	],
 	[
 		'.hero .logos-item',
@@ -111,6 +111,14 @@ const scrabbleSequence = [
 				stiffness: 70,
 				damping: 10,
 			}),
+		},
+	],
+	[
+		'.scrabble-grid',
+		{ opacity: [0, 1] },
+		{
+			duration: 1,
+			at: 0,
 		},
 	],
 	[
