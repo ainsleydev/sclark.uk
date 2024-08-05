@@ -27,6 +27,7 @@
 	},
 	"dependencies": {
 		"@ainsleydev/payload-helper": "0.0.6",
+		"@libsql/client": "^0.8.1",
 		"@nouance/payload-better-fields-plugin": "^1.4.1",
 		"@payloadcms/db-sqlite": "3.0.0-beta.72",
 		"@payloadcms/next": "3.0.0-beta.72",

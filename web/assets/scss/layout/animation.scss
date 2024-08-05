@@ -1,0 +1,17 @@
+// -----------------------------------------------------------------------------
+// animation.scss
+// -----------------------------------------------------------------------------
+
+.header,
+#home .hero .logos-item,
+#home .hero .logos-title,
+#home .hero p,
+#home .hero .btn,
+#home .hero h1,
+#home .blocks-item-gradient,
+#home .scrabble-grid,
+#home [class^='scrabble-word-'],
+#home [class^='scrabble-icon-'] {
+	opacity: 0;
+}
+

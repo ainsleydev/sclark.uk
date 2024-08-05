@@ -103,6 +103,12 @@ templ Footer() {
 											</a>
 										</div>
 									}
+									<div class="footer-contact-item">
+										<h6>Connect</h6>
+										@components.Social()
+									</div>
+
+
 								</div>
 							}
 							<!-- Social -->
@@ -123,13 +129,14 @@ templ Footer() {
 					</div><!-- /Col -->
 					<!-- Social -->
 					<div class="col-12 col-desk-4 footer-social">
-						@components.Social(components.SocialProps{})
+
 					</div><!-- /Col -->
 				</div><!-- /Row -->
-				<div class="test">
-					@svgs.Footer()
-				</div>
+
 			</div><!-- /Container -->
+			<figure class="footer-illustration">
+				@svgs.Footer()
+			</figure>
 		</div><!-- /Main -->
 		<!-- Sub -->
 		<div class="footer-sub">
