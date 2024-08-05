@@ -3,7 +3,7 @@
 	"extends": ["../biome.json"],
 	"files": {
 		"include": ["src/**"],
-		"ignore": [".next/**"]
+		"ignore": [".next/**", "src/migrations/**"]
 	},
 	"linter": {
 		"enabled": true,
