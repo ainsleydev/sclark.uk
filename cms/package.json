@@ -38,7 +38,7 @@
 		"@payloadcms/plugin-cloud-storage": "3.0.0-beta.73",
 		"@payloadcms/plugin-form-builder": "3.0.0-beta.73",
 		"@payloadcms/plugin-seo": "3.0.0-beta.73",
-		"@payloadcms/richtext-lexical": "3.0.0-beta.73",
+		"@payloadcms/richtext-lexical": "3.0.0-canary.5390729",
 		"cross-env": "^7.0.3",
 		"graphql": "^16.9.0",
 		"next": "15.0.0-canary.53",
