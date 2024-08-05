@@ -67,7 +67,7 @@ resource "digitalocean_app" "cms" {
 			env {
 				key   = "PAYLOAD_SECRET"
 				scope = "RUN_TIME"
-				value = "488c95d0ec633cd2106ac90d"
+				value = var.payload_secret
 				type  = "SECRET"
 			}
 		}

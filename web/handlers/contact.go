@@ -80,7 +80,7 @@ func Contact(_ *payloadcms.Client, web3FormsKey string) webkit.Handler {
 		if err := form.Validate(); err != nil {
 			var e validation.Errors
 			if !errors.As(err, &e) {
-				slog.Error("Failed to validate contact form: %v", err)
+				slog.Error("Failed to validate contact form: " + err.Error())
 			}
 			return c.Render(components.Form(components.FormProps{
 				Form:   formHTML,
@@ -102,7 +102,7 @@ func Contact(_ *payloadcms.Client, web3FormsKey string) webkit.Handler {
 
 		buf, err := json.Marshal(web3Form)
 		if err != nil {
-			slog.Error("Failed to marshal Web3Forms request: %v", err)
+			slog.Error("Failed to marshal Web3Forms request: " + err.Error())
 			return c.Render(f)
 		}
 
