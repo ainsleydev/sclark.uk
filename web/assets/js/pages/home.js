@@ -115,7 +115,7 @@ const scrabbleSequence = [
 	],
 	[
 		'.scrabble-grid',
-		{  opacity: [0, 1] },
+		{ opacity: [0, 1] },
 		{
 			duration: 1,
 			at: 0,
