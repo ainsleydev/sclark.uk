@@ -344,7 +344,7 @@ type Pages struct {
 
 type PagesHero struct {
 	// Clients corresponds to the JSON schema field "clients".
-	Clients []interface{} `json:"clients,omitempty" yaml:"clients,omitempty" mapstructure:"clients,omitempty"`
+	Clients []Clients `json:"clients,omitempty" yaml:"clients,omitempty" mapstructure:"clients,omitempty"`
 
 	// Lead corresponds to the JSON schema field "lead".
 	Lead string `json:"lead" yaml:"lead" mapstructure:"lead"`

@@ -182,21 +182,14 @@
 							}
 						},
 						"clients": {
-							"type": ["array", "null"],
+							"type": "array",
 							"items": {
-								"oneOf": [
-									{
-										"type": "number"
-									},
-									{
-										"$ref": "#/definitions/clients"
-									}
-								]
+								"$ref": "#/definitions/clients"
 							},
 							"payload": {
 								"name": "clients",
 								"type": "relationship",
-								"label": "Clients",
+								"label": "Clients Test",
 								"hasMany": true,
 								"relationTo": "clients"
 							}

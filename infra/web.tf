@@ -49,6 +49,27 @@ resource "digitalocean_app" "web" {
 				}
 			}
 
+			alert {
+				value    = 80
+				operator = "GREATER_THAN"
+				window   = "FIVE_MINUTES"
+				rule     = "CPU_UTILIZATION"
+			}
+
+			alert {
+				value    = 80
+				operator = "GREATER_THAN"
+				window   = "FIVE_MINUTES"
+				rule     = "MEM_UTILIZATION"
+			}
+
+			alert {
+				value = 3
+				operator = "GREATER_THAN"
+				window = "FIVE_MINUTES"
+				rule = "RESTART_COUNT"
+			}
+
 			env {
 				key   = "APP_ENV"
 				value = "PRODUCTION"

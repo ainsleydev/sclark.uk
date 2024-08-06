@@ -76,7 +76,7 @@ func getBlock(block payload.Block) templ.Component {
 
 templ Blocks(page types.Pages) {
 	@layouts.Base() {
-		@blocks.Hero()
+		@blocks.Hero(page.Hero)
 		<div class="blocks">
 			for _, block := range page.Layout {
 				<div class={ "blocks-item",

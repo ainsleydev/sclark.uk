@@ -88,7 +88,7 @@ export const Pages: CollectionConfig = {
 								},
 								{
 									name: 'clients',
-									label: 'Clients',
+									label: 'Clients Test',
 									type: 'relationship',
 									relationTo: 'clients',
 									hasMany: true,

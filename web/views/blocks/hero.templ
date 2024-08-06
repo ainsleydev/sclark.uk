@@ -1,9 +1,10 @@
 package blocks
 
 import (
+	"github.com/ainsleydev/sclark.uk/types"
 	"github.com/ainsleydev/sclark.uk/views/components"
 	"github.com/ainsleydev/sclark.uk/views/svgs"
-	"github.com/ainsleydev/sclark.uk/types"
+	"github.com/ainsleydev/webkit/pkg/util/ptr"
 )
 
 type HeroProps struct {
@@ -11,8 +12,8 @@ type HeroProps struct {
 	Lead  string
 }
 
-templ Hero() {
-	<img loading="eager" class="hero-gradient" src="/assets/images/gradients/hero.svg" alt="Multi Coloured Gradient" />
+templ Hero(props types.PagesHero) {
+	<img loading="eager" class="hero-gradient" src="/assets/images/gradients/hero.svg" alt="Multi Coloured Gradient"/>
 	<section class="hero">
 		<div class="container">
 			<!-- Wrapper -->
@@ -22,13 +23,15 @@ templ Hero() {
 					<div class="col-12 col-tab-10 col-desk-8 col-desk-large-6">
 						@components.Group() {
 							<!-- Title -->
-							<h1>Can't find the <br/>right words?</h1>
+							if props.Title != "" {
+								<h1>{ props.Title }</h1>
+							}
 							<!-- Lead -->
-							<p class="hero-lead lead lead-max-width">
-								Combining a love for the English language and written word, S Clark provides two distinct
-								professional services – one-to-one English language teaching for non-native speakers and
-								content writing and editing for businesses
-							</p>
+							if props.Lead != "" {
+								<p class="hero-lead lead lead-max-width">
+									{ props.Lead }
+								</p>
+							}
 						}
 						<!-- Buttons -->
 						<div class="btn-container hero-btns">
@@ -54,7 +57,9 @@ templ Hero() {
 				<div class="col-12 col-tab-10 col-desk-12">
 					<!-- Logos -->
 					@Logos(types.BlockLogos{
-						Title: "Trusted by Leading Professionals",
+						Title:     "Trusted by Leading Professionals",
+						Clients:   props.Clients,
+						Greyscale: ptr.BoolPtr(true),
 					}, true)
 				</div><!-- /Col -->
 			</div><!-- /Row -->

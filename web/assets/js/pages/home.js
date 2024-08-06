@@ -8,10 +8,9 @@ import { animate, spring, stagger, timeline } from 'motion';
 const mapLetters = (ids) => {
 	return ids.map((id) => {
 		const el = document.querySelector(id);
-		if (el === null) {
-			throw new Error(`Element with id ${id} not found.`);
+		if (el !== null) {
+			return el;
 		}
-		return el;
 	});
 };
 
@@ -136,13 +135,15 @@ const heroContentSequence = [
 		'.hero p, .hero .btn, .hero h1, .header, .blocks-item-gradient',
 		{ opacity: [0, 1] },
 		{
-			duration: 1.8,
+			duration: 1.2,
 			at: 0,
 		},
 	],
 ];
 
 export const homeSequence = () => {
-	timeline(scrabbleSequence).play();
+	if (document.body.getAttribute('data-page-url') === '/') {
+		timeline(scrabbleSequence).play();
+	}
 	timeline(heroContentSequence).play();
 };

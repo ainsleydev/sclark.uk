@@ -4,6 +4,10 @@ import (
 	"github.com/ainsleydev/sclark.uk/views/partials"
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 	"github.com/ainsleydev/webkit/pkg/env"
+	"context"
+	"github.com/ainsleydev/webkit/pkg/context"
+	"net/url"
+	"log/slog"
 )
 
 templ Base() {
@@ -31,7 +35,7 @@ templ Base() {
 			<!-- Styles -->
 			<link rel="stylesheet" href="/assets/css/app.css"/>
 		</head>
-		<body>
+		<body data-page-url={ pageURL(ctx) }>
 			<!-- Header -->
 			@partials.Header()
 			<!-- Content -->
@@ -46,4 +50,20 @@ templ Base() {
 			<script> </script>
 		</body>
 	</html>
+}
+
+func pageURL(ctx context.Context) string {
+	u, ok := webkitctx.URL(ctx)
+	if !ok {
+		return ""
+	}
+	uri, err := url.Parse(u)
+	if err != nil {
+		slog.Error(err.Error())
+		return ""
+	}
+	if uri.Path == "" {
+		return "/"
+	}
+	return uri.Path
 }

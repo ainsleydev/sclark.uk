@@ -45,10 +45,24 @@ resource "digitalocean_app" "cms" {
 			}
 
 			alert {
-				value    = 75
+				value    = 80
 				operator = "GREATER_THAN"
-				window   = "TEN_MINUTES"
+				window   = "FIVE_MINUTES"
 				rule     = "CPU_UTILIZATION"
+			}
+
+			alert {
+				value    = 80
+				operator = "GREATER_THAN"
+				window   = "FIVE_MINUTES"
+				rule     = "MEM_UTILIZATION"
+			}
+
+			alert {
+				value = 3
+				operator = "GREATER_THAN"
+				window = "FIVE_MINUTES"
+				rule = "RESTART_COUNT"
 			}
 
 			env {
@@ -58,7 +72,13 @@ resource "digitalocean_app" "cms" {
 			}
 
 			env {
-				key   = "DATABASE_URI"
+				key   = "DATABASE_URL"
+				scope = "RUN_TIME"
+				value = "libsql://s-clark-ainsleyclark.turso.io"
+			}
+
+			env {
+				key   = "DATABASE_TOKEN"
 				scope = "RUN_TIME"
 				value = data.local_file.token.content
 				type  = "SECRET"
