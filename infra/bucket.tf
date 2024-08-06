@@ -1,7 +1,7 @@
 # Bucket
 
 resource "digitalocean_spaces_bucket" "store" {
-	name   = "s-clark-bucket"
+	name   = "s-clark-store"
 	region = "ams3"
 	acl    = "public-read"
 }
