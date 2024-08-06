@@ -10,7 +10,7 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-RUN corepack enable pnpm && pnpm i && pnpm i @libsql/linux-x64-musl
+RUN corepack enable pnpm && pnpm i
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -23,7 +23,7 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN corepack enable pnpm && pnpm run build && pnpm i @libsql/linux-x64-musl
+RUN corepack enable pnpm && pnpm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner
@@ -37,6 +37,9 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
+
+# Temp - SQL Lite
+COPY --from=builder /app/node_modules ./node_modules
 
 # Set the correct permission for prerender cache
 RUN mkdir .next

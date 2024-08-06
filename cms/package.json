@@ -29,9 +29,7 @@
 	},
 	"dependencies": {
 		"@ainsleydev/payload-helper": "0.0.10",
-		"@libsql/client": "^0.3.1",
-		"libsql": "^0.3.19",
-		"@nouance/payload-better-fields-plugin": "^1.4.1",
+		"@libsql/client": "^0.3.3",
 		"@payloadcms/db-sqlite": "3.0.0-beta.73",
 		"@payloadcms/next": "3.0.0-beta.73",
 		"@payloadcms/plugin-cloud": "3.0.0-beta.73",
@@ -63,11 +61,13 @@
 	"pnpm": {
 		"overrides": {
 			"@types/react": "npm:types-react@19.0.0-rc.0",
-			"@types/react-dom": "npm:types-react-dom@19.0.0-rc.0"
+			"@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
+			"@libsql/client": "0.3.3"
 		}
 	},
 	"overrides": {
 		"@types/react": "npm:types-react@19.0.0-rc.0",
-		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.0"
+		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
+		"@libsql/client": "0.3.3"
 	}
 }
