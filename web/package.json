@@ -22,10 +22,9 @@
 		"docker:build": "docker build -t ainsley.dev/web .",
 		"docker:run": "docker run -it --init --env-file .env -e APP_ENV=production -p 3000:3000 --rm -ti ainsley.dev/web",
 		"docker:clean": "docker rmi ainsley.dev/web && docker image prune",
-		"gen": "pnpm generate:templ && pnpm generate:types && pnpm generate:modernizr",
+		"gen": "pnpm generate:templ && pnpm generate:types",
 		"generate:templ": "TEMPL_EXPERIMENT=rawgo go generate ./...",
 		"generate:types": "go-jsonschema -p types --only-models --struct-name-from-title --capitalization strings --verbose ../cms/src/types/payload.json > ./types/cms.go",
-		"generate:modernizr": "modernizr --config modernizr.json --dest ./assets/js/modernizr.js",
 		"test": "go test ./... -race $$(go list ./... | temp) -coverprofile=../../coverage.out -covermode=atomic",
 		"cover": "go tool cover -html=coverage.out",
 		"kill": "lsof -t -i tcp:3000 | xargs kill"

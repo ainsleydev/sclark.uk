@@ -1,4 +1,4 @@
-import { type MigrateUpArgs, type MigrateDownArgs, sql } from '@payloadcms/db-sqlite';
+import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-sqlite';
 
 export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	await payload.db.drizzle.run(sql`CREATE TABLE \`posts_tags\` (
@@ -483,7 +483,25 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`sizes_tablet_avif_height\` numeric,
 	\`sizes_tablet_avif_mime_type\` text,
 	\`sizes_tablet_avif_filesize\` numeric,
-	\`sizes_tablet_avif_filename\` text
+	\`sizes_tablet_avif_filename\` text,
+	\`sizes_desktop_url\` text,
+	\`sizes_desktop_width\` numeric,
+	\`sizes_desktop_height\` numeric,
+	\`sizes_desktop_mime_type\` text,
+	\`sizes_desktop_filesize\` numeric,
+	\`sizes_desktop_filename\` text,
+	\`sizes_desktop_webp_url\` text,
+	\`sizes_desktop_webp_width\` numeric,
+	\`sizes_desktop_webp_height\` numeric,
+	\`sizes_desktop_webp_mime_type\` text,
+	\`sizes_desktop_webp_filesize\` numeric,
+	\`sizes_desktop_webp_filename\` text,
+	\`sizes_desktop_avif_url\` text,
+	\`sizes_desktop_avif_width\` numeric,
+	\`sizes_desktop_avif_height\` numeric,
+	\`sizes_desktop_avif_mime_type\` text,
+	\`sizes_desktop_avif_filesize\` numeric,
+	\`sizes_desktop_avif_filename\` text
 );
 `);
 	await payload.db.drizzle.run(sql`CREATE TABLE \`users\` (
@@ -979,6 +997,15 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	);
 	await payload.db.drizzle.run(
 		sql`CREATE INDEX \`media_sizes_tablet_avif_sizes_tablet_avif_filename_idx\` ON \`media\` (\`sizes_tablet_avif_filename\`);`,
+	);
+	await payload.db.drizzle.run(
+		sql`CREATE INDEX \`media_sizes_desktop_sizes_desktop_filename_idx\` ON \`media\` (\`sizes_desktop_filename\`);`,
+	);
+	await payload.db.drizzle.run(
+		sql`CREATE INDEX \`media_sizes_desktop_webp_sizes_desktop_webp_filename_idx\` ON \`media\` (\`sizes_desktop_webp_filename\`);`,
+	);
+	await payload.db.drizzle.run(
+		sql`CREATE INDEX \`media_sizes_desktop_avif_sizes_desktop_avif_filename_idx\` ON \`media\` (\`sizes_desktop_avif_filename\`);`,
 	);
 	await payload.db.drizzle.run(
 		sql`CREATE INDEX \`users_created_at_idx\` ON \`users\` (\`created_at\`);`,
