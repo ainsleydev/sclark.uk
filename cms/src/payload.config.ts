@@ -182,6 +182,10 @@ export default buildConfig({
 			settings: {
 				additionalTabs: [Footer],
 			},
+			webServer: {
+				baseURL: 'https://sclark.uk',
+				cacheEndpoint: '/cache/',
+			},
 		} as PayloadHelperPluginConfig),
 	],
 } as Config);

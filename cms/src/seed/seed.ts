@@ -1,8 +1,8 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { clients, form, home, portfolioCategories, portfolioItems, reviews } from '@/seed/content';
-import { DBAdapter, type Seeder, seed } from '@ainsleydev/payload-helper/dist/seed/seed';
 import { uploadMedia } from '@ainsleydev/payload-helper/dist/seed/media';
+import { DBAdapter, type Seeder, seed } from '@ainsleydev/payload-helper/dist/seed/seed';
 import env from '@ainsleydev/payload-helper/dist/util/env';
 import type { Payload, PayloadRequest } from 'payload';
 

@@ -5,7 +5,7 @@ go 1.22.4
 require (
 	github.com/a-h/templ v0.2.747
 	github.com/ainsleyclark/go-payloadcms v0.0.1
-	github.com/ainsleydev/webkit v0.0.0-20240805182057-facba62f8be7
+	github.com/ainsleydev/webkit v0.0.0-20240807051207-4738f885cbd5
 	github.com/go-ozzo/ozzo-validation v3.6.0+incompatible
 )
 
