@@ -10,6 +10,8 @@ github.com/ainsleydev/webkit v0.0.0-20240807062708-16847e7c86ec h1:6LziD7cHDqM0D
 github.com/ainsleydev/webkit v0.0.0-20240807062708-16847e7c86ec/go.mod h1:Hw4hemJm9JElJ6RYHZp6P/4J3aJkMbVzslYq/uihRHA=
 github.com/ainsleydev/webkit v0.0.0-20240807071536-09b7f8a246b9 h1:0AdXd/H9WowuXGtFb3XXzpCVUOoWReg6N40Rei8UbZM=
 github.com/ainsleydev/webkit v0.0.0-20240807071536-09b7f8a246b9/go.mod h1:seVz1XjNZn+wF50lspOCuTnf6hw9vWFMB5qnkfvOpbE=
+github.com/ainsleydev/webkit v0.0.0-20240807080319-e7fc64bba2e2 h1:5I0XiQWf6e7hZUQ2/EBBaczvGjxu8NwHOOHrkJWZFxA=
+github.com/ainsleydev/webkit v0.0.0-20240807080319-e7fc64bba2e2/go.mod h1:seVz1XjNZn+wF50lspOCuTnf6hw9vWFMB5qnkfvOpbE=
 github.com/andybalholm/cascadia v1.3.2 h1:3Xi6Dw5lHF15JtdcmAHD3i1+T8plmv7BQ/nsViSLyss=
 github.com/andybalholm/cascadia v1.3.2/go.mod h1:7gtRlve5FxPPgIgX36uWBX58OdBsSS6lUvCFb+h7KvU=
 github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 h1:DklsrG3dyBCFEj5IhUbnKptjxatkF07cF2ak3yi77so=

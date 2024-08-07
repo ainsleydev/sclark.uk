@@ -37,7 +37,7 @@ func main() {
 
 	log.Bootstrap("S.Clark")
 
-	cacheDriver := cache.NewInMemory(1 * time.Hour)
+	cacheDriver := cache.NewInMemory(24 * time.Hour * 7 * 4)
 
 	kit.Plug(middleware.Recover)
 	kit.Plug(middleware.RequestID)
