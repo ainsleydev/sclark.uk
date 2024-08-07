@@ -29,7 +29,7 @@
 	},
 	"dependencies": {
 		"@ainsleydev/payload-helper": "0.0.14",
-		"@libsql/client": "^0.3.3",
+		"@libsql/client": "^0.8.1",
 		"@payloadcms/db-sqlite": "3.0.0-beta.73",
 		"@payloadcms/next": "3.0.0-beta.73",
 		"@payloadcms/plugin-cloud": "3.0.0-beta.73",

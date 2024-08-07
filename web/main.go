@@ -28,14 +28,14 @@ type Env struct {
 func main() {
 	kit := webkit.New()
 
-	log.Bootstrap("S.Clark")
-
 	config := &Env{}
 	err := env.ParseConfig(config)
 	if err != nil {
 		slog.Error("Failed to parse config: " + err.Error())
 		os.Exit(1)
 	}
+
+	log.Bootstrap("S.Clark")
 
 	cacheDriver := cache.NewInMemory(1 * time.Hour)
 
