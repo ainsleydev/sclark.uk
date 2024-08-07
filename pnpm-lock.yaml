@@ -24,8 +24,8 @@ importers:
   cms:
     dependencies:
       '@ainsleydev/payload-helper':
-        specifier: 0.0.13
-        version: 0.0.13(ei6c6adhij3pup7ey3qo7mpjhq)
+        specifier: 0.0.14
+        version: 0.0.14(ei6c6adhij3pup7ey3qo7mpjhq)
       '@libsql/client':
         specifier: ^0.3.3
         version: 0.3.6
@@ -148,8 +148,8 @@ importers:
 
 packages:
 
-  '@ainsleydev/payload-helper@0.0.13':
-    resolution: {integrity: sha512-L6zA/vpi7Fx93Zy2eY6yScGfK7AkdwoA2prB8TB+pttmPUv+yOO+1txXDbl6uG1+PomIYq1ctPuQJR4k7LAmwQ==}
+  '@ainsleydev/payload-helper@0.0.14':
+    resolution: {integrity: sha512-ciQT/AaPnEvdFpGjZYx22TwLa4RESui47e17ceHhr9Y5HFYvyzIhD+PJA4ZCXFSDmOIs0yaArpxXznaYyGHT7g==}
     engines: {node: '>=18', pnpm: '>=9'}
     hasBin: true
 
@@ -4650,7 +4650,7 @@ packages:
 
 snapshots:
 
-  '@ainsleydev/payload-helper@0.0.13(ei6c6adhij3pup7ey3qo7mpjhq)':
+  '@ainsleydev/payload-helper@0.0.14(ei6c6adhij3pup7ey3qo7mpjhq)':
     dependencies:
       '@lexical/headless': 0.16.1
       '@lexical/html': 0.16.1
