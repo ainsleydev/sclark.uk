@@ -183,6 +183,7 @@ export default buildConfig({
 				additionalTabs: [Footer],
 			},
 			webServer: {
+				// baseURL: 'http://localhost:3000',
 				baseURL: 'https://sclark.uk',
 				cacheEndpoint: '/cache/',
 			},
