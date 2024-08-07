@@ -53,7 +53,9 @@ func HomeHandler(p *payloadcms.Client) webkit.Handler {
 			return webkit.NewError(http.StatusInternalServerError, "Failed to find page")
 		}
 
-		c.Set(payload.ContextKeyPageMeta, page.Meta)
+		if page.Meta != nil {
+			c.Set(payload.ContextKeyPageMeta, page.Meta)
+		}
 
 		return c.Render(pages.Blocks(page))
 	}
