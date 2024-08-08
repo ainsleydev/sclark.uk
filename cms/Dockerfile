@@ -8,7 +8,6 @@ ARG DATABASE_TOKEN
 ENV PAYLOAD_SECRET=${PAYLOAD_SECRET}
 ENV DATABASE_URL=${DATABASE_URL}
 ENV DATABASE_TOKEN=${DATABASE_TOKEN}
-ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 
 # Deps -Install dependencies only when needed
@@ -18,7 +17,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json pnpm-lock.yaml* ./
 RUN corepack enable pnpm && pnpm i
-RUN pnpm migrate
+RUN NODE_ENV production pnpm migrate
 
 # Builder - Rebuild the source code only when needed
 FROM base AS builder
@@ -31,6 +30,8 @@ RUN corepack enable pnpm && pnpm build
 # Production - Copy all the files and run next
 FROM base AS runner
 WORKDIR /app
+
+ENV NODE_ENV production
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
