@@ -1,15 +1,15 @@
 package blocks
 
 import (
-	"strconv"
 	"github.com/ainsleydev/sclark.uk/types"
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 	"github.com/ainsleydev/webkit/pkg/markup"
 	"github.com/ainsleydev/webkit/pkg/util/ptr"
+	"strconv"
 )
 
 type LogosOptions struct {
-	IsHero bool
+	IsHero    bool
 	Greyscale bool
 }
 
@@ -44,7 +44,7 @@ func getLogoAttributes(idx int, isHero bool) []markup.ImageOptions {
 	}
 	opts = append(opts, markup.ImageWithLazyLoading())
 	opts = append(opts, markup.ImageWithAttribute("data-aos", "fade"))
-	opts = append(opts, markup.ImageWithAttribute("data-aos-delay", strconv.Itoa(idx * 50)))
+	opts = append(opts, markup.ImageWithAttribute("data-aos-delay", strconv.Itoa(idx*50)))
 	return opts
 }
 
@@ -56,10 +56,12 @@ templ logosBlock(props types.BlockLogos, isHero bool) {
 	if len(props.Clients) > 0 {
 		<figure class={ "logos", templ.KV("logos-greyscale", ptr.Bool(props.Greyscale)), templ.KV("logos-hero", isHero) }>
 			if props.Title != "" {
-				<figcaption class="logos-title"
+				<figcaption
+					class="logos-title"
 					if !isHero {
 						data-aos="fade-up"
-					}>
+					}
+				>
 					<span class="heading-6">
 						{ props.Title }
 					</span>
@@ -67,9 +69,12 @@ templ logosBlock(props types.BlockLogos, isHero bool) {
 			}
 			for idx, item := range props.Clients {
 				if item.Url != "" {
-					<a href={ templ.SafeURL(item.Url) } class="logos-item logos-link"
+					<a
+						href={ templ.SafeURL(item.Url) }
+						class="logos-item logos-link"
 						target="_blank"
-						aria-label={ item.Logo.Alt("S.Clark Client Logo") }>
+						aria-label={ item.Logo.Alt("S.Clark Client Logo") }
+					>
 						@logoImage(idx, item.Logo, isHero)
 					</a>
 				} else {
@@ -81,5 +86,3 @@ templ logosBlock(props types.BlockLogos, isHero bool) {
 		</figure>
 	}
 }
-
-

@@ -1,5 +1,6 @@
 import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from '@payloadcms/richtext-lexical';
 import type { Block } from 'payload';
+import { IdentifierField } from '@/fields/Identifier';
 
 export const RichText: Block = {
 	slug: 'content-block',
@@ -9,6 +10,7 @@ export const RichText: Block = {
 		plural: 'Content',
 	},
 	fields: [
+		IdentifierField,
 		{
 			name: 'content',
 			label: 'Content',

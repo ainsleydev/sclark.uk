@@ -1,11 +1,11 @@
 package components
 
 import (
-	"strconv"
-	"time"
-	"log/slog"
 	"github.com/ainsleydev/sclark.uk/types"
 	"github.com/ainsleydev/webkit/pkg/markup"
+	"log/slog"
+	"strconv"
+	"time"
 )
 
 func parseDate(in string) string {
@@ -19,7 +19,10 @@ func parseDate(in string) string {
 }
 
 templ PortfolioItem(idx int, props types.Portfolio) {
-	<a href={ templ.SafeURL(props.Url) } class="portfolio-item" target="_blank"
+	<a
+		href={ templ.SafeURL(props.Url) }
+		class="portfolio-item"
+		target="_blank"
 		data-aos="fade"
 		data-aos-delay={ strconv.Itoa(idx * 100) }
 	>
@@ -47,14 +50,14 @@ templ PortfolioItem(idx int, props types.Portfolio) {
 					}
 				</div>
 				<!-- Title -->
-				<h5 class="portfolio-item-title">
+				<span class="heading-5 portfolio-item-title">
 					{ props.Title }
-				</h5>
+				</span>
 			</div>
 			<!-- Logo -->
 			if props.Company.Logo.URL != "" {
 				<picture class="portfolio-item-logo">
-					<img loading="lazy" src={ props.Company.Logo.URL } alt={ props.Company.Logo.Alt() } >
+					<img loading="lazy" src={ props.Company.Logo.URL } alt={ props.Company.Logo.Alt() }/>
 				</picture>
 			}
 		</div>

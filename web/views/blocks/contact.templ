@@ -1,9 +1,9 @@
 package blocks
 
 import (
+	"github.com/ainsleydev/sclark.uk/types"
 	"github.com/ainsleydev/sclark.uk/views/components"
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
-	"github.com/ainsleydev/sclark.uk/types"
 )
 
 templ Contact(props types.BlockContact) {
@@ -29,7 +29,7 @@ templ Contact(props types.BlockContact) {
 							@components.Group() {
 								if settings.Contact.Telephone != nil {
 									<div class="contact-item">
-										<h6>Email</h6>
+										<span class="heading-6">Email</span>
 										<a href={ templ.SafeURL("mailto:" + *settings.Contact.Email) }>
 											{ *settings.Contact.Email }
 										</a>
@@ -40,7 +40,7 @@ templ Contact(props types.BlockContact) {
 							@components.Group() {
 								if settings.Contact.Email != nil {
 									<div class="contact-item">
-										<h6>Telephone</h6>
+										<span class="heading-6">Telephone</span>
 										<a href={ templ.SafeURL("tel:" + *settings.Contact.Telephone) }>
 											{ *settings.Contact.Telephone }
 										</a>
@@ -51,7 +51,7 @@ templ Contact(props types.BlockContact) {
 							if props.IncludeSocial != nil && *props.IncludeSocial == true {
 								@components.Group("mb-0") {
 									<div class="contact-item">
-										<h6>Connect</h6>
+										<span class="heading-6">Connect</span>
 										@components.Social()
 									</div>
 								}

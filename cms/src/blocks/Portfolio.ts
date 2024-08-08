@@ -1,4 +1,5 @@
 import type { Block } from 'payload';
+import {IdentifierField} from "@/fields/Identifier";
 
 export const Portfolio: Block = {
 	slug: 'portfolio-block',
@@ -8,6 +9,7 @@ export const Portfolio: Block = {
 		plural: 'Portfolio',
 	},
 	fields: [
+		IdentifierField,
 		{
 			name: 'title',
 			type: 'text',
