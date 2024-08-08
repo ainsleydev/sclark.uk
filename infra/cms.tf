@@ -11,6 +11,10 @@ resource "digitalocean_app" "cms" {
 			rule = "DEPLOYMENT_FAILED"
 		}
 
+		alert {
+			rule = "DEPLOYMENT_LIVE"
+		}
+
 		domain {
 			name = "cms.sclark.uk"
 			zone = "cms.sclark.uk"
