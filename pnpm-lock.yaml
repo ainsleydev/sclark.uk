@@ -24,8 +24,8 @@ importers:
   cms:
     dependencies:
       '@ainsleydev/payload-helper':
-        specifier: 0.0.20
-        version: 0.0.20(mt2amvumratpvplaanstiqiomy)
+        specifier: 0.0.21
+        version: 0.0.21(mt2amvumratpvplaanstiqiomy)
       '@libsql/client':
         specifier: ^0.8.1
         version: 0.8.1
@@ -68,9 +68,6 @@ importers:
       react-dom:
         specifier: ^19.0.0-rc-6230622a1a-20240610
         version: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614)
-      rimraf:
-        specifier: ^6.0.1
-        version: 6.0.1
       sharp:
         specifier: 0.32.6
         version: 0.32.6
@@ -90,6 +87,9 @@ importers:
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
       tsx:
         specifier: ^4.16.2
         version: 4.17.0
@@ -148,8 +148,8 @@ importers:
 
 packages:
 
-  '@ainsleydev/payload-helper@0.0.20':
-    resolution: {integrity: sha512-NJFTrvcD/xn2SxhTTgY0oDMC4AghP3kJ4u9m3mQx+Mk+tKoiFL/4+KJZAB528VqWDMj3YGghgZxft0ocqMAO9w==}
+  '@ainsleydev/payload-helper@0.0.21':
+    resolution: {integrity: sha512-RvngBzZOCLC6db86qtoKGD0IS2vB99FC2/fRtCE8kHFYUs5X8SU3fymJRH/6sBK7kstMPlGVKwP6ZG/NF40rzA==}
     engines: {node: '>=18', pnpm: '>=9'}
     hasBin: true
 
@@ -4665,7 +4665,7 @@ packages:
 
 snapshots:
 
-  '@ainsleydev/payload-helper@0.0.20(mt2amvumratpvplaanstiqiomy)':
+  '@ainsleydev/payload-helper@0.0.21(mt2amvumratpvplaanstiqiomy)':
     dependencies:
       '@lexical/headless': 0.17.0
       '@lexical/html': 0.17.0
@@ -4674,7 +4674,6 @@ snapshots:
       '@payloadcms/plugin-form-builder': 3.0.0-beta.76(monaco-editor@0.38.0)(next@15.0.0-canary.53(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(sass@1.77.8))(payload@3.0.0-beta.76(@swc/core@1.7.6(@swc/helpers@0.5.11))(@swc/types@0.1.12)(graphql@16.9.0)(typescript@5.5.4))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(types-react@19.0.0-rc.0)
       '@payloadcms/plugin-seo': 3.0.0-beta.76(@payloadcms/translations@3.0.0-beta.76)(@payloadcms/ui@3.0.0-beta.76(monaco-editor@0.38.0)(next@15.0.0-canary.53(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(sass@1.77.8))(payload@3.0.0-beta.76(@swc/core@1.7.6(@swc/helpers@0.5.11))(@swc/types@0.1.12)(graphql@16.9.0)(typescript@5.5.4))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(types-react@19.0.0-rc.0))(payload@3.0.0-beta.76(@swc/core@1.7.6(@swc/helpers@0.5.11))(@swc/types@0.1.12)(graphql@16.9.0)(typescript@5.5.4))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
       '@payloadcms/richtext-lexical': 3.0.0-beta.76(n6mw6xc6dgddvs3d2pcpdfbavq)
-      '@payloadcms/storage-s3': 3.0.0-beta.76(payload@3.0.0-beta.76(@swc/core@1.7.6(@swc/helpers@0.5.11))(@swc/types@0.1.12)(graphql@16.9.0)(typescript@5.5.4))
       '@types/json-schema': 7.0.15
       chalk: 5.3.0
       commander: 12.1.0
@@ -4685,13 +4684,10 @@ snapshots:
       payload: 3.0.0-beta.76(@swc/core@1.7.6(@swc/helpers@0.5.11))(@swc/types@0.1.12)(graphql@16.9.0)(typescript@5.5.4)
     transitivePeerDependencies:
       - '@aws-sdk/client-rds-data'
-      - '@azure/abort-controller'
-      - '@azure/storage-blob'
       - '@cloudflare/workers-types'
       - '@electric-sql/pglite'
       - '@faceless-ui/modal'
       - '@faceless-ui/scroll-info'
-      - '@google-cloud/storage'
       - '@lexical/link'
       - '@lexical/list'
       - '@lexical/mark'
@@ -4716,10 +4712,8 @@ snapshots:
       - '@types/pg'
       - '@types/react'
       - '@types/sql.js'
-      - '@vercel/blob'
       - '@vercel/postgres'
       - '@xata.io/client'
-      - aws-crt
       - better-sqlite3
       - bufferutil
       - bun-types

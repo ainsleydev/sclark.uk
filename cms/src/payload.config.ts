@@ -166,7 +166,6 @@ export default buildConfig({
 			config: {
 				region: 'ams3',
 				endpoint: 'https://ams3.digitaloceanspaces.com',
-				forcePathStyle: false,
 				credentials: {
 					accessKeyId: env('SPACES_ACCESS_KEY', ''),
 					secretAccessKey: env('SPACES_SECRET_KEY', ''),
