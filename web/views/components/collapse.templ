@@ -28,18 +28,23 @@ templ Collapse(props CollapseProps) {
 						}
 					>
 						if item.Title != "" {
-							<h5
+							<span
+								class="heading-5"
 								class="collapse-title"
 								if props.IsFAQs {
 									itemprop="name"
 								}
 							>
 								{ item.Title }
-							</h5>
+							</span>
 						}
-						<img loading="lazy" class="collapse-arrow" src="/assets/images/arrow.svg"
+						<img
+							loading="lazy"
+							class="collapse-arrow"
+							src="/assets/images/arrow.svg"
 							alt="Chevron Down"
-							width="13" height="9"
+							width="13"
+							height="9"
 						/>
 					</summary><!-- /Title -->
 					<!-- Content -->

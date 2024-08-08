@@ -89,7 +89,7 @@ templ Footer() {
 								<div class="footer-contact">
 									if content.Email != "" {
 										<div class="footer-contact-item">
-											<h6>Email</h6>
+											<span class="heading-6">Email</span>
 											<a href={ templ.SafeURL("mailto:" + content.Email) }>
 												{ content.Email }
 											</a>
@@ -97,18 +97,16 @@ templ Footer() {
 									}
 									if content.Telephone != "" {
 										<div class="footer-contact-item">
-											<h6>Telephone</h6>
+											<span class="heading-6">Telephone</span>
 											<a href={ templ.SafeURL("tel:" + content.Telephone) }>
 												{ content.Telephone }
 											</a>
 										</div>
 									}
 									<div class="footer-contact-item">
-										<h6>Connect</h6>
+										<span class="heading-6">Connect</span>
 										@components.Social()
 									</div>
-
-
 								</div>
 							}
 							<!-- Social -->
@@ -116,7 +114,7 @@ templ Footer() {
 					</div><!-- /Col -->
 					<!-- Nav -->
 					<div class="col-12 col-tab-10 col-desk-5 col-desk-large-4 offset-desk-1">
-						<h6>Navigate</h6>
+						<span class="heading-6">Navigate</span>
 						<menu class="footer-nav">
 							for _, item := range getNavItems(ctx) {
 								<li class="footer-nav-item">

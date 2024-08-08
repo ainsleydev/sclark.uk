@@ -2,12 +2,13 @@ package components
 
 import (
 	"fmt"
-	"strconv"
 	"github.com/ainsleydev/sclark.uk/types"
+	"strconv"
 )
 
 templ Review(idx int, props types.Reviews) {
-	<div class="review"
+	<div
+		class="review"
 		data-aos="fade"
 		data-aos-delay={ strconv.Itoa(idx * 100) }
 	>

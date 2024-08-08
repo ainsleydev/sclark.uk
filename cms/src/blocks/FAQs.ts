@@ -1,4 +1,5 @@
 import type { Block } from 'payload';
+import {IdentifierField} from "@/fields/Identifier";
 
 export const FAQs: Block = {
 	slug: 'faqs-block',
@@ -8,6 +9,7 @@ export const FAQs: Block = {
 		plural: 'FAQs',
 	},
 	fields: [
+		IdentifierField,
 		{
 			name: 'faqs',
 			label: 'FAQs',

@@ -6,9 +6,9 @@ type ButtonProps struct {
 	Label   string
 	Filled  bool
 	Loading bool
-	Block bool
+	Block   bool
 	Classes []string
-	ID string
+	ID      string
 }
 
 templ Button(props ButtonProps) {
@@ -17,8 +17,7 @@ templ Button(props ButtonProps) {
 			class={ "btn", props.Classes,
 		 		templ.KV("btn-filled", props.Filled),
 		 		templ.KV("btn-block", props.Block),
-		 		templ.KV("btn-loading", props.Loading)
-		 	}
+		 		templ.KV("btn-loading", props.Loading) }
 			href={ templ.URL(props.Href) }
 			id={ props.ID }
 			aria-label={ props.Text }
@@ -30,8 +29,7 @@ templ Button(props ButtonProps) {
 			class={ "btn", props.Classes,
 				templ.KV("btn-filled", props.Filled),
 				templ.KV("btn-block", props.Block),
-				templ.KV("btn-loading", props.Loading)
-			}
+				templ.KV("btn-loading", props.Loading) }
 			aria-label={ props.Text }
 			id={ props.ID }
 		>

@@ -3,6 +3,8 @@ package components
 import (
 	"context"
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
+	"github.com/ainsleydev/webkit/pkg/adapters/static"
+	"github.com/ainsleydev/webkit/pkg/markup"
 )
 
 type socialLink struct {
@@ -30,10 +32,12 @@ templ Social() {
 		for _, link := range getSocialLinks(ctx) {
 			if link.URL != nil {
 				<a class="social-link" href={ templ.SafeURL(*link.URL) } target="_blank">
-					<!-- TODO - Use picture component, max size is thumbnail -->
-					<picture class="social-picture">
-						<img src={ link.Icon } alt={ link.Name + " Icon" }/>
-					</picture>
+					@markup.Picture(static.Image(link.Icon),
+						markup.PictureWithAlt(link.Name+" Icon"),
+						markup.PictureWithClasses("social-picture"),
+						markup.PictureWithHiddenMediaSources(),
+						markup.PictureWithLazyLoading(),
+					)
 				</a>
 			}
 		}

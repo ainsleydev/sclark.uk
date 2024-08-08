@@ -1,4 +1,5 @@
 import type { Block } from 'payload';
+import {IdentifierField} from "@/fields/Identifier";
 
 export const Gradient: Block = {
 	slug: 'gradient-block',
@@ -8,6 +9,7 @@ export const Gradient: Block = {
 		plural: 'Gradients',
 	},
 	fields: [
+		IdentifierField,
 		{
 			name: 'colour',
 			label: 'Colour',

@@ -2,7 +2,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { sqliteAdapter } from '@payloadcms/db-sqlite';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
-import { Payload, buildConfig } from 'payload';
+import { s3Storage } from '@payloadcms/storage-s3';
+import { formBuilderPlugin } from '@payloadcms/plugin-form-builder';
+import { seoPlugin } from '@payloadcms/plugin-seo';
+import { fieldAffectsData, fieldIsBlockType } from 'payload/shared';
+import { buildConfig } from 'payload';
 import type { Config, Field } from 'payload';
 import sharp from 'sharp';
 
@@ -15,21 +19,14 @@ import { Reviews } from './collections/Reviews';
 import { Users } from './collections/Users';
 import { Footer } from './globals/Settings';
 
+import type { PayloadHelperPluginConfig } from '@ainsleydev/payload-helper';
 import { payloadHelper } from '@ainsleydev/payload-helper/dist';
-
+import env from '@ainsleydev/payload-helper/dist/util/env';
 import { Media } from '@ainsleydev/payload-helper/dist/collections/Media';
 import { Redirects } from '@ainsleydev/payload-helper/dist/collections/Redirects';
 import { SEOFields } from '@ainsleydev/payload-helper/dist/common/SEO';
 import { Navigation } from '@ainsleydev/payload-helper/dist/globals/Navigation';
-import env from '@ainsleydev/payload-helper/dist/util/env';
-
-import type { PayloadHelperPluginConfig } from '@ainsleydev/payload-helper';
 import { Settings } from '@ainsleydev/payload-helper/dist/globals/Settings';
-import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage';
-import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';
-import { formBuilderPlugin } from '@payloadcms/plugin-form-builder';
-import { seoPlugin } from '@payloadcms/plugin-seo';
-import { fieldAffectsData, fieldIsBlockType } from 'payload/shared';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -159,22 +156,20 @@ export default buildConfig({
 				payment: false,
 			},
 		}),
-		cloudStoragePlugin({
-			enabled: env.isProduction,
+		s3Storage({
+			enabled: true,
+			bucket: env('SPACES_BUCKET', ''),
+			acl: 'public-read',
 			collections: {
-				media: {
-					adapter: s3Adapter({
-						bucket: env('SPACES_BUCKET', ''),
-						acl: 'public-read',
-						config: {
-							region: 'ams3',
-							endpoint: 'https://ams3.digitaloceanspaces.com',
-							credentials: {
-								accessKeyId: env('SPACES_ACCESS_KEY', ''),
-								secretAccessKey: env('SPACES_SECRET_KEY', ''),
-							},
-						},
-					}),
+				media: true,
+			},
+			config: {
+				region: 'ams3',
+				endpoint: 'https://ams3.digitaloceanspaces.com',
+				forcePathStyle: false,
+				credentials: {
+					accessKeyId: env('SPACES_ACCESS_KEY', ''),
+					secretAccessKey: env('SPACES_SECRET_KEY', ''),
 				},
 			},
 		}),
