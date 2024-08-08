@@ -35,10 +35,6 @@
 			position: relative;
 			padding-top: clamp(40px, 15vw, 120px);
 		}
-
-		&-left {
-			max-width: 580px;
-		}
 	}
 
 	// Nav
@@ -67,19 +63,17 @@
 		grid-template-columns: repeat(2, 1fr);
 		gap: 2rem;
 
-
 		&-item:nth-child(3) {
 			grid-column: span 2;
+			margin-bottom: var(--spacing-m);
 		}
 	}
 
-	// Social
+	// Logo
 	// =========================================================================
 
-	&-social {
-		//position: absolute;
-		//right: 0;
-		//display: none;
+	&-logo {
+		max-width: clamp(120px, 12vw, 10px);
 	}
 
 	// Illustration
@@ -87,12 +81,14 @@
 
 	&-illustration {
 		position: relative;
-		width: auto;
-		right: 0;
-		max-width: 800px;
-		transform: translateY(10px);
+		display: block;
+		width: 90%;
+		margin-right: 0;
+		margin-left: auto;
+		max-width: 600px;
+		margin-top: -2rem;
 
-		svg {
+		img {
 			width: 100%;
 			height: auto;
 		}
@@ -114,8 +110,26 @@
 
 	@include media-desk {
 
-		&-main-container {
-			padding-bottom: clamp(40px, 15vw, 120px);
+		&-main {
+
+			&-container {
+				padding-bottom: clamp(40px, 15vw, 120px);
+			}
+
+			&-left {
+				max-width: 580px;
+			}
+
+			&-right {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				padding-bottom: 1rem;
+			}
+		}
+
+		&-contact-item:last-child {
+			margin-bottom: 0;
 		}
 
 		&-nav {

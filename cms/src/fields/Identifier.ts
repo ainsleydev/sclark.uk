@@ -15,10 +15,7 @@ export const IdentifierField: Field = {
 	name: 'identifier',
 	label: 'Identifier',
 	type: 'text',
-	required: true,
-	defaultValue: () => {
-		return randomString(12);
-	},
+	required: false,
 	admin: {
 		description: 'Add an optional identifier to the block that will be rendered in the HTML',
 	},
