@@ -35,7 +35,7 @@
 		"@payloadcms/plugin-cloud": "3.0.0-beta.76",
 		"@payloadcms/plugin-form-builder": "3.0.0-beta.76",
 		"@payloadcms/plugin-seo": "3.0.0-beta.76",
-		"@payloadcms/richtext-lexical": "3.0.0-beta.76",
+		"@payloadcms/richtext-lexical": "3.0.0-canary.5866281",
 		"@payloadcms/storage-s3": "3.0.0-beta.76",
 		"cross-env": "^7.0.3",
 		"graphql": "^16.9.0",
