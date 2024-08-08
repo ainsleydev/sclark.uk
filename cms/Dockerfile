@@ -10,8 +10,6 @@ ENV DATABASE_URL=${DATABASE_URL}
 ENV DATABASE_TOKEN=${DATABASE_TOKEN}
 ENV NEXT_TELEMETRY_DISABLED 1
 
-#RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev libheif-dev
-
 # Deps -Install dependencies only when needed
 FROM base AS deps
 
