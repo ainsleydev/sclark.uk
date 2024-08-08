@@ -18,6 +18,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json pnpm-lock.yaml* ./
 RUN corepack enable pnpm && pnpm i
+RUN pnpm migrate
 
 # Builder - Rebuild the source code only when needed
 FROM base AS builder
@@ -25,7 +26,7 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN corepack enable pnpm && pnpm migrate && pnpm build
+RUN corepack enable pnpm && pnpm build
 
 # Production - Copy all the files and run next
 FROM base AS runner

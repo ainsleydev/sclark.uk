@@ -56,44 +56,46 @@
 			box-shadow: 8px 8px 15px rgba(70, 70, 70, 0.3);
 		}
 	}
+}
 
-	// Loading
-	// =========================================================================
+// Loading
+// =========================================================================
 
-	&-loading {
-		pointer-events: none;
+.btn-loading,
+.btn.htmx-request {
+	pointer-events: none;
+	color: var(--colour-foreground);
 
-		@keyframes spinner {
-			0% {
-				transform: rotate(0deg);
-			}
-
-			100% {
-				transform: rotate(360deg);
-			}
+	@keyframes spinner {
+		0% {
+			transform: rotate(0deg);
 		}
 
-		&::after {
-			content: '';
-			width: 18px;
-			height: 18px;
-			border: 2px solid rgba(0, 0, 0, 50%);
-			border-right-color: transparent !important;
-			border-radius: 50%;
-			display: inline-block;
-			animation-duration: 0.75s;
-			animation-iteration-count: infinite;
-			animation-name: spinner;
-			animation-timing-function: linear;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin-left: -9px;
-			margin-top: -9px;
+		100% {
+			transform: rotate(360deg);
 		}
+	}
 
-		&:hover {
-			box-shadow: none;
-		}
+	&::after {
+		content: '';
+		width: 18px;
+		height: 18px;
+		border: 2px solid var(--colour-background);
+		border-right-color: transparent !important;
+		border-radius: 50%;
+		display: inline-block;
+		animation-duration: 0.75s;
+		animation-iteration-count: infinite;
+		animation-name: spinner;
+		animation-timing-function: linear;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -9px;
+		margin-top: -9px;
+	}
+
+	&:hover {
+		box-shadow: none;
 	}
 }
