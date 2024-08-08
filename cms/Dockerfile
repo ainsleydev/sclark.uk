@@ -17,7 +17,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json pnpm-lock.yaml* ./
 RUN corepack enable pnpm && pnpm i
-RUN NODE_ENV=production pnpm migrate
+RUN export NODE_ENV=production && pnpm migrate
 
 # Builder - Rebuild the source code only when needed
 FROM base AS builder
