@@ -57,7 +57,7 @@ templ PortfolioItem(idx int, props types.Portfolio) {
 			<!-- Logo -->
 			if props.Company.Logo.URL != "" {
 				<picture class="portfolio-item-logo">
-					<img loading="lazy" src={ props.Company.Logo.URL } alt={ props.Company.Logo.Alt() }/>
+					@markup.Image(&props.Company.Logo)
 				</picture>
 			}
 		</div>
