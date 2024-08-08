@@ -24,8 +24,8 @@ importers:
   cms:
     dependencies:
       '@ainsleydev/payload-helper':
-        specifier: 0.0.21
-        version: 0.0.21(mt2amvumratpvplaanstiqiomy)
+        specifier: 0.0.22
+        version: 0.0.22(mt2amvumratpvplaanstiqiomy)
       '@libsql/client':
         specifier: ^0.8.1
         version: 0.8.1
@@ -148,8 +148,8 @@ importers:
 
 packages:
 
-  '@ainsleydev/payload-helper@0.0.21':
-    resolution: {integrity: sha512-RvngBzZOCLC6db86qtoKGD0IS2vB99FC2/fRtCE8kHFYUs5X8SU3fymJRH/6sBK7kstMPlGVKwP6ZG/NF40rzA==}
+  '@ainsleydev/payload-helper@0.0.22':
+    resolution: {integrity: sha512-uOWpo+gfys0371dxBqhKi17MTC8zZK6KS0Ad4IQvtLtj6Bid4TtqJJ3Dne/SvbUx3XY4EIxl9c4z7vpaW3grGg==}
     engines: {node: '>=18', pnpm: '>=9'}
     hasBin: true
 
@@ -4665,7 +4665,7 @@ packages:
 
 snapshots:
 
-  '@ainsleydev/payload-helper@0.0.21(mt2amvumratpvplaanstiqiomy)':
+  '@ainsleydev/payload-helper@0.0.22(mt2amvumratpvplaanstiqiomy)':
     dependencies:
       '@lexical/headless': 0.17.0
       '@lexical/html': 0.17.0
