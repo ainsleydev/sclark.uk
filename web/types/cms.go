@@ -22,6 +22,9 @@ type BlockContact struct {
 	// Id corresponds to the JSON schema field "id".
 	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
 
+	// Identifier corresponds to the JSON schema field "identifier".
+	Identifier string `json:"identifier" yaml:"identifier" mapstructure:"identifier"`
+
 	// IncludeSocial corresponds to the JSON schema field "includeSocial".
 	IncludeSocial *bool `json:"includeSocial,omitempty" yaml:"includeSocial,omitempty" mapstructure:"includeSocial,omitempty"`
 
@@ -44,6 +47,9 @@ type BlockContent struct {
 
 	// Id corresponds to the JSON schema field "id".
 	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Identifier corresponds to the JSON schema field "identifier".
+	Identifier string `json:"identifier" yaml:"identifier" mapstructure:"identifier"`
 }
 
 type BlockContentDefault struct {
@@ -65,6 +71,9 @@ type BlockContentDefault struct {
 	// Id corresponds to the JSON schema field "id".
 	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
 
+	// Identifier corresponds to the JSON schema field "identifier".
+	Identifier string `json:"identifier" yaml:"identifier" mapstructure:"identifier"`
+
 	// Style corresponds to the JSON schema field "style".
 	Style BlockContentDefaultStyle `json:"style" yaml:"style" mapstructure:"style"`
 }
@@ -83,6 +92,9 @@ type BlockContentWithImage struct {
 
 	// Id corresponds to the JSON schema field "id".
 	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Identifier corresponds to the JSON schema field "identifier".
+	Identifier string `json:"identifier" yaml:"identifier" mapstructure:"identifier"`
 
 	// Image corresponds to the JSON schema field "image".
 	Image payload.Media `json:"image" yaml:"image" mapstructure:"image"`
@@ -109,6 +121,9 @@ type BlockFAQs struct {
 
 	// Id corresponds to the JSON schema field "id".
 	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Identifier corresponds to the JSON schema field "identifier".
+	Identifier string `json:"identifier" yaml:"identifier" mapstructure:"identifier"`
 }
 
 type BlockFAQsFaqsElem struct {
@@ -134,6 +149,9 @@ type BlockGradient struct {
 
 	// Id corresponds to the JSON schema field "id".
 	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Identifier corresponds to the JSON schema field "identifier".
+	Identifier string `json:"identifier" yaml:"identifier" mapstructure:"identifier"`
 }
 
 type BlockGradientColour string
@@ -157,6 +175,9 @@ type BlockLogos struct {
 	// Id corresponds to the JSON schema field "id".
 	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
 
+	// Identifier corresponds to the JSON schema field "identifier".
+	Identifier string `json:"identifier" yaml:"identifier" mapstructure:"identifier"`
+
 	// Title corresponds to the JSON schema field "title".
 	Title string `json:"title" yaml:"title" mapstructure:"title"`
 }
@@ -173,6 +194,9 @@ type BlockPortfolio struct {
 
 	// Id corresponds to the JSON schema field "id".
 	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Identifier corresponds to the JSON schema field "identifier".
+	Identifier string `json:"identifier" yaml:"identifier" mapstructure:"identifier"`
 
 	// Items corresponds to the JSON schema field "items".
 	Items []Portfolio `json:"items,omitempty" yaml:"items,omitempty" mapstructure:"items,omitempty"`
@@ -193,6 +217,9 @@ type BlockReviews struct {
 
 	// Id corresponds to the JSON schema field "id".
 	Id *string `json:"id,omitempty" yaml:"id,omitempty" mapstructure:"id,omitempty"`
+
+	// Identifier corresponds to the JSON schema field "identifier".
+	Identifier string `json:"identifier" yaml:"identifier" mapstructure:"identifier"`
 
 	// Items corresponds to the JSON schema field "items".
 	Items []Reviews `json:"items,omitempty" yaml:"items,omitempty" mapstructure:"items,omitempty"`

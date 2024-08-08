@@ -29,7 +29,7 @@ func decodeFAQs(block payload.Block) types.BlockFAQs {
 }
 
 templ ContentWithImage(props types.BlockContentWithImage) {
-	{{ id := getID(props.Id) }}
+	{{ id := getID(props.Identifier) }}
 	<section class="section" id={ id }>
 		<div class="container content-with-image">
 			<div class="row justify-content-center justify-content-desk-between">

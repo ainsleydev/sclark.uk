@@ -51,8 +51,10 @@
 	// Hover
 	// =========================================================================
 
-	&:hover {
-		box-shadow: 8px 8px 15px rgba(70, 70, 70, 0.3);
+	@include media-desk {
+		&:hover {
+			box-shadow: 8px 8px 15px rgba(70, 70, 70, 0.3);
+		}
 	}
 
 	// Loading
