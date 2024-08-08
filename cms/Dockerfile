@@ -2,11 +2,11 @@
 
 FROM node:18-alpine AS base
 
-# Deps -Install dependencies only when needed
-FROM base AS deps
-
 ARG PAYLOAD_SECRET
 ENV PAYLOAD_SECRET=${PAYLOAD_SECRET}
+
+# Deps -Install dependencies only when needed
+FROM base AS deps
 
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
