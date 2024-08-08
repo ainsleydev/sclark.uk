@@ -25,7 +25,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN corepack enable pnpm && pnpm build
-RUN export NODE_ENV=production && pnpm migrate
+RUN export NODE_ENV=production pnpm migrate
 
 # Production - Copy all the files and run next
 FROM base AS runner
@@ -37,7 +37,8 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/node_modules ./node_modules # Temp - SQL Lite
+# Temp - SQL Lite
+COPY --from=builder /app/node_modules ./node_modules
 
 # Set the correct permission for prerender cache
 RUN mkdir .next

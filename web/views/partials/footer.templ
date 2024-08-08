@@ -96,7 +96,7 @@ templ Footer() {
 										</div>
 									}
 									if content.Telephone != "" {
-										<div class="footer-contact-item d-none">
+										<div class="footer-contact-item">
 											<span class="heading-6">Telephone</span>
 											<a href={ templ.SafeURL("tel:" + content.Telephone) }>
 												{ content.Telephone }
@@ -114,7 +114,7 @@ templ Footer() {
 					</div><!-- /Col -->
 					<!-- Nav -->
 					<div class="col-12 col-tab-10 col-desk-5 col-desk-large-4 offset-desk-1">
-						<img class="footer-logo" loading="lazy" src="/assets/images/logo-white.svg" alt="S.Clark Logo" />
+						<img class="footer-logo d-none d-desk-block" loading="lazy" src="/assets/images/logo-white.svg" alt="S.Clark Logo" />
 						<menu class="footer-nav">
 							for _, item := range getNavItems(ctx) {
 								<li class="footer-nav-item">
