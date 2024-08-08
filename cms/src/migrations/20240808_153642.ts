@@ -88,6 +88,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` text PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`style\` text DEFAULT 'centered',
 	\`centre_align\` integer DEFAULT false,
 	\`content\` text,
@@ -110,6 +111,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` text PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`block_name\` text,
 	FOREIGN KEY (\`_parent_id\`) REFERENCES \`pages\`(\`id\`) ON UPDATE no action ON DELETE cascade
 );
@@ -119,6 +121,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` text PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`imagePosition\` text DEFAULT 'left',
 	\`sticky\` integer DEFAULT false,
 	\`image_id\` integer,
@@ -132,6 +135,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` text PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`colour\` text DEFAULT 'pink',
 	\`block_name\` text,
 	FOREIGN KEY (\`_parent_id\`) REFERENCES \`pages\`(\`id\`) ON UPDATE no action ON DELETE cascade
@@ -142,6 +146,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` text PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`title\` text,
 	\`greyscale\` integer,
 	\`block_name\` text,
@@ -153,6 +158,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` text PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`title\` text,
 	\`content\` text,
 	\`block_name\` text,
@@ -164,6 +170,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` text PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`title\` text,
 	\`content\` text,
 	\`block_name\` text,
@@ -175,6 +182,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` text PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`title\` text,
 	\`content\` text,
 	\`include_social\` integer DEFAULT true,
@@ -220,6 +228,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` integer PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`style\` text DEFAULT 'centered',
 	\`centre_align\` integer DEFAULT false,
 	\`content\` text,
@@ -244,6 +253,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` integer PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`_uuid\` text,
 	\`block_name\` text,
 	FOREIGN KEY (\`_parent_id\`) REFERENCES \`_pages_v\`(\`id\`) ON UPDATE no action ON DELETE cascade
@@ -254,6 +264,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` integer PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`imagePosition\` text DEFAULT 'left',
 	\`sticky\` integer DEFAULT false,
 	\`image_id\` integer,
@@ -268,6 +279,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` integer PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`colour\` text DEFAULT 'pink',
 	\`_uuid\` text,
 	\`block_name\` text,
@@ -279,6 +291,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` integer PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`title\` text,
 	\`greyscale\` integer,
 	\`_uuid\` text,
@@ -291,6 +304,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` integer PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`title\` text,
 	\`content\` text,
 	\`_uuid\` text,
@@ -303,6 +317,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` integer PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`title\` text,
 	\`content\` text,
 	\`_uuid\` text,
@@ -315,6 +330,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`_parent_id\` integer NOT NULL,
 	\`_path\` text NOT NULL,
 	\`id\` integer PRIMARY KEY NOT NULL,
+	\`identifier\` text,
 	\`title\` text,
 	\`content\` text,
 	\`include_social\` integer DEFAULT true,
@@ -483,25 +499,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	\`sizes_tablet_avif_height\` numeric,
 	\`sizes_tablet_avif_mime_type\` text,
 	\`sizes_tablet_avif_filesize\` numeric,
-	\`sizes_tablet_avif_filename\` text,
-	\`sizes_desktop_url\` text,
-	\`sizes_desktop_width\` numeric,
-	\`sizes_desktop_height\` numeric,
-	\`sizes_desktop_mime_type\` text,
-	\`sizes_desktop_filesize\` numeric,
-	\`sizes_desktop_filename\` text,
-	\`sizes_desktop_webp_url\` text,
-	\`sizes_desktop_webp_width\` numeric,
-	\`sizes_desktop_webp_height\` numeric,
-	\`sizes_desktop_webp_mime_type\` text,
-	\`sizes_desktop_webp_filesize\` numeric,
-	\`sizes_desktop_webp_filename\` text,
-	\`sizes_desktop_avif_url\` text,
-	\`sizes_desktop_avif_width\` numeric,
-	\`sizes_desktop_avif_height\` numeric,
-	\`sizes_desktop_avif_mime_type\` text,
-	\`sizes_desktop_avif_filesize\` numeric,
-	\`sizes_desktop_avif_filename\` text
+	\`sizes_tablet_avif_filename\` text
 );
 `);
 	await payload.db.drizzle.run(sql`CREATE TABLE \`users\` (
@@ -997,15 +995,6 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
 	);
 	await payload.db.drizzle.run(
 		sql`CREATE INDEX \`media_sizes_tablet_avif_sizes_tablet_avif_filename_idx\` ON \`media\` (\`sizes_tablet_avif_filename\`);`,
-	);
-	await payload.db.drizzle.run(
-		sql`CREATE INDEX \`media_sizes_desktop_sizes_desktop_filename_idx\` ON \`media\` (\`sizes_desktop_filename\`);`,
-	);
-	await payload.db.drizzle.run(
-		sql`CREATE INDEX \`media_sizes_desktop_webp_sizes_desktop_webp_filename_idx\` ON \`media\` (\`sizes_desktop_webp_filename\`);`,
-	);
-	await payload.db.drizzle.run(
-		sql`CREATE INDEX \`media_sizes_desktop_avif_sizes_desktop_avif_filename_idx\` ON \`media\` (\`sizes_desktop_avif_filename\`);`,
 	);
 	await payload.db.drizzle.run(
 		sql`CREATE INDEX \`users_created_at_idx\` ON \`users\` (\`created_at\`);`,

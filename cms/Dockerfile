@@ -1,6 +1,6 @@
 # From https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
 
-FROM node:18-alpine AS base
+FROM node:18-bookworm AS base
 
 ARG PAYLOAD_SECRET
 ARG DATABASE_URL
@@ -9,6 +9,8 @@ ENV PAYLOAD_SECRET=${PAYLOAD_SECRET}
 ENV DATABASE_URL=${DATABASE_URL}
 ENV DATABASE_TOKEN=${DATABASE_TOKEN}
 ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev libheif-dev
 
 # Deps -Install dependencies only when needed
 FROM base AS deps

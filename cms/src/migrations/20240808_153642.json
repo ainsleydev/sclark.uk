@@ -3744,132 +3744,6 @@
 					"primaryKey": false,
 					"notNull": false,
 					"autoincrement": false
-				},
-				"sizes_desktop_url": {
-					"name": "sizes_desktop_url",
-					"type": "text",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_width": {
-					"name": "sizes_desktop_width",
-					"type": "numeric",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_height": {
-					"name": "sizes_desktop_height",
-					"type": "numeric",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_mime_type": {
-					"name": "sizes_desktop_mime_type",
-					"type": "text",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_filesize": {
-					"name": "sizes_desktop_filesize",
-					"type": "numeric",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_filename": {
-					"name": "sizes_desktop_filename",
-					"type": "text",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_webp_url": {
-					"name": "sizes_desktop_webp_url",
-					"type": "text",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_webp_width": {
-					"name": "sizes_desktop_webp_width",
-					"type": "numeric",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_webp_height": {
-					"name": "sizes_desktop_webp_height",
-					"type": "numeric",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_webp_mime_type": {
-					"name": "sizes_desktop_webp_mime_type",
-					"type": "text",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_webp_filesize": {
-					"name": "sizes_desktop_webp_filesize",
-					"type": "numeric",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_webp_filename": {
-					"name": "sizes_desktop_webp_filename",
-					"type": "text",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_avif_url": {
-					"name": "sizes_desktop_avif_url",
-					"type": "text",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_avif_width": {
-					"name": "sizes_desktop_avif_width",
-					"type": "numeric",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_avif_height": {
-					"name": "sizes_desktop_avif_height",
-					"type": "numeric",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_avif_mime_type": {
-					"name": "sizes_desktop_avif_mime_type",
-					"type": "text",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_avif_filesize": {
-					"name": "sizes_desktop_avif_filesize",
-					"type": "numeric",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
-				},
-				"sizes_desktop_avif_filename": {
-					"name": "sizes_desktop_avif_filename",
-					"type": "text",
-					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
 				}
 			},
 			"indexes": {
@@ -3936,21 +3810,6 @@
 				"media_sizes_tablet_avif_sizes_tablet_avif_filename_idx": {
 					"name": "media_sizes_tablet_avif_sizes_tablet_avif_filename_idx",
 					"columns": ["sizes_tablet_avif_filename"],
-					"isUnique": false
-				},
-				"media_sizes_desktop_sizes_desktop_filename_idx": {
-					"name": "media_sizes_desktop_sizes_desktop_filename_idx",
-					"columns": ["sizes_desktop_filename"],
-					"isUnique": false
-				},
-				"media_sizes_desktop_webp_sizes_desktop_webp_filename_idx": {
-					"name": "media_sizes_desktop_webp_sizes_desktop_webp_filename_idx",
-					"columns": ["sizes_desktop_webp_filename"],
-					"isUnique": false
-				},
-				"media_sizes_desktop_avif_sizes_desktop_avif_filename_idx": {
-					"name": "media_sizes_desktop_avif_sizes_desktop_avif_filename_idx",
-					"columns": ["sizes_desktop_avif_filename"],
 					"isUnique": false
 				}
 			},
@@ -5320,6 +5179,6 @@
 	"internal": {
 		"indexes": {}
 	},
-	"id": "1f4cd1d2-8e1a-4882-b27e-f29b50283e22",
+	"id": "ad2c8b12-7991-4eb0-9c0b-ee356ea232cf",
 	"prevId": "00000000-0000-0000-0000-000000000000"
 }
