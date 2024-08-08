@@ -96,7 +96,7 @@ templ Footer() {
 										</div>
 									}
 									if content.Telephone != "" {
-										<div class="footer-contact-item">
+										<div class="footer-contact-item d-none">
 											<span class="heading-6">Telephone</span>
 											<a href={ templ.SafeURL("tel:" + content.Telephone) }>
 												{ content.Telephone }
