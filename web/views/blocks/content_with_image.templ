@@ -6,7 +6,6 @@ import (
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 	"github.com/ainsleydev/sclark.uk/views/components"
 	"github.com/ainsleydev/webkit/pkg/util/ptr"
-	"github.com/ainsleydev/webkit/pkg/util/random"
 	"github.com/ainsleydev/webkit/pkg/markup"
 )
 
@@ -27,10 +26,6 @@ func decodeFAQs(block payload.Block) types.BlockFAQs {
 		slog.Error("Error decoding FAQs: " + err.Error())
 	}
 	return b
-}
-
-func getID(id *string) string {
-	return random.Alpha(16)
 }
 
 templ ContentWithImage(props types.BlockContentWithImage) {

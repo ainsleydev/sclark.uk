@@ -8,7 +8,7 @@ import (
 
 templ Contact(props types.BlockContact) {
 	{{ settings := payload.MustGetSettings(ctx) }}
-	<section class="section section-fade-blue">
+	<section class="section section-fade-blue" id={ getID(props.Id) }>
 		<div class="container">
 			<div class="row justify-content-tab-center justify-content-desk-between">
 				<!-- Content -->
