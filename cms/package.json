@@ -13,7 +13,6 @@
 		"db": "turso dev --db-file ./db/local.db",
 		"clean": "rimraf {dist,.next}",
 		"migrate": "pnpm payload migrate",
-		"migrate": "pnpm payload migrate",
 		"migrate:create": "pnpm payload migrate:create",
 		"gen": "pnpm run generate:schema && pnpm run generate:types",
 		"generate:types": "payload generate:types",
