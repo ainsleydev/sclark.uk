@@ -108,10 +108,9 @@ templ Footer() {
 					<!-- Right -->
 					<div class="col-12 col-tab-10 col-desk-5 col-desk-large-4 offset-desk-1 footer-main-right">
 						<img class="footer-logo d-none d-desk-block" loading="lazy" src="/assets/images/logo-white.svg" alt="S.Clark Logo" />
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sem lectus, posuere in lacinia et, lobortis facilisis felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae mi eu velit dapibus suscipit ac id ante. Donec ut libero accumsan, pulvinar dolor ut, luctus lacus. Pro</p>
-							if content.Caption != "" {
-                        								<p>{ content.Caption }</p>
-                        							}
+						if content.Caption != "" {
+							<p class="d-none d-desk-block">{ content.Caption }</p>
+						}
 						<span class="heading-6 d-desk-none">
 							Navigate
 						</span>

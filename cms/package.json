@@ -13,7 +13,6 @@
 		"db": "turso dev --db-file ./db/local.db",
 		"clean": "rimraf {dist,.next}",
 		"migrate": "pnpm payload migrate",
-		"migrate": "pnpm payload migrate",
 		"migrate:create": "pnpm payload migrate:create",
 		"gen": "pnpm run generate:schema && pnpm run generate:types",
 		"generate:types": "payload generate:types",
@@ -29,7 +28,7 @@
 		"docker:clean": "docker rmi ainsley.dev/cms && docker image prune"
 	},
 	"dependencies": {
-		"@ainsleydev/payload-helper": "0.0.18",
+		"@ainsleydev/payload-helper": "0.0.19",
 		"@libsql/client": "^0.8.1",
 		"@payloadcms/db-sqlite": "3.0.0-beta.76",
 		"@payloadcms/next": "3.0.0-beta.76",
