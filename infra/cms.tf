@@ -73,20 +73,20 @@ resource "digitalocean_app" "cms" {
 
 			env {
 				key   = "DATABASE_URL"
-				scope = "RUN_TIME"
+				scope = "RUN_AND_BUILD_TIME"
 				value = "libsql://s-clark-ainsleyclark.turso.io"
 			}
 
 			env {
 				key   = "DATABASE_TOKEN"
-				scope = "RUN_TIME"
+				scope = "RUN_AND_BUILD_TIME"
 				value = data.local_file.token.content
 				type  = "SECRET"
 			}
 
 			env {
 				key   = "PAYLOAD_SECRET"
-				scope = "RUN_TIME"
+				scope = "RUN_AND_BUILD_TIME"
 				value = var.payload_secret
 				type  = "SECRET"
 			}
