@@ -5,6 +5,9 @@ FROM node:18-alpine AS base
 # Deps -Install dependencies only when needed
 FROM base AS deps
 
+ARG PAYLOAD_SECRET
+ENV PAYLOAD_SECRET=${PAYLOAD_SECRET}
+
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json pnpm-lock.yaml* ./
@@ -17,7 +20,6 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
-ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
 RUN corepack enable pnpm && pnpm migrate && pnpm build
 
 # Production - Copy all the files and run next
