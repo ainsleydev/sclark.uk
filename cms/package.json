@@ -30,7 +30,7 @@
 	"dependencies": {
 		"@ainsleydev/payload-helper": "0.0.23",
 		"@libsql/client": "^0.8.1",
-		"@payloadcms/db-sqlite": "3.0.0-beta.76",
+		"@payloadcms/db-sqlite": "3.0.0-canary.2c2c95f",
 		"@payloadcms/next": "3.0.0-beta.76",
 		"@payloadcms/plugin-cloud": "3.0.0-beta.76",
 		"@payloadcms/plugin-form-builder": "3.0.0-beta.76",
