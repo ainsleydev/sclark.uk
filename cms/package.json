@@ -43,7 +43,8 @@
 		"payload": "3.0.0-beta.76",
 		"react": "^19.0.0-rc-6230622a1a-20240610",
 		"react-dom": "^19.0.0-rc-6230622a1a-20240610",
-		"sharp": "0.32.6"
+		"sharp": "0.32.6",
+		"@lexical/table": "0.17.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",
