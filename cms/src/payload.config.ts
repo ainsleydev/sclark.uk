@@ -31,6 +31,8 @@ import { Settings } from '@ainsleydev/payload-helper/dist/globals/Settings';
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
+sharp.concurrency(1);
+
 export default buildConfig({
 	admin: {
 		user: Users.slug,

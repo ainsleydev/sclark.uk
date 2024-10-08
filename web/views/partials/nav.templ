@@ -12,7 +12,7 @@ func getNavItems(ctx context.Context) payload.NavigationItems {
 		{Title: "English Lessons", URL: "#lessons"},
 		{Title: "Content Writing", URL: "#content"},
 		{Title: "Portfolio", URL: "#portfolio"},
-		{Title: "Testimonals", URL: "#testimonals"},
+		{Title: "Testimonials", URL: "#testimonals"},
 		{Title: "Contact", URL: "#contact"},
 	}
 	nav, ok := ctx.Value(payload.GlobalsContextKey("navigation")).(*payload.Navigation)
