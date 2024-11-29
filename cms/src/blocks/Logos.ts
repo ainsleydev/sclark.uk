@@ -1,7 +1,7 @@
 // @ts-ignore
 import { validateURL } from '@ainsleydev/payload-helper/dist/util/validation';
 import type { Block } from 'payload';
-import {IdentifierField} from "@/fields/Identifier";
+import { IdentifierField } from '@/fields/Identifier';
 
 export const Logos: Block = {
 	slug: 'logos-block',

@@ -1,5 +1,5 @@
 import type { Block } from 'payload';
-import {IdentifierField} from "@/fields/Identifier";
+import { IdentifierField } from '@/fields/Identifier';
 
 export const Portfolio: Block = {
 	slug: 'portfolio-block',
