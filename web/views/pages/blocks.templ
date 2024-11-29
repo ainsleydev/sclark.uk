@@ -35,7 +35,7 @@ var blockHandlers = map[string]BlockHandlerFunc{
 		if b.Colour == "blue" {
 			colour = components.GradientColourBlue
 		}
-		return components.Gradient(colour)
+		return components.Gradient(colour, blocks.GetID(b.Identifier))
 	},
 	"logos-block": func(block payload.Block) templ.Component {
 		b := types.BlockLogos{}

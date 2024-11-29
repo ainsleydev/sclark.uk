@@ -7,8 +7,8 @@ const (
 	GradientColourPink
 )
 
-templ Gradient(colour GradientColour) {
-	<div class="container">
+templ Gradient(colour GradientColour, id string) {
+	<div class="container" id={ id }>
 		<div class="row">
 			<div class="col-12">
 				<figure class="gradient">

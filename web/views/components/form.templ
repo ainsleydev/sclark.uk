@@ -1,18 +1,18 @@
 package components
 
 import (
+	"encoding/json"
 	"fmt"
-	"strings"
 	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 	"github.com/ainsleydev/webkit/pkg/util/ptr"
-	"github.com/go-ozzo/ozzo-validation"
-	"encoding/json"
+	validation "github.com/go-ozzo/ozzo-validation"
 	"log/slog"
+	"strings"
 )
 
 type FormProps struct {
-	Form payload.Form
-	Errors validation.Errors
+	Form    payload.Form
+	Errors  validation.Errors
 	Success bool
 }
 
@@ -37,7 +37,7 @@ func marshalForm(form payload.Form) string {
 
 templ Form(props FormProps) {
 	<form class="form" hx-post="/contact/" hx-swap="outerHTML" hx-indicator=".btn">
-		<input type="hidden" name="payload-form" value={ marshalForm(props.Form) }>
+		<input type="hidden" name="payload-form" value={ marshalForm(props.Form) }/>
 		if props.Success {
 			<span class="heading-4">Thanks for your message.</span>
 			<p class="mb-0">We will get back to you shortly.</p>
@@ -48,7 +48,7 @@ templ Form(props FormProps) {
 			}
 			for _, field := range props.Form.Fields {
 				{{ hasErr, errMsg := hasFormError(props.Errors, field.Name) }}
-				<div class={"form-group", templ.KV("form-group-error", hasErr)}>
+				<div class={ "form-group", templ.KV("form-group-error", hasErr) }>
 					<label class="form-label" for={ field.ID }>
 						{ field.Label }
 						if ptr.Bool(field.Required) {
@@ -62,9 +62,9 @@ templ Form(props FormProps) {
 				</div>
 			}
 			@Button(ButtonProps{
-				Text: props.Form.ButtonLabel("Get In Touch"),
+				Text:   props.Form.ButtonLabel("Get In Touch"),
 				Filled: true,
-				Block: true,
+				Block:  true,
 			})
 		}
 	</form>
