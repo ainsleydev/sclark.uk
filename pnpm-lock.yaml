@@ -26,6 +26,9 @@ importers:
       '@ainsleydev/payload-helper':
         specifier: 0.0.23
         version: 0.0.23(mt2amvumratpvplaanstiqiomy)
+      '@lexical/table':
+        specifier: 0.17.0
+        version: 0.17.0
       '@libsql/client':
         specifier: ^0.8.1
         version: 0.8.1
