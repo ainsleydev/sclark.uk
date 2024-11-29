@@ -1,6 +1,6 @@
 import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from '@payloadcms/richtext-lexical';
 import type { Block } from 'payload';
-import {IdentifierField} from "@/fields/Identifier";
+import { IdentifierField } from '@/fields/Identifier';
 
 export const Content: Block = {
 	slug: 'content-block',

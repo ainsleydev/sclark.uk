@@ -1,12 +1,12 @@
 package blocks
 
 import (
-	"log/slog"
 	"github.com/ainsleydev/sclark.uk/types"
-	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 	"github.com/ainsleydev/sclark.uk/views/components"
-	"github.com/ainsleydev/webkit/pkg/util/ptr"
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 	"github.com/ainsleydev/webkit/pkg/markup"
+	"github.com/ainsleydev/webkit/pkg/util/ptr"
+	"log/slog"
 )
 
 func decodeRichText(block payload.Block) string {
@@ -29,12 +29,13 @@ func decodeFAQs(block payload.Block) types.BlockFAQs {
 }
 
 templ ContentWithImage(props types.BlockContentWithImage) {
-	{{ id := getID(props.Identifier) }}
+	{{ id := GetID(props.Identifier) }}
 	<section class="section" id={ id }>
 		<div class="container content-with-image">
 			<div class="row justify-content-center justify-content-desk-between">
 				<!-- Image -->
-				<div class={ "col-12 col-tab-10 col-desk-6 col-desk-large-5",
+				<div
+					class={ "col-12 col-tab-10 col-desk-6 col-desk-large-5",
 					templ.KV("order-desk-last", props.ImagePosition == "right") }
 					data-aos="fade-in"
 					data-aos-anchor={ "#" + id }
@@ -42,8 +43,9 @@ templ ContentWithImage(props types.BlockContentWithImage) {
 				>
 					if props.Image.URL != "" {
 						{{ sticky := "" }}
-						{{ if ptr.Bool(props.Sticky) == true { sticky = "content-image-sticky" } }}
-
+						{{ if ptr.Bool(props.Sticky) == true {
+	sticky = "content-image-sticky"
+} }}
 						@markup.Picture(&props.Image,
 							markup.PictureWithClasses("content-image", sticky),
 							markup.PictureWithLazyLoading(),
@@ -51,7 +53,8 @@ templ ContentWithImage(props types.BlockContentWithImage) {
 					}
 				</div><!-- /Col -->
 				<!-- Content -->
-				<div class="col-12 col-tab-10 col-desk-5"
+				<div
+					class="col-12 col-tab-10 col-desk-5"
 					data-aos="fade-up"
 					data-aos-anchor={ "#" + id }
 					data-aos-offset="200"

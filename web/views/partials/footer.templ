@@ -1,23 +1,23 @@
 package partials
 
 import (
+	"context"
+	"github.com/ainsleydev/sclark.uk/views/components"
+	"github.com/ainsleydev/webkit/pkg/adapters/payload"
 	"strconv"
 	"time"
-	"context"
-	"github.com/ainsleydev/webkit/pkg/adapters/payload"
-	"github.com/ainsleydev/sclark.uk/views/components"
 )
 
 type footerContent struct {
-	Title string
-	Caption string
+	Title     string
+	Caption   string
 	Telephone string
-	Email string
+	Email     string
 }
 
-var footerLinks = []struct{
+var footerLinks = []struct {
 	Title string
-	URL string
+	URL   string
 }{
 	{Title: "Home", URL: "/"},
 	{Title: "English Lessons", URL: "#content"},
@@ -107,7 +107,7 @@ templ Footer() {
 					</div><!-- /Col -->
 					<!-- Right -->
 					<div class="col-12 col-tab-10 col-desk-5 col-desk-large-4 offset-desk-1 footer-main-right">
-						<img class="footer-logo d-none d-desk-block" loading="lazy" src="/assets/images/logo-white.svg" alt="S.Clark Logo" />
+						<img class="footer-logo d-none d-desk-block" loading="lazy" src="/assets/images/logo-white.svg" alt="S.Clark Logo"/>
 						if content.Caption != "" {
 							<p class="d-none d-desk-block">{ content.Caption }</p>
 						}
@@ -127,7 +127,7 @@ templ Footer() {
 				</div><!-- /Row -->
 			</div><!-- /Container -->
 			<figure class="footer-illustration">
-				<img loading="lazy" src="/assets/images/footer/illustration.svg" alt="S.Clark Illustration" />
+				<img loading="lazy" src="/assets/images/footer/illustration.svg" alt="S.Clark Illustration"/>
 			</figure>
 		</div><!-- /Main -->
 		<!-- Sub -->

@@ -12,7 +12,7 @@ func parseDate(in string) string {
 	layout := "2006-01-02T15:04:05.000Z"
 	t, err := time.Parse(layout, in)
 	if err != nil {
-		slog.Error("Error parsing time:", err)
+		slog.Error("Error parsing time: " + err.Error())
 		return ""
 	}
 	return t.Format("02/01/2006")

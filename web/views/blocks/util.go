@@ -2,7 +2,9 @@ package blocks
 
 import "github.com/ainsleydev/webkit/pkg/util/random"
 
-func getID(id *string) string {
+// GetID retrieves an ID from the block
+// Returns a random number if it's empty.
+func GetID(id *string) string {
 	if id == nil {
 		return random.Seq(16)
 	}

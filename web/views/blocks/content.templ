@@ -15,7 +15,7 @@ func getContentGroupProps(props types.BlockContentDefault) string {
 
 templ Content(props types.BlockContentDefault) {
 	if props.ContentHtml != nil {
-		<section class="section" data-aos="fade-up" id={ getID(props.Identifier) }>
+		<section class="section" data-aos="fade-up" id={ GetID(props.Identifier) }>
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-12 col-tab-10 col-desk-8 col-desk-large-6">

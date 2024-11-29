@@ -1,7 +1,7 @@
 import { FAQs } from '@/blocks/FAQs';
 import { RichText } from '@/blocks/Richtext';
 import type { Block } from 'payload';
-import {IdentifierField} from "@/fields/Identifier";
+import { IdentifierField } from '@/fields/Identifier';
 
 export const ContentWithImage: Block = {
 	slug: 'content-with-image-block',
