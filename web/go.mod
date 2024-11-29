@@ -1,8 +1,6 @@
 module github.com/ainsleydev/sclark.uk
 
-go 1.23
-
-toolchain go1.23.3
+go 1.22.4
 
 require (
 	github.com/a-h/templ v0.2.793
