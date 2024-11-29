@@ -14,6 +14,7 @@ import { Collapse } from '../../views/components/collapse';
 const html = document.querySelector('html');
 const header = document.querySelector('.header');
 const nav = document.querySelector('.nav');
+const hamburger = document.querySelector('#hamburger-check');
 import { homeSequence } from './pages/home';
 
 /**
@@ -123,4 +124,14 @@ AOS.init({
 	once: false, // whether animation should happen only once - while scrolling down
 	mirror: false, // whether elements should animate out while scrolling past them
 	anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+});
+
+/**
+ * Nav
+ * Uncheck the checkbox when a user clicks the nav link.
+ */
+document.querySelectorAll('.nav-item a').forEach((link) => {
+	link.addEventListener('click', () => {
+		hamburger.checked = false;
+	});
 });
