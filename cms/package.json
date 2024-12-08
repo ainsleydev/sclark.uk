@@ -15,6 +15,7 @@
 		"migrate": "pnpm payload migrate",
 		"migrate:create": "pnpm payload migrate:create",
 		"gen": "pnpm run generate:schema && pnpm run generate:types",
+		"generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
 		"generate:types": "payload generate:types",
 		"generate:schema": "payload-helper generate-types",
 		"check": "pnpm run format && pnpm run lint",

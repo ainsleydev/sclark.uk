@@ -77,6 +77,7 @@ export default buildConfig({
 		seoPlugin({
 			collections: ['posts', 'pages'],
 			globals: ['settings'],
+			// @ts-ignore
 			fields: SEOFields as Field[],
 			tabbedUI: true,
 			uploadsCollection: 'media',
