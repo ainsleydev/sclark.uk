@@ -44,7 +44,9 @@ export default buildConfig({
 		Reviews,
 		Portfolio,
 		PortfolioCategories,
-		Media(),
+		Media({
+			includeAvif: true,
+		}),
 		Users,
 		Redirects(),
 	],
