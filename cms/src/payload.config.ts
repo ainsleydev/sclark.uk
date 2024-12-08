@@ -28,6 +28,7 @@ import { Redirects } from '@ainsleydev/payload-helper/dist/collections/Redirects
 import { SEOFields } from '@ainsleydev/payload-helper/dist/common/SEO';
 import { Navigation } from '@ainsleydev/payload-helper/dist/globals/Navigation';
 import { Settings } from '@ainsleydev/payload-helper/dist/globals/Settings';
+import { imageSizes } from '@/collections/Media';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -50,6 +51,9 @@ export default buildConfig({
 		PortfolioCategories,
 		Media({
 			includeAvif: true,
+			uploadOverrides: {
+				imageSizes: imageSizes,
+			},
 		}),
 		Users,
 		Redirects(),
