@@ -11,1534 +11,1533 @@
  * via the `definition` "NavigationHeaderLinks".
  */
 export type NavigationHeaderLinks =
-	| {
-			title: string;
-			url: string;
-			id?: string | null;
-	  }[]
-	| null;
+  | {
+      title: string;
+      url: string;
+      id?: string | null;
+    }[]
+  | null;
 
 export interface Config {
-	auth: {
-		users: UserAuthOperations;
-	};
-	collections: {
-		posts: Post;
-		pages: Page;
-		clients: Client;
-		reviews: Review;
-		portfolio: Portfolio;
-		'portfolio-categories': PortfolioCategory;
-		media: Media;
-		users: User;
-		redirects: Redirect;
-		forms: Form;
-		'form-submissions': FormSubmission;
-		'payload-locked-documents': PayloadLockedDocument;
-		'payload-preferences': PayloadPreference;
-		'payload-migrations': PayloadMigration;
-	};
-	collectionsJoins: {};
-	collectionsSelect: {
-		posts: PostsSelect<false> | PostsSelect<true>;
-		pages: PagesSelect<false> | PagesSelect<true>;
-		clients: ClientsSelect<false> | ClientsSelect<true>;
-		reviews: ReviewsSelect<false> | ReviewsSelect<true>;
-		portfolio: PortfolioSelect<false> | PortfolioSelect<true>;
-		'portfolio-categories': PortfolioCategoriesSelect<false> | PortfolioCategoriesSelect<true>;
-		media: MediaSelect<false> | MediaSelect<true>;
-		users: UsersSelect<false> | UsersSelect<true>;
-		redirects: RedirectsSelect<false> | RedirectsSelect<true>;
-		forms: FormsSelect<false> | FormsSelect<true>;
-		'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
-		'payload-locked-documents':
-			| PayloadLockedDocumentsSelect<false>
-			| PayloadLockedDocumentsSelect<true>;
-		'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
-		'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
-	};
-	db: {
-		defaultIDType: number;
-	};
-	globals: {
-		settings: Settings;
-		navigation: Navigation;
-	};
-	globalsSelect: {
-		settings: SettingsSelect<false> | SettingsSelect<true>;
-		navigation: NavigationSelect<false> | NavigationSelect<true>;
-	};
-	locale: null;
-	user: User & {
-		collection: 'users';
-	};
-	jobs: {
-		tasks: unknown;
-		workflows: unknown;
-	};
+  auth: {
+    users: UserAuthOperations;
+  };
+  collections: {
+    posts: Post;
+    pages: Page;
+    clients: Client;
+    reviews: Review;
+    portfolio: Portfolio;
+    'portfolio-categories': PortfolioCategory;
+    media: Media;
+    users: User;
+    redirects: Redirect;
+    forms: Form;
+    'form-submissions': FormSubmission;
+    'payload-locked-documents': PayloadLockedDocument;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
+  };
+  collectionsJoins: {};
+  collectionsSelect: {
+    posts: PostsSelect<false> | PostsSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
+    clients: ClientsSelect<false> | ClientsSelect<true>;
+    reviews: ReviewsSelect<false> | ReviewsSelect<true>;
+    portfolio: PortfolioSelect<false> | PortfolioSelect<true>;
+    'portfolio-categories': PortfolioCategoriesSelect<false> | PortfolioCategoriesSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    users: UsersSelect<false> | UsersSelect<true>;
+    redirects: RedirectsSelect<false> | RedirectsSelect<true>;
+    forms: FormsSelect<false> | FormsSelect<true>;
+    'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
+  };
+  db: {
+    defaultIDType: number;
+  };
+  globals: {
+    settings: Settings;
+    navigation: Navigation;
+  };
+  globalsSelect: {
+    settings: SettingsSelect<false> | SettingsSelect<true>;
+    navigation: NavigationSelect<false> | NavigationSelect<true>;
+  };
+  locale: null;
+  user: User & {
+    collection: 'users';
+  };
+  jobs: {
+    tasks: unknown;
+    workflows: unknown;
+  };
 }
 export interface UserAuthOperations {
-	forgotPassword: {
-		email: string;
-		password: string;
-	};
-	login: {
-		email: string;
-		password: string;
-	};
-	registerFirstUser: {
-		email: string;
-		password: string;
-	};
-	unlock: {
-		email: string;
-		password: string;
-	};
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts".
  */
 export interface Post {
-	id: number;
-	title: string;
-	excerpt?: string | null;
-	content?: {
-		root: {
-			type: string;
-			children: {
-				type: string;
-				version: number;
-				[k: string]: unknown;
-			}[];
-			direction: ('ltr' | 'rtl') | null;
-			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-			indent: number;
-			version: number;
-		};
-		[k: string]: unknown;
-	} | null;
-	thumbnail?: (number | null) | Media;
-	meta?: {
-		title?: string | null;
-		description?: string | null;
-		image?: (number | null) | Media;
-	};
-	publishedAt?: string | null;
-	relatedPosts?: (number | Post)[] | null;
-	tags?:
-		| {
-				tag?: string | null;
-				id?: string | null;
-		  }[]
-		| null;
-	updatedAt: string;
-	createdAt: string;
-	_status?: ('draft' | 'published') | null;
+  id: number;
+  title: string;
+  excerpt?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  thumbnail?: (number | null) | Media;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  publishedAt?: string | null;
+  relatedPosts?: (number | Post)[] | null;
+  tags?:
+    | {
+        tag?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
-	id: number;
-	alt: string;
-	caption?: {
-		root: {
-			type: string;
-			children: {
-				type: string;
-				version: number;
-				[k: string]: unknown;
-			}[];
-			direction: ('ltr' | 'rtl') | null;
-			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-			indent: number;
-			version: number;
-		};
-		[k: string]: unknown;
-	} | null;
-	updatedAt: string;
-	createdAt: string;
-	url?: string | null;
-	thumbnailURL?: string | null;
-	filename?: string | null;
-	mimeType?: string | null;
-	filesize?: number | null;
-	width?: number | null;
-	height?: number | null;
-	focalX?: number | null;
-	focalY?: number | null;
-	sizes?: {
-		webp?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		avif?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		thumbnail?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		thumbnail_webp?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		thumbnail_avif?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		mobile?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		mobile_webp?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		mobile_avif?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		tablet?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		tablet_webp?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		tablet_avif?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-	};
+  id: number;
+  alt: string;
+  caption?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    webp?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    avif?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    thumbnail_webp?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    thumbnail_avif?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    mobile?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    mobile_webp?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    mobile_avif?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tablet?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tablet_webp?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tablet_avif?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
 export interface Page {
-	id: number;
-	hero: {
-		title: string;
-		lead: string;
-		clients?: (number | Client)[] | null;
-	};
-	layout: (
-		| BlockContentDefault
-		| BlockContentWithImage
-		| BlockGradient
-		| BlockLogos
-		| BlockReviews
-		| BlockPortfolio
-		| BlockContact
-	)[];
-	meta?: {
-		title?: string | null;
-		description?: string | null;
-		image?: (number | null) | Media;
-	};
-	isHome?: boolean | null;
-	updatedAt: string;
-	createdAt: string;
-	_status?: ('draft' | 'published') | null;
+  id: number;
+  hero: {
+    title: string;
+    lead: string;
+    clients?: (number | Client)[] | null;
+  };
+  layout: (
+    | BlockContentDefault
+    | BlockContentWithImage
+    | BlockGradient
+    | BlockLogos
+    | BlockReviews
+    | BlockPortfolio
+    | BlockContact
+  )[];
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  isHome?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "clients".
  */
 export interface Client {
-	id: number;
-	name: string;
-	url: string;
-	logo: number | Media;
-	updatedAt: string;
-	createdAt: string;
+  id: number;
+  name: string;
+  url: string;
+  logo: number | Media;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BlockContentDefault".
  */
 export interface BlockContentDefault {
-	identifier?: string | null;
-	style: 'centered' | 'spread';
-	centreAlign?: boolean | null;
-	content: {
-		root: {
-			type: string;
-			children: {
-				type: string;
-				version: number;
-				[k: string]: unknown;
-			}[];
-			direction: ('ltr' | 'rtl') | null;
-			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-			indent: number;
-			version: number;
-		};
-		[k: string]: unknown;
-	};
-	contentHtml?: string | null;
-	id?: string | null;
-	blockName?: string | null;
-	blockType: 'content-block';
+  identifier?: string | null;
+  style: 'centered' | 'spread';
+  centreAlign?: boolean | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  contentHtml?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'content-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BlockContentWithImage".
  */
 export interface BlockContentWithImage {
-	identifier?: string | null;
-	textLayout: (BlockContent | BlockFAQs)[];
-	imagePosition: string;
-	sticky?: boolean | null;
-	image: number | Media;
-	id?: string | null;
-	blockName?: string | null;
-	blockType: 'content-with-image-block';
+  identifier?: string | null;
+  textLayout: (BlockContent | BlockFAQs)[];
+  imagePosition: string;
+  sticky?: boolean | null;
+  image: number | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'content-with-image-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BlockContent".
  */
 export interface BlockContent {
-	identifier?: string | null;
-	content: {
-		root: {
-			type: string;
-			children: {
-				type: string;
-				version: number;
-				[k: string]: unknown;
-			}[];
-			direction: ('ltr' | 'rtl') | null;
-			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-			indent: number;
-			version: number;
-		};
-		[k: string]: unknown;
-	};
-	contentHtml?: string | null;
-	id?: string | null;
-	blockName?: string | null;
-	blockType: 'content-block';
+  identifier?: string | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  contentHtml?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'content-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BlockFAQs".
  */
 export interface BlockFAQs {
-	identifier?: string | null;
-	faqs?:
-		| {
-				question: string;
-				answer: string;
-				id?: string | null;
-		  }[]
-		| null;
-	id?: string | null;
-	blockName?: string | null;
-	blockType: 'faqs-block';
+  identifier?: string | null;
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faqs-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BlockGradient".
  */
 export interface BlockGradient {
-	identifier?: string | null;
-	colour: 'pink' | 'blue';
-	id?: string | null;
-	blockName?: string | null;
-	blockType: 'gradient-block';
+  identifier?: string | null;
+  colour: 'pink' | 'blue';
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'gradient-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BlockLogos".
  */
 export interface BlockLogos {
-	identifier?: string | null;
-	title: string;
-	greyscale?: boolean | null;
-	clients?: (number | Client)[] | null;
-	id?: string | null;
-	blockName?: string | null;
-	blockType: 'logos-block';
+  identifier?: string | null;
+  title: string;
+  greyscale?: boolean | null;
+  clients?: (number | Client)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'logos-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BlockReviews".
  */
 export interface BlockReviews {
-	identifier?: string | null;
-	title: string;
-	content?: string | null;
-	items?: (number | Review)[] | null;
-	id?: string | null;
-	blockName?: string | null;
-	blockType: 'reviews-block';
+  identifier?: string | null;
+  title: string;
+  content?: string | null;
+  items?: (number | Review)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'reviews-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "reviews".
  */
 export interface Review {
-	id: number;
-	content: string;
-	author: {
-		firstName: string;
-		lastName: string;
-		description: string;
-	};
-	updatedAt: string;
-	createdAt: string;
+  id: number;
+  content: string;
+  author: {
+    firstName: string;
+    lastName: string;
+    description: string;
+  };
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BlockPortfolio".
  */
 export interface BlockPortfolio {
-	identifier?: string | null;
-	title: string;
-	content?: string | null;
-	items?: (number | Portfolio)[] | null;
-	id?: string | null;
-	blockName?: string | null;
-	blockType: 'portfolio-block';
+  identifier?: string | null;
+  title: string;
+  content?: string | null;
+  items?: (number | Portfolio)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'portfolio-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolio".
  */
 export interface Portfolio {
-	id: number;
-	title: string;
-	url: string;
-	date: string;
-	company: number | Client;
-	category: number | PortfolioCategory;
-	image: number | Media;
-	updatedAt: string;
-	createdAt: string;
+  id: number;
+  title: string;
+  url: string;
+  date: string;
+  company: number | Client;
+  category: number | PortfolioCategory;
+  image: number | Media;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolio-categories".
  */
 export interface PortfolioCategory {
-	id: number;
-	title: string;
-	updatedAt: string;
-	createdAt: string;
+  id: number;
+  title: string;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BlockContact".
  */
 export interface BlockContact {
-	identifier?: string | null;
-	title: string;
-	content?: string | null;
-	includeSocial?: boolean | null;
-	form: number | Form;
-	id?: string | null;
-	blockName?: string | null;
-	blockType: 'contact-block';
+  identifier?: string | null;
+  title: string;
+  content?: string | null;
+  includeSocial?: boolean | null;
+  form: number | Form;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contact-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "forms".
  */
 export interface Form {
-	id: number;
-	heading: string;
-	content?: string | null;
-	title: string;
-	fields?:
-		| (
-				| {
-						name: string;
-						label?: string | null;
-						width?: number | null;
-						required?: boolean | null;
-						id?: string | null;
-						blockName?: string | null;
-						blockType: 'email';
-				  }
-				| {
-						name: string;
-						label?: string | null;
-						width?: number | null;
-						defaultValue?: string | null;
-						required?: boolean | null;
-						id?: string | null;
-						blockName?: string | null;
-						blockType: 'text';
-				  }
-				| {
-						name: string;
-						label?: string | null;
-						width?: number | null;
-						defaultValue?: string | null;
-						required?: boolean | null;
-						id?: string | null;
-						blockName?: string | null;
-						blockType: 'textarea';
-				  }
-		  )[]
-		| null;
-	submitButtonLabel?: string | null;
-	redirect?: {
-		url: string;
-	};
-	emails?:
-		| {
-				emailTo?: string | null;
-				cc?: string | null;
-				bcc?: string | null;
-				replyTo?: string | null;
-				emailFrom?: string | null;
-				subject: string;
-				message?: {
-					root: {
-						type: string;
-						children: {
-							type: string;
-							version: number;
-							[k: string]: unknown;
-						}[];
-						direction: ('ltr' | 'rtl') | null;
-						format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-						indent: number;
-						version: number;
-					};
-					[k: string]: unknown;
-				} | null;
-				id?: string | null;
-		  }[]
-		| null;
-	confirmationMessage?: string | null;
-	updatedAt: string;
-	createdAt: string;
+  id: number;
+  heading: string;
+  content?: string | null;
+  title: string;
+  fields?:
+    | (
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'email';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            defaultValue?: string | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'text';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            defaultValue?: string | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'textarea';
+          }
+      )[]
+    | null;
+  submitButtonLabel?: string | null;
+  redirect?: {
+    url: string;
+  };
+  emails?:
+    | {
+        emailTo?: string | null;
+        cc?: string | null;
+        bcc?: string | null;
+        replyTo?: string | null;
+        emailFrom?: string | null;
+        subject: string;
+        message?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  confirmationMessage?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
-	id: number;
-	name: string;
-	updatedAt: string;
-	createdAt: string;
-	enableAPIKey?: boolean | null;
-	apiKey?: string | null;
-	apiKeyIndex?: string | null;
-	email: string;
-	resetPasswordToken?: string | null;
-	resetPasswordExpiration?: string | null;
-	salt?: string | null;
-	hash?: string | null;
-	loginAttempts?: number | null;
-	lockUntil?: string | null;
-	password?: string | null;
+  id: number;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
-	id: number;
-	from: string;
-	to: string;
-	code: '301' | '302' | '307' | '308' | '410' | '451';
-	updatedAt: string;
-	createdAt: string;
+  id: number;
+  from: string;
+  to: string;
+  code: '301' | '302' | '307' | '308' | '410' | '451';
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "form-submissions".
  */
 export interface FormSubmission {
-	id: number;
-	form: number | Form;
-	submissionData?:
-		| {
-				field: string;
-				value: string;
-				id?: string | null;
-		  }[]
-		| null;
-	updatedAt: string;
-	createdAt: string;
+  id: number;
+  form: number | Form;
+  submissionData?:
+    | {
+        field: string;
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-	id: number;
-	document?:
-		| ({
-				relationTo: 'posts';
-				value: number | Post;
-		  } | null)
-		| ({
-				relationTo: 'pages';
-				value: number | Page;
-		  } | null)
-		| ({
-				relationTo: 'clients';
-				value: number | Client;
-		  } | null)
-		| ({
-				relationTo: 'reviews';
-				value: number | Review;
-		  } | null)
-		| ({
-				relationTo: 'portfolio';
-				value: number | Portfolio;
-		  } | null)
-		| ({
-				relationTo: 'portfolio-categories';
-				value: number | PortfolioCategory;
-		  } | null)
-		| ({
-				relationTo: 'media';
-				value: number | Media;
-		  } | null)
-		| ({
-				relationTo: 'users';
-				value: number | User;
-		  } | null)
-		| ({
-				relationTo: 'redirects';
-				value: number | Redirect;
-		  } | null)
-		| ({
-				relationTo: 'forms';
-				value: number | Form;
-		  } | null)
-		| ({
-				relationTo: 'form-submissions';
-				value: number | FormSubmission;
-		  } | null);
-	globalSlug?: string | null;
-	user: {
-		relationTo: 'users';
-		value: number | User;
-	};
-	updatedAt: string;
-	createdAt: string;
+  id: number;
+  document?:
+    | ({
+        relationTo: 'posts';
+        value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
+      } | null)
+    | ({
+        relationTo: 'clients';
+        value: number | Client;
+      } | null)
+    | ({
+        relationTo: 'reviews';
+        value: number | Review;
+      } | null)
+    | ({
+        relationTo: 'portfolio';
+        value: number | Portfolio;
+      } | null)
+    | ({
+        relationTo: 'portfolio-categories';
+        value: number | PortfolioCategory;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'users';
+        value: number | User;
+      } | null)
+    | ({
+        relationTo: 'redirects';
+        value: number | Redirect;
+      } | null)
+    | ({
+        relationTo: 'forms';
+        value: number | Form;
+      } | null)
+    | ({
+        relationTo: 'form-submissions';
+        value: number | FormSubmission;
+      } | null);
+  globalSlug?: string | null;
+  user: {
+    relationTo: 'users';
+    value: number | User;
+  };
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-	id: number;
-	user: {
-		relationTo: 'users';
-		value: number | User;
-	};
-	key?: string | null;
-	value?:
-		| {
-				[k: string]: unknown;
-		  }
-		| unknown[]
-		| string
-		| number
-		| boolean
-		| null;
-	updatedAt: string;
-	createdAt: string;
+  id: number;
+  user: {
+    relationTo: 'users';
+    value: number | User;
+  };
+  key?: string | null;
+  value?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-	id: number;
-	name?: string | null;
-	batch?: number | null;
-	updatedAt: string;
-	createdAt: string;
+  id: number;
+  name?: string | null;
+  batch?: number | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
-	title?: T;
-	excerpt?: T;
-	content?: T;
-	thumbnail?: T;
-	meta?:
-		| T
-		| {
-				title?: T;
-				description?: T;
-				image?: T;
-		  };
-	publishedAt?: T;
-	relatedPosts?: T;
-	tags?:
-		| T
-		| {
-				tag?: T;
-				id?: T;
-		  };
-	updatedAt?: T;
-	createdAt?: T;
-	_status?: T;
+  title?: T;
+  excerpt?: T;
+  content?: T;
+  thumbnail?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  publishedAt?: T;
+  relatedPosts?: T;
+  tags?:
+    | T
+    | {
+        tag?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages_select".
  */
 export interface PagesSelect<T extends boolean = true> {
-	hero?:
-		| T
-		| {
-				title?: T;
-				lead?: T;
-				clients?: T;
-		  };
-	layout?:
-		| T
-		| {
-				'content-block'?:
-					| T
-					| {
-							identifier?: T;
-							style?: T;
-							centreAlign?: T;
-							content?: T;
-							contentHtml?: T;
-							id?: T;
-							blockName?: T;
-					  };
-				'content-with-image-block'?:
-					| T
-					| {
-							identifier?: T;
-							textLayout?:
-								| T
-								| {
-										'content-block'?:
-											| T
-											| {
-													identifier?: T;
-													content?: T;
-													contentHtml?: T;
-													id?: T;
-													blockName?: T;
-											  };
-										'faqs-block'?:
-											| T
-											| {
-													identifier?: T;
-													faqs?:
-														| T
-														| {
-																question?: T;
-																answer?: T;
-																id?: T;
-														  };
-													id?: T;
-													blockName?: T;
-											  };
-								  };
-							imagePosition?: T;
-							sticky?: T;
-							image?: T;
-							id?: T;
-							blockName?: T;
-					  };
-				'gradient-block'?:
-					| T
-					| {
-							identifier?: T;
-							colour?: T;
-							id?: T;
-							blockName?: T;
-					  };
-				'logos-block'?:
-					| T
-					| {
-							identifier?: T;
-							title?: T;
-							greyscale?: T;
-							clients?: T;
-							id?: T;
-							blockName?: T;
-					  };
-				'reviews-block'?:
-					| T
-					| {
-							identifier?: T;
-							title?: T;
-							content?: T;
-							items?: T;
-							id?: T;
-							blockName?: T;
-					  };
-				'portfolio-block'?:
-					| T
-					| {
-							identifier?: T;
-							title?: T;
-							content?: T;
-							items?: T;
-							id?: T;
-							blockName?: T;
-					  };
-				'contact-block'?:
-					| T
-					| {
-							identifier?: T;
-							title?: T;
-							content?: T;
-							includeSocial?: T;
-							form?: T;
-							id?: T;
-							blockName?: T;
-					  };
-		  };
-	meta?:
-		| T
-		| {
-				title?: T;
-				description?: T;
-				image?: T;
-		  };
-	isHome?: T;
-	updatedAt?: T;
-	createdAt?: T;
-	_status?: T;
+  hero?:
+    | T
+    | {
+        title?: T;
+        lead?: T;
+        clients?: T;
+      };
+  layout?:
+    | T
+    | {
+        'content-block'?:
+          | T
+          | {
+              identifier?: T;
+              style?: T;
+              centreAlign?: T;
+              content?: T;
+              contentHtml?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'content-with-image-block'?:
+          | T
+          | {
+              identifier?: T;
+              textLayout?:
+                | T
+                | {
+                    'content-block'?:
+                      | T
+                      | {
+                          identifier?: T;
+                          content?: T;
+                          contentHtml?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    'faqs-block'?:
+                      | T
+                      | {
+                          identifier?: T;
+                          faqs?:
+                            | T
+                            | {
+                                question?: T;
+                                answer?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                          blockName?: T;
+                        };
+                  };
+              imagePosition?: T;
+              sticky?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'gradient-block'?:
+          | T
+          | {
+              identifier?: T;
+              colour?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'logos-block'?:
+          | T
+          | {
+              identifier?: T;
+              title?: T;
+              greyscale?: T;
+              clients?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'reviews-block'?:
+          | T
+          | {
+              identifier?: T;
+              title?: T;
+              content?: T;
+              items?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'portfolio-block'?:
+          | T
+          | {
+              identifier?: T;
+              title?: T;
+              content?: T;
+              items?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'contact-block'?:
+          | T
+          | {
+              identifier?: T;
+              title?: T;
+              content?: T;
+              includeSocial?: T;
+              form?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  isHome?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "clients_select".
  */
 export interface ClientsSelect<T extends boolean = true> {
-	name?: T;
-	url?: T;
-	logo?: T;
-	updatedAt?: T;
-	createdAt?: T;
+  name?: T;
+  url?: T;
+  logo?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "reviews_select".
  */
 export interface ReviewsSelect<T extends boolean = true> {
-	content?: T;
-	author?:
-		| T
-		| {
-				firstName?: T;
-				lastName?: T;
-				description?: T;
-		  };
-	updatedAt?: T;
-	createdAt?: T;
+  content?: T;
+  author?:
+    | T
+    | {
+        firstName?: T;
+        lastName?: T;
+        description?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolio_select".
  */
 export interface PortfolioSelect<T extends boolean = true> {
-	title?: T;
-	url?: T;
-	date?: T;
-	company?: T;
-	category?: T;
-	image?: T;
-	updatedAt?: T;
-	createdAt?: T;
+  title?: T;
+  url?: T;
+  date?: T;
+  company?: T;
+  category?: T;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolio-categories_select".
  */
 export interface PortfolioCategoriesSelect<T extends boolean = true> {
-	title?: T;
-	updatedAt?: T;
-	createdAt?: T;
+  title?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
-	alt?: T;
-	caption?: T;
-	updatedAt?: T;
-	createdAt?: T;
-	url?: T;
-	thumbnailURL?: T;
-	filename?: T;
-	mimeType?: T;
-	filesize?: T;
-	width?: T;
-	height?: T;
-	focalX?: T;
-	focalY?: T;
-	sizes?:
-		| T
-		| {
-				webp?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				avif?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				thumbnail?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				thumbnail_webp?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				thumbnail_avif?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				mobile?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				mobile_webp?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				mobile_avif?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				tablet?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				tablet_webp?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				tablet_avif?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-		  };
+  alt?: T;
+  caption?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        webp?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        avif?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        thumbnail_webp?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        thumbnail_avif?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        mobile?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        mobile_webp?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        mobile_avif?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        tablet?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        tablet_webp?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        tablet_avif?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
-	name?: T;
-	updatedAt?: T;
-	createdAt?: T;
-	enableAPIKey?: T;
-	apiKey?: T;
-	apiKeyIndex?: T;
-	email?: T;
-	resetPasswordToken?: T;
-	resetPasswordExpiration?: T;
-	salt?: T;
-	hash?: T;
-	loginAttempts?: T;
-	lockUntil?: T;
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  enableAPIKey?: T;
+  apiKey?: T;
+  apiKeyIndex?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
-	from?: T;
-	to?: T;
-	code?: T;
-	updatedAt?: T;
-	createdAt?: T;
+  from?: T;
+  to?: T;
+  code?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "forms_select".
  */
 export interface FormsSelect<T extends boolean = true> {
-	heading?: T;
-	content?: T;
-	title?: T;
-	fields?:
-		| T
-		| {
-				email?:
-					| T
-					| {
-							name?: T;
-							label?: T;
-							width?: T;
-							required?: T;
-							id?: T;
-							blockName?: T;
-					  };
-				text?:
-					| T
-					| {
-							name?: T;
-							label?: T;
-							width?: T;
-							defaultValue?: T;
-							required?: T;
-							id?: T;
-							blockName?: T;
-					  };
-				textarea?:
-					| T
-					| {
-							name?: T;
-							label?: T;
-							width?: T;
-							defaultValue?: T;
-							required?: T;
-							id?: T;
-							blockName?: T;
-					  };
-		  };
-	submitButtonLabel?: T;
-	redirect?:
-		| T
-		| {
-				url?: T;
-		  };
-	emails?:
-		| T
-		| {
-				emailTo?: T;
-				cc?: T;
-				bcc?: T;
-				replyTo?: T;
-				emailFrom?: T;
-				subject?: T;
-				message?: T;
-				id?: T;
-		  };
-	confirmationMessage?: T;
-	updatedAt?: T;
-	createdAt?: T;
+  heading?: T;
+  content?: T;
+  title?: T;
+  fields?:
+    | T
+    | {
+        email?:
+          | T
+          | {
+              name?: T;
+              label?: T;
+              width?: T;
+              required?: T;
+              id?: T;
+              blockName?: T;
+            };
+        text?:
+          | T
+          | {
+              name?: T;
+              label?: T;
+              width?: T;
+              defaultValue?: T;
+              required?: T;
+              id?: T;
+              blockName?: T;
+            };
+        textarea?:
+          | T
+          | {
+              name?: T;
+              label?: T;
+              width?: T;
+              defaultValue?: T;
+              required?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  submitButtonLabel?: T;
+  redirect?:
+    | T
+    | {
+        url?: T;
+      };
+  emails?:
+    | T
+    | {
+        emailTo?: T;
+        cc?: T;
+        bcc?: T;
+        replyTo?: T;
+        emailFrom?: T;
+        subject?: T;
+        message?: T;
+        id?: T;
+      };
+  confirmationMessage?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "form-submissions_select".
  */
 export interface FormSubmissionsSelect<T extends boolean = true> {
-	form?: T;
-	submissionData?:
-		| T
-		| {
-				field?: T;
-				value?: T;
-				id?: T;
-		  };
-	updatedAt?: T;
-	createdAt?: T;
+  form?: T;
+  submissionData?:
+    | T
+    | {
+        field?: T;
+        value?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
-	document?: T;
-	globalSlug?: T;
-	user?: T;
-	updatedAt?: T;
-	createdAt?: T;
+  document?: T;
+  globalSlug?: T;
+  user?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences_select".
  */
 export interface PayloadPreferencesSelect<T extends boolean = true> {
-	user?: T;
-	key?: T;
-	value?: T;
-	updatedAt?: T;
-	createdAt?: T;
+  user?: T;
+  key?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations_select".
  */
 export interface PayloadMigrationsSelect<T extends boolean = true> {
-	name?: T;
-	batch?: T;
-	updatedAt?: T;
-	createdAt?: T;
+  name?: T;
+  batch?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "settings".
  */
 export interface Settings {
-	id: number;
-	siteName?: string | null;
-	locale?: string;
-	tagLine?: string | null;
-	logo?: (number | null) | Media;
-	robots?: string | null;
-	codeInjection?: {
-		head?: string | null;
-		footer?: string | null;
-	};
-	contact?: {
-		email?: string | null;
-		telephone?: string | null;
-	};
-	address?: {
-		line1?: string | null;
-		line2?: string | null;
-		city?: string | null;
-		county?: string | null;
-		postcode?: string | null;
-		country?:
-			| (
-					| 'Afghanistan'
-					| 'Albania'
-					| 'Algeria'
-					| 'Andorra'
-					| 'Angola'
-					| 'Antigua and Barbuda'
-					| 'Argentina'
-					| 'Armenia'
-					| 'Australia'
-					| 'Austria'
-					| 'Azerbaijan'
-					| 'Bahamas'
-					| 'Bahrain'
-					| 'Bangladesh'
-					| 'Barbados'
-					| 'Belarus'
-					| 'Belgium'
-					| 'Belize'
-					| 'Benin'
-					| 'Bhutan'
-					| 'Bolivia'
-					| 'Bosnia and Herzegovina'
-					| 'Botswana'
-					| 'Brazil'
-					| 'Brunei'
-					| 'Bulgaria'
-					| 'Burkina Faso'
-					| 'Burundi'
-					| 'Cabo Verde'
-					| 'Cambodia'
-					| 'Cameroon'
-					| 'Canada'
-					| 'Central African Republic'
-					| 'Chad'
-					| 'Chile'
-					| 'China'
-					| 'Colombia'
-					| 'Comoros'
-					| 'Congo (Congo-Brazzaville)'
-					| 'Costa Rica'
-					| 'Croatia'
-					| 'Cuba'
-					| 'Cyprus'
-					| 'Czechia (Czech Republic)'
-					| 'Democratic Republic of the Congo'
-					| 'Denmark'
-					| 'Djibouti'
-					| 'Dominica'
-					| 'Dominican Republic'
-					| 'Ecuador'
-					| 'Egypt'
-					| 'El Salvador'
-					| 'Equatorial Guinea'
-					| 'Eritrea'
-					| 'Estonia'
-					| 'Eswatini (formerly Swaziland)'
-					| 'Ethiopia'
-					| 'Fiji'
-					| 'Finland'
-					| 'France'
-					| 'Gabon'
-					| 'Gambia'
-					| 'Georgia'
-					| 'Germany'
-					| 'Ghana'
-					| 'Greece'
-					| 'Grenada'
-					| 'Guatemala'
-					| 'Guinea'
-					| 'Guinea-Bissau'
-					| 'Guyana'
-					| 'Haiti'
-					| 'Honduras'
-					| 'Hungary'
-					| 'Iceland'
-					| 'India'
-					| 'Indonesia'
-					| 'Iran'
-					| 'Iraq'
-					| 'Ireland'
-					| 'Israel'
-					| 'Italy'
-					| 'Jamaica'
-					| 'Japan'
-					| 'Jordan'
-					| 'Kazakhstan'
-					| 'Kenya'
-					| 'Kiribati'
-					| 'Kuwait'
-					| 'Kyrgyzstan'
-					| 'Laos'
-					| 'Latvia'
-					| 'Lebanon'
-					| 'Lesotho'
-					| 'Liberia'
-					| 'Libya'
-					| 'Liechtenstein'
-					| 'Lithuania'
-					| 'Luxembourg'
-					| 'Madagascar'
-					| 'Malawi'
-					| 'Malaysia'
-					| 'Maldives'
-					| 'Mali'
-					| 'Malta'
-					| 'Marshall Islands'
-					| 'Mauritania'
-					| 'Mauritius'
-					| 'Mexico'
-					| 'Micronesia'
-					| 'Moldova'
-					| 'Monaco'
-					| 'Mongolia'
-					| 'Montenegro'
-					| 'Morocco'
-					| 'Mozambique'
-					| 'Myanmar (formerly Burma)'
-					| 'Namibia'
-					| 'Nauru'
-					| 'Nepal'
-					| 'Netherlands'
-					| 'New Zealand'
-					| 'Nicaragua'
-					| 'Niger'
-					| 'Nigeria'
-					| 'North Korea'
-					| 'North Macedonia'
-					| 'Norway'
-					| 'Oman'
-					| 'Pakistan'
-					| 'Palau'
-					| 'Palestine State'
-					| 'Panama'
-					| 'Papua New Guinea'
-					| 'Paraguay'
-					| 'Peru'
-					| 'Philippines'
-					| 'Poland'
-					| 'Portugal'
-					| 'Qatar'
-					| 'Romania'
-					| 'Russia'
-					| 'Rwanda'
-					| 'Saint Kitts and Nevis'
-					| 'Saint Lucia'
-					| 'Saint Vincent and the Grenadines'
-					| 'Samoa'
-					| 'San Marino'
-					| 'Sao Tome and Principe'
-					| 'Saudi Arabia'
-					| 'Senegal'
-					| 'Serbia'
-					| 'Seychelles'
-					| 'Sierra Leone'
-					| 'Singapore'
-					| 'Slovakia'
-					| 'Slovenia'
-					| 'Solomon Islands'
-					| 'Somalia'
-					| 'South Africa'
-					| 'South Korea'
-					| 'South Sudan'
-					| 'Spain'
-					| 'Sri Lanka'
-					| 'Sudan'
-					| 'Suriname'
-					| 'Sweden'
-					| 'Switzerland'
-					| 'Syria'
-					| 'Taiwan'
-					| 'Tajikistan'
-					| 'Tanzania'
-					| 'Thailand'
-					| 'Timor-Leste'
-					| 'Togo'
-					| 'Tonga'
-					| 'Trinidad and Tobago'
-					| 'Tunisia'
-					| 'Turkey'
-					| 'Turkmenistan'
-					| 'Tuvalu'
-					| 'Uganda'
-					| 'Ukraine'
-					| 'United Arab Emirates'
-					| 'United Kingdom'
-					| 'United States of America'
-					| 'Uruguay'
-					| 'Uzbekistan'
-					| 'Vanuatu'
-					| 'Venezuela'
-					| 'Vietnam'
-					| 'Yemen'
-					| 'Zambia'
-					| 'Zimbabwe'
-			  )
-			| null;
-	};
-	social?: {
-		linkedIn?: string | null;
-		x?: string | null;
-		facebook?: string | null;
-		instagram?: string | null;
-		youtube?: string | null;
-		tiktok?: string | null;
-	};
-	maintenance?: {
-		enabled?: boolean | null;
-		title?: string | null;
-		content?: string | null;
-	};
-	footer?: {
-		title?: string | null;
-		content?: string | null;
-	};
-	meta?: {
-		title?: string | null;
-		description?: string | null;
-		image?: (number | null) | Media;
-	};
-	updatedAt?: string | null;
-	createdAt?: string | null;
+  id: number;
+  siteName?: string | null;
+  locale?: string;
+  tagLine?: string | null;
+  logo?: (number | null) | Media;
+  robots?: string | null;
+  codeInjection?: {
+    head?: string | null;
+    footer?: string | null;
+  };
+  contact?: {
+    email?: string | null;
+    telephone?: string | null;
+  };
+  address?: {
+    line1?: string | null;
+    line2?: string | null;
+    city?: string | null;
+    county?: string | null;
+    postcode?: string | null;
+    country?:
+      | (
+          | 'Afghanistan'
+          | 'Albania'
+          | 'Algeria'
+          | 'Andorra'
+          | 'Angola'
+          | 'Antigua and Barbuda'
+          | 'Argentina'
+          | 'Armenia'
+          | 'Australia'
+          | 'Austria'
+          | 'Azerbaijan'
+          | 'Bahamas'
+          | 'Bahrain'
+          | 'Bangladesh'
+          | 'Barbados'
+          | 'Belarus'
+          | 'Belgium'
+          | 'Belize'
+          | 'Benin'
+          | 'Bhutan'
+          | 'Bolivia'
+          | 'Bosnia and Herzegovina'
+          | 'Botswana'
+          | 'Brazil'
+          | 'Brunei'
+          | 'Bulgaria'
+          | 'Burkina Faso'
+          | 'Burundi'
+          | 'Cabo Verde'
+          | 'Cambodia'
+          | 'Cameroon'
+          | 'Canada'
+          | 'Central African Republic'
+          | 'Chad'
+          | 'Chile'
+          | 'China'
+          | 'Colombia'
+          | 'Comoros'
+          | 'Congo (Congo-Brazzaville)'
+          | 'Costa Rica'
+          | 'Croatia'
+          | 'Cuba'
+          | 'Cyprus'
+          | 'Czechia (Czech Republic)'
+          | 'Democratic Republic of the Congo'
+          | 'Denmark'
+          | 'Djibouti'
+          | 'Dominica'
+          | 'Dominican Republic'
+          | 'Ecuador'
+          | 'Egypt'
+          | 'El Salvador'
+          | 'Equatorial Guinea'
+          | 'Eritrea'
+          | 'Estonia'
+          | 'Eswatini (formerly Swaziland)'
+          | 'Ethiopia'
+          | 'Fiji'
+          | 'Finland'
+          | 'France'
+          | 'Gabon'
+          | 'Gambia'
+          | 'Georgia'
+          | 'Germany'
+          | 'Ghana'
+          | 'Greece'
+          | 'Grenada'
+          | 'Guatemala'
+          | 'Guinea'
+          | 'Guinea-Bissau'
+          | 'Guyana'
+          | 'Haiti'
+          | 'Honduras'
+          | 'Hungary'
+          | 'Iceland'
+          | 'India'
+          | 'Indonesia'
+          | 'Iran'
+          | 'Iraq'
+          | 'Ireland'
+          | 'Israel'
+          | 'Italy'
+          | 'Jamaica'
+          | 'Japan'
+          | 'Jordan'
+          | 'Kazakhstan'
+          | 'Kenya'
+          | 'Kiribati'
+          | 'Kuwait'
+          | 'Kyrgyzstan'
+          | 'Laos'
+          | 'Latvia'
+          | 'Lebanon'
+          | 'Lesotho'
+          | 'Liberia'
+          | 'Libya'
+          | 'Liechtenstein'
+          | 'Lithuania'
+          | 'Luxembourg'
+          | 'Madagascar'
+          | 'Malawi'
+          | 'Malaysia'
+          | 'Maldives'
+          | 'Mali'
+          | 'Malta'
+          | 'Marshall Islands'
+          | 'Mauritania'
+          | 'Mauritius'
+          | 'Mexico'
+          | 'Micronesia'
+          | 'Moldova'
+          | 'Monaco'
+          | 'Mongolia'
+          | 'Montenegro'
+          | 'Morocco'
+          | 'Mozambique'
+          | 'Myanmar (formerly Burma)'
+          | 'Namibia'
+          | 'Nauru'
+          | 'Nepal'
+          | 'Netherlands'
+          | 'New Zealand'
+          | 'Nicaragua'
+          | 'Niger'
+          | 'Nigeria'
+          | 'North Korea'
+          | 'North Macedonia'
+          | 'Norway'
+          | 'Oman'
+          | 'Pakistan'
+          | 'Palau'
+          | 'Palestine State'
+          | 'Panama'
+          | 'Papua New Guinea'
+          | 'Paraguay'
+          | 'Peru'
+          | 'Philippines'
+          | 'Poland'
+          | 'Portugal'
+          | 'Qatar'
+          | 'Romania'
+          | 'Russia'
+          | 'Rwanda'
+          | 'Saint Kitts and Nevis'
+          | 'Saint Lucia'
+          | 'Saint Vincent and the Grenadines'
+          | 'Samoa'
+          | 'San Marino'
+          | 'Sao Tome and Principe'
+          | 'Saudi Arabia'
+          | 'Senegal'
+          | 'Serbia'
+          | 'Seychelles'
+          | 'Sierra Leone'
+          | 'Singapore'
+          | 'Slovakia'
+          | 'Slovenia'
+          | 'Solomon Islands'
+          | 'Somalia'
+          | 'South Africa'
+          | 'South Korea'
+          | 'South Sudan'
+          | 'Spain'
+          | 'Sri Lanka'
+          | 'Sudan'
+          | 'Suriname'
+          | 'Sweden'
+          | 'Switzerland'
+          | 'Syria'
+          | 'Taiwan'
+          | 'Tajikistan'
+          | 'Tanzania'
+          | 'Thailand'
+          | 'Timor-Leste'
+          | 'Togo'
+          | 'Tonga'
+          | 'Trinidad and Tobago'
+          | 'Tunisia'
+          | 'Turkey'
+          | 'Turkmenistan'
+          | 'Tuvalu'
+          | 'Uganda'
+          | 'Ukraine'
+          | 'United Arab Emirates'
+          | 'United Kingdom'
+          | 'United States of America'
+          | 'Uruguay'
+          | 'Uzbekistan'
+          | 'Vanuatu'
+          | 'Venezuela'
+          | 'Vietnam'
+          | 'Yemen'
+          | 'Zambia'
+          | 'Zimbabwe'
+        )
+      | null;
+  };
+  social?: {
+    linkedIn?: string | null;
+    x?: string | null;
+    facebook?: string | null;
+    instagram?: string | null;
+    youtube?: string | null;
+    tiktok?: string | null;
+  };
+  maintenance?: {
+    enabled?: boolean | null;
+    title?: string | null;
+    content?: string | null;
+  };
+  footer?: {
+    title?: string | null;
+    content?: string | null;
+  };
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "navigation".
  */
 export interface Navigation {
-	id: number;
-	header?: NavigationHeaderLinks;
-	updatedAt?: string | null;
-	createdAt?: string | null;
+  id: number;
+  header?: NavigationHeaderLinks;
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "settings_select".
  */
 export interface SettingsSelect<T extends boolean = true> {
-	siteName?: T;
-	locale?: T;
-	tagLine?: T;
-	logo?: T;
-	robots?: T;
-	codeInjection?:
-		| T
-		| {
-				head?: T;
-				footer?: T;
-		  };
-	contact?:
-		| T
-		| {
-				email?: T;
-				telephone?: T;
-		  };
-	address?:
-		| T
-		| {
-				line1?: T;
-				line2?: T;
-				city?: T;
-				county?: T;
-				postcode?: T;
-				country?: T;
-		  };
-	social?:
-		| T
-		| {
-				linkedIn?: T;
-				x?: T;
-				facebook?: T;
-				instagram?: T;
-				youtube?: T;
-				tiktok?: T;
-		  };
-	maintenance?:
-		| T
-		| {
-				enabled?: T;
-				title?: T;
-				content?: T;
-		  };
-	footer?:
-		| T
-		| {
-				title?: T;
-				content?: T;
-		  };
-	meta?:
-		| T
-		| {
-				title?: T;
-				description?: T;
-				image?: T;
-		  };
-	updatedAt?: T;
-	createdAt?: T;
-	globalType?: T;
+  siteName?: T;
+  locale?: T;
+  tagLine?: T;
+  logo?: T;
+  robots?: T;
+  codeInjection?:
+    | T
+    | {
+        head?: T;
+        footer?: T;
+      };
+  contact?:
+    | T
+    | {
+        email?: T;
+        telephone?: T;
+      };
+  address?:
+    | T
+    | {
+        line1?: T;
+        line2?: T;
+        city?: T;
+        county?: T;
+        postcode?: T;
+        country?: T;
+      };
+  social?:
+    | T
+    | {
+        linkedIn?: T;
+        x?: T;
+        facebook?: T;
+        instagram?: T;
+        youtube?: T;
+        tiktok?: T;
+      };
+  maintenance?:
+    | T
+    | {
+        enabled?: T;
+        title?: T;
+        content?: T;
+      };
+  footer?:
+    | T
+    | {
+        title?: T;
+        content?: T;
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "navigation_select".
  */
 export interface NavigationSelect<T extends boolean = true> {
-	header?:
-		| T
-		| {
-				title?: T;
-				url?: T;
-				id?: T;
-		  };
-	updatedAt?: T;
-	createdAt?: T;
-	globalType?: T;
+  header?:
+    | T
+    | {
+        title?: T;
+        url?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "auth".
  */
 export interface Auth {
-	[k: string]: unknown;
+  [k: string]: unknown;
 }
 
+
 declare module 'payload' {
-	export interface GeneratedTypes extends Config {}
+  export interface GeneratedTypes extends Config {}
 }
