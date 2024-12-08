@@ -36,6 +36,9 @@ sharp.concurrency(1);
 export default buildConfig({
 	admin: {
 		user: Users.slug,
+		importMap: {
+			baseDir: path.resolve(dirname),
+		},
 	},
 	collections: [
 		Posts,
@@ -81,7 +84,7 @@ export default buildConfig({
 			fields: SEOFields as Field[],
 			tabbedUI: true,
 			uploadsCollection: 'media',
-			generateTitle: ({ doc, locale }) => `Website.com — ${doc?.title?.value ?? ''}`,
+			//generateTitle: ({ doc, locale }) => `Website.com — ${doc?.title?.value ?? ''}`,
 			generateDescription: ({ doc }) => doc?.excerpt?.value,
 		}),
 		formBuilderPlugin({

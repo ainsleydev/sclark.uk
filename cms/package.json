@@ -29,7 +29,7 @@
 		"docker:clean": "docker rmi ainsley.dev/cms && docker image prune"
 	},
 	"dependencies": {
-		"@ainsleydev/payload-helper": "0.0.25",
+		"@ainsleydev/payload-helper": "link:/Users/Ainsley/Desktop/ainsley.dev/WebKit/web-kit/packages/payload-helper",
 		"@libsql/client": "^0.14.0",
 		"payload": "3.5.0",
 		"@payloadcms/db-sqlite": "3.5.0",
@@ -57,15 +57,5 @@
 	},
 	"engines": {
 		"node": "^18.20.2 || >=20.9.0"
-	},
-	"pnpm": {
-		"overrides": {
-			"@lexical/*": "0.20.0",
-			"lexical": "0.20.0"
-		}
-	},
-	"overrides": {
-		"@lexical/*": "0.20.0",
-		"lexical": "0.20.0"
 	}
 }
