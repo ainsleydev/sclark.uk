@@ -25,7 +25,6 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN corepack enable pnpm && pnpm build
-RUN export NODE_ENV=production pnpm migrate
 
 # Production - Copy all the files and run next
 FROM base AS runner

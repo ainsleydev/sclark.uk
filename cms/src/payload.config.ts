@@ -7,6 +7,7 @@ import { formBuilderPlugin } from '@payloadcms/plugin-form-builder';
 import { seoPlugin } from '@payloadcms/plugin-seo';
 import { fieldAffectsData, fieldIsBlockType } from 'payload/shared';
 import { buildConfig } from 'payload';
+import { migrations } from './migrations';
 import type { Config, Field } from 'payload';
 import sharp from 'sharp';
 
@@ -74,6 +75,7 @@ export default buildConfig({
 			url: env('DATABASE_URL', ''),
 			authToken: env('DATABASE_TOKEN', ''),
 		},
+		prodMigrations: migrations,
 	}),
 	sharp,
 	plugins: [
