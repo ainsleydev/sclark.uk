@@ -34,8 +34,28 @@ export interface Config {
 		redirects: Redirect;
 		forms: Form;
 		'form-submissions': FormSubmission;
+		'payload-locked-documents': PayloadLockedDocument;
 		'payload-preferences': PayloadPreference;
 		'payload-migrations': PayloadMigration;
+	};
+	collectionsJoins: {};
+	collectionsSelect: {
+		posts: PostsSelect<false> | PostsSelect<true>;
+		pages: PagesSelect<false> | PagesSelect<true>;
+		clients: ClientsSelect<false> | ClientsSelect<true>;
+		reviews: ReviewsSelect<false> | ReviewsSelect<true>;
+		portfolio: PortfolioSelect<false> | PortfolioSelect<true>;
+		'portfolio-categories': PortfolioCategoriesSelect<false> | PortfolioCategoriesSelect<true>;
+		media: MediaSelect<false> | MediaSelect<true>;
+		users: UsersSelect<false> | UsersSelect<true>;
+		redirects: RedirectsSelect<false> | RedirectsSelect<true>;
+		forms: FormsSelect<false> | FormsSelect<true>;
+		'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
+		'payload-locked-documents':
+			| PayloadLockedDocumentsSelect<false>
+			| PayloadLockedDocumentsSelect<true>;
+		'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+		'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
 	};
 	db: {
 		defaultIDType: number;
@@ -44,9 +64,17 @@ export interface Config {
 		settings: Settings;
 		navigation: Navigation;
 	};
+	globalsSelect: {
+		settings: SettingsSelect<false> | SettingsSelect<true>;
+		navigation: NavigationSelect<false> | NavigationSelect<true>;
+	};
 	locale: null;
 	user: User & {
 		collection: 'users';
+	};
+	jobs: {
+		tasks: unknown;
+		workflows: unknown;
 	};
 }
 export interface UserAuthOperations {
@@ -90,22 +118,11 @@ export interface Post {
 		};
 		[k: string]: unknown;
 	} | null;
-	thumbnail?: number | Media | null;
+	thumbnail?: (number | null) | Media;
 	meta?: {
 		title?: string | null;
 		description?: string | null;
-		image?: number | Media | null;
-		private?: boolean | null;
-		canonicalURL?: string | null;
-		structuredData?:
-			| {
-					[k: string]: unknown;
-			  }
-			| unknown[]
-			| string
-			| number
-			| boolean
-			| null;
+		image?: (number | null) | Media;
 	};
 	publishedAt?: string | null;
 	relatedPosts?: (number | Post)[] | null;
@@ -161,14 +178,6 @@ export interface Media {
 			filesize?: number | null;
 			filename?: string | null;
 		};
-		avif?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
 		thumbnail?: {
 			url?: string | null;
 			width?: number | null;
@@ -178,14 +187,6 @@ export interface Media {
 			filename?: string | null;
 		};
 		thumbnail_webp?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		thumbnail_avif?: {
 			url?: string | null;
 			width?: number | null;
 			height?: number | null;
@@ -209,14 +210,6 @@ export interface Media {
 			filesize?: number | null;
 			filename?: string | null;
 		};
-		mobile_avif?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
 		tablet?: {
 			url?: string | null;
 			width?: number | null;
@@ -233,7 +226,55 @@ export interface Media {
 			filesize?: number | null;
 			filename?: string | null;
 		};
+		desktop?: {
+			url?: string | null;
+			width?: number | null;
+			height?: number | null;
+			mimeType?: string | null;
+			filesize?: number | null;
+			filename?: string | null;
+		};
+		desktop_webp?: {
+			url?: string | null;
+			width?: number | null;
+			height?: number | null;
+			mimeType?: string | null;
+			filesize?: number | null;
+			filename?: string | null;
+		};
+		avif?: {
+			url?: string | null;
+			width?: number | null;
+			height?: number | null;
+			mimeType?: string | null;
+			filesize?: number | null;
+			filename?: string | null;
+		};
+		thumbnail_avif?: {
+			url?: string | null;
+			width?: number | null;
+			height?: number | null;
+			mimeType?: string | null;
+			filesize?: number | null;
+			filename?: string | null;
+		};
+		mobile_avif?: {
+			url?: string | null;
+			width?: number | null;
+			height?: number | null;
+			mimeType?: string | null;
+			filesize?: number | null;
+			filename?: string | null;
+		};
 		tablet_avif?: {
+			url?: string | null;
+			width?: number | null;
+			height?: number | null;
+			mimeType?: string | null;
+			filesize?: number | null;
+			filename?: string | null;
+		};
+		desktop_avif?: {
 			url?: string | null;
 			width?: number | null;
 			height?: number | null;
@@ -266,18 +307,7 @@ export interface Page {
 	meta?: {
 		title?: string | null;
 		description?: string | null;
-		image?: number | Media | null;
-		private?: boolean | null;
-		canonicalURL?: string | null;
-		structuredData?:
-			| {
-					[k: string]: unknown;
-			  }
-			| unknown[]
-			| string
-			| number
-			| boolean
-			| null;
+		image?: (number | null) | Media;
 	};
 	isHome?: boolean | null;
 	updatedAt: string;
@@ -613,6 +643,65 @@ export interface FormSubmission {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-locked-documents".
+ */
+export interface PayloadLockedDocument {
+	id: number;
+	document?:
+		| ({
+				relationTo: 'posts';
+				value: number | Post;
+		  } | null)
+		| ({
+				relationTo: 'pages';
+				value: number | Page;
+		  } | null)
+		| ({
+				relationTo: 'clients';
+				value: number | Client;
+		  } | null)
+		| ({
+				relationTo: 'reviews';
+				value: number | Review;
+		  } | null)
+		| ({
+				relationTo: 'portfolio';
+				value: number | Portfolio;
+		  } | null)
+		| ({
+				relationTo: 'portfolio-categories';
+				value: number | PortfolioCategory;
+		  } | null)
+		| ({
+				relationTo: 'media';
+				value: number | Media;
+		  } | null)
+		| ({
+				relationTo: 'users';
+				value: number | User;
+		  } | null)
+		| ({
+				relationTo: 'redirects';
+				value: number | Redirect;
+		  } | null)
+		| ({
+				relationTo: 'forms';
+				value: number | Form;
+		  } | null)
+		| ({
+				relationTo: 'form-submissions';
+				value: number | FormSubmission;
+		  } | null);
+	globalSlug?: string | null;
+	user: {
+		relationTo: 'users';
+		value: number | User;
+	};
+	updatedAt: string;
+	createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
@@ -647,6 +736,516 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts_select".
+ */
+export interface PostsSelect<T extends boolean = true> {
+	title?: T;
+	excerpt?: T;
+	content?: T;
+	thumbnail?: T;
+	meta?:
+		| T
+		| {
+				title?: T;
+				description?: T;
+				image?: T;
+		  };
+	publishedAt?: T;
+	relatedPosts?: T;
+	tags?:
+		| T
+		| {
+				tag?: T;
+				id?: T;
+		  };
+	updatedAt?: T;
+	createdAt?: T;
+	_status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+	hero?:
+		| T
+		| {
+				title?: T;
+				lead?: T;
+				clients?: T;
+		  };
+	layout?:
+		| T
+		| {
+				'content-block'?:
+					| T
+					| {
+							identifier?: T;
+							style?: T;
+							centreAlign?: T;
+							content?: T;
+							contentHtml?: T;
+							id?: T;
+							blockName?: T;
+					  };
+				'content-with-image-block'?:
+					| T
+					| {
+							identifier?: T;
+							textLayout?:
+								| T
+								| {
+										'content-block'?:
+											| T
+											| {
+													identifier?: T;
+													content?: T;
+													contentHtml?: T;
+													id?: T;
+													blockName?: T;
+											  };
+										'faqs-block'?:
+											| T
+											| {
+													identifier?: T;
+													faqs?:
+														| T
+														| {
+																question?: T;
+																answer?: T;
+																id?: T;
+														  };
+													id?: T;
+													blockName?: T;
+											  };
+								  };
+							imagePosition?: T;
+							sticky?: T;
+							image?: T;
+							id?: T;
+							blockName?: T;
+					  };
+				'gradient-block'?:
+					| T
+					| {
+							identifier?: T;
+							colour?: T;
+							id?: T;
+							blockName?: T;
+					  };
+				'logos-block'?:
+					| T
+					| {
+							identifier?: T;
+							title?: T;
+							greyscale?: T;
+							clients?: T;
+							id?: T;
+							blockName?: T;
+					  };
+				'reviews-block'?:
+					| T
+					| {
+							identifier?: T;
+							title?: T;
+							content?: T;
+							items?: T;
+							id?: T;
+							blockName?: T;
+					  };
+				'portfolio-block'?:
+					| T
+					| {
+							identifier?: T;
+							title?: T;
+							content?: T;
+							items?: T;
+							id?: T;
+							blockName?: T;
+					  };
+				'contact-block'?:
+					| T
+					| {
+							identifier?: T;
+							title?: T;
+							content?: T;
+							includeSocial?: T;
+							form?: T;
+							id?: T;
+							blockName?: T;
+					  };
+		  };
+	meta?:
+		| T
+		| {
+				title?: T;
+				description?: T;
+				image?: T;
+		  };
+	isHome?: T;
+	updatedAt?: T;
+	createdAt?: T;
+	_status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "clients_select".
+ */
+export interface ClientsSelect<T extends boolean = true> {
+	name?: T;
+	url?: T;
+	logo?: T;
+	updatedAt?: T;
+	createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews_select".
+ */
+export interface ReviewsSelect<T extends boolean = true> {
+	content?: T;
+	author?:
+		| T
+		| {
+				firstName?: T;
+				lastName?: T;
+				description?: T;
+		  };
+	updatedAt?: T;
+	createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio_select".
+ */
+export interface PortfolioSelect<T extends boolean = true> {
+	title?: T;
+	url?: T;
+	date?: T;
+	company?: T;
+	category?: T;
+	image?: T;
+	updatedAt?: T;
+	createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio-categories_select".
+ */
+export interface PortfolioCategoriesSelect<T extends boolean = true> {
+	title?: T;
+	updatedAt?: T;
+	createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_select".
+ */
+export interface MediaSelect<T extends boolean = true> {
+	alt?: T;
+	caption?: T;
+	updatedAt?: T;
+	createdAt?: T;
+	url?: T;
+	thumbnailURL?: T;
+	filename?: T;
+	mimeType?: T;
+	filesize?: T;
+	width?: T;
+	height?: T;
+	focalX?: T;
+	focalY?: T;
+	sizes?:
+		| T
+		| {
+				webp?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				thumbnail?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				thumbnail_webp?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				mobile?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				mobile_webp?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				tablet?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				tablet_webp?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				desktop?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				desktop_webp?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				avif?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				thumbnail_avif?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				mobile_avif?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				tablet_avif?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				desktop_avif?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+		  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users_select".
+ */
+export interface UsersSelect<T extends boolean = true> {
+	name?: T;
+	updatedAt?: T;
+	createdAt?: T;
+	enableAPIKey?: T;
+	apiKey?: T;
+	apiKeyIndex?: T;
+	email?: T;
+	resetPasswordToken?: T;
+	resetPasswordExpiration?: T;
+	salt?: T;
+	hash?: T;
+	loginAttempts?: T;
+	lockUntil?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects_select".
+ */
+export interface RedirectsSelect<T extends boolean = true> {
+	from?: T;
+	to?: T;
+	code?: T;
+	updatedAt?: T;
+	createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "forms_select".
+ */
+export interface FormsSelect<T extends boolean = true> {
+	heading?: T;
+	content?: T;
+	title?: T;
+	fields?:
+		| T
+		| {
+				email?:
+					| T
+					| {
+							name?: T;
+							label?: T;
+							width?: T;
+							required?: T;
+							id?: T;
+							blockName?: T;
+					  };
+				text?:
+					| T
+					| {
+							name?: T;
+							label?: T;
+							width?: T;
+							defaultValue?: T;
+							required?: T;
+							id?: T;
+							blockName?: T;
+					  };
+				textarea?:
+					| T
+					| {
+							name?: T;
+							label?: T;
+							width?: T;
+							defaultValue?: T;
+							required?: T;
+							id?: T;
+							blockName?: T;
+					  };
+		  };
+	submitButtonLabel?: T;
+	redirect?:
+		| T
+		| {
+				url?: T;
+		  };
+	emails?:
+		| T
+		| {
+				emailTo?: T;
+				cc?: T;
+				bcc?: T;
+				replyTo?: T;
+				emailFrom?: T;
+				subject?: T;
+				message?: T;
+				id?: T;
+		  };
+	confirmationMessage?: T;
+	updatedAt?: T;
+	createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "form-submissions_select".
+ */
+export interface FormSubmissionsSelect<T extends boolean = true> {
+	form?: T;
+	submissionData?:
+		| T
+		| {
+				field?: T;
+				value?: T;
+				id?: T;
+		  };
+	updatedAt?: T;
+	createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-locked-documents_select".
+ */
+export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
+	document?: T;
+	globalSlug?: T;
+	user?: T;
+	updatedAt?: T;
+	createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-preferences_select".
+ */
+export interface PayloadPreferencesSelect<T extends boolean = true> {
+	user?: T;
+	key?: T;
+	value?: T;
+	updatedAt?: T;
+	createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-migrations_select".
+ */
+export interface PayloadMigrationsSelect<T extends boolean = true> {
+	name?: T;
+	batch?: T;
+	updatedAt?: T;
+	createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "settings".
  */
 export interface Settings {
@@ -654,7 +1253,7 @@ export interface Settings {
 	siteName?: string | null;
 	locale?: string;
 	tagLine?: string | null;
-	logo?: number | Media | null;
+	logo?: (number | null) | Media;
 	robots?: string | null;
 	codeInjection?: {
 		head?: string | null;
@@ -889,18 +1488,7 @@ export interface Settings {
 	meta?: {
 		title?: string | null;
 		description?: string | null;
-		image?: number | Media | null;
-		private?: boolean | null;
-		canonicalURL?: string | null;
-		structuredData?:
-			| {
-					[k: string]: unknown;
-			  }
-			| unknown[]
-			| string
-			| number
-			| boolean
-			| null;
+		image?: (number | null) | Media;
 	};
 	updatedAt?: string | null;
 	createdAt?: string | null;
@@ -914,6 +1502,88 @@ export interface Navigation {
 	header?: NavigationHeaderLinks;
 	updatedAt?: string | null;
 	createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings_select".
+ */
+export interface SettingsSelect<T extends boolean = true> {
+	siteName?: T;
+	locale?: T;
+	tagLine?: T;
+	logo?: T;
+	robots?: T;
+	codeInjection?:
+		| T
+		| {
+				head?: T;
+				footer?: T;
+		  };
+	contact?:
+		| T
+		| {
+				email?: T;
+				telephone?: T;
+		  };
+	address?:
+		| T
+		| {
+				line1?: T;
+				line2?: T;
+				city?: T;
+				county?: T;
+				postcode?: T;
+				country?: T;
+		  };
+	social?:
+		| T
+		| {
+				linkedIn?: T;
+				x?: T;
+				facebook?: T;
+				instagram?: T;
+				youtube?: T;
+				tiktok?: T;
+		  };
+	maintenance?:
+		| T
+		| {
+				enabled?: T;
+				title?: T;
+				content?: T;
+		  };
+	footer?:
+		| T
+		| {
+				title?: T;
+				content?: T;
+		  };
+	meta?:
+		| T
+		| {
+				title?: T;
+				description?: T;
+				image?: T;
+		  };
+	updatedAt?: T;
+	createdAt?: T;
+	globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navigation_select".
+ */
+export interface NavigationSelect<T extends boolean = true> {
+	header?:
+		| T
+		| {
+				title?: T;
+				url?: T;
+				id?: T;
+		  };
+	updatedAt?: T;
+	createdAt?: T;
+	globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

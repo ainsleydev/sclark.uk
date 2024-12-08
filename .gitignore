@@ -85,4 +85,4 @@ cms/media
 cms/db
 *.tsbuildinfo
 next-env.d.ts
-
+dump.sql

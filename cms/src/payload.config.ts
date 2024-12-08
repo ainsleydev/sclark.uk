@@ -36,6 +36,9 @@ sharp.concurrency(1);
 export default buildConfig({
 	admin: {
 		user: Users.slug,
+		importMap: {
+			baseDir: path.resolve(dirname),
+		},
 	},
 	collections: [
 		Posts,
@@ -44,7 +47,9 @@ export default buildConfig({
 		Reviews,
 		Portfolio,
 		PortfolioCategories,
-		Media(),
+		Media({
+			includeAvif: true,
+		}),
 		Users,
 		Redirects(),
 	],
@@ -75,10 +80,11 @@ export default buildConfig({
 		seoPlugin({
 			collections: ['posts', 'pages'],
 			globals: ['settings'],
+			// @ts-ignore
 			fields: SEOFields as Field[],
 			tabbedUI: true,
 			uploadsCollection: 'media',
-			generateTitle: ({ doc, locale }) => `Website.com — ${doc?.title?.value ?? ''}`,
+			//generateTitle: ({ doc, locale }) => `Website.com — ${doc?.title?.value ?? ''}`,
 			generateDescription: ({ doc }) => doc?.excerpt?.value,
 		}),
 		formBuilderPlugin({
