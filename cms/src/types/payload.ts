@@ -178,6 +178,14 @@ export interface Media {
 			filesize?: number | null;
 			filename?: string | null;
 		};
+		avif?: {
+			url?: string | null;
+			width?: number | null;
+			height?: number | null;
+			mimeType?: string | null;
+			filesize?: number | null;
+			filename?: string | null;
+		};
 		thumbnail?: {
 			url?: string | null;
 			width?: number | null;
@@ -187,6 +195,14 @@ export interface Media {
 			filename?: string | null;
 		};
 		thumbnail_webp?: {
+			url?: string | null;
+			width?: number | null;
+			height?: number | null;
+			mimeType?: string | null;
+			filesize?: number | null;
+			filename?: string | null;
+		};
+		thumbnail_avif?: {
 			url?: string | null;
 			width?: number | null;
 			height?: number | null;
@@ -210,6 +226,14 @@ export interface Media {
 			filesize?: number | null;
 			filename?: string | null;
 		};
+		mobile_avif?: {
+			url?: string | null;
+			width?: number | null;
+			height?: number | null;
+			mimeType?: string | null;
+			filesize?: number | null;
+			filename?: string | null;
+		};
 		tablet?: {
 			url?: string | null;
 			width?: number | null;
@@ -226,55 +250,7 @@ export interface Media {
 			filesize?: number | null;
 			filename?: string | null;
 		};
-		desktop?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		desktop_webp?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		avif?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		thumbnail_avif?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		mobile_avif?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
 		tablet_avif?: {
-			url?: string | null;
-			width?: number | null;
-			height?: number | null;
-			mimeType?: string | null;
-			filesize?: number | null;
-			filename?: string | null;
-		};
-		desktop_avif?: {
 			url?: string | null;
 			width?: number | null;
 			height?: number | null;
@@ -968,6 +944,16 @@ export interface MediaSelect<T extends boolean = true> {
 							filesize?: T;
 							filename?: T;
 					  };
+				avif?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
 				thumbnail?:
 					| T
 					| {
@@ -979,6 +965,16 @@ export interface MediaSelect<T extends boolean = true> {
 							filename?: T;
 					  };
 				thumbnail_webp?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
+				thumbnail_avif?:
 					| T
 					| {
 							url?: T;
@@ -1008,6 +1004,16 @@ export interface MediaSelect<T extends boolean = true> {
 							filesize?: T;
 							filename?: T;
 					  };
+				mobile_avif?:
+					| T
+					| {
+							url?: T;
+							width?: T;
+							height?: T;
+							mimeType?: T;
+							filesize?: T;
+							filename?: T;
+					  };
 				tablet?:
 					| T
 					| {
@@ -1028,67 +1034,7 @@ export interface MediaSelect<T extends boolean = true> {
 							filesize?: T;
 							filename?: T;
 					  };
-				desktop?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				desktop_webp?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				avif?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				thumbnail_avif?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				mobile_avif?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
 				tablet_avif?:
-					| T
-					| {
-							url?: T;
-							width?: T;
-							height?: T;
-							mimeType?: T;
-							filesize?: T;
-							filename?: T;
-					  };
-				desktop_avif?:
 					| T
 					| {
 							url?: T;
