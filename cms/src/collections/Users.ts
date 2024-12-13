@@ -16,6 +16,7 @@ export const Users: CollectionConfig = {
 			name: 'name',
 			type: 'text',
 			required: true,
+			// @ts-ignore
 			validate: (value: string) => {
 				if (!value) {
 					return 'Name is required';
