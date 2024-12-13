@@ -7,7 +7,7 @@ export const Reviews: CollectionConfig = {
 		plural: 'Testimonials',
 	},
 	admin: {
-		useAsTitle: 'author',
+		// useAsTitle: 'content',
 		defaultColumns: ['id', 'content', 'updatedAt'],
 	},
 	typescript: {
